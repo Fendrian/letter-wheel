@@ -1,3 +1,5 @@
+Initial screen is the new game screen
+
 MAIN MENU
 Menu accessible from absolutely anywhere in the app, with contents changing based on context.
 ------------------------------
