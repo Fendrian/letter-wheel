@@ -1,6 +1,7 @@
 {
   "name": "word-grid",
   "description": "Mobile-platform word search game",
+  "version": "0.1.0",
   "main": "src/",
   "license": "UNLICENSED",
   "author": {
@@ -10,7 +11,10 @@
     "node": ">= 7.9.0"
   },
   "scripts": {
-    "start": "NODE_ENV=development eslint src/ ** babel-node src/"
+    "start": "yarn run deploy && yarn run run",
+    "deploy": "react-native run-android",
+    "run": "yarn run kill && adb reverse tcp:3030 tcp:3030 && nohup react-native start >/vagrant/react-native.log 2>&1 </dev/null &",
+    "kill": "if [ \"$(pgrep -af '/vagrant/node_modules/.bin/react-native' | grep -v grep | cut -d\" \" -f1)\" ]; then kill `pgrep -af '/vagrant/node_modules/.bin/react-native' | grep -v grep | cut -d\" \" -f1`; fi"
   },
   "dependencies": {
     "babel-cli": "^6.7.7",
@@ -24,7 +28,9 @@
     "eslint-plugin-react": "^7.0.0",
     "mobx": "^3.1.9",
     "mobx-react": "^4.1.8",
+    "prop-types": "^15.5.10",
     "react": "16.0.0-alpha.6",
-    "react-native": "^0.44.0"
+    "react-native": "^0.44.0",
+    "react-navigation": "^1.0.0-beta.11"
   }
 }
