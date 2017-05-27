@@ -6,7 +6,7 @@ import { StackNavigator } from 'react-navigation';
 @inject('appStore') @observer
 class App extends React.Component {
   static propTypes = {
-    appStore: React.PropTypes.shape({
+    appStore: PropTypes.shape({
       navigator: React.PropTypes.object.isRequired,
     }).isRequired,
     navScreens: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types

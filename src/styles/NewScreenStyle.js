@@ -9,10 +9,9 @@ export default StyleSheet.create({
   },
   body: {
     alignItems: 'center',
-    flex: 1,
-    backgroundColor: '#fd6',
     borderRadius: 4,
     width: 350,
+    height: 300,
   },
   headerText: {
     color: '#000',
@@ -20,27 +19,38 @@ export default StyleSheet.create({
     textAlign: 'center',
   },
   words: {
-    backgroundColor: '#a1d',
     borderRadius: 4,
-    margin: 10,
+    margin: 20,
     width: 350,
   },
   timer: {
-    backgroundColor: '#a1d',
+    alignItems: 'flex-end',
     borderRadius: 4,
-    margin: 10,
+    margin: 20,
     width: 350,
+  },
+  timerLabel: {
+    color: '#000',
+    fontSize: 20,
+  },
+  wordContainer: {
+    margin: 1,
+  },
+  wordItems: {
+    fontSize: 20,
   },
   buttonWrapper: {
+    alignItems: 'center',
+    borderRadius: 4,
     flex: 1,
     flexDirection: 'row',
-    borderRadius: 4,
-    margin: 10,
-    width: 350,
+    margin: 20,
   },
   buttons: {
-    flex: 0.5,
-    margin: 10,
-    width: 350,
+    backgroundColor: '#999',
+    color: '#000',
+    fontSize: 20,
+    marginHorizontal: 20,
+    padding: 20,
   },
 });

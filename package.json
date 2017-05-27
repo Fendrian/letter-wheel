@@ -11,10 +11,11 @@
     "node": ">= 7.9.0"
   },
   "scripts": {
-    "start": "yarn run deploy && yarn run run",
+    "start": "yarn run run && sleep 1 && yarn run deploy",
     "deploy": "react-native run-android",
     "run": "yarn run kill && adb reverse tcp:3030 tcp:3030 && nohup react-native start >/vagrant/react-native.log 2>&1 </dev/null &",
-    "kill": "if [ \"$(pgrep -af '/vagrant/node_modules/.bin/react-native' | grep -v grep | cut -d\" \" -f1)\" ]; then kill `pgrep -af '/vagrant/node_modules/.bin/react-native' | grep -v grep | cut -d\" \" -f1`; fi"
+    "kill": "watchman watch-del-all && if [ \"$(pgrep -af '/vagrant/node_modules/.bin/react-native' | grep -v grep | cut -d\" \" -f1)\" ]; then kill `pgrep -af '/vagrant/node_modules/.bin/react-native' | grep -v grep | cut -d\" \" -f1`; fi",
+    "log": "adb logcat"
   },
   "dependencies": {
     "babel-cli": "^6.7.7",
@@ -31,6 +32,9 @@
     "prop-types": "^15.5.10",
     "react": "16.0.0-alpha.6",
     "react-native": "^0.44.0",
+    "react-native-button": "^1.8.2",
+    "react-native-checkbox": "^1.1.0",
+    "react-native-radio-buttons": "^0.14.0",
     "react-navigation": "^1.0.0-beta.11"
   }
 }
