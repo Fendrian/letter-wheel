@@ -30,7 +30,7 @@ export default class LoadingScreen extends React.Component {
     };
   }
   setSelectedOption = (wordSelection) => {
-    this.setState({ wordSelection });
+    this.setState({ wordSelection: wordSelection.value });
     console.log(wordSelection.value);
   }
   setTimed = (timed) => {
