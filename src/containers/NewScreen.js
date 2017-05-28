@@ -31,7 +31,6 @@ export default class LoadingScreen extends React.Component {
   }
   setSelectedOption = (wordSelection) => {
     this.setState({ wordSelection: wordSelection.value });
-    console.log(wordSelection.value);
   }
   setTimed = (timed) => {
     this.setState({ timed: !timed });
@@ -40,7 +39,10 @@ export default class LoadingScreen extends React.Component {
     Alert.alert('Coming soon', 'Instructions are still under development and will be implemented soon.');
   }
   start = () => {
-    this.props.appStore.nav.goto('Game');
+    const { appStore } = this.props;
+    const timer = this.state.timed ? 60 : -1;
+    appStore.newGame({ wordLen: this.state.wordSelection, timer });
+    appStore.nav.goto('Game');
   }
   render() {
     const options = [
