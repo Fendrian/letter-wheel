@@ -1,5 +1,10 @@
 Initial screen is the new game screen
 
+Base variables needed:
+	Nine letters (in order)
+	List of tried words
+	Time remaining
+
 MAIN MENU
 Menu accessible from absolutely anywhere in the app, with contents changing based on context.
 ------------------------------
