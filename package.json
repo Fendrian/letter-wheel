@@ -11,11 +11,19 @@
     "node": ">= 7.9.0"
   },
   "scripts": {
-    "start": "yarn run run && sleep 1 && yarn run deploy",
+    "start": "yarn run run ",
+    "poststart": "yarn run deploy",
+
     "deploy": "react-native run-android",
-    "run": "yarn run kill && adb reverse tcp:3030 tcp:3030 && nohup react-native start >/vagrant/react-native.log 2>&1 </dev/null &",
-    "kill": "watchman watch-del-all && if [ \"$(pgrep -af '/vagrant/node_modules/.bin/react-native' | grep -v grep | cut -d\" \" -f1)\" ]; then kill `pgrep -af '/vagrant/node_modules/.bin/react-native' | grep -v grep | cut -d\" \" -f1`; fi",
-    "log": "adb logcat"
+    
+    "prerun": "yarn run kill && adb reverse tcp:3030 tcp:3030",
+    "run": "nohup react-native start >/vagrant/react-native.log 2>&1 </dev/null &",
+    
+    "prekill": "watchman watch-del-all",
+    "kill": "if [ \"$(pgrep -af '/vagrant/node_modules/.bin/react-native' | cut -d\" \" -f1)\" ]; then kill `pgrep -af '/vagrant/node_modules/.bin/react-native' | cut -d\" \" -f1`; fi",
+    
+    "log-native": "tail -f -n 50 /vagrant/react-native.log",
+    "log-android": "adb logcat"
   },
   "dependencies": {
     "babel-cli": "^6.7.7",

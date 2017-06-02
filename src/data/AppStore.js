@@ -46,12 +46,59 @@ export default class AppState {
     },
   }
   newGame = (options) => {
+    // Generate a scrambled nine-letter word:
     Object.assign(this.letters, (typeof (options.letters) === 'object') ? options.letters : (() => {
-      const words = Object.keys(dict9);
-      const word = words[Math.floor(Math.random() * words.length)];
+      const word = dict9[Math.floor(Math.random() * dict9.length)];
       const s = shuffle(word).split('');
       return { 1: s[0], 2: s[1], 3: s[2], 4: s[3], 5: s[4], 6: s[5], 7: s[6], 8: s[7], 9: s[8] };
     })());
+
+    const letters = {};
+
+    // Iterate over letters of nine-letter word in this.letters
+    for (let i = 1; i < 10; i += 1) {
+      if (typeof (letters[this.letters[i]]) === 'undefined') {
+        letters[this.letters[i]] = 0;
+      }
+      letters[this.letters[i]] += 1;
+    }
+
+    console.log(`Letters are ${Object.keys(letters)}`);
+
+    // Filter dictionary to only words that contain the center letter
+    const words = [];
+    const dicts = [dict4];
+
+    // Iterate over dictionary objects on dict[i]
+    for (let i = 0; i < dicts.length; i += 1) {
+      // Iterate over words in each dictionary on dicts[i][j]
+      for (let j = 1; j < dicts[i].length; j += 1) {
+        // Break the word apart into letters
+        const l = dicts[i][j].split('');
+        const matches = {};
+        // Iterate over the letters of our word on l[k]
+        for (let k = 0; k < l.length; k += 1) {
+          if (typeof (letters[l[k]]) !== 'undefined') {
+            if (typeof (matches[l[k]]) === 'undefined') {
+              matches[l[k]] = 0;
+            }
+            if (matches[l[k]] < letters[l[k]]) {
+              matches[l[k]] += 1;
+            }
+          }
+        }
+        // Only proceed if the word contains the center letter
+        if (typeof (matches[this.letters[5]]) !== 'undefined') {
+          if (Object.values(matches).reduce((a, b) => a + b) === dicts[i][j].length) {
+            words.push(dicts[i][j]);
+          }
+        }
+      }
+    }
+
+    console.log(`List of words contains ${words.length} items.`);
+
+    // Set the other variables
     this.timer = (typeof (options.timer) === 'number') ? options.timer : -1;
     this.tried = (typeof (options.tried) === 'object') ? { all: options.tried } : { all: [] };
     this.selected = { all: [] };

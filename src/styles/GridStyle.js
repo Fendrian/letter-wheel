@@ -7,7 +7,7 @@ const block = {
   margin: 1,
   width: 98,
   height: 98,
-}
+};
 
 export default StyleSheet.create({
   container: {
