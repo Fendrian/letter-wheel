@@ -41,8 +41,10 @@ export default class LoadingScreen extends React.Component {
   start = () => {
     const { appStore } = this.props;
     const timer = this.state.timed ? 60 : -1;
-    appStore.newGame({ wordLen: this.state.wordSelection, timer });
-    appStore.nav.goto('Game');
+    appStore.newGame({ wordLen: this.state.wordSelection, timer })
+      .then(() => {
+        appStore.nav.goto('Game');
+      });
   }
   render() {
     const options = [

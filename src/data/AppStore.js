@@ -1,12 +1,6 @@
 import { observable } from 'mobx';
 import { Alert, Dimensions } from 'react-native';
 import SQLite from 'react-native-sqlite-storage';
-import dict4 from './dictionary_4.json';
-import dict5 from './dictionary_5.json';
-import dict6 from './dictionary_6.json';
-import dict7 from './dictionary_7.json';
-import dict8 from './dictionary_8.json';
-import dict9 from './dictionary_9.json';
 
 const shuffle = (string) => {
   const a = string.split('');
@@ -23,6 +17,52 @@ const shuffle = (string) => {
   console.log(`Output string is ${a.join('')}`);
   return a.join('');
 };
+
+const findWords = (word, wordList) =>
+  new Promise((resolve) => {
+    const letters = {};
+
+    // Iterate over letters of the word
+    for (let i = 0; i < word.length; i += 1) {
+      if (typeof (letters[word[i]]) === 'undefined') {
+        letters[word[i]] = 0;
+      }
+      letters[word[i]] += 1;
+    }
+
+    console.log(`Letters are ${Object.keys(letters)}`);
+
+    const words = [];
+
+    // Iterate over words on wordList[i]
+    for (let i = 0; i < wordList.length; i += 1) {
+      // Break the word apart into letters
+      const l = wordList[i].split('').sort();
+
+      // Match helps deal with repeat letters
+      let match = ['', 0];
+      let total = 0;
+      // Iterate over the letters of our word on l[k]
+      for (let k = 0; k < l.length; k += 1) {
+        if (typeof (letters[l[k]]) !== 'undefined') {
+          if (match[0] === l[k]) { // This match is a repeated letter
+            if (match[1] < letters[l[k]]) { // Only match if this many letters are in the word
+              total += 1;
+              match[1] += 1;
+            }
+          } else { // This match is not repeated (yet)
+            total += 1;
+            match = [l[k], 1];
+          }
+        }
+      }
+      // Only proceed if all letters are present
+      if (total === wordList[i].length) {
+        words.push(wordList[i]);
+      }
+    }
+    resolve(words);
+  });
 
 export default class AppState {
   @observable navigator = {};
@@ -55,87 +95,69 @@ export default class AppState {
       return this.navigator.dispatch({ type: 'Navigation/NAVIGATE', routeName: screen });
     },
   }
-  newGame = (options) => {
-    // Find the new nine-letter word
-    const word = dict9[Math.floor(Math.random() * dict9.length)];
+  newGame = options =>
+    new Promise((resolve) => {
+      const start = new Date().getTime();
+      this.db.transaction((tx) => {
+        tx.executeSql('SELECT word FROM words9 WHERE _ROWID_ >= (abs(random()) % ((SELECT max(_ROWID_) FROM words9) + 1)) LIMIT 1', [], (tx1, randWordResults) => {
+          // Define the new random nine-letter word
+          const word = randWordResults.rows.item(0).word;
 
-    const letters = {};
+          const wordLengths = ['4', '5', '6', '7', '8', '9'];
+          const query = wordLengths.map(num =>
+            `SELECT * FROM words${num}`,
+          ).join(' UNION ALL ');
 
-    // Iterate over letters of nine-letter word
-    for (let i = 0; i < 9; i += 1) {
-      if (typeof (letters[word[i]]) === 'undefined') {
-        letters[word[i]] = 0;
-      }
-      letters[word[i]] += 1;
-    }
+          new Promise((wordsResolve) => {
+            tx1.executeSql(query, [], (tx2, results2) => {
+              const dict = results2.rows.raw().map(row =>
+                row.word,
+              );
+              findWords(word, dict)
+                .then((words) => {
+                  wordsResolve(words);
+                });
+            });
+          })
+            .then((vals) => {
+              const words = vals.reduce((list, dict) =>
+                [...list, ...dict],
+              []);
 
-    const start = new Date().getTime();
-    console.log(`Letters are ${Object.keys(letters)}`);
+              // See how many valid words we'd have for each different middle letter
+              const lengths = Object.assign({}, ...word.split('').map(l => ({ [l]: 0 })));
+              console.log(lengths);
+              const lengthItems = Object.keys(lengths);
 
-    // Filter dictionary to only words that contain the center letter
-    const words = [];
-    const dicts = [dict4, dict5, dict6, dict7, dict8, dict9];
-
-    // Iterate over dictionary objects on dict[i]
-    for (let i = 0; i < dicts.length; i += 1) {
-      // Iterate over words in each dictionary on dicts[i][j]
-      for (let j = 1; j < dicts[i].length; j += 1) {
-        // Break the word apart into letters
-        const l = dicts[i][j].split('').sort();
-
-        // Match helps deal with repeat letters
-        let match = ['', 0];
-        let total = 0;
-        // Iterate over the letters of our word on l[k]
-        for (let k = 0; k < l.length; k += 1) {
-          if (typeof (letters[l[k]]) !== 'undefined') {
-            if (match[0] === l[k]) { // This match is a repeated letter
-              if (match[1] < letters[l[k]]) { // Only match if this many letters are in the word
-                total += 1;
-                match[1] += 1;
+              for (let i = 0; i < lengthItems.length; i += 1) {
+                const matches = words.filter(w =>
+                  (w.indexOf(lengthItems[i]) !== -1),
+                );
+                lengths[lengthItems[i]] = matches.length;
               }
-            } else { // This match is not repeated (yet)
-              total += 1;
-              match = [l[k], 1];
-            }
-          }
-        }
-        // Only proceed if all letters are present
-        if (total === dicts[i][j].length) {
-          words.push(dicts[i][j]);
-        }
-      }
-    }
 
-    // See how many valid words we'd have for each different middle letter
-    const lengths = Object.assign({}, ...word.split('').map(l => ({ [l]: 0 })));
-    console.log(lengths);
-    const lengthItems = Object.keys(lengths);
+              // Log the result
+              for (let i = 0; i < lengthItems.length; i += 1) {
+                console.log(`${lengthItems[i]} has ${lengths[lengthItems[i]]} matches.`);
+              }
 
-    for (let i = 0; i < lengthItems.length; i += 1) {
-      const matches = words.filter(w =>
-        (w.indexOf(lengthItems[i]) !== -1),
-      );
-      lengths[lengthItems[i]] = matches.length;
-    }
+              // Generate a scrambled nine-letter word:
+              Object.assign(this.letters, (typeof (options.letters) === 'object') ? options.letters : (() => {
+                const s = shuffle(word).split('');
+                return { 1: s[0], 2: s[1], 3: s[2], 4: s[3], 5: s[4], 6: s[5], 7: s[6], 8: s[7], 9: s[8] };
+              })());
 
-    // Log the result
-    for (let i = 0; i < lengthItems.length; i += 1) {
-      console.log(`${lengthItems[i]} has ${lengths[lengthItems[i]]} matches.`);
-    }
+              const end = new Date().getTime();
+              console.log(`Word generation took ${end - start} milliseconds.`);
 
-    // Generate a scrambled nine-letter word:
-    Object.assign(this.letters, (typeof (options.letters) === 'object') ? options.letters : (() => {
-      const s = shuffle(word).split('');
-      return { 1: s[0], 2: s[1], 3: s[2], 4: s[3], 5: s[4], 6: s[5], 7: s[6], 8: s[7], 9: s[8] };
-    })());
-    
-    const end = new Date().getTime();
-    console.log(`Word generation took ${end - start} milliseconds.`);
+              // Set the other variables
+              this.timer = (typeof (options.timer) === 'number') ? options.timer : -1;
+              this.tried = (typeof (options.tried) === 'object') ? { all: options.tried } : { all: [] };
+              this.selected = { all: [] };
 
-    // Set the other variables
-    this.timer = (typeof (options.timer) === 'number') ? options.timer : -1;
-    this.tried = (typeof (options.tried) === 'object') ? { all: options.tried } : { all: [] };
-    this.selected = { all: [] };
+              resolve();
+            });
+        });
+      });
+    });
   }
-}
