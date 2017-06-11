@@ -1,5 +1,6 @@
 import { observable } from 'mobx';
-import { Dimensions } from 'react-native';
+import { Alert, Dimensions } from 'react-native';
+import SQLite from 'react-native-sqlite-storage';
 import dict4 from './dictionary_4.json';
 import dict5 from './dictionary_5.json';
 import dict6 from './dictionary_6.json';
@@ -36,6 +37,15 @@ export default class AppState {
       this.orientation = (data.window.width < data.window.height) ? 0 : 1;
     });
     this.orientation = (width < height) ? 0 : 1;
+
+    // Open he word database
+    const ok = () => {
+      console.log('Database opened successfully');
+    };
+    const err = () => {
+      Alert.alert('Word database failed to open. Please re-install the app.');
+    };
+    this.db = SQLite.openDatabase({ name: 'main.db', createFromLocation: 1 }, ok, err);
   }
   nav = {
     goto: (screen) => {
