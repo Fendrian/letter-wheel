@@ -18,52 +18,6 @@ const shuffle = (string) => {
   return a.join('');
 };
 
-const findWords = (word, wordList) =>
-  new Promise((resolve) => {
-    const letters = {};
-
-    // Iterate over letters of the word
-    for (let i = 0; i < word.length; i += 1) {
-      if (typeof (letters[word[i]]) === 'undefined') {
-        letters[word[i]] = 0;
-      }
-      letters[word[i]] += 1;
-    }
-
-    console.log(`Letters are ${Object.keys(letters)}`);
-
-    const words = [];
-
-    // Iterate over words on wordList[i]
-    for (let i = 0; i < wordList.length; i += 1) {
-      // Break the word apart into letters
-      const l = wordList[i].split('').sort();
-
-      // Match helps deal with repeat letters
-      let match = ['', 0];
-      let total = 0;
-      // Iterate over the letters of our word on l[k]
-      for (let k = 0; k < l.length; k += 1) {
-        if (typeof (letters[l[k]]) !== 'undefined') {
-          if (match[0] === l[k]) { // This match is a repeated letter
-            if (match[1] < letters[l[k]]) { // Only match if this many letters are in the word
-              total += 1;
-              match[1] += 1;
-            }
-          } else { // This match is not repeated (yet)
-            total += 1;
-            match = [l[k], 1];
-          }
-        }
-      }
-      // Only proceed if all letters are present
-      if (total === wordList[i].length) {
-        words.push(wordList[i]);
-      }
-    }
-    resolve(words);
-  });
-
 export default class AppState {
   @observable navigator = {};
   @observable orientation = 0;
@@ -78,7 +32,7 @@ export default class AppState {
     });
     this.orientation = (width < height) ? 0 : 1;
 
-    // Open he word database
+    // Open the word database
     const ok = () => {
       console.log('Database opened successfully');
     };
@@ -104,8 +58,30 @@ export default class AppState {
           const word = randWordResults.rows.item(0).word;
 
           const wordLengths = ['4', '5', '6', '7', '8', '9'];
+
+          // Make an object with each letter, and how many times that letter is in the word
+          const letters = {};
+          const alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+          for (let i = 0; i < word.length; i += 1) {
+            if (typeof (letters[word[i]]) === 'undefined') {
+              letters[word[i]] = 0;
+            }
+            letters[word[i]] += 1;
+          }
+
+          // Construct a LIKE query string checking for the presence of ANY letters in the word
+          const matchString = Object.keys(letters).map(letter =>
+            `'%${letter}%'`,
+          ).join(' OR ');
+
+          // Construct a NOT LIKE query string excluding too many of any one letter
+          const excludeString = alphabet.map(letter =>
+            `'%${typeof (letters[letter]) !== 'undefined' ? Array.from(Array(letters[letter] + 1)).map(() => letter).join('%') : letter}%'`,
+          ).join(') AND (word NOT LIKE ');
+
+          // Construct the actual SQL query
           const query = wordLengths.map(num =>
-            `SELECT * FROM words${num}`,
+            `SELECT * FROM words${num} WHERE (word LIKE ${matchString}) AND (word NOT LIKE ${excludeString})`,
           ).join(' UNION ALL ');
 
           new Promise((wordsResolve) => {
@@ -113,10 +89,7 @@ export default class AppState {
               const dict = results2.rows.raw().map(row =>
                 row.word,
               );
-              findWords(word, dict)
-                .then((words) => {
-                  wordsResolve(words);
-                });
+              wordsResolve(dict);
             });
           })
             .then((vals) => {
