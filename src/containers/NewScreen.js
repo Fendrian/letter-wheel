@@ -35,7 +35,7 @@ export default class LoadingScreen extends React.Component {
   setTimed = (timed) => {
     this.setState({ timed: !timed });
   }
-  instructions() {
+  instructions() { // eslint-disable-line class-methods-use-this
     Alert.alert('Coming soon', 'Instructions are still under development and will be implemented soon.');
   }
   start = () => {
