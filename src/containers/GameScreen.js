@@ -25,7 +25,7 @@ export default class LoadingScreen extends React.Component {
           </View>
           <View style={GameScreenStyle.dataWrapper}>
             <Text>
-              WELCOME!
+              {`Words to be found: ${appStore.words.length}.`}
             </Text>
           </View>
         </View>

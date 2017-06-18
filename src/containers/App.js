@@ -1,27 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { View } from 'react-native';
 import { inject, observer } from 'mobx-react';
-import { StackNavigator } from 'react-navigation';
+import Spinner from 'react-native-loading-spinner-overlay';
 
 @inject('appStore') @observer
 class App extends React.Component {
   static propTypes = {
     appStore: PropTypes.shape({
-      navigator: React.PropTypes.object.isRequired,
+      navigator: PropTypes.object.isRequired,
+      nav: PropTypes.object.isRequired,
     }).isRequired,
-    navScreens: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
-    navOptions: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
-  }
-  constructor(props) {
-    super(props);
-    const { navScreens, navOptions } = props;
-    this.Nav = StackNavigator(navScreens, navOptions);
+    children: PropTypes.element.isRequired,
   }
   render() {
-    const { Nav } = this;
-    const { appStore } = this.props;
+    const { appStore, children } = this.props;
     return (
-      <Nav ref={(nav) => { appStore.navigator = nav; }} />
+      <View style={{ flex: 1 }}>
+        <Spinner visible={appStore.loading} textContent={'Loading...'} textStyle={{ color: '#FFF' }} />
+        {children}
+      </View>
     );
   }
 }

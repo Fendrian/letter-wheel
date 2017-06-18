@@ -13,7 +13,6 @@ const shuffle = (string) => {
     a[i] = a[j];
     a[j] = tmp;
   }
-  console.log('String has been shuffled!');
   console.log(`Input string was ${string}`);
   console.log(`Output string is ${a.join('')}`);
   return a.join('');
@@ -76,6 +75,7 @@ export default class AppState {
   @observable timer = -1;
   @observable tried = { all: [] };
   @observable selected = { all: [] };
+  @observable loading = false;
   constructor() {
     const { width, height } = Dimensions.get('window');
     Dimensions.addEventListener('change', (data) => {
@@ -125,24 +125,6 @@ export default class AppState {
               const word = Object.values(scrambled).join();
               getPermutatedWords(word, this.db)
                 .then((words) => {
-                  // Specify the target word length
-                  let minwords;
-                  let maxwords;
-                  switch (options.wordLen) {
-                    case 1:
-                      minwords = 31;
-                      maxwords = 75;
-                      break;
-                    case 2:
-                      minwords = 76;
-                      maxwords = 1000;
-                      break;
-                    default:
-                      minwords = 1;
-                      maxwords = 30;
-                      break;
-                  }
-
                   // See how many valid words we'd have for each different middle letter
                   const lengths = Object.assign({}, ...word.split('').map(l => ({ [l]: 0 }))); // remove duplicate letters
                   const lengthItems = Object.keys(lengths);
@@ -152,7 +134,7 @@ export default class AppState {
                     const matches = words.filter(w =>
                       (w.indexOf(lengthItems[i]) !== -1),
                     );
-                    if (matches.length >= minwords && matches.length <= maxwords) {
+                    if (matches.length >= options.wordsMin && matches.length <= options.wordsMax) {
                       centerLetter = lengthItems[i];
                     }
                   }

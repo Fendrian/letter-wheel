@@ -13,6 +13,27 @@ import Button from 'react-native-button';
 import WrapperStyle from '../styles/WrapperStyle';
 import NewScreenStyle from '../styles/NewScreenStyle';
 
+const options = [
+  {
+    label: '1-30\nWords',
+    min: 1,
+    max: 30,
+    value: 0,
+  },
+  {
+    label: '31-75\nWords',
+    min: 31,
+    max: 75,
+    value: 1,
+  },
+  {
+    label: '76+\nWords',
+    min: 76,
+    max: 999,
+    value: 2,
+  },
+];
+
 @inject('appStore') @observer
 export default class LoadingScreen extends React.Component {
   static propTypes = {
@@ -40,27 +61,23 @@ export default class LoadingScreen extends React.Component {
   }
   start = () => {
     const { appStore } = this.props;
-    const timer = this.state.timed ? 60 : -1;
-    appStore.newGame({ wordLen: this.state.wordSelection, timer })
+    const start = new Date().getTime();
+    appStore.loading = true;
+    appStore.newGame({
+      wordsMin: options[this.state.wordSelection].min,
+      wordsMax: options[this.state.wordSelection].max,
+      timer: this.state.timed ? 60 : -1,
+    })
       .then(() => {
-        appStore.nav.goto('Game');
+        // Wait a minimum of 500ms to help the loading screen feel right
+        const end = new Date().getTime();
+        setTimeout(() => {
+          appStore.nav.goto('Game');
+          appStore.loading = false;
+        }, (500 - (end - start)));
       });
   }
   render() {
-    const options = [
-      {
-        label: '1-30\nWords',
-        value: 0,
-      },
-      {
-        label: '31-75\nWords',
-        value: 1,
-      },
-      {
-        label: '76+\nWords',
-        value: 2,
-      },
-    ];
     const {
       start,
       instructions,
