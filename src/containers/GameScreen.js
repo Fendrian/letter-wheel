@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Text, View } from 'react-native';
+import { Button, Text, View } from 'react-native';
 import { inject, observer } from 'mobx-react';
 
 import WrapperStyle from '../styles/WrapperStyle';
@@ -27,6 +27,11 @@ export default class LoadingScreen extends React.Component {
             <Text>
               {`Words to be found: ${appStore.words.length}.`}
             </Text>
+            <Button
+              onPress={appStore.submitWord}
+              title="Submit"
+              color="#999"
+            />
           </View>
         </View>
       </View>

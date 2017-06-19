@@ -13,12 +13,10 @@ export default StyleSheet.create({
   container: {
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#153',
     width: 300,
     height: 300,
   },
   row: {
-    backgroundColor: '#457',
     flex: (1 / 3),
     flexDirection: 'row',
     width: 300,

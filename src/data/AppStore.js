@@ -73,8 +73,8 @@ export default class AppState {
   @observable letters = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0 };
   @observable words = [];
   @observable timer = -1;
-  @observable tried = { all: [] };
-  @observable selected = { all: [] };
+  @observable tried = [];
+  @observable selected = [];
   @observable loading = false;
   constructor() {
     const { width, height } = Dimensions.get('window');
@@ -174,7 +174,46 @@ export default class AppState {
         Object.assign(this.letters, result.letters);
         this.words.replace(result.words);
         this.timer = (typeof (options.timer) === 'number') ? options.timer : -1;
-        this.tried = (typeof (options.tried) === 'object') ? { all: options.tried } : { all: [] };
-        this.selected = { all: [] };
+        this.tried.replace((typeof (options.tried) === 'object') ? options.tried : []);
+        this.selected.replace([]);
       });
+  submitWord = () => {
+    // If the middle letter isn't selected, fail.
+    if (this.selected.indexOf('5') === -1) {
+      // TODO return better error
+      Alert.alert('Word must contain middle letter');
+      return false;
+    }
+
+    // If word too short, fail.
+    if (this.selected.length < 4) {
+      // TODO return better error
+      Alert.alert('Word must be at least four letters');
+      return false;
+    }
+
+
+    const word = this.selected.map(i =>
+      this.letters[i],
+    ).join('');
+
+    // If word already guessed, fail
+    if (this.tried.indexOf(word) !== -1) {
+      // TODO return error
+      Alert.alert('Word already tried');
+      return false;
+    }
+
+    // DEV DEV DEV
+    if (this.words.indexOf(word) !== -1) {
+      Alert.alert('Nice!');
+    } else {
+      Alert.alert('Please try again.');
+    }
+
+    console.log(this.words.peek());
+
+    console.log(word);
+    this.selected.replace([]);
   }
+}

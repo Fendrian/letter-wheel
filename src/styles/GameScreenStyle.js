@@ -9,13 +9,13 @@ export default StyleSheet.create({
   },
   gridWrapper: {
     alignItems: 'center',
-    backgroundColor: '#a6f',
+    backgroundColor: '#bbb',
     height: 350,
     justifyContent: 'center',
     width: 350,
   },
   dataWrapper: {
-    backgroundColor: '#16f',
+    backgroundColor: '#ddd',
     flex: 1,
   },
 });

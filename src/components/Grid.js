@@ -14,24 +14,26 @@ export default class LoadingScreen extends React.Component {
     }).isRequired,
   }
   selectBlock = (i) => {
-    const { appStore } = this.props;
-    const { all } = appStore.selected;
-    const loc = all.indexOf(i);
+    const { selected } = this.props.appStore;
+    const copy = selected.slice();
+    const loc = selected.indexOf(i);
     if (loc === -1) {
-      appStore.selected = { all: [...all, i] };
+      selected.replace([...copy, i]);
     } else {
-      appStore.selected = { all: all.slice(0, loc).concat(all.slice((loc + 1), all.length)) };
+      selected.replace(
+        copy.slice(0, loc).concat(copy.slice((loc + 1), copy.length)),
+      );
     }
   }
   makeBlock = (i) => {
     const { props, selectBlock } = this;
     const { appStore } = props;
-    const { all } = appStore.selected;
+    const { selected } = appStore;
     let style = 'block';
     if (i === '5') {
       style = 'centerBlock';
     }
-    if (all.indexOf(i) !== -1) {
+    if (selected.indexOf(i) !== -1) {
       style = `${style}Selected`;
     }
     return (
