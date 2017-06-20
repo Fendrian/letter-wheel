@@ -38,7 +38,7 @@ const getPermutatedWords = (word, db) =>
       // Construct a LIKE query string checking for the presence of ANY letters in the word
       const matchString = Object.keys(letters).map(letter =>
         `'%${letter}%'`,
-      ).join(' OR ');
+      ).join(') OR (WORD LIKE ');
 
       // Construct a NOT LIKE query string excluding too many of any one letter
       const excludeString = alphabet.map(letter =>
@@ -47,7 +47,7 @@ const getPermutatedWords = (word, db) =>
 
       // Construct the actual SQL query
       const query = wordLengths.map(num =>
-        `SELECT * FROM words${num} WHERE (word LIKE ${matchString}) AND (word NOT LIKE ${excludeString})`,
+        `SELECT * FROM words${num} WHERE ((word LIKE ${matchString})) AND (word NOT LIKE ${excludeString})`,
       ).join(' UNION ALL ');
 
       new Promise((wordsResolve) => {
@@ -103,7 +103,7 @@ export default class AppState {
       const start = new Date().getTime();
       // If we've been passed letters explicitly, only process middle letter
       if (typeof (options.letters) === 'object') {
-        const word = Object.values(options.letters).join();
+        const word = Object.values(options.letters).join('');
         getPermutatedWords(word, this.db)
           .then((words) => {
             resolve({
@@ -122,20 +122,19 @@ export default class AppState {
               const scrambled = (() =>
                 Object.assign({}, ...shuffle(randWordResults.rows.item(0).word).split('').map((w, i) => ({ [String(i + 1)]: w })))
               )();
-              const word = Object.values(scrambled).join();
+              const word = Object.values(scrambled).join('');
               getPermutatedWords(word, this.db)
                 .then((words) => {
                   // See how many valid words we'd have for each different middle letter
-                  const lengths = Object.assign({}, ...word.split('').map(l => ({ [l]: 0 }))); // remove duplicate letters
-                  const lengthItems = Object.keys(lengths);
+                  const wordLetters = [...new Set(word.split(''))]; // make letters unique to save time
                   let centerLetter = '';
 
-                  for (let i = 0; i < lengthItems.length; i += 1) {
+                  for (let i = 0; i < wordLetters.length; i += 1) {
                     const matches = words.filter(w =>
-                      (w.indexOf(lengthItems[i]) !== -1),
+                      (w.indexOf(wordLetters[i]) !== -1),
                     );
                     if (matches.length >= options.wordsMin && matches.length <= options.wordsMax) {
-                      centerLetter = lengthItems[i];
+                      centerLetter = wordLetters[i];
                     }
                   }
 
@@ -152,6 +151,8 @@ export default class AppState {
                       scrambled[i] = scrambled['5'];
                       scrambled['5'] = swapLetter;
                     }
+
+                    console.log(words);
 
                     resolve({
                       letters: scrambled,

@@ -15,20 +15,20 @@ import NewScreenStyle from '../styles/NewScreenStyle';
 
 const options = [
   {
-    label: '1-30\nWords',
+    label: '1-49\nWords',
     min: 1,
-    max: 30,
+    max: 49,
     value: 0,
   },
   {
-    label: '31-75\nWords',
-    min: 31,
-    max: 75,
+    label: '50-99\nWords',
+    min: 50,
+    max: 99,
     value: 1,
   },
   {
-    label: '76+\nWords',
-    min: 76,
+    label: '100+\nWords',
+    min: 100,
     max: 999,
     value: 2,
   },
