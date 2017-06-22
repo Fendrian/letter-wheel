@@ -6,7 +6,7 @@ import { inject, observer } from 'mobx-react';
 import GridStyle from '../styles/GridStyle';
 
 @inject('appStore') @observer
-export default class LoadingScreen extends React.Component {
+export default class Grid extends React.Component {
   static propTypes = {
     appStore: PropTypes.shape({
       letters: PropTypes.object.isRequired,

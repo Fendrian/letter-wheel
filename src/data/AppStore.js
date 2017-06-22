@@ -1,5 +1,5 @@
-import { observable } from 'mobx';
-import { Alert, Dimensions } from 'react-native';
+import { computed, observable } from 'mobx';
+import { Alert, Dimensions, ListView } from 'react-native';
 import SQLite from 'react-native-sqlite-storage';
 
 // Given a string, this function will randomly rearrange the string then return it.
@@ -70,12 +70,20 @@ const onlyWordsContaining = ((letter, words) =>
 export default class AppState {
   @observable navigator = {};
   @observable orientation = 0;
-  @observable letters = { 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0 };
+  @observable letters = { 1: '', 2: '', 3: '', 4: '', 5: '', 6: '', 7: '', 8: '', 9: '' };
   @observable words = [];
   @observable timer = -1;
   @observable tried = [];
   @observable selected = [];
   @observable loading = false;
+  ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
+  @computed get dataSource() {
+    return this.ds.cloneWithRows(this.tried.sort((a, b) => {
+      if (a.word < b.word) { return -1; }
+      if (a.word > b.word) { return 1; }
+      return 0;
+    }).slice());
+  }
   constructor() {
     const { width, height } = Dimensions.get('window');
     Dimensions.addEventListener('change', (data) => {
@@ -179,20 +187,15 @@ export default class AppState {
         this.selected.replace([]);
       });
   submitWord = () => {
-    // If the middle letter isn't selected, fail.
-    if (this.selected.indexOf('5') === -1) {
-      // TODO return better error
-      Alert.alert('Word must contain middle letter');
-      return false;
-    }
-
     // If word too short, fail.
     if (this.selected.length < 4) {
-      // TODO return better error
-      Alert.alert('Word must be at least four letters');
-      return false;
+      return 'Too short';
     }
 
+    // If the middle letter isn't selected, fail.
+    if (this.selected.indexOf('5') === -1) {
+      return 'Missing middle letter';
+    }
 
     const word = this.selected.map(i =>
       this.letters[i],
@@ -200,21 +203,19 @@ export default class AppState {
 
     // If word already guessed, fail
     if (this.tried.indexOf(word) !== -1) {
-      // TODO return error
-      Alert.alert('Word already tried');
-      return false;
+      return 'Already tried';
     }
 
-    // DEV DEV DEV
+    // If the word is correct, say so
     if (this.words.indexOf(word) !== -1) {
-      Alert.alert('Nice!');
-    } else {
-      Alert.alert('Please try again.');
+      this.tried.push({ word, correct: true });
+      this.selected.replace([]);
+      return 'Nice!';
     }
 
-    console.log(this.words.peek());
-
-    console.log(word);
+    // Finally, just fail
+    this.tried.push({ word, correct: false });
     this.selected.replace([]);
+    return 'Please try again.';
   }
 }

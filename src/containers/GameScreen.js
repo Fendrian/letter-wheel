@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, Text, View } from 'react-native';
+import { View } from 'react-native';
 import { inject, observer } from 'mobx-react';
 
 import WrapperStyle from '../styles/WrapperStyle';
 import GameScreenStyle from '../styles/GameScreenStyle';
 import Grid from '../components/Grid';
+import Control from '../components/Control';
 
 @inject('appStore') @observer
 export default class LoadingScreen extends React.Component {
@@ -24,14 +25,7 @@ export default class LoadingScreen extends React.Component {
             <Grid />
           </View>
           <View style={GameScreenStyle.dataWrapper}>
-            <Text>
-              {`Words to be found: ${appStore.words.length}.`}
-            </Text>
-            <Button
-              onPress={appStore.submitWord}
-              title="Submit"
-              color="#999"
-            />
+            <Control />
           </View>
         </View>
       </View>
