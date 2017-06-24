@@ -16,31 +16,13 @@ import ControlStyle from '../styles/ControlStyle';
 export default class Control extends React.Component {
   static propTypes = {
     appStore: PropTypes.shape({
+      statusText: PropTypes.string.isRequired,
       submitWord: PropTypes.func.isRequired,
       tried: PropTypes.object.isRequired,
     }).isRequired,
   }
-  constructor(props) {
-    super(props);
-    this.state = {
-      resultText: '',
-    };
-  }
-  processGuess = (message) => {
-    this.setState({
-      resultText: message,
-    });
-    setTimeout(() => {
-      if (this.state.resultText === message) {
-        this.setState({
-          resultText: '',
-        });
-      }
-    }, 3000);
-  }
   render() {
     const { appStore } = this.props;
-    const { resultText } = this.state;
     return (
       <View style={ControlStyle.container}>
         <View style={ControlStyle.entryContainer}>
@@ -80,12 +62,12 @@ export default class Control extends React.Component {
           <View style={ControlStyle.rightColumn}>
             <View style={ControlStyle.resultContainer}>
               <Text style={ControlStyle.resultText}>
-                {resultText}
+                {appStore.statusText}
               </Text>
             </View>
             <View style={ControlStyle.buttonWrapper}>
               <Button
-                onPress={() => { this.processGuess(appStore.submitWord()); }}
+                onPress={() => { appStore.submitWord(); }}
                 title="Submit"
                 color="#999"
               />

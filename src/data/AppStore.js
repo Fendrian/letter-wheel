@@ -13,8 +13,6 @@ const shuffle = (string) => {
     a[i] = a[j];
     a[j] = tmp;
   }
-  console.log(`Input string was ${string}`);
-  console.log(`Output string is ${a.join('')}`);
   return a.join('');
 };
 
@@ -23,8 +21,6 @@ const shuffle = (string) => {
 const getPermutatedWords = (word, db) =>
   new Promise((resolve) => {
     db.transaction((tx) => {
-      const wordLengths = ['4', '5', '6', '7', '8', '9'];
-
       // Make an object with each letter, and how many times that letter is in the word
       const letters = {};
       const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
@@ -40,15 +36,13 @@ const getPermutatedWords = (word, db) =>
         `'%${letter}%'`,
       ).join(') OR (WORD LIKE ');
 
-      // Construct a NOT LIKE query string excluding too many of any one letter
+      // Construct a NOT LIKE query string excluding any words with too many of each letter
       const excludeString = alphabet.map(letter =>
         `'%${typeof (letters[letter]) !== 'undefined' ? Array.from(Array(letters[letter] + 1)).map(() => letter).join('%') : letter}%'`,
       ).join(') AND (word NOT LIKE ');
 
       // Construct the actual SQL query
-      const query = wordLengths.map(num =>
-        `SELECT * FROM words${num} WHERE ((word LIKE ${matchString})) AND (word NOT LIKE ${excludeString})`,
-      ).join(' UNION ALL ');
+      const query = `SELECT word FROM words WHERE length(word)>=4 AND length(word)<=9 AND ((word LIKE ${matchString})) AND (word NOT LIKE ${excludeString})`;
 
       new Promise((wordsResolve) => {
         tx.executeSql(query, [], (tx1, results2) => {
@@ -75,6 +69,7 @@ export default class AppState {
   @observable timer = -1;
   @observable tried = [];
   @observable selected = [];
+  @observable statusText = '';
   @observable loading = false;
   ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
   @computed get dataSource() {
@@ -106,6 +101,7 @@ export default class AppState {
       return this.navigator.dispatch({ type: 'Navigation/NAVIGATE', routeName: screen });
     },
   }
+
   newGame = options =>
     new Promise((resolve) => {
       const start = new Date().getTime();
@@ -126,7 +122,7 @@ export default class AppState {
       } else {
         const getNewWord = () => {
           this.db.transaction((tx) => {
-            tx.executeSql('SELECT word FROM words9 WHERE _ROWID_ >= (abs(random()) % ((SELECT max(_ROWID_) FROM words9) + 1)) LIMIT 1', [], (tx1, randWordResults) => {
+            tx.executeSql('SELECT word FROM words WHERE _ROWID_ >= (abs(random()) % ((SELECT max(_ROWID_) FROM words) + 1)) AND length(word)=9 LIMIT 1', [], (tx1, randWordResults) => {
               const scrambled = (() =>
                 Object.assign({}, ...shuffle(randWordResults.rows.item(0).word).split('').map((w, i) => ({ [String(i + 1)]: w })))
               )();
@@ -186,15 +182,18 @@ export default class AppState {
         this.tried.replace((typeof (options.tried) === 'object') ? options.tried : []);
         this.selected.replace([]);
       });
+
   submitWord = () => {
     // If word too short, fail.
     if (this.selected.length < 4) {
-      return 'Too short';
+      this.setStatus('Too short');
+      return false;
     }
 
     // If the middle letter isn't selected, fail.
     if (this.selected.indexOf('5') === -1) {
-      return 'Missing middle letter';
+      this.setStatus('Missing middle letter');
+      return false;
     }
 
     const word = this.selected.map(i =>
@@ -203,19 +202,31 @@ export default class AppState {
 
     // If word already guessed, fail
     if (this.tried.indexOf(word) !== -1) {
-      return 'Already tried';
+      this.setStatus('Already tried');
+      return false;
     }
 
     // If the word is correct, say so
     if (this.words.indexOf(word) !== -1) {
       this.tried.push({ word, correct: true });
       this.selected.replace([]);
-      return 'Nice!';
+      this.setStatus('Nice!');
+      return true;
     }
 
     // Finally, just fail
     this.tried.push({ word, correct: false });
     this.selected.replace([]);
-    return 'Please try again.';
+    this.setStatus('Please try again.');
+    return false;
+  }
+
+  setStatus = (message) => {
+    this.statusText = message;
+    setTimeout(() => {
+      if (this.statusText === message) {
+        this.statusText = '';
+      }
+    }, 3000);
   }
 }

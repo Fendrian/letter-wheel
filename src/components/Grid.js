@@ -11,6 +11,7 @@ export default class Grid extends React.Component {
     appStore: PropTypes.shape({
       letters: PropTypes.object.isRequired,
       selected: PropTypes.object.isRequired,
+      submitWord: PropTypes.func.isRequired,
     }).isRequired,
   }
   selectBlock = (i) => {
@@ -27,8 +28,7 @@ export default class Grid extends React.Component {
   }
   makeBlock = (i) => {
     const { props, selectBlock } = this;
-    const { appStore } = props;
-    const { selected } = appStore;
+    const { letters, selected, submitWord } = props.appStore;
     let style = 'block';
     if (i === '5') {
       style = 'centerBlock';
@@ -37,9 +37,19 @@ export default class Grid extends React.Component {
       style = `${style}Selected`;
     }
     return (
-      <TouchableOpacity onPress={() => { selectBlock(i); }} style={GridStyle[style]} key={i}>
+      <TouchableOpacity
+        onPress={() => { selectBlock(i); }}
+        onLongPress={() => {
+          if (selected.indexOf(i) === -1) {
+            selectBlock(i);
+          }
+          submitWord();
+        }}
+        style={GridStyle[style]}
+        key={`gridItem${i}`}
+      >
         <Text style={GridStyle.letter}>
-          {appStore.letters[i].toUpperCase()}
+          {letters[i].toUpperCase()}
         </Text>
       </TouchableOpacity>
     );

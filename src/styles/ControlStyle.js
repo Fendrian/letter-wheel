@@ -1,14 +1,5 @@
 import { StyleSheet } from 'react-native';
 
-const block = {
-  alignItems: 'center',
-  flex: (1 / 3),
-  justifyContent: 'center',
-  margin: 1,
-  width: 98,
-  height: 98,
-};
-
 export default StyleSheet.create({
   container: {
     justifyContent: 'center',
