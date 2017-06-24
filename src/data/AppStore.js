@@ -109,7 +109,7 @@ export default class AppState {
   newGame = options =>
     new Promise((resolve) => {
       const start = new Date().getTime();
-      // If we've been passed letters explicitly, only process middle letter
+      // If we've been passed letters explicitly, use the provided middle letter
       if (typeof (options.letters) === 'object') {
         const word = Object.values(options.letters).join('');
         getPermutatedWords(word, this.db)
@@ -126,51 +126,62 @@ export default class AppState {
       } else {
         const getNewWord = () => {
           this.db.transaction((tx) => {
-            tx.executeSql('SELECT word FROM words WHERE _ROWID_ >= (abs(random()) % ((SELECT max(_ROWID_) FROM words) + 1)) AND length(word)=9 LIMIT 1', [], (tx1, randWordResults) => {
-              const scrambled = (() =>
-                Object.assign({}, ...shuffle(randWordResults.rows.item(0).word).split('').map((w, i) => ({ [String(i + 1)]: w })))
-              )();
-              const word = Object.values(scrambled).join('');
-              getPermutatedWords(word, this.db)
-                .then((words) => {
-                  // See how many valid words we'd have for each different middle letter
-                  const wordLetters = [...new Set(word.split(''))]; // make letters unique to save time
-                  let centerLetter = '';
+            tx.executeSql(
+              'SELECT word FROM words WHERE ' +
+              '_ROWID_ >= (abs(random()) % ((SELECT max(_ROWID_) FROM words) + 1)) AND ' +
+              'length(word)=9 LIMIT 1',
+              [],
+              (tx1, randWordResults) => {
+                // Shuffle the word first thing to maximize randomness
+                const word = shuffle(randWordResults.rows.item(0).word);
+                getPermutatedWords(word, this.db)
+                  .then((words) => {
+                    // See how many valid words we'd have for each different middle letter
+                    const uniqueLetters = [...new Set(word.split(''))];
+                    let centerLetter = '';
 
-                  for (let i = 0; i < wordLetters.length; i += 1) {
-                    const matches = words.filter(w =>
-                      (w.indexOf(wordLetters[i]) !== -1),
-                    );
-                    if (matches.length >= options.wordsMin && matches.length <= options.wordsMax) {
-                      centerLetter = wordLetters[i];
-                    }
-                  }
-
-                  // If we haven't found a suitable word range, then iterate again.
-                  if (centerLetter === '') {
-                    getNewWord();
-
-                  // Otherwise resolve the promise
-                  } else {
-                    // Swap the selected letter into the center position
-                    if (centerLetter !== scrambled['5']) {
-                      const i = (String(Object.values(scrambled).indexOf(centerLetter) + 1));
-                      const swapLetter = scrambled[i];
-                      scrambled[i] = scrambled['5'];
-                      scrambled['5'] = swapLetter;
+                    for (let i = 0; i < uniqueLetters.length; i += 1) {
+                      const matches = words.filter(w =>
+                        (w.indexOf(uniqueLetters[i]) !== -1),
+                      );
+                      if (
+                        matches.length >= options.wordsMin &&
+                        matches.length <= options.wordsMax
+                      ) {
+                        centerLetter = uniqueLetters[i];
+                      }
                     }
 
-                    console.log(words);
+                    // If we haven't found a suitable word range, then iterate again.
+                    if (centerLetter === '') {
+                      getNewWord();
 
-                    resolve({
-                      letters: scrambled,
-                      options,
-                      start,
-                      words: onlyWordsContaining(centerLetter, words),
-                    });
-                  }
-                });
-            });
+                    // Otherwise resolve the promise
+                    } else {
+                      const letters = Object.assign(
+                        {},
+                        ...word.split('').map((w, i) => ({ [`${i + 1}`]: w })),
+                      );
+
+                      // Swap the selected letter into the center position
+                      if (centerLetter !== letters['5']) {
+                        const i = (String(Object.values(letters).indexOf(centerLetter) + 1));
+                        const swapLetter = letters[i];
+                        letters[i] = letters['5'];
+                        letters['5'] = swapLetter;
+                      }
+
+                      console.log(words);
+
+                      resolve({
+                        letters,
+                        options,
+                        start,
+                        words: onlyWordsContaining(centerLetter, words),
+                      });
+                    }
+                  });
+              });
           });
         };
         getNewWord();
