@@ -22,27 +22,31 @@ const getPermutatedWords = (word, db) =>
   new Promise((resolve) => {
     db.transaction((tx) => {
       // Make an object with each letter, and how many times that letter is in the word
-      const letters = {};
       const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
-      for (let i = 0; i < word.length; i += 1) {
-        if (typeof (letters[word[i]]) === 'undefined') {
-          letters[word[i]] = 0;
-        }
-        letters[word[i]] += 1;
-      }
+      const numLetters = alphabet.reduce(((acc, letter) => {
+        acc[letter] = word.split('').filter(l => l === letter).length;
+        return acc;
+      }), {});
 
-      // Construct a LIKE query string checking for the presence of ANY letters in the word
-      const matchString = Object.keys(letters).map(letter =>
+      // Construct our LIKE query string
+      // getting all words that match any one unique letter of the nine-letter word
+      const matchString = [...new Set(word.split(''))].map(letter =>
         `'%${letter}%'`,
       ).join(') OR (WORD LIKE ');
 
-      // Construct a NOT LIKE query string excluding any words with too many of each letter
+      // Construct a NOT LIKE query string
+      // excluding all words with MORE of any letter than the nine-letter word
       const excludeString = alphabet.map(letter =>
-        `'%${typeof (letters[letter]) !== 'undefined' ? Array.from(Array(letters[letter] + 1)).map(() => letter).join('%') : letter}%'`,
+        `'%${Array.from(Array(numLetters[letter] + 1)).map(() => letter).join('%')}%'`,
       ).join(') AND (word NOT LIKE ');
 
       // Construct the actual SQL query
-      const query = `SELECT word FROM words WHERE length(word)>=4 AND length(word)<=9 AND ((word LIKE ${matchString})) AND (word NOT LIKE ${excludeString})`;
+      const query = [
+        'SELECT word FROM words WHERE length(word)>=4',
+        'length(word)<=9',
+        `((word LIKE ${matchString}))`,
+        `(word NOT LIKE ${excludeString})`,
+      ].join(' AND ');
 
       new Promise((wordsResolve) => {
         tx.executeSql(query, [], (tx1, results2) => {
