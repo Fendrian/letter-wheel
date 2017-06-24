@@ -2,6 +2,7 @@ import { StyleSheet } from 'react-native';
 
 const block = {
   alignItems: 'center',
+  borderRadius: 3,
   flex: (1 / 3),
   justifyContent: 'center',
   margin: 1,

@@ -11,9 +11,9 @@ export default StyleSheet.create({
   },
   gridWrapper: {
     alignItems: 'center',
-    height: 350,
+    height: 320,
     justifyContent: 'center',
-    width: 350,
+    width: 320,
   },
   dataWrapper: {
     flex: 1,
