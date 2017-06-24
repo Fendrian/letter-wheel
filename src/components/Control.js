@@ -16,27 +16,42 @@ import ControlStyle from '../styles/ControlStyle';
 export default class Control extends React.Component {
   static propTypes = {
     appStore: PropTypes.shape({
+      dataSource: PropTypes.object.isRequired,
+      letters: PropTypes.object.isRequired,
+      selected: PropTypes.object.isRequired,
       statusText: PropTypes.string.isRequired,
       submitWord: PropTypes.func.isRequired,
       tried: PropTypes.object.isRequired,
+      words: PropTypes.object.isRequired,
     }).isRequired,
   }
   render() {
-    const { appStore } = this.props;
+    const {
+      dataSource,
+      letters,
+      selected,
+      statusText,
+      submitWord,
+      tried,
+      words,
+    } = this.props.appStore;
+    const correct = tried.filter(tryEntry =>
+      (words.indexOf(tryEntry.word) !== -1),
+    ).length;
     return (
       <View style={ControlStyle.container}>
         <View style={ControlStyle.entryContainer}>
           <View style={ControlStyle.entryWrapper}>
             <Text style={ControlStyle.entryText}>
               {
-                appStore.selected.map(i => appStore.letters[i].toUpperCase()).join('')
+                selected.map(i => letters[i].toUpperCase()).join('')
               }
             </Text>
           </View>
           <View style={ControlStyle.backspaceWrapper}>
             <TouchableOpacity
-              onPress={() => { appStore.selected.pop(); }}
-              onLongPress={() => { appStore.selected.replace([]); }}
+              onPress={() => { selected.pop(); }}
+              onLongPress={() => { selected.replace([]); }}
               style={ControlStyle.backspaceTouch}
             >
               <Icon
@@ -49,7 +64,7 @@ export default class Control extends React.Component {
         <View style={ControlStyle.columnContainer}>
           <View style={ControlStyle.leftColumn}>
             <ListView
-              dataSource={appStore.dataSource}
+              dataSource={dataSource}
               enableEmptySections
               renderRow={row => (
                 <Text style={ControlStyle[row.correct ? 'correct' : 'incorrect']}>
@@ -62,15 +77,32 @@ export default class Control extends React.Component {
           <View style={ControlStyle.rightColumn}>
             <View style={ControlStyle.resultContainer}>
               <Text style={ControlStyle.resultText}>
-                {appStore.statusText}
+                {statusText}
               </Text>
             </View>
             <View style={ControlStyle.buttonWrapper}>
               <Button
-                onPress={() => { appStore.submitWord(); }}
+                onPress={() => { submitWord(); }}
                 title="Submit"
                 color="#999"
               />
+            </View>
+            <View style={ControlStyle.timerContainer}>
+              <Text>
+                {' '}
+              </Text>
+            </View>
+            <View style={ControlStyle.progressContainer}>
+              <View>
+                <Text style={ControlStyle.progressText}>
+                  {`${correct}/${words.length}`}
+                </Text>
+              </View>
+              <View>  
+                <Text style={ControlStyle.progressText}>
+                  {`${Math.floor((correct / words.length) * 100)}%`}
+                </Text>
+              </View>
             </View>
           </View>
         </View>
