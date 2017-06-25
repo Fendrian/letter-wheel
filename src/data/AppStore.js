@@ -79,17 +79,33 @@ export default class AppState {
   @observable words = [];
   ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
   @computed get dataSource() {
-    if (this.tried.length === 0) {
+    if (this.tried.length === 0 && this.scored !== true) {
       return this.ds.cloneWithRows([{ word: 'No words', style: 'neutral' }]);
     }
-    if (this.scored === true) {
-      return this.ds.clodeWithRows([{ word: 'asdf', style: 'neutral' }]);
-    }
-    return this.ds.cloneWithRows(this.tried.sort((a, b) => {
+    const sorted = this.tried.sort((a, b) => {
       if (a.word < b.word) { return -1; }
       if (a.word > b.word) { return 1; }
       return 0;
-    }).slice());
+    }).slice();
+    if (this.scored === true) {
+      const notFound = this.words.sort().filter(word =>
+        (this.tried.indexOf(word) === -1),
+      ).map(word =>
+        ({ word, style: 'neutral' }),
+      );
+      const yourWords = this.tried.length !== 0 ?
+      [
+        { word: ' ', style: 'neutral' },
+        { word: 'Your words:', style: 'neutral' },
+        ...sorted,
+      ] : [];
+      return this.ds.cloneWithRows([
+        { word: 'Not found:', style: 'neutral' },
+        ...notFound,
+        ...yourWords,
+      ]);
+    }
+    return this.ds.cloneWithRows(sorted);
   }
   constructor() {
     const { width, height } = Dimensions.get('window');
@@ -205,6 +221,7 @@ export default class AppState {
         this.tried.replace((typeof (options.tried) === 'object') ? options.tried : []);
         this.selected.replace([]);
         this.scored = false;
+        this.statusText = 'Welcome!';
       });
 
   submitWord = () => {
