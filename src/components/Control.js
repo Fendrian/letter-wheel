@@ -17,7 +17,7 @@ export default class Control extends React.Component {
   static propTypes = {
     appStore: PropTypes.shape({
       dataSource: PropTypes.object.isRequired,
-      gameMenu: PropTypes.object.isRequired,
+      gameMenu: PropTypes.object,
       letters: PropTypes.object.isRequired,
       selected: PropTypes.object.isRequired,
       statusText: PropTypes.string.isRequired,
@@ -69,7 +69,7 @@ export default class Control extends React.Component {
               dataSource={dataSource}
               enableEmptySections
               renderRow={row => (
-                <Text style={ControlStyle[row.correct ? 'correct' : 'incorrect']}>
+                <Text style={ControlStyle[row.style]}>
                   {row.word}
                 </Text>
               )}

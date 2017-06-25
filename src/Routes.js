@@ -8,21 +8,20 @@ import NewScreen from './containers/NewScreen';
 import GameScreen from './containers/GameScreen';
 import App from './containers/App';
 
-const navScreens = {
-  New: { screen: NewScreen },
-  Game: { screen: GameScreen },
-};
-const navOptions = {
-  headerMode: 'none',
-  initialRouteName: 'New',
-};
-
 class Routes extends React.Component {
   static propTypes = {
     store: PropTypes.instanceOf(AppStore).isRequired,
   };
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    const navScreens = {
+      New: { screen: NewScreen },
+      Game: { screen: GameScreen },
+    };
+    const navOptions = {
+      headerMode: 'none',
+      initialRouteName: props.store.words.length === 0 ? 'New' : 'Game',
+    };
     const Nav = StackNavigator(navScreens, navOptions);
     const defaultGetStateForAction = Nav.router.getStateForAction;
     Nav.router.getStateForAction = (action, state) => {
@@ -32,15 +31,10 @@ class Routes extends React.Component {
       if (
         state &&
         action.type === NavigationActions.BACK &&
-        (
-          state.routes[state.index].routeName === 'New' ||
-          state.routes[state.index].routeName === 'Game'
-        )
+        state.routes[state.index].routeName === 'Game'
       ) {
         return null;
       }
-
-      if (true) {        console.log('==')      }
 
       return defaultGetStateForAction(action, state);
     };

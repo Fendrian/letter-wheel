@@ -85,4 +85,8 @@ export default StyleSheet.create({
     fontSize: 20,
     textDecorationLine: 'line-through',
   },
+  neutral: {
+    color: '#444',
+    fontSize: 20,
+  },
 });

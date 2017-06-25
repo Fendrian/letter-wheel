@@ -71,6 +71,7 @@ export default class AppState {
   @observable loading = false;
   @observable navigator = {};
   @observable orientation = 0;
+  @observable scored = false;
   @observable selected = [];
   @observable statusText = '';
   @observable timer = -1;
@@ -78,6 +79,12 @@ export default class AppState {
   @observable words = [];
   ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
   @computed get dataSource() {
+    if (this.tried.length === 0) {
+      return this.ds.cloneWithRows([{ word: 'No words', style: 'neutral' }]);
+    }
+    if (this.scored === true) {
+      return this.ds.clodeWithRows([{ word: 'asdf', style: 'neutral' }]);
+    }
     return this.ds.cloneWithRows(this.tried.sort((a, b) => {
       if (a.word < b.word) { return -1; }
       if (a.word > b.word) { return 1; }
@@ -197,16 +204,23 @@ export default class AppState {
         this.timer = (typeof (options.timer) === 'number') ? options.timer : -1;
         this.tried.replace((typeof (options.tried) === 'object') ? options.tried : []);
         this.selected.replace([]);
+        this.scored = false;
       });
 
   submitWord = () => {
-    // If word too short, fail.
+    // If game has already been scored, fail
+    if (this.scored === true) {
+      this.setStatus('Game already scored');
+      return false;
+    }
+
+    // If word too short, fail
     if (this.selected.length < 4) {
       this.setStatus('Too short');
       return false;
     }
 
-    // If the middle letter isn't selected, fail.
+    // If the middle letter isn't selected, fail
     if (this.selected.indexOf('5') === -1) {
       this.setStatus('Missing middle letter');
       return false;
@@ -224,14 +238,14 @@ export default class AppState {
 
     // If the word is correct, say so
     if (this.words.indexOf(word) !== -1) {
-      this.tried.push({ word, correct: true });
+      this.tried.push({ word, style: 'correct' });
       this.selected.replace([]);
       this.setStatus('Nice!');
       return true;
     }
 
     // Finally, just fail
-    this.tried.push({ word, correct: false });
+    this.tried.push({ word, style: 'incorrect' });
     this.selected.replace([]);
     this.setStatus('Please try again.');
     return false;
@@ -241,8 +255,34 @@ export default class AppState {
     this.statusText = message;
     setTimeout(() => {
       if (this.statusText === message) {
-        this.statusText = '';
+        if (this.scored === false) {
+          this.statusText = '';
+        } else {
+          this.statusText = this.getScore();
+        }
       }
     }, 3000);
+  }
+
+  getScore = () => {
+    const correct = this.tried.filter(tryEntry =>
+      (this.words.indexOf(tryEntry.word) !== -1),
+    ).length;
+    const percent = Math.floor((correct / this.words.length) * 100);
+    if (percent === 100) {
+      return 'Outstanding!';
+    }
+    if (percent >= 75) {
+      return 'Very good!';
+    }
+    if (percent >= 50) {
+      return 'Good!';
+    }
+    return 'Game scored.';
+  }
+
+  scoreGame = () => {
+    this.scored = true;
+    this.statusText = this.getScore();
   }
 }
