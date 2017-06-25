@@ -66,15 +66,16 @@ const onlyWordsContaining = ((letter, words) =>
   ));
 
 export default class AppState {
+  @observable gameMenu = {};
+  @observable letters = { 1: '', 2: '', 3: '', 4: '', 5: '', 6: '', 7: '', 8: '', 9: '' };
+  @observable loading = false;
   @observable navigator = {};
   @observable orientation = 0;
-  @observable letters = { 1: '', 2: '', 3: '', 4: '', 5: '', 6: '', 7: '', 8: '', 9: '' };
-  @observable words = [];
-  @observable timer = -1;
-  @observable tried = [];
   @observable selected = [];
   @observable statusText = '';
-  @observable loading = false;
+  @observable timer = -1;
+  @observable tried = [];
+  @observable words = [];
   ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
   @computed get dataSource() {
     return this.ds.cloneWithRows(this.tried.sort((a, b) => {

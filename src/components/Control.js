@@ -17,6 +17,7 @@ export default class Control extends React.Component {
   static propTypes = {
     appStore: PropTypes.shape({
       dataSource: PropTypes.object.isRequired,
+      gameMenu: PropTypes.object.isRequired,
       letters: PropTypes.object.isRequired,
       selected: PropTypes.object.isRequired,
       statusText: PropTypes.string.isRequired,
@@ -28,6 +29,7 @@ export default class Control extends React.Component {
   render() {
     const {
       dataSource,
+      gameMenu,
       letters,
       selected,
       statusText,
@@ -98,11 +100,18 @@ export default class Control extends React.Component {
                   {`${correct}/${words.length}`}
                 </Text>
               </View>
-              <View>  
+              <View>
                 <Text style={ControlStyle.progressText}>
                   {`${Math.floor((correct / words.length) * 100)}%`}
                 </Text>
               </View>
+            </View>
+            <View style={ControlStyle.buttonWrapper}>
+              <Button
+                onPress={() => { gameMenu.open(); }}
+                title="Menu"
+                color="#999"
+              />
             </View>
           </View>
         </View>
