@@ -46,6 +46,10 @@ export default StyleSheet.create({
     height: 40,
     justifyContent: 'center',
   },
+  timerText: {
+    color: '#000',
+    fontSize: 20,
+  },
   progressContainer: {
     alignItems: 'center',
     height: 100,

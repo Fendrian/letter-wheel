@@ -34,6 +34,7 @@ export default class Control extends React.Component {
       selected,
       statusText,
       submitWord,
+      timer,
       tried,
       words,
     } = this.props.appStore;
@@ -90,8 +91,8 @@ export default class Control extends React.Component {
               />
             </View>
             <View style={ControlStyle.timerContainer}>
-              <Text>
-                {' '}
+              <Text style={ControlStyle.timerText}>
+                {timer !== -1 ? `${timer} seconds` : ' '}
               </Text>
             </View>
             <View style={ControlStyle.progressContainer}>

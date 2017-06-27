@@ -113,6 +113,7 @@ export default class AppState {
       this.orientation = (data.window.width < data.window.height) ? 0 : 1;
     });
     this.orientation = (width < height) ? 0 : 1;
+    this.timerRunning = false;
 
     // Open the word database
     const ok = () => {};
@@ -222,6 +223,14 @@ export default class AppState {
         this.selected.replace([]);
         this.scored = false;
         this.statusText = 'Welcome!';
+
+        // If a timer was set, start it now
+        if (typeof (options.timer) === 'number' && options.timer > -1) {
+          if (this.timerRunning !== true) {
+            this.timerRunning = true;
+            this.startTimer();
+          }
+        }
       });
 
   submitWord = () => {
@@ -301,5 +310,34 @@ export default class AppState {
   scoreGame = () => {
     this.scored = true;
     this.statusText = this.getScore();
+  }
+
+  startTimer = () => {
+    const { index, routes } = this.navigator.state.nav;
+
+    // If the user is focused on the game screen, decrement
+    if (
+      routes[index].routeName === 'Game' &&
+      this.gameMenu.state.isOpen !== true
+    ) {
+      setTimeout(() => {
+        if (this.timer > 0) {
+          this.timer = (this.timer - 1);
+          this.startTimer();
+        } else {
+          this.timerRunning = false;
+          if (this.timer !== -1) {
+            this.timer = -1;
+            this.scoreGame();
+          }
+        }
+      }, 1000);
+
+    // Otherwise just loop
+    } else {
+      setTimeout(() => {
+        this.startTimer();
+      }, 1000);
+    }
   }
 }
