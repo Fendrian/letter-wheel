@@ -257,7 +257,7 @@ export default class AppState {
     ).join('');
 
     // If word already guessed, fail
-    if (this.tried.indexOf(word) !== -1) {
+    if (this.tried.find(w => (w.word === word))) {
       this.setStatus('Already tried');
       return false;
     }
