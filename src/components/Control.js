@@ -17,7 +17,7 @@ export default class Control extends React.Component {
   static propTypes = {
     appStore: PropTypes.shape({
       dataSource: PropTypes.object.isRequired,
-      gameMenu: PropTypes.object,
+      gameModal: PropTypes.object,
       letters: PropTypes.object.isRequired,
       selected: PropTypes.object.isRequired,
       statusText: PropTypes.string.isRequired,
@@ -30,7 +30,7 @@ export default class Control extends React.Component {
   render() {
     const {
       dataSource,
-      gameMenu,
+      gameModal,
       letters,
       selected,
       statusText,
@@ -42,21 +42,40 @@ export default class Control extends React.Component {
     const correct = tried.filter(tryEntry =>
       (words.indexOf(tryEntry.word) !== -1),
     ).length;
+    const {
+      backspaceTouch,
+      backspaceWrapper,
+      buttonWrapper,
+      columnContainer,
+      container,
+      entryContainer,
+      entryWrapper,
+      entryText,
+      leftColumn,
+      resultContainer,
+      resultText,
+      rightColumn,
+      row,
+      progressContainer,
+      progressText,
+      timerContainer,
+      timerText,
+    } = ControlStyle;
     return (
-      <View style={ControlStyle.container}>
-        <View style={ControlStyle.entryContainer}>
-          <View style={ControlStyle.entryWrapper}>
-            <Text style={ControlStyle.entryText}>
+      <View style={container}>
+        <View style={entryContainer}>
+          <View style={entryWrapper}>
+            <Text style={entryText}>
               {
                 selected.map(i => letters[i].toUpperCase()).join('')
               }
             </Text>
           </View>
-          <View style={ControlStyle.backspaceWrapper}>
+          <View style={backspaceWrapper}>
             <TouchableOpacity
               onPress={() => { selected.pop(); }}
               onLongPress={() => { selected.replace([]); }}
-              style={ControlStyle.backspaceTouch}
+              style={backspaceTouch}
             >
               <Icon
                 name={'md-backspace'}
@@ -65,52 +84,52 @@ export default class Control extends React.Component {
             </TouchableOpacity>
           </View>
         </View>
-        <View style={ControlStyle.columnContainer}>
-          <View style={ControlStyle.leftColumn}>
+        <View style={columnContainer}>
+          <View style={leftColumn}>
             <ListView
               dataSource={dataSource}
               enableEmptySections
-              renderRow={row => (
-                <Text style={ControlStyle[row.style]}>
-                  {row.word}
+              renderRow={singleRow => (
+                <Text style={ControlStyle[singleRow.style]}>
+                  {singleRow.word}
                 </Text>
               )}
-              style={ControlStyle.row}
+              style={row}
             />
           </View>
-          <View style={ControlStyle.rightColumn}>
-            <View style={ControlStyle.resultContainer}>
-              <Text style={ControlStyle.resultText}>
+          <View style={rightColumn}>
+            <View style={resultContainer}>
+              <Text style={resultText}>
                 {statusText}
               </Text>
             </View>
-            <View style={ControlStyle.buttonWrapper}>
+            <View style={buttonWrapper}>
               <Button
                 onPress={() => { submitWord(); }}
                 title="Submit"
                 color="#999"
               />
             </View>
-            <View style={ControlStyle.timerContainer}>
-              <Text style={ControlStyle.timerText}>
+            <View style={timerContainer}>
+              <Text style={timerText}>
                 {timer !== -1 ? `${timer} seconds` : ' '}
               </Text>
             </View>
-            <View style={ControlStyle.progressContainer}>
+            <View style={progressContainer}>
               <View>
-                <Text style={ControlStyle.progressText}>
+                <Text style={progressText}>
                   {`${correct}/${words.length}`}
                 </Text>
               </View>
               <View>
-                <Text style={ControlStyle.progressText}>
+                <Text style={progressText}>
                   {`${Math.floor((correct / words.length) * 100)}%`}
                 </Text>
               </View>
             </View>
-            <View style={ControlStyle.buttonWrapper}>
+            <View style={buttonWrapper}>
               <Button
-                onPress={() => { gameMenu.open(); }}
+                onPress={() => { gameModal.open(); }}
                 title="Menu"
                 color="#999"
               />

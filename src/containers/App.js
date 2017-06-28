@@ -4,8 +4,10 @@ import { View } from 'react-native';
 import { inject, observer } from 'mobx-react';
 import Spinner from 'react-native-loading-spinner-overlay';
 
-import MenuDrawer from '../components/MenuDrawer';
-import MenuDrawerStyle from '../styles/MenuDrawerStyle';
+import MenuModal from '../components/MenuModal';
+import MenuModalStyle from '../styles/MenuModalStyle';
+import AboutModal from '../components/AboutModal';
+import AboutModalStyle from '../styles/AboutModalStyle';
 
 // Until react-native-modalbox updates, use this to stop backAndroid warnings.
 import Modal from '../react-native-modalbox';
@@ -28,11 +30,21 @@ class App extends React.Component {
           backButtonClose
           entry={'bottom'}
           position={'center'}
-          style={MenuDrawerStyle.modal}
-          ref={(ref) => { appStore.gameMenu = ref; }}
+          style={MenuModalStyle.modal}
+          ref={(ref) => { appStore.gameModal = ref; }}
           swipeToClose
         >
-          <MenuDrawer />
+          <MenuModal />
+        </Modal>
+        <Modal
+          backButtonClose
+          entry={'bottom'}
+          position={'center'}
+          style={AboutModalStyle.modal}
+          ref={(ref) => { appStore.aboutModal = ref; }}
+          swipeToClose
+        >
+          <AboutModal />
         </Modal>
       </View>
     );

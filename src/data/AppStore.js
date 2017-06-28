@@ -66,14 +66,15 @@ const onlyWordsContaining = ((letter, words) =>
   ));
 
 export default class AppState {
-  @observable gameMenu = {};
+  @observable aboutModal = {};
+  @observable gameModal = {};
+  @observable letters = { 1: '', 2: '', 3: '', 4: '', 5: '', 6: '', 7: '', 8: '', 9: '' };
+  @observable loading = false;
+  @observable navigator = {};
   @observable newGameOptions = {
     timed: false,
     wordSelection: 0,
   };
-  @observable letters = { 1: '', 2: '', 3: '', 4: '', 5: '', 6: '', 7: '', 8: '', 9: '' };
-  @observable loading = false;
-  @observable navigator = {};
   @observable orientation = 0;
   @observable scored = false;
   @observable selected = [];
@@ -317,31 +318,38 @@ export default class AppState {
   }
 
   startTimer = () => {
-    const { index, routes } = this.navigator.state.nav;
-
-    // If the user is focused on the game screen, decrement
-    if (
-      routes[index].routeName === 'Game' &&
-      this.gameMenu.state.isOpen !== true
-    ) {
-      setTimeout(() => {
-        if (this.timer > 0) {
-          this.timer = (this.timer - 1);
-          this.startTimer();
-        } else {
-          this.timerRunning = false;
-          if (this.timer !== -1) {
-            this.timer = -1;
-            this.scoreGame();
-          }
-        }
-      }, 1000);
-
-    // Otherwise just loop
-    } else {
+    // If the app is still loading, just loop
+    if (this.navigator === null) {
       setTimeout(() => {
         this.startTimer();
       }, 1000);
+    } else {
+      const { index, routes } = this.navigator.state.nav;
+
+      // If the user is focused on the game screen, decrement
+      if (
+        routes[index].routeName === 'Game' &&
+        this.gameModal.state.isOpen !== true
+      ) {
+        setTimeout(() => {
+          if (this.timer > 0) {
+            this.timer = (this.timer - 1);
+            this.startTimer();
+          } else {
+            this.timerRunning = false;
+            if (this.timer !== -1) {
+              this.timer = -1;
+              this.scoreGame();
+            }
+          }
+        }, 1000);
+
+      // Otherwise just loop
+      } else {
+        setTimeout(() => {
+          this.startTimer();
+        }, 1000);
+      }
     }
   }
 }

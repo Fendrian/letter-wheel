@@ -18,13 +18,18 @@ export default class LoadingScreen extends React.Component {
   render() {
     const { appStore } = this.props;
     const orientation = appStore.orientation === 0 ? 'portrait' : 'landscape';
+    const {
+      dataWrapper,
+      gridWrapper,
+    } = GameScreenStyle;
+    const { container } = WrapperStyle;
     return (
-      <View style={WrapperStyle.container}>
+      <View style={container}>
         <View style={GameScreenStyle[orientation]}>
-          <View style={GameScreenStyle.gridWrapper}>
+          <View style={gridWrapper}>
             <Grid />
           </View>
-          <View style={GameScreenStyle.dataWrapper}>
+          <View style={dataWrapper}>
             <Control />
           </View>
         </View>
