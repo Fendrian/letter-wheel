@@ -67,6 +67,10 @@ const onlyWordsContaining = ((letter, words) =>
 
 export default class AppState {
   @observable gameMenu = {};
+  @observable newGameOptions = {
+    timed: false,
+    wordSelection: 0,
+  };
   @observable letters = { 1: '', 2: '', 3: '', 4: '', 5: '', 6: '', 7: '', 8: '', 9: '' };
   @observable loading = false;
   @observable navigator = {};

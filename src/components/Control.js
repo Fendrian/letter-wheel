@@ -22,6 +22,7 @@ export default class Control extends React.Component {
       selected: PropTypes.object.isRequired,
       statusText: PropTypes.string.isRequired,
       submitWord: PropTypes.func.isRequired,
+      timer: PropTypes.number.isRequired,
       tried: PropTypes.object.isRequired,
       words: PropTypes.object.isRequired,
     }).isRequired,

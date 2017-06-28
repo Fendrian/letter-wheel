@@ -38,42 +38,51 @@ const options = [
 export default class LoadingScreen extends React.Component {
   static propTypes = {
     appStore: PropTypes.shape({
+      loading: PropTypes.bool.isRequired,
       nav: PropTypes.shape({
         goto: PropTypes.func.isRequired,
       }).isRequired,
+      newGame: PropTypes.func.isRequired,
+      newGameOptions: PropTypes.shape({
+        timed: PropTypes.bool.isRequired,
+        wordSelection: PropTypes.number.isRequired,
+      }).isRequired,
     }).isRequired,
   }
-  constructor(props) {
-    super(props);
-    this.state = {
-      wordSelection: 0,
-      timed: false,
-    };
-  }
   setSelectedOption = (wordSelection) => {
-    this.setState({ wordSelection: wordSelection.value });
+    const { newGameOptions } = this.props.appStore;
+    Object.assign(newGameOptions, {
+      wordSelection: wordSelection.value,
+    });
   }
-  setTimed = (timed) => {
-    this.setState({ timed: !timed });
+  toggleTimed = () => {
+    const { newGameOptions } = this.props.appStore;
+    Object.assign(newGameOptions, {
+      timed: !newGameOptions.timed,
+    });
   }
   instructions() { // eslint-disable-line class-methods-use-this
     Alert.alert('Coming soon', 'Instructions are still under development and will be implemented soon.');
   }
   start = () => {
-    const { appStore } = this.props;
+    const {
+      nav,
+      newGame,
+      newGameOptions,
+    } = this.props.appStore;
     const start = new Date().getTime();
-    appStore.loading = true;
-    appStore.newGame({
-      wordsMin: options[this.state.wordSelection].min,
-      wordsMax: options[this.state.wordSelection].max,
-      timer: this.state.timed ? 60 : -1,
+    this.props.appStore.loading = true;
+    newGame({
+      wordsMin: options[newGameOptions.wordSelection].min,
+      wordsMax: options[newGameOptions.wordSelection].max,
+      timer: newGameOptions.timed ? 60 : -1,
     })
       .then(() => {
         // Wait a minimum of 500ms to help the loading screen feel right
         const end = new Date().getTime();
         setTimeout(() => {
-          appStore.nav.goto('Game');
-          appStore.loading = false;
+          nav.goto('Game');
+          this.props.appStore.loading = false;
         }, (500 - (end - start)));
       });
   }
@@ -82,9 +91,12 @@ export default class LoadingScreen extends React.Component {
       start,
       instructions,
       setSelectedOption,
-      setTimed,
+      toggleTimed,
     } = this;
-    const { timed } = this.state;
+    const {
+      timed,
+      wordSelection,
+    } = this.props.appStore.newGameOptions;
     const tint = '#555';
     return (
       <View style={WrapperStyle.container}>
@@ -102,7 +114,7 @@ export default class LoadingScreen extends React.Component {
               tint={tint}
               options={options}
               onSelection={setSelectedOption}
-              selectedIndex={this.state.wordSelection}
+              selectedIndex={wordSelection}
               optionStyle={NewScreenStyle.wordItems}
               extractText={option => option.label}
             />
@@ -113,7 +125,7 @@ export default class LoadingScreen extends React.Component {
               labelBefore
               labelStyle={NewScreenStyle.timerLabel}
               checked={timed}
-              onChange={setTimed}
+              onChange={toggleTimed}
             />
           </View>
           <View style={NewScreenStyle.buttonWrapper}>
