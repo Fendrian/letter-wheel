@@ -75,7 +75,7 @@ export default class LoadingScreen extends React.Component {
     newGame({
       wordsMin: options[newGameOptions.wordSelection].min,
       wordsMax: options[newGameOptions.wordSelection].max,
-      timer: newGameOptions.timed ? 60 : -1,
+      timer: newGameOptions.timed ? -1 : undefined,
     })
       .then(() => {
         // Wait a minimum of 500ms to help the loading screen feel right

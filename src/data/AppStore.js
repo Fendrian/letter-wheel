@@ -223,18 +223,26 @@ export default class AppState {
         // Load up the data store with the results
         Object.assign(this.letters, result.letters);
         this.words.replace(result.words);
-        this.timer = (typeof (options.timer) === 'number') ? options.timer : -1;
         this.tried.replace((typeof (options.tried) === 'object') ? options.tried : []);
         this.selected.replace([]);
         this.scored = false;
         this.statusText = 'Welcome!';
 
-        // If a timer was set, start it now
-        if (typeof (options.timer) === 'number' && options.timer > -1) {
+        // Process the timer.
+        // A timer greater than -1 means timer is active
+        if (typeof (options.timer) === 'number') {
+          if (options.timer > -1) {
+            this.timer = options.timer;
+          } else {
+            this.timer = ((result.words.length - 1) * 4);
+          }
+
           if (this.timerRunning !== true) {
             this.timerRunning = true;
             this.startTimer();
           }
+        } else {
+          this.timer = -1;
         }
       });
 
