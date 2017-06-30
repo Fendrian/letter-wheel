@@ -61,6 +61,9 @@ export default class Control extends React.Component {
       timerContainer,
       timerText,
     } = ControlStyle;
+    const formattedTimer = timer / 60 >= 1 ?
+      `${Math.floor(timer / 60)}m ${timer % 60}s` :
+      `${Math.floor(timer / 60)}m `;
     return (
       <View style={container}>
         <View style={entryContainer}>
@@ -112,7 +115,7 @@ export default class Control extends React.Component {
             </View>
             <View style={timerContainer}>
               <Text style={timerText}>
-                {timer !== -1 ? `${timer} seconds` : ' '}
+                {timer !== -1 ? formattedTimer : ' '}
               </Text>
             </View>
             <View style={progressContainer}>
