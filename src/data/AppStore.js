@@ -267,11 +267,17 @@ export default class AppState {
       return false;
     }
 
-    // If the word is correct, say so
+    // If the word is correct, report to user and add time if relevant
     if (this.words.indexOf(word) !== -1) {
       this.tried.push({ word, style: 'correct' });
       this.selected.replace([]);
-      this.setStatus('Nice!');
+      if (this.timer > -1) {
+        const addTime = (word.length * 5);
+        this.setStatus(`Nice! +${addTime} seconds.`);
+        this.timer += addTime;
+      } else {
+        this.setStatus('Nice!');
+      }
       return true;
     }
 
@@ -326,8 +332,11 @@ export default class AppState {
     } else {
       const { index, routes } = this.navigator.state.nav;
 
+      // If the game has been scored, stop
+      if (this.scored) {
+        this.timerRunning = false;
       // If the user is focused on the game screen, decrement
-      if (
+      } else if (
         routes[index].routeName === 'Game' &&
         this.gameModal.state.isOpen !== true
       ) {
