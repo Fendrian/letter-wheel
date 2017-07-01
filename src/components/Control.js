@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {
   Button,
   ListView,
+  Vibration,
   View,
   Text,
   TouchableOpacity,
@@ -77,7 +78,10 @@ export default class Control extends React.Component {
           <View style={backspaceWrapper}>
             <TouchableOpacity
               onPress={() => { selected.pop(); }}
-              onLongPress={() => { selected.replace([]); }}
+              onLongPress={() => {
+                Vibration.vibrate();
+                selected.replace([]);
+              }}
               style={backspaceTouch}
             >
               <Icon
@@ -132,7 +136,10 @@ export default class Control extends React.Component {
             </View>
             <View style={buttonWrapper}>
               <Button
-                onPress={() => { gameModal.open(); }}
+                onPress={() => {
+                  gameModal.close();
+                  gameModal.open();
+                }}
                 title="Menu"
                 color="#999"
               />

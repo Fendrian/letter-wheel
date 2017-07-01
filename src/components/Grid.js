@@ -1,6 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, Text, TouchableOpacity } from 'react-native';
+import {
+  Text,
+  TouchableOpacity,
+  Vibration,
+  View,
+} from 'react-native';
 import { inject, observer } from 'mobx-react';
 
 import GridStyle from '../styles/GridStyle';
@@ -40,6 +45,7 @@ export default class Grid extends React.Component {
       <TouchableOpacity
         onPress={() => { selectBlock(i); }}
         onLongPress={() => {
+          Vibration.vibrate();
           if (selected.indexOf(i) === -1) {
             selectBlock(i);
           }
