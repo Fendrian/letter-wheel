@@ -125,7 +125,10 @@ export default class LoadingScreen extends React.Component {
           <View style={NewScreenStyle.buttonWrapper}>
             <Button
               style={NewScreenStyle.buttons}
-              onPress={() => { instructionsModal.open(); }}
+              onPress={() => {
+                instructionsModal.close();
+                instructionsModal.open();
+              }}
             >
               Instructions
             </Button>
