@@ -1,7 +1,7 @@
 {
   "name": "target-words",
   "description": "Mobile-platform word search game",
-  "version": "0.1.0",
+  "version": "0.8.0",
   "main": "src/",
   "license": "MIT",
   "author": {
