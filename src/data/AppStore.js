@@ -1,5 +1,6 @@
 import { computed, observable } from 'mobx';
 import { Alert, Dimensions, ListView } from 'react-native';
+import { NavigationActions } from 'react-navigation';
 import SQLite from 'react-native-sqlite-storage';
 
 // Given a string, this function will randomly rearrange the string then return it.
@@ -134,6 +135,17 @@ export default class AppState {
         return false;
       }
       return this.navigator.dispatch({ type: 'Navigation/NAVIGATE', routeName: screen });
+    },
+    resetto: (screen) => {
+      if (typeof (this.navigator.dispatch) === 'undefined') {
+        return false;
+      }
+      return this.navigator.dispatch(NavigationActions.reset({
+        index: 0,
+        actions: [
+          NavigationActions.navigate({ routeName: screen }),
+        ],
+      }));
     },
   }
 

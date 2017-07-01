@@ -40,7 +40,7 @@ export default class MenuModal extends React.Component {
         <TouchableOpacity
           onPress={() => {
             gameModal.close();
-            nav.goto('New');
+            nav.resetto('New');
           }}
           style={line}
         >
