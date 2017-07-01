@@ -1,11 +1,13 @@
-import { StyleSheet } from 'react-native';
+import { Dimensions, StyleSheet } from 'react-native';
+
+const window = Dimensions.get('window');
 
 export default StyleSheet.create({
   modal: {
     backgroundColor: '#fff',
     borderRadius: 4,
-    height: 500,
-    width: 350,
+    height: (window.height - 150),
+    width: (window.width - 50),
   },
   container: {
     margin: 20,

@@ -33,6 +33,7 @@ class App extends React.Component {
           entry={'bottom'}
           position={'center'}
           style={MenuModalStyle.modal}
+          swipeArea={50}
           ref={(ref) => { appStore.gameModal = ref; }}
           swipeToClose
         >
@@ -43,6 +44,7 @@ class App extends React.Component {
           entry={'bottom'}
           position={'center'}
           style={AboutModalStyle.modal}
+          swipeArea={50}
           ref={(ref) => { appStore.aboutModal = ref; }}
           swipeToClose
         >
@@ -53,6 +55,7 @@ class App extends React.Component {
           entry={'bottom'}
           position={'center'}
           style={InstructionsModalStyle.modal}
+          swipeArea={50}
           ref={(ref) => { appStore.instructionsModal = ref; }}
           swipeToClose
         >
