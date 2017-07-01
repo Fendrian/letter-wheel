@@ -63,7 +63,7 @@ export default class MenuModal extends React.Component {
           style={line}
         >
           <Text style={text}>
-            About Word Grid
+            About Target Words
           </Text>
         </TouchableOpacity>
         <View style={divider} />
