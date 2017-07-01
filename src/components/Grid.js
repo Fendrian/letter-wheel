@@ -45,7 +45,7 @@ export default class Grid extends React.Component {
       <TouchableOpacity
         onPress={() => { selectBlock(i); }}
         onLongPress={() => {
-          Vibration.vibrate();
+          Vibration.vibrate(100);
           if (selected.indexOf(i) === -1) {
             selectBlock(i);
           }

@@ -79,7 +79,7 @@ export default class Control extends React.Component {
             <TouchableOpacity
               onPress={() => { selected.pop(); }}
               onLongPress={() => {
-                Vibration.vibrate();
+                Vibration.vibrate(100);
                 selected.replace([]);
               }}
               style={backspaceTouch}
