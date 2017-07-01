@@ -106,6 +106,14 @@ android {
             include "armeabi-v7a", "x86"
         }
     }
+    signingConfigs {
+        release {
+            storeFile file(MYAPP_RELEASE_STORE_FILE)
+            storePassword System.getenv('PASSWORD')
+            keyAlias MYAPP_RELEASE_KEY_ALIAS
+            keyPassword System.getenv('PASSWORD')
+        }
+    }
     buildTypes {
         release {
             minifyEnabled enableProguardInReleaseBuilds
