@@ -68,6 +68,7 @@ const onlyWordsContaining = ((letter, words) =>
 export default class AppState {
   @observable aboutModal = {};
   @observable gameModal = {};
+  @observable instructionsModal = {};
   @observable letters = { 1: '', 2: '', 3: '', 4: '', 5: '', 6: '', 7: '', 8: '', 9: '' };
   @observable loading = false;
   @observable navigator = {};
@@ -259,15 +260,15 @@ export default class AppState {
       return false;
     }
 
-    // If the middle letter isn't selected, fail
-    if (this.selected.indexOf('5') === -1) {
-      this.setStatus('Missing middle letter');
-      return false;
-    }
-
     const word = this.selected.map(i =>
       this.letters[i],
     ).join('');
+
+    // If the middle letter isn't selected, fail
+    if (word.indexOf(this.letters[5]) === -1) {
+      this.setStatus('Missing middle letter');
+      return false;
+    }
 
     // If word already guessed, fail
     if (this.tried.find(w => (w.word === word))) {
@@ -346,7 +347,9 @@ export default class AppState {
       // If the user is focused on the game screen, decrement
       } else if (
         routes[index].routeName === 'Game' &&
-        this.gameModal.state.isOpen !== true
+        this.gameModal.state.isOpen !== true &&
+        this.aboutModal.state.isOpen !== true &&
+        this.instructionsModal.state.isOpen !== true
       ) {
         setTimeout(() => {
           if (this.timer > 0) {

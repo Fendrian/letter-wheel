@@ -11,6 +11,7 @@ export default class MenuModal extends React.Component {
     appStore: PropTypes.shape({
       aboutModal: PropTypes.object,
       gameModal: PropTypes.object,
+      instructionsModal: PropTypes.object,
       nav: PropTypes.object.isRequired,
       scoreGame: PropTypes.func.isRequired,
     }).isRequired,
@@ -19,6 +20,7 @@ export default class MenuModal extends React.Component {
     const {
       aboutModal,
       gameModal,
+      instructionsModal,
       nav,
       scoreGame,
     } = this.props.appStore;
@@ -27,9 +29,13 @@ export default class MenuModal extends React.Component {
       divider,
       line,
       text,
+      title,
     } = MenuModalStyle;
     return (
       <View style={container}>
+        <Text style={title}>
+          Target Words
+        </Text>
         <View style={divider} />
         <TouchableOpacity
           onPress={() => {
@@ -52,6 +58,18 @@ export default class MenuModal extends React.Component {
         >
           <Text style={text}>
             Score This Game
+          </Text>
+        </TouchableOpacity>
+        <View style={divider} />
+        <TouchableOpacity
+          onPress={() => {
+            gameModal.close();
+            instructionsModal.open();
+          }}
+          style={line}
+        >
+          <Text style={text}>
+            Instructions
           </Text>
         </TouchableOpacity>
         <View style={divider} />

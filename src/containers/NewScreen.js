@@ -1,10 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  Alert,
-  Text,
-  View,
-} from 'react-native';
+import { Text, View } from 'react-native';
 import { inject, observer } from 'mobx-react';
 import { SegmentedControls } from 'react-native-radio-buttons';
 import CheckBox from 'react-native-checkbox';
@@ -38,6 +34,7 @@ const options = [
 export default class LoadingScreen extends React.Component {
   static propTypes = {
     appStore: PropTypes.shape({
+      instructionsModal: PropTypes.object,
       loading: PropTypes.bool.isRequired,
       nav: PropTypes.shape({
         goto: PropTypes.func.isRequired,
@@ -60,9 +57,6 @@ export default class LoadingScreen extends React.Component {
     Object.assign(newGameOptions, {
       timed: !newGameOptions.timed,
     });
-  }
-  instructions() { // eslint-disable-line class-methods-use-this
-    Alert.alert('Coming soon', 'Instructions are still under development and will be implemented soon.');
   }
   start = () => {
     const {
@@ -89,7 +83,6 @@ export default class LoadingScreen extends React.Component {
   render() {
     const {
       start,
-      instructions,
       setSelectedOption,
       toggleTimed,
     } = this;
@@ -97,6 +90,7 @@ export default class LoadingScreen extends React.Component {
       timed,
       wordSelection,
     } = this.props.appStore.newGameOptions;
+    const { instructionsModal } = this.props.appStore;
     const tint = '#555';
     return (
       <View style={WrapperStyle.container}>
@@ -131,7 +125,7 @@ export default class LoadingScreen extends React.Component {
           <View style={NewScreenStyle.buttonWrapper}>
             <Button
               style={NewScreenStyle.buttons}
-              onPress={instructions}
+              onPress={() => { instructionsModal.open(); }}
             >
               Instructions
             </Button>

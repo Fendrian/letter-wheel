@@ -4,7 +4,7 @@ export default StyleSheet.create({
   modal: {
     backgroundColor: '#fff',
     borderRadius: 4,
-    height: 250,
+    height: 350,
     width: 300,
   },
   container: {
@@ -26,5 +26,10 @@ export default StyleSheet.create({
   text: {
     color: '#000',
     fontSize: 20,
+  },
+  title: {
+    color: '#000',
+    fontSize: 40,
+    marginBottom: 20,
   },
 });

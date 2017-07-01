@@ -8,6 +8,8 @@ import MenuModal from '../components/MenuModal';
 import MenuModalStyle from '../styles/MenuModalStyle';
 import AboutModal from '../components/AboutModal';
 import AboutModalStyle from '../styles/AboutModalStyle';
+import InstructionsModal from '../components/InstructionsModal';
+import InstructionsModalStyle from '../styles/InstructionsModalStyle';
 
 // Until react-native-modalbox updates, use this to stop backAndroid warnings.
 import Modal from '../react-native-modalbox';
@@ -45,6 +47,16 @@ class App extends React.Component {
           swipeToClose
         >
           <AboutModal />
+        </Modal>
+        <Modal
+          backButtonClose
+          entry={'bottom'}
+          position={'center'}
+          style={InstructionsModalStyle.modal}
+          ref={(ref) => { appStore.instructionsModal = ref; }}
+          swipeToClose
+        >
+          <InstructionsModal />
         </Modal>
       </View>
     );
