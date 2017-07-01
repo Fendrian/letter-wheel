@@ -84,6 +84,8 @@ export default class AppState {
   @observable timer = -1;
   @observable tried = [];
   @observable words = [];
+
+  // Data source logic for the game word list display
   ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
   @computed get dataSource() {
     if (this.tried.length === 0 && this.scored !== true) {
@@ -94,9 +96,11 @@ export default class AppState {
       if (a.word > b.word) { return 1; }
       return 0;
     }).slice();
+
+    // If the game has been scored, display all words
     if (this.scored === true) {
       const notFound = this.words.sort().filter(word =>
-        (this.tried.indexOf(word) === -1),
+        (typeof (this.tried.find(w => (w.word === word))) === 'undefined'),
       ).map(word =>
         ({ word, style: 'neutral' }),
       );
@@ -112,6 +116,8 @@ export default class AppState {
         ...yourWords,
       ]);
     }
+
+    // ...Otherwise just show words that have been tried
     return this.ds.cloneWithRows(sorted);
   }
   constructor() {
