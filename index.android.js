@@ -1,4 +1,4 @@
 import { AppRegistry } from 'react-native';
-import wordGrid from './src/Entry';
+import targetWords from './src/Entry';
 
-AppRegistry.registerComponent('wordgrid', () => wordGrid);
+AppRegistry.registerComponent('targetwords', () => targetWords);

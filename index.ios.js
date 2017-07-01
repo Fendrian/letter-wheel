@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default class wordGrid extends Component {
+export default class targetWords extends Component {
   render() {
     return (
       <View style={styles.container}>
@@ -50,4 +50,4 @@ export default class wordGrid extends Component {
   }
 }
 
-AppRegistry.registerComponent('wordgrid', () => wordGrid);
+AppRegistry.registerComponent('targetwords', () => targetWords);

@@ -1,4 +1,4 @@
-package com.wordgrid;
+package com.targetwords;
 
 import android.app.Application;
 

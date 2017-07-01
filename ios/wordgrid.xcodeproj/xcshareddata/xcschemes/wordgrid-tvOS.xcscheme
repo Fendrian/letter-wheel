@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-               BuildableName = "wordgrid-tvOS.app"
-               BlueprintName = "wordgrid-tvOS"
-               ReferencedContainer = "container:wordgrid.xcodeproj">
+               BuildableName = "targetwords-tvOS.app"
+               BlueprintName = "targetwords-tvOS"
+               ReferencedContainer = "container:targetwords.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E48F1E0B4A5D006451C7"
-               BuildableName = "wordgrid-tvOSTests.xctest"
-               BlueprintName = "wordgrid-tvOSTests"
-               ReferencedContainer = "container:wordgrid.xcodeproj">
+               BuildableName = "targetwords-tvOSTests.xctest"
+               BlueprintName = "targetwords-tvOSTests"
+               ReferencedContainer = "container:targetwords.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -61,9 +61,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E48F1E0B4A5D006451C7"
-               BuildableName = "wordgrid-tvOSTests.xctest"
-               BlueprintName = "wordgrid-tvOSTests"
-               ReferencedContainer = "container:wordgrid.xcodeproj">
+               BuildableName = "targetwords-tvOSTests.xctest"
+               BlueprintName = "targetwords-tvOSTests"
+               ReferencedContainer = "container:targetwords.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -71,9 +71,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "wordgrid-tvOS.app"
-            BlueprintName = "wordgrid-tvOS"
-            ReferencedContainer = "container:wordgrid.xcodeproj">
+            BuildableName = "targetwords-tvOS.app"
+            BlueprintName = "targetwords-tvOS"
+            ReferencedContainer = "container:targetwords.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -94,9 +94,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "wordgrid-tvOS.app"
-            BlueprintName = "wordgrid-tvOS"
-            ReferencedContainer = "container:wordgrid.xcodeproj">
+            BuildableName = "targetwords-tvOS.app"
+            BlueprintName = "targetwords-tvOS"
+            ReferencedContainer = "container:targetwords.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -113,9 +113,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "wordgrid-tvOS.app"
-            BlueprintName = "wordgrid-tvOS"
-            ReferencedContainer = "container:wordgrid.xcodeproj">
+            BuildableName = "targetwords-tvOS.app"
+            BlueprintName = "targetwords-tvOS"
+            ReferencedContainer = "container:targetwords.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

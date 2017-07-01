@@ -1,4 +1,4 @@
-rootProject.name = 'wordgrid'
+rootProject.name = 'targetwords'
 
 include ':app'
 include ':react-native-sqlite-storage'
