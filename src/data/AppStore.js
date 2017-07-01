@@ -118,6 +118,19 @@ export default class AppState {
     const { width, height } = Dimensions.get('window');
     Dimensions.addEventListener('change', (data) => {
       this.orientation = (data.window.width < data.window.height) ? 0 : 1;
+
+      // If we're on the game screen, prod the menu after rotation
+      // This is purely a workaround for a bug, presumably in react-native-modal
+      const { index, routes } = this.navigator.state.nav;
+
+      if (
+        routes[index].routeName === 'Game' &&
+        typeof (this.gameModal.state) !== 'undefined' &&
+        this.gameModal.state.isOpen !== true
+      ) {
+        this.gameModal.open();
+        this.gameModal.close();
+      }
     });
     this.orientation = (width < height) ? 0 : 1;
     this.timerRunning = false;
