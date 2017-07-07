@@ -46,7 +46,6 @@ export default class Control extends React.Component {
     const {
       backspaceTouch,
       backspaceWrapper,
-      button,
       buttonWrapper,
       columnContainer,
       container,

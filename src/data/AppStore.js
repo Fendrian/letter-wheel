@@ -247,8 +247,6 @@ export default class AppState {
                         letters['5'] = swapLetter;
                       }
 
-                      console.log(words);
-
                       resolve({
                         letters,
                         options,
@@ -264,8 +262,6 @@ export default class AppState {
       }
     })
       .then((result) => {
-        console.log(`Word generation took ${new Date().getTime() - result.start} milliseconds.`);
-
         // Load up the data store with the results
         Object.assign(this.letters, result.letters);
         this.words.replace(result.words);
