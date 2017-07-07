@@ -14,6 +14,9 @@ export default StyleSheet.create({
     width: 60,
   },
   buttonWrapper: {
+    alignItems: 'center',
+    flex: 1,
+    justifyContent: 'center',
     margin: 5,
   },
   entryContainer: {
@@ -37,11 +40,12 @@ export default StyleSheet.create({
   },
   resultContainer: {
     alignItems: 'center',
-    height: 40,
+    flex: 1,
     justifyContent: 'center',
   },
   timerContainer: {
     alignItems: 'center',
+    flex: 1,
     justifyContent: 'center',
   },
   timerText: {
@@ -50,6 +54,7 @@ export default StyleSheet.create({
   },
   progressContainer: {
     alignItems: 'center',
+    flex: 2,
     justifyContent: 'center',
   },
   progressText: {

@@ -46,6 +46,7 @@ export default class Control extends React.Component {
     const {
       backspaceTouch,
       backspaceWrapper,
+      button,
       buttonWrapper,
       columnContainer,
       container,
@@ -92,6 +93,7 @@ export default class Control extends React.Component {
           </View>
         </View>
         <View style={columnContainer}>
+
           <View style={leftColumn}>
             <ListView
               dataSource={dataSource}
@@ -104,6 +106,7 @@ export default class Control extends React.Component {
               style={row}
             />
           </View>
+
           <View style={rightColumn}>
             <View style={resultContainer}>
               <Text style={resultText}>
@@ -113,15 +116,19 @@ export default class Control extends React.Component {
             <View style={buttonWrapper}>
               <Button
                 onPress={() => { submitWord(); }}
-                title="Submit"
+                title="        Submit        "
                 color="#999"
               />
             </View>
-            <View style={timerContainer}>
-              <Text style={timerText}>
-                {timer !== -1 ? formattedTimer : ' '}
-              </Text>
-            </View>
+            {timer !== -1 ?
+              <View style={timerContainer}>
+                <Text style={timerText}>
+                  {formattedTimer}
+                </Text>
+              </View>
+              :
+              <View />
+            }
             <View style={progressContainer}>
               <View>
                 <Text style={progressText}>
@@ -136,15 +143,16 @@ export default class Control extends React.Component {
             </View>
             <View style={buttonWrapper}>
               <Button
+                color="#999"
                 onPress={() => {
                   gameModal.close();
                   gameModal.open();
                 }}
-                title="Menu"
-                color="#999"
+                title="          Menu          "
               />
             </View>
           </View>
+
         </View>
       </View>
     );
