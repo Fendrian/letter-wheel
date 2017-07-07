@@ -150,7 +150,6 @@ export default class AppState {
           this.instructionsModal.close();
         }
       }
-
     });
     this.orientation = (width < height) ? 0 : 1;
     this.timerRunning = false;
