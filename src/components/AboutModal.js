@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ScrollView, Text } from 'react-native';
+import { Linking, ScrollView, Text } from 'react-native';
 import { inject, observer } from 'mobx-react';
 import Modal from 'react-native-modalbox';
+import Hyperlink from 'react-native-hyperlink';
 
 import AboutModalStyle from '../styles/AboutModalStyle';
 
@@ -33,10 +34,17 @@ class AboutModal extends React.Component {
           <Text style={AboutModalStyle.text}>
             {' '}
           </Text>
-          <Text style={AboutModalStyle.text}>
-            {'Original copyright © 2017 by Wolf Hatch. The source code for this app is released ' +
-            'under the MIT license at https://github.com/Fendrian/target-words'}
-          </Text>
+          <Hyperlink
+            linkStyle={{ color: '#2980b9' }}
+            onPress={() => {
+              Linking.openURL('https://www.github.com/Fendrian/target-words/');
+            }}
+          >
+            <Text style={AboutModalStyle.text}>
+              {'Original copyright © 2017 by Wolf Hatch. The source code for this app is released ' +
+              'under the MIT license at https://github.com/Fendrian/target-words'} 
+            </Text>
+          </Hyperlink>
           <Text style={AboutModalStyle.text}>
             {' '}
           </Text>
