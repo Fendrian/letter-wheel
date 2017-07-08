@@ -2,15 +2,17 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   modal: {
-    backgroundColor: '#fff',
-    borderRadius: 4,
-    height: 350,
-    width: 300,
+    alignItems: 'center',
+    backgroundColor: 'transparent',
+    justifyContent: 'center',
   },
   container: {
     alignItems: 'center',
-    flex: 1,
+    backgroundColor: '#fff',
+    borderRadius: 4,
     justifyContent: 'center',
+    padding: 20,
+    width: 300,
   },
   divider: {
     backgroundColor: '#555',

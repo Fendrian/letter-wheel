@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ScrollView, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 import { inject, observer } from 'mobx-react';
 import Modal from 'react-native-modalbox';
 
@@ -21,11 +21,10 @@ class AboutModal extends React.Component {
         entry={'bottom'}
         position={'center'}
         style={InstructionsModalStyle.modal}
-        swipeArea={50}
         ref={(ref) => { appStore.instructionsModal = ref; }}
         swipeToClose
       >
-        <ScrollView style={InstructionsModalStyle.container}>
+        <View style={InstructionsModalStyle.container}>
           <Text style={InstructionsModalStyle.text}>
             {'Target Words is a word-finding game. Select letters from the grid to ' +
             'make words, then click "submit" to see if you found one! Each letter can be used once ' +
@@ -66,7 +65,7 @@ class AboutModal extends React.Component {
           <Text style={InstructionsModalStyle.text}>
             {'Good luck!'}
           </Text>
-        </ScrollView>
+        </View>
       </Modal>
     );
   }

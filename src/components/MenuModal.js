@@ -32,7 +32,6 @@ export default class MenuModal extends React.Component {
         entry={'bottom'}
         position={'center'}
         style={MenuModalStyle.modal}
-        swipeArea={50}
         ref={(ref) => { appStore.gameModal = ref; }}
         swipeToClose
       >

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Linking, ScrollView, Text } from 'react-native';
+import { Linking, View, Text } from 'react-native';
 import { inject, observer } from 'mobx-react';
 import Modal from 'react-native-modalbox';
 import Hyperlink from 'react-native-hyperlink';
@@ -22,11 +22,10 @@ class AboutModal extends React.Component {
         entry={'bottom'}
         position={'center'}
         style={AboutModalStyle.modal}
-        swipeArea={50}
         ref={(ref) => { appStore.aboutModal = ref; }}
         swipeToClose
       >
-        <ScrollView style={AboutModalStyle.container}>
+        <View style={AboutModalStyle.container}>
           <Text style={AboutModalStyle.text}>
             {'Target Words is based on the popular newspaper game Target, and inspired by the ' +
             'long-abandoned Target app for Android by Ben Buxton.'}
@@ -58,7 +57,7 @@ class AboutModal extends React.Component {
           <Text style={AboutModalStyle.text}>
             {'The base dictionary is Yet Another Word List by Mendel Leo Cooper, which is in the public domain.'}
           </Text>
-        </ScrollView>
+        </View>
       </Modal>
     );
   }

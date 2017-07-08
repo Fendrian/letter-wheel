@@ -4,16 +4,18 @@ const window = Dimensions.get('window');
 
 export default StyleSheet.create({
   modal: {
-    backgroundColor: '#fff',
-    borderRadius: 4,
-    height: (window.height - 120),
+    alignItems: 'center',
+    backgroundColor: 'transparent',
+    justifyContent: 'center',
     width: (window.width - 50),
   },
   line: {
     width: (window.width - 50),
   },
   container: {
-    margin: 20,
+    backgroundColor: '#fff',
+    borderRadius: 4,
+    padding: 20,
   },
   text: {
     color: '#000',
