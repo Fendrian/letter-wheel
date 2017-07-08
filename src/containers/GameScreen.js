@@ -10,7 +10,7 @@ import Grid from '../components/Grid';
 import Control from '../components/Control';
 
 @inject('appStore') @observer
-export default class LoadingScreen extends React.Component {
+export default class GameScreen extends React.Component {
   static propTypes = {
     appStore: PropTypes.shape({
       aboutModal: PropTypes.object,

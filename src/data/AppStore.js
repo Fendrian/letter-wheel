@@ -124,32 +124,6 @@ export default class AppState {
     const { width, height } = Dimensions.get('window');
     Dimensions.addEventListener('change', (data) => {
       this.orientation = (data.window.width < data.window.height) ? 0 : 1;
-
-      // Very rarely the navigator isn't defined - look into this later
-      if (typeof (this.navigator.state) !== 'undefined') {
-        const { index, routes } = this.navigator.state.nav;
-
-        // If we're on the game screen, prod the menu after rotation
-        // This is purely a workaround for a bug, presumably in react-native-modalbox
-        if (
-          routes[index].routeName === 'Game' &&
-          typeof (this.gameModal.state) !== 'undefined' &&
-          this.gameModal.state.isOpen !== true
-        ) {
-          this.gameModal.open();
-          this.gameModal.close();
-        }
-
-        // Likewise on the new game screen, prod the instructions modal - same reasons as above.
-        if (
-          routes[index].routeName === 'New' &&
-          typeof (this.instructionsModal.state) !== 'undefined' &&
-          this.instructionsModal.state.isOpen !== true
-        ) {
-          this.instructionsModal.open();
-          this.instructionsModal.close();
-        }
-      }
     });
     this.orientation = (width < height) ? 0 : 1;
 

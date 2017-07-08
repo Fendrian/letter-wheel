@@ -31,7 +31,7 @@ const options = [
 ];
 
 @inject('appStore') @observer
-export default class LoadingScreen extends React.Component {
+export default class NewScreen extends React.Component {
   static propTypes = {
     appStore: PropTypes.shape({
       instructionsModal: PropTypes.object,
