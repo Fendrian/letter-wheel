@@ -59,23 +59,19 @@ export default class NewScreen extends React.Component {
     });
   }
   start = () => {
-    const {
-      nav,
-      newGame,
-      newGameOptions,
-    } = this.props.appStore;
+    const { appStore } = this.props;
     const start = new Date().getTime();
     this.props.appStore.loading = true;
-    newGame({
-      wordsMin: options[newGameOptions.wordSelection].min,
-      wordsMax: options[newGameOptions.wordSelection].max,
-      timer: newGameOptions.timed ? -1 : undefined,
+    appStore.newGame({
+      wordsMin: options[appStore.newGameOptions.wordSelection].min,
+      wordsMax: options[appStore.newGameOptions.wordSelection].max,
+      timer: appStore.newGameOptions.timed ? -1 : undefined,
     })
       .then(() => {
         // Wait a minimum of 500ms to help the loading screen feel right
         const end = new Date().getTime();
         setTimeout(() => {
-          nav.goto('Game');
+          appStore.nav.goto('Game');
           this.props.appStore.loading = false;
         }, (500 - (end - start)));
       });

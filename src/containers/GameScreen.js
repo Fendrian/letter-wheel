@@ -27,30 +27,23 @@ export default class GameScreen extends React.Component {
       this,
       'gameTimer',
       () => {
-        const {
-          aboutModal,
-          gameModal,
-          instructionsModal,
-          navigator,
-          scoreGame,
-          timer,
-        } = this.props.appStore;
-        const { index, routes } = navigator.state.nav;
+        const { appStore } = this.props;
+        const { nav } = appStore.navigator.state;
 
         // Only process the timer if it's active,
         // and the user is focused on the game screen
         if (
-          timer >= 0 &&
-          routes[index].routeName === 'Game' &&
-          gameModal.state.isOpen !== true &&
-          aboutModal.state.isOpen !== true &&
-          instructionsModal.state.isOpen !== true
+          appStore.timer >= 0 &&
+          nav.routes[nav.index].routeName === 'Game' &&
+          appStore.gameModal.state.isOpen !== true &&
+          appStore.aboutModal.state.isOpen !== true &&
+          appStore.instructionsModal.state.isOpen !== true
         ) {
-          if (timer > 0) {
-            this.props.appStore.timer = (timer - 1);
+          if (appStore.timer > 0) {
+            this.props.appStore.timer = (appStore.timer - 1);
           } else {
             this.props.appStore.timer = -1;
-            scoreGame();
+            appStore.scoreGame();
           }
         }
       },

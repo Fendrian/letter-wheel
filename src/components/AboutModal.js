@@ -14,6 +14,7 @@ class AboutModal extends React.Component {
     }).isRequired,
   }
   render() {
+    const { appStore } = this.props;
     return (
       <Modal
         backButtonClose
@@ -21,7 +22,7 @@ class AboutModal extends React.Component {
         position={'center'}
         style={AboutModalStyle.modal}
         swipeArea={50}
-        ref={(ref) => { this.props.appStore.aboutModal = ref; }}
+        ref={(ref) => { appStore.aboutModal = ref; }}
         swipeToClose
       >
         <ScrollView style={AboutModalStyle.container}>

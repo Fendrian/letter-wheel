@@ -29,19 +29,9 @@ export default class Control extends React.Component {
     }).isRequired,
   }
   render() {
-    const {
-      dataSource,
-      gameModal,
-      letters,
-      selected,
-      statusText,
-      submitWord,
-      timer,
-      tried,
-      words,
-    } = this.props.appStore;
-    const correct = tried.filter(tryEntry =>
-      (words.indexOf(tryEntry.word) !== -1),
+    const { appStore } = this.props;
+    const correct = appStore.tried.filter(tryEntry =>
+      (appStore.words.indexOf(tryEntry.word) !== -1),
     ).length;
     const {
       backspaceTouch,
@@ -62,25 +52,25 @@ export default class Control extends React.Component {
       timerContainer,
       timerText,
     } = ControlStyle;
-    const formattedTimer = timer / 60 >= 1 ?
-      `${Math.floor(timer / 60)}m ${timer % 60}s` :
-      `${timer % 60}s`;
+    const formattedTimer = appStore.timer / 60 >= 1 ?
+      `${Math.floor(appStore.timer / 60)}m ${appStore.timer % 60}s` :
+      `${appStore.timer % 60}s`;
     return (
       <View style={container}>
         <View style={entryContainer}>
           <View style={entryWrapper}>
             <Text style={entryText}>
               {
-                selected.map(i => letters[i].toUpperCase()).join('')
+                appStore.selected.map(i => appStore.letters[i].toUpperCase()).join('')
               }
             </Text>
           </View>
           <View style={backspaceWrapper}>
             <TouchableOpacity
-              onPress={() => { selected.pop(); }}
+              onPress={() => { appStore.selected.pop(); }}
               onLongPress={() => {
                 Vibration.vibrate(100);
-                selected.replace([]);
+                appStore.selected.replace([]);
               }}
               style={backspaceTouch}
             >
@@ -95,7 +85,7 @@ export default class Control extends React.Component {
 
           <View style={leftColumn}>
             <ListView
-              dataSource={dataSource}
+              dataSource={appStore.dataSource}
               enableEmptySections
               renderRow={singleRow => (
                 <Text style={ControlStyle[singleRow.style]}>
@@ -109,17 +99,17 @@ export default class Control extends React.Component {
           <View style={rightColumn}>
             <View style={resultContainer}>
               <Text style={resultText}>
-                {statusText}
+                {appStore.statusText}
               </Text>
             </View>
             <View style={buttonWrapper}>
               <Button
-                onPress={() => { submitWord(); }}
+                onPress={() => { appStore.submitWord(); }}
                 title="        Submit        "
                 color="#999"
               />
             </View>
-            {timer !== -1 ?
+            {appStore.timer !== -1 ?
               <View style={timerContainer}>
                 <Text style={timerText}>
                   {formattedTimer}
@@ -131,12 +121,12 @@ export default class Control extends React.Component {
             <View style={progressContainer}>
               <View>
                 <Text style={progressText}>
-                  {`${correct}/${words.length}`}
+                  {`${correct}/${appStore.words.length}`}
                 </Text>
               </View>
               <View>
                 <Text style={progressText}>
-                  {`${Math.floor((correct / words.length) * 100)}%`}
+                  {`${Math.floor((correct / appStore.words.length) * 100)}%`}
                 </Text>
               </View>
             </View>
@@ -144,8 +134,8 @@ export default class Control extends React.Component {
               <Button
                 color="#999"
                 onPress={() => {
-                  gameModal.close();
-                  gameModal.open();
+                  appStore.gameModal.close();
+                  appStore.gameModal.open();
                 }}
                 title="          Menu          "
               />
