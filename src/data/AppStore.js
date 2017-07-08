@@ -61,11 +61,6 @@ const getPermutatedWords = (word, db) =>
     });
   });
 
-const onlyWordsContaining = ((letter, words) =>
-  words.filter(w =>
-    (w.indexOf(letter) !== -1),
-  ));
-
 export default class AppState {
   @observable aboutModal = {};
   @observable gameModal = {};
@@ -156,6 +151,11 @@ export default class AppState {
 
   newGame = options =>
     new Promise((resolve) => {
+      const onlyWordsContaining = ((letter, words) =>
+        words.filter(w =>
+          (w.indexOf(letter) !== -1),
+        ));
+
       const start = new Date().getTime();
       // If we've been passed letters explicitly, use the provided middle letter
       if (typeof (options.letters) === 'object') {
