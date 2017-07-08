@@ -11,7 +11,8 @@
     "node": ">= 7.9.0"
   },
   "scripts": {
-    "build": "sudo bash -c 'read -rsp \"Keystore password: \" PASSWORD && cd ./android && ANDROID_HOME=/home/vagrant/android_sdk ./gradlew assembleRelease'",
+    "prebuild": "sudo mkdir -p /run/secrets && sudo bash -c 'read -rsp \"Keystore password: \" KEYSTORE && echo \"$KEYSTORE\" > /run/secrets/pwd'",
+    "build": "cd ./android && PASSWORD=$(cat /run/secrets/pwd) ./gradlew assembleRelease",
     "start": "yarn run run ",
     "poststart": "yarn run deploy",
     "deploy": "react-native run-android",
