@@ -64,7 +64,7 @@ export default class Control extends React.Component {
     } = ControlStyle;
     const formattedTimer = timer / 60 >= 1 ?
       `${Math.floor(timer / 60)}m ${timer % 60}s` :
-      `${Math.floor(timer / 60)}m `;
+      `${timer % 60}s`;
     return (
       <View style={container}>
         <View style={entryContainer}>

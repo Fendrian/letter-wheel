@@ -152,7 +152,6 @@ export default class AppState {
       }
     });
     this.orientation = (width < height) ? 0 : 1;
-    this.timerRunning = false;
 
     // Open the word database
     const ok = () => {};
@@ -269,19 +268,8 @@ export default class AppState {
         this.scored = false;
         this.statusText = 'Welcome!';
 
-        // Process the timer.
-        // A timer greater than -1 means timer is active
         if (typeof (options.timer) === 'number') {
-          if (options.timer > -1) {
-            this.timer = options.timer;
-          } else {
-            this.timer = ((result.words.length - 1) * 4);
-          }
-
-          if (this.timerRunning !== true) {
-            this.timerRunning = true;
-            this.startTimer();
-          }
+          this.timer = ((result.words.length - 1) * 4);
         } else {
           this.timer = -1;
         }
@@ -370,46 +358,5 @@ export default class AppState {
   scoreGame = () => {
     this.scored = true;
     this.statusText = this.getScore();
-  }
-
-  startTimer = () => {
-    // If the app is still loading, just loop
-    if (this.navigator === null) {
-      setTimeout(() => {
-        this.startTimer();
-      }, 1000);
-    } else {
-      const { index, routes } = this.navigator.state.nav;
-
-      // If the game has been scored, stop
-      if (this.scored) {
-        this.timerRunning = false;
-      // If the user is focused on the game screen, decrement
-      } else if (
-        routes[index].routeName === 'Game' &&
-        this.gameModal.state.isOpen !== true &&
-        this.aboutModal.state.isOpen !== true &&
-        this.instructionsModal.state.isOpen !== true
-      ) {
-        setTimeout(() => {
-          if (this.timer > 0) {
-            this.timer = (this.timer - 1);
-            this.startTimer();
-          } else {
-            this.timerRunning = false;
-            if (this.timer !== -1) {
-              this.timer = -1;
-              this.scoreGame();
-            }
-          }
-        }, 1000);
-
-      // Otherwise just loop
-      } else {
-        setTimeout(() => {
-          this.startTimer();
-        }, 1000);
-      }
-    }
   }
 }
