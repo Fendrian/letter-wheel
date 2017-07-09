@@ -15,8 +15,9 @@ export default StyleSheet.create({
   menuRow: {
     borderRadius: 4,
     flexDirection: 'row',
-    margin: 20,
-    maxWidth: 350,
+    marginHorizontal: 25,
+    marginVertical: 15,
+    maxWidth: 400,
   },
   headerText: {
     color: '#000',
