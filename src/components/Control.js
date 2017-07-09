@@ -104,9 +104,9 @@ export default class Control extends React.Component {
             </View>
             <View style={buttonWrapper}>
               <Button
-                onPress={() => { appStore.submitWord(); }}
-                title="        Submit        "
                 color="#999"
+                onPress={() => { appStore.submitWord(); }}
+                title="Submit"
               />
             </View>
             {appStore.timer !== -1 ?
@@ -137,7 +137,7 @@ export default class Control extends React.Component {
                   appStore.gameModal.close();
                   appStore.gameModal.open();
                 }}
-                title="          Menu          "
+                title="Menu"
               />
             </View>
           </View>

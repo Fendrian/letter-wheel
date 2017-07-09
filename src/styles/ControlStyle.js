@@ -14,7 +14,6 @@ export default StyleSheet.create({
     width: 60,
   },
   buttonWrapper: {
-    alignItems: 'center',
     flex: 1,
     justifyContent: 'center',
     margin: 5,
@@ -24,8 +23,7 @@ export default StyleSheet.create({
     flexDirection: 'row',
     height: 50,
     justifyContent: 'flex-start',
-    marginLeft: 10,
-    marginRight: 10,
+    marginHorizontal: 10,
   },
   entryWrapper: {
     borderBottomWidth: 1,
@@ -37,11 +35,6 @@ export default StyleSheet.create({
   entryText: {
     color: '#000',
     fontSize: 20,
-  },
-  resultContainer: {
-    alignItems: 'center',
-    flex: 1,
-    justifyContent: 'center',
   },
   timerContainer: {
     alignItems: 'center',
@@ -61,6 +54,11 @@ export default StyleSheet.create({
     color: '#000',
     fontSize: 30,
   },
+  resultContainer: {
+    alignItems: 'center',
+    flex: 1,
+    justifyContent: 'center',
+  },
   resultText: {
     fontSize: 20,
     color: '#444',
@@ -72,11 +70,11 @@ export default StyleSheet.create({
   leftColumn: {
     backgroundColor: '#ccc',
     borderRadius: 4,
-    flex: 0.4,
+    flex: 4,
     marginBottom: 10,
   },
   rightColumn: {
-    flex: 0.6,
+    flex: 6,
   },
   row: {
     marginLeft: 10,
