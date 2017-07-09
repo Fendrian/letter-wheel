@@ -122,6 +122,15 @@ export default class AppState {
     });
     this.orientation = (width < height) ? 0 : 1;
 
+    // Add game score levels
+    this.scores = [
+      { percent: 0, text: '' },
+      { percent: 40, text: 'Good' },
+      { percent: 65, text: 'Very Good' },
+      { percent: 85, text: 'Excellent' },
+      { percent: 100, text: 'Exceptional' },
+    ];
+
     // Open the word database
     const ok = () => {};
     const err = () => {
@@ -218,6 +227,8 @@ export default class AppState {
                         letters[i] = letters['5'];
                         letters['5'] = swapLetter;
                       }
+
+                      console.log(onlyWordsContaining(centerLetter, words));
 
                       resolve({
                         letters,
@@ -316,21 +327,28 @@ export default class AppState {
     const correct = this.tried.filter(tryEntry =>
       (this.words.indexOf(tryEntry.word) !== -1),
     ).length;
-    const percent = Math.floor((correct / this.words.length) * 100);
-    if (percent === 100) {
-      return 'Outstanding!';
-    }
-    if (percent >= 75) {
-      return 'Very good!';
-    }
-    if (percent >= 50) {
-      return 'Good!';
-    }
-    return 'Game scored.';
+    const adjustedScores = this.scores.map(scoreObj => (
+      {
+        ...scoreObj,
+        numWords: (Math.floor((scoreObj.percent / 100) * this.words.length)),
+      }
+    ));
+    const currentScore = adjustedScores
+      .filter(a => (a.numWords <= correct))
+      .sort((a, b) => b.numWords - a.numWords)[0];
+    const nextScore = adjustedScores
+      .filter(a => (a.numWords > correct))
+      .sort((a, b) => a.numWords - b.numWords)[0];
+    return ({
+      text: currentScore.text,
+      toNext: (typeof (nextScore) !== 'undefined') ?
+        (nextScore.numWords - correct) :
+        0,
+    });
   }
 
   scoreGame = () => {
     this.scored = true;
-    this.statusText = this.getScore();
+    this.statusText = 'Game scored';
   }
 }

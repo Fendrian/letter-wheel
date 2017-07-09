@@ -51,8 +51,14 @@ export default StyleSheet.create({
     justifyContent: 'center',
   },
   progressText: {
-    color: '#000',
+    color: '#227711',
     fontSize: 30,
+    textAlign: 'center',
+  },
+  progressTextSmall: {
+    color: '#000',
+    fontSize: 20,
+    textAlign: 'center',
   },
   resultContainer: {
     alignItems: 'center',

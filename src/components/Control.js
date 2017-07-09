@@ -19,7 +19,9 @@ export default class Control extends React.Component {
     appStore: PropTypes.shape({
       dataSource: PropTypes.object.isRequired,
       gameModal: PropTypes.object,
+      getScore: PropTypes.func.isRequired,
       letters: PropTypes.object.isRequired,
+      scores: PropTypes.array.isRequired,
       selected: PropTypes.object.isRequired,
       statusText: PropTypes.string.isRequired,
       submitWord: PropTypes.func.isRequired,
@@ -49,12 +51,21 @@ export default class Control extends React.Component {
       row,
       progressContainer,
       progressText,
+      progressTextSmall,
       timerContainer,
       timerText,
     } = ControlStyle;
     const formattedTimer = appStore.timer / 60 >= 1 ?
       `${Math.floor(appStore.timer / 60)}m ${appStore.timer % 60}s` :
       `${appStore.timer % 60}s`;
+    const score = appStore.getScore();
+    const feedbackText = (() => {
+      const { toNext } = score;
+      if (toNext > 0) {
+        return `${toNext} word${toNext > 1 ? 's' : ''}\n to next level`;
+      }
+      return '';
+    })();
     return (
       <View style={container}>
         <View style={entryContainer}>
@@ -121,12 +132,12 @@ export default class Control extends React.Component {
             <View style={progressContainer}>
               <View>
                 <Text style={progressText}>
-                  {`${correct}/${appStore.words.length}`}
+                  {score.text !== '' ? `${score.text}!` : ' '}
                 </Text>
               </View>
               <View>
-                <Text style={progressText}>
-                  {`${Math.floor((correct / appStore.words.length) * 100)}%`}
+                <Text style={progressTextSmall}>
+                  {feedbackText}
                 </Text>
               </View>
             </View>
