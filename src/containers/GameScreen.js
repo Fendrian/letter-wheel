@@ -34,6 +34,7 @@ export default class GameScreen extends React.Component {
         // and the user is focused on the game screen
         if (
           appStore.timer >= 0 &&
+          appStore.scored !== true &&
           nav.routes[nav.index].routeName === 'Game' &&
           appStore.gameModal.state.isOpen !== true &&
           appStore.aboutModal.state.isOpen !== true &&
