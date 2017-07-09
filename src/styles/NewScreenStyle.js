@@ -10,8 +10,13 @@ export default StyleSheet.create({
   body: {
     alignItems: 'center',
     borderRadius: 4,
-    width: 350,
     height: 300,
+  },
+  menuRow: {
+    borderRadius: 4,
+    flexDirection: 'row',
+    margin: 20,
+    maxWidth: 350,
   },
   headerText: {
     color: '#000',
@@ -19,15 +24,11 @@ export default StyleSheet.create({
     textAlign: 'center',
   },
   words: {
-    borderRadius: 4,
-    margin: 20,
-    width: 350,
+    flex: 1,
   },
   timer: {
     alignItems: 'flex-end',
-    borderRadius: 4,
-    margin: 20,
-    width: 350,
+    flex: 1,
   },
   timerLabel: {
     color: '#000',
@@ -40,17 +41,13 @@ export default StyleSheet.create({
     fontSize: 20,
   },
   buttonWrapper: {
-    alignItems: 'center',
-    borderRadius: 4,
     flex: 1,
     flexDirection: 'row',
-    margin: 20,
   },
   buttons: {
     backgroundColor: '#999',
     color: '#000',
     fontSize: 20,
-    marginHorizontal: 20,
     padding: 20,
   },
 });

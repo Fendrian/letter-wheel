@@ -96,44 +96,52 @@ export default class NewScreen extends React.Component {
           </Text>
         </View>
         <View style={NewScreenStyle.body}>
-          <View style={NewScreenStyle.words}>
-            <SegmentedControls
-              containerBorderTint={tint}
-              containerStyle={NewScreenStyle.wordContainer}
-              separatorTint={tint}
-              tint={tint}
-              options={options}
-              onSelection={setSelectedOption}
-              selectedIndex={wordSelection}
-              optionStyle={NewScreenStyle.wordItems}
-              extractText={option => option.label}
-            />
+          <View style={NewScreenStyle.menuRow}>
+            <View style={NewScreenStyle.words}>
+              <SegmentedControls
+                containerBorderTint={tint}
+                containerStyle={NewScreenStyle.wordContainer}
+                extractText={option => option.label}
+                onSelection={setSelectedOption}
+                options={options}
+                optionStyle={NewScreenStyle.wordItems}
+                selectedIndex={wordSelection}
+                separatorTint={tint}
+                style={{ flex: 1 }}
+                tint={tint}
+              />
+            </View>
           </View>
-          <View style={NewScreenStyle.timer}>
-            <CheckBox
-              label={'Timed Game:'}
-              labelBefore
-              labelStyle={NewScreenStyle.timerLabel}
-              checked={timed}
-              onChange={toggleTimed}
-            />
+          <View style={NewScreenStyle.menuRow}>
+            <View style={NewScreenStyle.timer}>
+              <CheckBox
+                label={'Timed Game:'}
+                labelBefore
+                labelStyle={NewScreenStyle.timerLabel}
+                checked={timed}
+                onChange={toggleTimed}
+              />
+            </View>
           </View>
-          <View style={NewScreenStyle.buttonWrapper}>
-            <Button
-              style={NewScreenStyle.buttons}
-              onPress={() => {
-                instructionsModal.close();
-                instructionsModal.open();
-              }}
-            >
-              Instructions
-            </Button>
-            <Button
-              style={NewScreenStyle.buttons}
-              onPress={start}
-            >
-              Start Game
-            </Button>
+          <View style={NewScreenStyle.menuRow}>
+            <View style={NewScreenStyle.buttonWrapper}>
+              <Button
+                style={NewScreenStyle.buttons}
+                onPress={() => {
+                  instructionsModal.close();
+                  instructionsModal.open();
+                }}
+              >
+                Instructions
+              </Button>
+              <View style={{ flex: 1 }} />
+              <Button
+                style={NewScreenStyle.buttons}
+                onPress={start}
+              >
+                Start Game
+              </Button>
+            </View>
           </View>
         </View>
       </View>
