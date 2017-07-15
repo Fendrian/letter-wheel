@@ -1,31 +1,43 @@
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
+  button: {
+    alignContent: 'center',
+    backgroundColor: '#999',
+    borderRadius: 4,
+    justifyContent: 'center',
+    height: 60,
+    paddingHorizontal: 20,
+  },
+  buttonText: {
+    color: '#000',
+    fontSize: 20,
+    lineHeight: 20,
+  },
   header: {
-    alignItems: 'center',
-    height: 70,
-    margin: 10,
-    width: 350,
-  },
-  body: {
-    alignItems: 'center',
-    borderRadius: 4,
-    height: 300,
-  },
-  menuRow: {
-    borderRadius: 4,
-    flexDirection: 'row',
-    marginHorizontal: 25,
-    marginVertical: 15,
-    maxWidth: 400,
+    marginBottom: 10,
   },
   headerText: {
     color: '#000',
     fontSize: 50,
     textAlign: 'center',
   },
-  words: {
+  menuRow: {
+    alignContent: 'center',
+    alignSelf: 'center',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    paddingHorizontal: 25,
+    paddingVertical: 10,
+    maxWidth: 400,
+  },
+  segmented: {
     flex: 1,
+  },
+  sliderStyle: {
+    height: 30,
+    paddingVertical: 20,
+    overflow: 'visible',
   },
   timer: {
     alignItems: 'flex-end',
@@ -35,20 +47,19 @@ export default StyleSheet.create({
     color: '#000',
     fontSize: 20,
   },
-  wordContainer: {
-    margin: 1,
-  },
   wordItems: {
     fontSize: 20,
+    paddingVertical: 10,
   },
-  buttonWrapper: {
+  words: {
     flex: 1,
-    flexDirection: 'row',
   },
-  buttons: {
-    backgroundColor: '#999',
-    color: '#000',
+  wordsGenerated: {
     fontSize: 20,
-    padding: 20,
+  },
+  wrapper: {
+    alignContent: 'center',
+    flex: 1,
+    justifyContent: 'center',
   },
 });

@@ -70,7 +70,10 @@ export default class AppState {
   @observable navigator = {};
   @observable newGameOptions = {
     timed: false,
-    wordSelection: 0,
+    wordRange: {
+      min: 10,
+      max: 49,
+    },
   };
   @observable orientation = 0;
   @observable scored = false;
