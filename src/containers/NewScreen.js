@@ -123,7 +123,7 @@ export default class NewScreen extends React.Component {
     } = this.props.appStore.newGameOptions;
     const { instructionsModal } = this.props.appStore;
     const selected = [this.state.min, this.state.max];
-    const optionsArray = [...Array.from(Array(90)).map((a, i) => i + 10), 999];
+    const optionsArray = [...Array.from(Array(91)).map((a, i) => i + 10), 999];
     const { container } = WrapperStyle;
     const {
       button,
