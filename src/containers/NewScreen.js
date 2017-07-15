@@ -169,7 +169,7 @@ export default class NewScreen extends React.Component {
                 {
                   wordRange.max !== 999 ?
                   `${wordRange.min} to ${wordRange.max} words` :
-                  `at least ${wordRange.min} words`
+                  `At least ${wordRange.min} words`
                 }
               </Text>
             </View>
