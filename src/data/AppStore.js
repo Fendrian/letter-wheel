@@ -81,6 +81,7 @@ export default class AppState {
   @observable statusText = '';
   @observable timer = -1;
   @observable tried = [];
+  @observable width = 0;
   @observable words = [];
 
   // Data source logic for the game word list display
@@ -122,8 +123,10 @@ export default class AppState {
     const { width, height } = Dimensions.get('window');
     Dimensions.addEventListener('change', (data) => {
       this.orientation = (data.window.width < data.window.height) ? 0 : 1;
+      this.width = Dimensions.get('window').width;
     });
     this.orientation = (width < height) ? 0 : 1;
+    this.width = Dimensions.get('window').width;
 
     // Add game score levels
     this.scores = [

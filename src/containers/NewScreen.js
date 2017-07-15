@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Dimensions, ScrollView, Text, View } from 'react-native';
+import { ScrollView, Text, View } from 'react-native';
 import { inject, observer } from 'mobx-react';
 import { SegmentedControls } from 'react-native-radio-buttons';
 import MultiSlider from 'react-native-multi-slider';
@@ -45,6 +45,7 @@ export default class NewScreen extends React.Component {
           max: PropTypes.number,
         }).isRequired,
       }).isRequired,
+      width: PropTypes.number.isRequired,
     }).isRequired,
   }
   constructor() {
@@ -82,9 +83,9 @@ export default class NewScreen extends React.Component {
       (min === option.min && max === option.max),
     ));
   }
-  getSliderWidth() {
-    const window = Dimensions.get('window');
-    return window.width < 400 ? (window.width - 70) : 330;
+  getSliderWidth = () => {
+    const { width } = this.props.appStore;
+    return width < 400 ? (width - 70) : 330;
   }
   toggleTimed = () => {
     const { newGameOptions } = this.props.appStore;
@@ -142,7 +143,12 @@ export default class NewScreen extends React.Component {
     const tint = '#555';
     return (
       <View style={container}>
-        <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+        <ScrollView
+          contentContainerStyle={{ flexGrow: 1 }}
+          style={{
+            width: this.props.appStore.width,
+          }}
+        >
           <View style={wrapper}>
             <View style={header}>
               <Text style={headerText}>

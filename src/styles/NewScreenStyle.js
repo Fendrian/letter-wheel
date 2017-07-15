@@ -42,6 +42,7 @@ export default StyleSheet.create({
   timer: {
     alignItems: 'flex-end',
     flex: 1,
+    marginHorizontal: 1,
   },
   timerLabel: {
     color: '#000',
@@ -53,6 +54,7 @@ export default StyleSheet.create({
   },
   words: {
     flex: 1,
+    marginHorizontal: 1,
   },
   wordsGenerated: {
     fontSize: 20,
