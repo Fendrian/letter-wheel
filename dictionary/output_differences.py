@@ -17,13 +17,13 @@ OUTPUT = {}
 with open(FILE_1, 'r') as f:
     for line in f:
         WORD = line.strip().lower().split('/')[0].split(' ')[0]
-        if len(WORD) <= 9 and len(re.findall('^[a-zA-Z]*$', WORD)) == 1:
+        if len(WORD) <= 9 and len(WORD) >= 4 and len(re.findall('^[a-zA-Z]*$', WORD)) == 1:
             OUTPUT[WORD] = 1
 
 with open(FILE_2, 'r') as f:
     for line in f:
         WORD = line.strip().lower().split('/')[0].split(' ')[0]
-        if len(WORD) <= 9 and len(re.findall('^[a-zA-Z]*$', WORD)) == 1:
+        if len(WORD) <= 9 and len(WORD) >= 4 and len(re.findall('^[a-zA-Z]*$', WORD)) == 1:
             if WORD not in OUTPUT:
                 OUTPUT[WORD] = 1
             else:

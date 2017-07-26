@@ -39,7 +39,7 @@ for dict_group in DICT_LISTS:
         with open(dictionary, 'r') as f:
             for line in f:
                 WORD = line.strip().lower().split('/')[0].split(' ')[0]
-                if len(WORD) <= 9 and len(re.findall('^[a-zA-Z]*$', WORD)) == 1:
+                if len(WORD) <= 9 and len(WORD) >= 4 and len(re.findall('^[a-zA-Z]*$', WORD)) == 1:
                     COMBINED.append(WORD)
         for word in COMBINED:
             if word not in CHECK_LIST:
