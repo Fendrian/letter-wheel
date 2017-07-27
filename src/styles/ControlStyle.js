@@ -78,6 +78,17 @@ export default StyleSheet.create({
     borderRadius: 4,
     flex: 4,
     marginBottom: 10,
+    overflow: 'hidden',
+  },
+  leftColumnHeader: {
+    alignItems: 'center',
+    backgroundColor: '#aaa',
+    justifyContent: 'center',
+  },
+  leftColumnHeaderText: {
+    fontSize: 15,
+    color: '#444',
+    margin: 5,
   },
   rightColumn: {
     flex: 6,

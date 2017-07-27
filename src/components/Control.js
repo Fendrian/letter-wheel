@@ -59,6 +59,8 @@ export default class Control extends React.Component {
       entryWrapper,
       entryText,
       leftColumn,
+      leftColumnHeader,
+      leftColumnHeaderText,
       resultContainer,
       resultText,
       rightColumn,
@@ -109,6 +111,11 @@ export default class Control extends React.Component {
         <View style={columnContainer}>
 
           <View style={leftColumn}>
+            <View style={leftColumnHeader}>
+              <Text style={leftColumnHeaderText}>
+                {`${correct} / ${appStore.words.length}`}
+              </Text>
+            </View>
             <ListView
               dataSource={appStore.dataSource}
               enableEmptySections
