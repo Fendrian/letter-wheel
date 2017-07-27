@@ -29,6 +29,20 @@ export default class Control extends React.Component {
       tried: PropTypes.object.isRequired,
       words: PropTypes.object.isRequired,
     }).isRequired,
+    onCorrect: PropTypes.func,
+    onWrong: PropTypes.func,
+  }
+  static defaultProps = {
+    onCorrect() {},
+    onWrong() {},
+  }
+  submitWord = () => {
+    const wordValidity = this.props.appStore.submitWord();
+    if (wordValidity === true) {
+      this.props.onCorrect();
+    } else if (wordValidity === false) {
+      this.props.onWrong();
+    }
   }
   render() {
     const { appStore } = this.props;
@@ -116,7 +130,7 @@ export default class Control extends React.Component {
             <View style={buttonWrapper}>
               <Button
                 color="#999"
-                onPress={() => { appStore.submitWord(); }}
+                onPress={this.submitWord}
                 title="Submit"
               />
             </View>

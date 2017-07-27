@@ -38,6 +38,7 @@
     "prop-types": "^15.5.10",
     "react": "16.0.0-alpha.6",
     "react-native": "^0.44.0",
+    "react-native-animatable": "^1.2.3",
     "react-native-button": "^2.1.0",
     "react-native-checkbox": "^1.1.0",
     "react-native-hyperlink": "^0.0.10",

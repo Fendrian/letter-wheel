@@ -18,6 +18,12 @@ export default class Grid extends React.Component {
       selected: PropTypes.object.isRequired,
       submitWord: PropTypes.func.isRequired,
     }).isRequired,
+    onCorrect: PropTypes.func,
+    onWrong: PropTypes.func,
+  }
+  static defaultProps = {
+    onCorrect() {},
+    onWrong() {},
   }
   selectBlock = (i) => {
     const { selected } = this.props.appStore;
@@ -33,7 +39,7 @@ export default class Grid extends React.Component {
   }
   makeBlock = (i) => {
     const { props, selectBlock } = this;
-    const { letters, selected, submitWord } = props.appStore;
+    const { letters, selected } = props.appStore;
     let style = 'block';
     if (i === '5') {
       style = 'centerBlock';
@@ -49,7 +55,7 @@ export default class Grid extends React.Component {
           if (selected.indexOf(i) === -1) {
             selectBlock(i);
           }
-          submitWord();
+          this.submitWord();
         }}
         style={GridStyle[style]}
         key={`gridItem${i}`}
@@ -59,6 +65,14 @@ export default class Grid extends React.Component {
         </Text>
       </TouchableOpacity>
     );
+  }
+  submitWord = () => {
+    const wordValidity = this.props.appStore.submitWord();
+    if (wordValidity === true) {
+      this.props.onCorrect();
+    } else if (wordValidity === false) {
+      this.props.onWrong();
+    }
   }
   render() {
     const { makeBlock } = this;

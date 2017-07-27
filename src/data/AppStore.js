@@ -292,7 +292,7 @@ export default class AppState {
     // If word already guessed, fail
     if (this.tried.find(w => (w.word === word))) {
       this.setStatus('Already tried');
-      return false;
+      return null;
     }
 
     // If the word is correct, report to user and add time if relevant
