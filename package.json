@@ -41,6 +41,7 @@
     "react-native-button": "^2.1.0",
     "react-native-checkbox": "^1.1.0",
     "react-native-hyperlink": "^0.0.10",
+    "react-native-keyevent": "^0.0.5",
     "react-native-loading-spinner-overlay": "^0.5.1",
     "react-native-modalbox": "^1.4.1",
     "react-native-multi-slider": "https://github.com/joshjconlin/react-native-multi-slider",

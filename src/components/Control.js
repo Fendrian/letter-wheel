@@ -32,9 +32,6 @@ export default class Control extends React.Component {
   }
   render() {
     const { appStore } = this.props;
-    const correct = appStore.tried.filter(tryEntry =>
-      (appStore.words.indexOf(tryEntry.word) !== -1),
-    ).length;
     const {
       backspaceTouch,
       backspaceWrapper,
