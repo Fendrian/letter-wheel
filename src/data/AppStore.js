@@ -312,7 +312,7 @@ export default class AppState {
     // Finally, just fail
     this.tried.push({ word, style: 'incorrect' });
     this.selected.replace([]);
-    this.setStatus('Please try again.');
+    this.setStatus('Unrecognized word.');
     return false;
   }
 
