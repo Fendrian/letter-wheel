@@ -2,4 +2,6 @@ rootProject.name = 'targetwords'
 
 include ':app'
 include ':react-native-sqlite-storage'
+include ':react-native-keyevent'
 project(':react-native-sqlite-storage').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-sqlite-storage/src/android')
+project(':react-native-keyevent').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-keyevent/android')

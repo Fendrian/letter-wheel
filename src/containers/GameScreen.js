@@ -4,6 +4,7 @@ import { View } from 'react-native';
 import { inject, observer } from 'mobx-react';
 import nativeTimer from 'react-native-timer';
 import * as Animatable from 'react-native-animatable';
+import KeyEvent from 'react-native-keyevent';
 
 import WrapperStyle from '../styles/WrapperStyle';
 import GameScreenStyle from '../styles/GameScreenStyle';
@@ -75,11 +76,19 @@ export default class GameScreen extends React.Component {
     };
   }
   componentDidMount = () => {
+    const { appStore } = this.props;
+
+    KeyEvent.onKeyUpListener((keyCode) => {
+      if (keyCode === 1 || keyCode === 82) {
+        appStore.gameModal.close();
+        appStore.gameModal.open();
+      }
+    });
+
     nativeTimer.setInterval(
       this,
       'gameTimer',
       () => {
-        const { appStore } = this.props;
         const { nav } = appStore.navigator.state;
 
         // Only process the timer if it's active,
@@ -105,6 +114,7 @@ export default class GameScreen extends React.Component {
   }
   componentWillUnmount = () => {
     nativeTimer.clearInterval(this);
+    KeyEvent.removeKeyUpListener();
   }
   onCorrect = () => {
     this.setState({ submitState: 'correct' });
