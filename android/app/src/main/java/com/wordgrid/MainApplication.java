@@ -30,7 +30,13 @@ public class MainApplication extends Application implements ReactApplication {
           new KeyEventPackage() 
       );
     }
+
+    @Override
+    protected String getJSMainModuleName() {
+      return "index.android";
+    }
   };
+
 
   @Override
   public ReactNativeHost getReactNativeHost() {

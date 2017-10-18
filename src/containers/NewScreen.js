@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { ScrollView, Text, View } from 'react-native';
 import { inject, observer } from 'mobx-react';
 import { SegmentedControls } from 'react-native-radio-buttons';
-import MultiSlider from 'react-native-multi-slider';
+import MultiSlider from '@ptomasroos/react-native-multi-slider';
 import CheckBox from 'react-native-checkbox';
 import Button from 'react-native-button';
 
