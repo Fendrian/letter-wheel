@@ -79,7 +79,12 @@ export default class GameScreen extends React.Component {
     const { appStore } = this.props;
 
     KeyEvent.onKeyUpListener((keyCode) => {
-      if (keyCode === 1 || keyCode === 82) {
+      if (
+        (keyCode === 1 || keyCode === 82) &&
+        appStore.gameModal.state.isOpen !== true &&
+        appStore.aboutModal.state.isOpen !== true &&
+        appStore.instructionsModal.state.isOpen !== true
+      ) {
         appStore.gameModal.close();
         appStore.gameModal.open();
       }
