@@ -1,4 +1,4 @@
 import { AppRegistry } from 'react-native';
-import targetWords from './src/Entry';
+import targetWords from './Entry';
 
 AppRegistry.registerComponent('targetwords', () => targetWords);

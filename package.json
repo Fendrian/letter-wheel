@@ -13,8 +13,8 @@
   "scripts": {
     "prebuild": "sudo mkdir -p /run/secrets && sudo bash -c 'read -rsp \"Keystore password: \" KEYSTORE && echo \"$KEYSTORE\" > /run/secrets/pwd'",
     "build": "cd ./android && PASSWORD=$(cat /run/secrets/pwd) ./gradlew assembleRelease",
-    "start": "yarn run run ",
-    "poststart": "yarn run deploy",
+    "start": "yarn dev",
+    "poststart": "yarn deploy",
     "deploy": "/vagrant/node_modules/.bin/react-native run-android",
     "prerun": "yarn run kill && adb reverse tcp:3030 tcp:3030",
     "dev": "nohup /vagrant/node_modules/.bin/react-native start >/vagrant/react-native.log 2>&1 </dev/null &",

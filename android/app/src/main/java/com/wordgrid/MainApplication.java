@@ -33,7 +33,7 @@ public class MainApplication extends Application implements ReactApplication {
 
     @Override
     protected String getJSMainModuleName() {
-      return "index.android";
+      return "src/index";
     }
   };
 
