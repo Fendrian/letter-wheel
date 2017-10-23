@@ -4780,9 +4780,9 @@ react-native-modalbox@^1.4.1:
     create-react-class "^15.6.0"
     prop-types "^15.5.10"
 
-"react-native-radio-buttons@https://github.com/ArnaudRinquin/react-native-radio-buttons":
+react-native-radio-buttons@^1.0.0:
   version "1.0.0"
-  resolved "https://github.com/ArnaudRinquin/react-native-radio-buttons#c1518308b769ce32b42d199ba1a8ed763c6b76f6"
+  resolved "https://registry.yarnpkg.com/react-native-radio-buttons/-/react-native-radio-buttons-1.0.0.tgz#be828b85897f80ca66ad66ad7adedb6b1890ab9d"
 
 react-native-sqlite-storage@^3.3.2:
   version "3.3.3"
@@ -5597,9 +5597,9 @@ table@^4.0.1:
     slice-ansi "1.0.0"
     string-width "^2.1.1"
 
-tap-render@Munter/tap-render#0.1.7-patch1:
+"tap-render@github:munter/tap-render#0.1.7-patch1":
   version "0.1.7"
-  resolved "https://codeload.github.com/Munter/tap-render/tar.gz/35bf3ac21c4fd2776d8569d5e8a1ab62df1f6d4f"
+  resolved "https://codeload.github.com/munter/tap-render/tar.gz/35bf3ac21c4fd2776d8569d5e8a1ab62df1f6d4f"
   dependencies:
     jsonify "0.0.0"
     pause-stream "0.0.7"
