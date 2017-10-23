@@ -67,12 +67,12 @@ Vagrant.configure("2") do |config|
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
   config.vm.provision "shell", inline: <<-SHELL
-	curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-	echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+	curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+	echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
     add-apt-repository ppa:openjdk-r/ppa
-    wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - 
-    sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
-	curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+    wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - 
+    sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+	curl -sL https://deb.nodesource.com/setup_8.x | -E bash -
 
 	apt-get install -y nodejs yarn unzip
     apt-get install -y git openjdk-8-jdk ant expect lib32stdc++6 lib32z1 xterm automake autoconf python-dev libtool pkg-config google-chrome-stable
@@ -83,7 +83,7 @@ Vagrant.configure("2") do |config|
     unzip sdk-tools-linux-3859397.zip -d ./android_sdk
 	yes | /home/vagrant/android_sdk/tools/bin/sdkmanager tools --verbose
 	/home/vagrant/android_sdk/tools/bin/sdkmanager "add-ons;addon-google_apis-google-23" "build-tools;23.0.1" "build-tools;23.0.2" "build-tools;23.0.3" "platforms;android-23" "sources;android-23" --verbose
-    sudo chown -R vagrant /home/vagrant/android_sdk/
+    chown -R vagrant /home/vagrant/android_sdk/
 	
     # Install watchman
 	git clone https://github.com/facebook/watchman.git
@@ -92,7 +92,7 @@ Vagrant.configure("2") do |config|
 	./autogen.sh
 	./configure
 	make
-	sudo make install
+	make install
 	
     # Enable the gradle daemon for root
     mkdir ~/.gradle
@@ -102,7 +102,7 @@ Vagrant.configure("2") do |config|
     echo "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/" >> /home/vagrant/.bashrc
     echo "export PATH=\$PATH:~/android_sdk/tools/bin:~/android_sdk/platform-tools:/vagrant/node_modules/.bin" >> /home/vagrant/.bashrc
 	echo "cd /vagrant/" >> /etc/bash.bashrc
-	sudo chown -R vagrant /vagrant
+	chown -R vagrant /vagrant
 	
   SHELL
   

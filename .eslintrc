@@ -1,6 +1,12 @@
 {
-    "parser": "babel-eslint",
+    "env": {
+      "jest/globals": true
+    },
     "extends": "airbnb",
+    "parser": "babel-eslint",
+    "plugins": [
+      "jest"
+    ],
     "rules": {
         "indent": [2],
         "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],

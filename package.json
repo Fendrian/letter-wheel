@@ -11,26 +11,39 @@
     "node": ">= 7.9.0"
   },
   "jest": {
-    "preset": "react-native"
+    "collectCoverage": true,
+    "coverageDirectory": ".tmp/coverage",
+    "preset": "react-native",
+    "setupFiles": [
+      "./jest_setup.js"
+    ],
+    "testPathIgnorePatterns": [
+      "./node_modules/*",
+      "./.history/*"
+    ],
+    "transformIgnorePatterns": [
+    ]
   },
   "scripts": {
     "prebuild": "sudo mkdir -p /run/secrets && sudo bash -c 'read -rsp \"Keystore password: \" KEYSTORE && echo \"$KEYSTORE\" > /run/secrets/pwd'",
     "build": "cd ./android && PASSWORD=$(cat /run/secrets/pwd) ./gradlew assembleRelease",
-    "start": "yarn dev",
-    "poststart": "yarn deploy",
     "deploy": "/vagrant/node_modules/.bin/react-native run-android",
-    "prerun": "yarn run kill && adb reverse tcp:3030 tcp:3030",
+    "predev": "yarn run kill && adb reverse tcp:3030 tcp:3030",
     "dev": "nohup /vagrant/node_modules/.bin/react-native start >/vagrant/react-native.log 2>&1 </dev/null &",
     "prekill": "watchman watch-del-all",
     "kill": "./scripts/clean.sh",
+    "log-android": "adb logcat",
     "log-native": "tail -f -n 50 /vagrant/react-native.log",
-    "log-android": "adb logcat"
+    "start": "yarn dev",
+    "poststart": "yarn deploy",
+    "test": "jest"
   },
   "dependencies": {
     "@ptomasroos/react-native-multi-slider": "^0.0.11",
     "babel-cli": "^6.7.7",
     "babel-core": "^6.25.0",
     "babel-eslint": "^8.0.1",
+    "babel-jest": "^21.2.0",
     "babel-preset-react-native-stage-0": "^1.0.1",
     "hyperlink": "^3.0.0",
     "keyevent": "^1.1.0",
@@ -53,13 +66,14 @@
     "react-navigation": "^1.0.0-beta.11"
   },
   "devDependencies": {
-    "babel-jest": "^21.2.0",
     "eslint": "^4.9.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jest": "^21.2.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-react": "^7.1.0",
     "jest": "^21.2.1",
+    "react-dom": "^16.0.0",
     "react-test-renderer": "^16.0.0"
   }
 }

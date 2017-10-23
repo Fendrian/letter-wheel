@@ -66,6 +66,7 @@ node_modules
 .tmp
 .history
 .vscode
+.tmp
 
 build/
 
