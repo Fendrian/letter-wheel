@@ -79,9 +79,9 @@ export default class NewScreen extends React.Component {
   }
   getSelectedOption = () => {
     const { min, max } = this.props.appStore.newGameOptions.wordRange;
-    return options.indexOf(options.find(option =>
-      (min === option.min && max === option.max),
-    ));
+    return options.indexOf(options.find(option => (
+      min === option.min && max === option.max
+    )));
   }
   getSliderWidth = () => {
     const { width } = this.props.appStore;
@@ -197,6 +197,7 @@ export default class NewScreen extends React.Component {
                 }}
                 sliderLength={this.getSliderWidth()}
                 trackStyle={{
+                  alignSelf: 'center',
                   height: 10,
                   borderRadius: 10,
                 }}
@@ -209,7 +210,7 @@ export default class NewScreen extends React.Component {
             <View style={menuRow}>
               <View style={timer}>
                 <CheckBox
-                  label={'Timed Game:'}
+                  label="Timed Game:"
                   labelBefore
                   labelStyle={timerLabel}
                   checked={timed}

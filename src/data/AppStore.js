@@ -31,15 +31,15 @@ const getPermutatedWords = (word, db) =>
 
       // Construct our LIKE query string
       // getting all words that match any one unique letter of the nine-letter word
-      const matchString = [...new Set(word.split(''))].map(letter =>
-        `'%${letter}%'`,
-      ).join(') OR (WORD LIKE ');
+      const matchString = [...new Set(word.split(''))].map(letter => (
+        `'%${letter}%'`
+      )).join(') OR (WORD LIKE ');
 
       // Construct a NOT LIKE query string
       // excluding all words with MORE of any letter than the nine-letter word
-      const excludeString = alphabet.map(letter =>
-        `'%${Array.from(Array(numLetters[letter] + 1)).map(() => letter).join('%')}%'`,
-      ).join(') AND (word NOT LIKE ');
+      const excludeString = alphabet.map(letter => (
+        `'%${Array.from(Array(numLetters[letter] + 1)).map(() => letter).join('%')}%'`
+      )).join(') AND (word NOT LIKE ');
 
       // Construct the actual SQL query
       const query = [
@@ -51,9 +51,9 @@ const getPermutatedWords = (word, db) =>
 
       new Promise((wordsResolve) => {
         tx.executeSql(query, [], (tx1, results2) => {
-          const dict = results2.rows.raw().map(row =>
-            row.word,
-          );
+          const dict = results2.rows.raw().map(row => (
+            row.word
+          ));
           wordsResolve(dict);
         });
       })
@@ -65,7 +65,9 @@ export default class AppState {
   @observable aboutModal = {};
   @observable gameModal = {};
   @observable instructionsModal = {};
-  @observable letters = { 1: '', 2: '', 3: '', 4: '', 5: '', 6: '', 7: '', 8: '', 9: '' };
+  @observable letters = {
+    1: '', 2: '', 3: '', 4: '', 5: '', 6: '', 7: '', 8: '', 9: '',
+  };
   @observable loading = false;
   @observable navigator = {};
   @observable newGameOptions = {
@@ -98,17 +100,19 @@ export default class AppState {
 
     // If the game has been scored, display all words
     if (this.scored === true) {
-      const notFound = this.words.sort().filter(word =>
-        (typeof (this.tried.find(w => (w.word === word))) === 'undefined'),
-      ).map(word =>
-        ({ word, style: 'neutral' }),
-      );
+      const notFound = this.words.sort().filter(word => (
+        (typeof (this.tried.find(w => (w.word === word))) === 'undefined')
+      )).map(word => (
+        ({ word, style: 'neutral' })
+      ));
       const yourWords = this.tried.length !== 0 ?
-      [
-        { word: ' ', style: 'neutral' },
-        { word: 'Your words:', style: 'neutral' },
-        ...sorted,
-      ] : [];
+        [
+          { word: ' ', style: 'neutral' },
+          { word: 'Your words:', style: 'neutral' },
+          ...sorted,
+        ]
+        :
+        [];
       return this.ds.cloneWithRows([
         { word: 'Not found:', style: 'neutral' },
         ...notFound,
@@ -167,9 +171,9 @@ export default class AppState {
   newGame = options =>
     new Promise((resolve) => {
       const onlyWordsContaining = ((letter, words) =>
-        words.filter(w =>
-          (w.indexOf(letter) !== -1),
-        ));
+        words.filter(w => (
+          w.indexOf(letter) !== -1
+        )));
 
       const start = new Date().getTime();
       // If we've been passed letters explicitly, use the provided middle letter
@@ -204,9 +208,9 @@ export default class AppState {
                     let centerLetter = '';
 
                     for (let i = 0; i < uniqueLetters.length; i += 1) {
-                      const matches = words.filter(w =>
-                        (w.indexOf(uniqueLetters[i]) !== -1),
-                      );
+                      const matches = words.filter(w => (
+                        w.indexOf(uniqueLetters[i]) !== -1
+                      ));
                       if (
                         matches.length >= options.wordsMin &&
                         matches.length <= options.wordsMax
@@ -244,7 +248,8 @@ export default class AppState {
                       });
                     }
                   });
-              });
+              },
+            );
           });
         };
         getNewWord();
@@ -279,9 +284,9 @@ export default class AppState {
       return false;
     }
 
-    const word = this.selected.map(i =>
-      this.letters[i],
-    ).join('');
+    const word = this.selected.map(i => (
+      this.letters[i]
+    )).join('');
 
     // If the middle letter isn't selected, fail
     if (word.indexOf(this.letters[5]) === -1) {
@@ -330,9 +335,9 @@ export default class AppState {
   }
 
   getScore = () => {
-    const correct = this.tried.filter(tryEntry =>
-      (this.words.indexOf(tryEntry.word) !== -1),
-    ).length;
+    const correct = this.tried.filter(tryEntry => (
+      this.words.indexOf(tryEntry.word) !== -1
+    )).length;
     const adjustedScores = this.scores.map(scoreObj => (
       {
         ...scoreObj,
