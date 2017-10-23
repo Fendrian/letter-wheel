@@ -72,7 +72,7 @@ Vagrant.configure("2") do |config|
     add-apt-repository ppa:openjdk-r/ppa
     wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add - 
     sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
-	curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
+	curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 
 	apt-get install -y nodejs yarn unzip
     apt-get install -y git openjdk-8-jdk ant expect lib32stdc++6 lib32z1 xterm automake autoconf python-dev libtool pkg-config google-chrome-stable
