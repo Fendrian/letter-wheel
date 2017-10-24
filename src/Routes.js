@@ -12,17 +12,20 @@ class Routes extends React.Component {
   static propTypes = {
     store: PropTypes.instanceOf(AppStore).isRequired,
   };
+  static navScreens = () => ({
+    New: { screen: NewScreen },
+    Game: { screen: GameScreen },
+  });
+  static navOptions = props => ({
+    headerMode: 'none',
+    initialRouteName: props.store.words.length === 0 ? 'New' : 'Game',
+  });
   constructor(props) {
     super(props);
-    const navScreens = {
-      New: { screen: NewScreen },
-      Game: { screen: GameScreen },
-    };
-    const navOptions = {
-      headerMode: 'none',
-      initialRouteName: props.store.words.length === 0 ? 'New' : 'Game',
-    };
-    const Nav = StackNavigator(navScreens, navOptions);
+    const Nav = StackNavigator(
+      this.constructor.navScreens(props),
+      this.constructor.navOptions(props),
+    );
     const defaultGetStateForAction = Nav.router.getStateForAction;
     Nav.router.getStateForAction = (action, state) => {
       // Until react-navigation implements an officially endorsed method for setting a new 'root'
@@ -42,8 +45,7 @@ class Routes extends React.Component {
     this.Nav = Nav;
   }
   render() {
-    const { store } = this.props;
-    const Nav = this.Nav;
+    const { Nav, props: { store } } = this;
     return (
       <Provider appStore={store}>
         <App>
