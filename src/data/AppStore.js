@@ -3,64 +3,6 @@ import { Alert, Dimensions, ListView } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import SQLite from 'react-native-sqlite-storage';
 
-// Given a string, this function will randomly rearrange the string then return it.
-const shuffle = (string) => {
-  const a = string.split('');
-  const n = a.length;
-
-  for (let i = n - 1; i > 0; i -= 1) {
-    const j = Math.floor(Math.random() * (i + 1));
-    const tmp = a[i];
-    a[i] = a[j];
-    a[j] = tmp;
-  }
-  return a.join('');
-};
-
-// Given a word and the SQLite database containing dictionary words, this will return
-// all words which can be made via permutations or sub-permutations of the starting word.
-const getPermutatedWords = (word, db) =>
-  new Promise((resolve) => {
-    db.transaction((tx) => {
-      // Make an object with each letter, and how many times that letter is in the word
-      const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
-      const numLetters = alphabet.reduce(((acc, letter) => {
-        acc[letter] = word.split('').filter(l => l === letter).length;
-        return acc;
-      }), {});
-
-      // Construct our LIKE query string
-      // getting all words that match any one unique letter of the nine-letter word
-      const matchString = [...new Set(word.split(''))].map(letter => (
-        `'%${letter}%'`
-      )).join(') OR (WORD LIKE ');
-
-      // Construct a NOT LIKE query string
-      // excluding all words with MORE of any letter than the nine-letter word
-      const excludeString = alphabet.map(letter => (
-        `'%${Array.from(Array(numLetters[letter] + 1)).map(() => letter).join('%')}%'`
-      )).join(') AND (word NOT LIKE ');
-
-      // Construct the actual SQL query
-      const query = [
-        'SELECT word FROM words WHERE length(word)>=4',
-        'length(word)<=9',
-        `((word LIKE ${matchString}))`,
-        `(word NOT LIKE ${excludeString})`,
-      ].join(' AND ');
-
-      new Promise((wordsResolve) => {
-        tx.executeSql(query, [], (tx1, results2) => {
-          const dict = results2.rows.raw().map(row => (
-            row.word
-          ));
-          wordsResolve(dict);
-        });
-      })
-        .then(resolve);
-    });
-  });
-
 export default class AppState {
   @observable aboutModal = {};
   @observable gameModal = {};
@@ -85,6 +27,47 @@ export default class AppState {
   @observable tried = [];
   @observable width = 0;
   @observable words = [];
+
+  // Given a string, this function will randomly rearrange the string then return it.
+  shuffle = (string) => {
+    const a = string.split('');
+    const n = a.length;
+
+    for (let i = n - 1; i > 0; i -= 1) {
+      const j = Math.floor(Math.random() * (i + 1));
+      const tmp = a[i];
+      a[i] = a[j];
+      a[j] = tmp;
+    }
+    return a.join('');
+  };
+
+  // Given a word and the SQLite database containing dictionary words, this will return
+  // all words which can be made via permutations or sub-permutations of the starting word.
+  getPermutatedWords = (word, db) =>
+    new Promise((resolve) => {
+      db.transaction((tx) => {
+        const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
+        const uniqueLettersInWord = Array.from(new Set(word.split(''))).join('');
+
+        const sqlQuery = `SELECT word FROM words WHERE ${[
+          '(length(word) >= 4)',
+          '(length(word) <= 9)',
+          `(word GLOB '*[${uniqueLettersInWord}]*')`, // INCLUDE words with any of our letters
+          ...alphabet.map((letter) => { // EXCLUDE words containing too many of any letter
+            const occurrencesInWord = word.split(letter).length - 1;
+            return `(word NOT LIKE '${(`%${letter}`).repeat(occurrencesInWord + 1)}%')`;
+          }),
+        ].join(' AND ')}`;
+
+        new Promise((wordsResolve) => {
+          tx.executeSql(sqlQuery, [], (tx1, results2) => {
+            wordsResolve(results2.rows.raw().map(row => row.word));
+          });
+        })
+          .then(resolve);
+      });
+    });
 
   // Data source logic for the game word list display
   ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
@@ -123,6 +106,7 @@ export default class AppState {
     // ...Otherwise just show words that have been tried
     return this.ds.cloneWithRows(sorted);
   }
+
   constructor() {
     const { width, height } = Dimensions.get('window');
     Dimensions.addEventListener('change', (data) => {
@@ -148,6 +132,7 @@ export default class AppState {
     };
     this.db = SQLite.openDatabase({ name: 'main.db', createFromLocation: 1 }, ok, err);
   }
+
   nav = {
     goto: (screen) => {
       if (typeof (this.navigator.dispatch) === 'undefined') {
@@ -179,7 +164,7 @@ export default class AppState {
       // If we've been passed letters explicitly, use the provided middle letter
       if (typeof (options.letters) === 'object') {
         const word = Object.values(options.letters).join('');
-        getPermutatedWords(word, this.db)
+        this.getPermutatedWords(word, this.db)
           .then((words) => {
             resolve({
               letters: options.letters,
@@ -200,8 +185,8 @@ export default class AppState {
               [],
               (tx1, randWordResults) => {
                 // Shuffle the word first thing to maximize randomness
-                const word = shuffle(randWordResults.rows.item(0).word);
-                getPermutatedWords(word, this.db)
+                const word = this.shuffle(randWordResults.rows.item(0).word);
+                this.getPermutatedWords(word, this.db)
                   .then((words) => {
                     // See how many valid words we'd have for each different middle letter
                     const uniqueLetters = [...new Set(word.split(''))];
