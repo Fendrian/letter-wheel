@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Main routes file Matches the snapshot 1`] = `
+<Provider
+  appStore={
+    Store {
+      "words": Array [],
+    }
+  }
+>
+  <App>
+    <Nav />
+  </App>
+</Provider>
+`;
