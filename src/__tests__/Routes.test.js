@@ -59,16 +59,16 @@ describe('Main routes file', () => {
     expect(store.navigator.dispatch()).toEqual('F3E4A27EFD094CB8');
   });
 
-  it('Overrides the default router getStateForAction', () => {
-    const action = {
-      type: '0CF1AF16_back',
-    };
-    const state = {
-      index: 0,
-      routes: [{ routeName: 'Menu' }],
-    };
-    const store = new AppStore();
-    const tree = renderer.create(<Routes store={store} />);
-    console.log(tree.getInstance().Nav.router.getStateForAction(action, state));
-  });
+  // it('Overrides the default router getStateForAction', () => {
+  //   const action = {
+  //     type: '0CF1AF16_back',
+  //   };
+  //   const state = {
+  //     index: 0,
+  //     routes: [{ routeName: 'Menu' }],
+  //   };
+  //   const store = new AppStore();
+  //   const tree = renderer.create(<Routes store={store} />);
+  //   console.log(tree.getInstance().Nav.router.getStateForAction(action, state));
+  // });
 });
