@@ -1,6 +1,24 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+module OS
+    def OS.windows?
+        (/cygwin|mswin|mingw|bccwin|wince|emx/ =~ RUBY_PLATFORM) != nil
+    end
+
+    def OS.mac?
+        (/darwin/ =~ RUBY_PLATFORM) != nil
+    end
+
+    def OS.unix?
+        !OS.windows?
+    end
+
+    def OS.linux?
+        OS.unix? and not OS.mac?
+    end
+end
+
 # All Vagrant configuration is done below. The "2" in Vagrant.configure
 # configures the configuration version (we support older styles for
 # backwards compatibility). Please don't change it unless you know what
@@ -27,7 +45,7 @@ Vagrant.configure("2") do |config|
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
-  # config.vm.network "private_network", ip: "192.168.33.10"
+  config.vm.network "private_network", ip: "192.168.33.10"
 
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
@@ -39,12 +57,16 @@ Vagrant.configure("2") do |config|
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
   # config.vm.synced_folder "../data", "/vagrant_data"
-  config.vm.synced_folder ".", "/vagrant", fsnotify: true,
+  config.vm.synced_folder ".",
+    "/vagrant",
+    fsnotify: true,
     exclude: [
         "node_modules",
         ".tmp",
         ".history",
-    ]
+    ],
+    type: OS.mac? ? 'nfs' : nil,
+    mount_options: OS.mac? ? ['nolock','vers=3','udp','noatime','actimeo=1'] : nil
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
