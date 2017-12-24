@@ -93,7 +93,7 @@ Vagrant.configure("2") do |config|
     # Install watchman
 	git clone https://github.com/facebook/watchman.git
 	cd watchman
-	git checkout v4.7.0
+	git checkout v4.9.0
 	./autogen.sh
 	./configure
 	make
