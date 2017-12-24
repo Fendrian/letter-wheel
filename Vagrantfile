@@ -77,7 +77,7 @@ Vagrant.configure("2") do |config|
     add-apt-repository ppa:openjdk-r/ppa
     wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - 
     sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
-	curl -sL https://deb.nodesource.com/setup_8.x | -E bash -
+    curl -sL https://deb.nodesource.com/setup_8.x | bash -
 
     apt-get update
 	apt-get install -y nodejs yarn unzip
