@@ -79,6 +79,7 @@ Vagrant.configure("2") do |config|
     sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
 	curl -sL https://deb.nodesource.com/setup_8.x | -E bash -
 
+    apt-get update
 	apt-get install -y nodejs yarn unzip
     apt-get install -y git openjdk-8-jdk ant expect lib32stdc++6 lib32z1 xterm automake autoconf python-dev libtool pkg-config google-chrome-stable
 	
