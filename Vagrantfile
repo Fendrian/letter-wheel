@@ -101,9 +101,9 @@ Vagrant.configure("2") do |config|
     sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
     curl -sL https://deb.nodesource.com/setup_8.x | bash -
 
-    apt-get update
-	apt-get install -y nodejs yarn unzip
-    apt-get install -y git openjdk-8-jdk ant expect lib32stdc++6 lib32z1 xterm automake autoconf python-dev libtool pkg-config google-chrome-stable
+    sudo apt-get update
+	sudo apt-get install -y nodejs yarn unzip
+    sudo apt-get install -y git openjdk-8-jdk ant expect lib32stdc++6 lib32z1 xterm automake autoconf python-dev libtool pkg-config google-chrome-stable
 	
 	# Install Android SDK
     wget --progress=bar:force https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip
@@ -114,8 +114,9 @@ Vagrant.configure("2") do |config|
     chown -R vagrant /home/vagrant/android_sdk/
 	
     # Install watchman
+    cd ~
 	git clone https://github.com/facebook/watchman.git
-	cd watchman
+	cd ~/watchman
 	git checkout v4.9.0
 	./autogen.sh
 	./configure
@@ -130,7 +131,7 @@ Vagrant.configure("2") do |config|
     echo "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/" >> /home/vagrant/.bashrc
     echo "export PATH=\$PATH:~/android_sdk/tools/bin:~/android_sdk/platform-tools:/vagrant/node_modules/.bin" >> /home/vagrant/.bashrc
 	echo "cd /vagrant/" >> /etc/bash.bashrc
-	chown -R vagrant /vagrant
+	sudo chown -R vagrant /vagrant
 	
   SHELL
   
