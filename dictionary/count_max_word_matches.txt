@@ -1,5 +1,5 @@
 UPDATE words
-SET count = (
+SET max_count = (
 SELECT COUNT(subquery.word) FROM words AS subquery
 WHERE 
 (length(subquery.word) >= 4) AND 
