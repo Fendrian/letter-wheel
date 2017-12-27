@@ -3,6 +3,7 @@ import { Alert, Dimensions, ListView } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import SQLite from 'react-native-sqlite-storage';
 
+const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
 export default class AppState {
   @observable aboutModal = {};
   @observable gameModal = {};
@@ -47,7 +48,6 @@ export default class AppState {
   getPermutatedWords = (word, db) =>
     new Promise((resolve) => {
       db.transaction((tx) => {
-        const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
         const uniqueLettersInWord = Array.from(new Set(word.split(''))).join('');
 
         const sqlQuery = `SELECT word FROM words WHERE ${[
@@ -156,12 +156,12 @@ export default class AppState {
   newGame = options =>
     new Promise((resolve) => {
       const onlyWordsContaining = ((letter, words) =>
-        words.filter(w => (
-          w.indexOf(letter) !== -1
-        )));
+        words.filter(w => w.indexOf(letter) !== -1)
+      );
 
       const start = new Date().getTime();
-      // If we've been passed letters explicitly, use the provided middle letter
+      // If we've been passed letters explicitly,
+      // use the provided letters and just get word list
       if (typeof (options.letters) === 'object') {
         const word = Object.values(options.letters).join('');
         this.getPermutatedWords(word, this.db)
@@ -174,70 +174,64 @@ export default class AppState {
             });
           });
 
-      // Otherwise iterate until we find a suitable middle letter
+      // If no letters are provided, find a new word that
+      // is suitable for the selected word match range
       } else {
-        const getNewWord = () => {
-          this.db.transaction((tx) => {
-            tx.executeSql(
-              'SELECT word FROM words WHERE ' +
-              '_ROWID_ >= (abs(random()) % ((SELECT max(_ROWID_) FROM words) + 1)) AND ' +
-              'length(word)=9 LIMIT 1',
-              [],
-              (tx1, randWordResults) => {
-                // Shuffle the word first thing to maximize randomness
+        this.db.transaction((tx) => {
+          tx.executeSql(
+            'SELECT * FROM words WHERE ' +
+            'length(word)=9 AND' +
+            `${
+              alphabet.map((
+                char => `(${char} >= ${options.wordsMin} AND ${char} <= ${options.wordsMax})`
+              ))
+                .join(' OR ')
+              }` +
+            'ORDER BY RANDOM() ' +
+            'LIMIT 1',
+            [],
+            (tx1, randWordResults) => {
+              if (!randWordResults.rows.item(0)) {
+                // TODO: Handle no word matching the specified range
+              } else {
+                // Randomly shuffle the letters of the word to make the word grid
                 const word = this.shuffle(randWordResults.rows.item(0).word);
+
+                // Select a middle letter, shuffling first to maximize randomness
+                const centerLetter = this.shuffle(alphabet.join(''))
+                  .split('').find(key => (
+                    randWordResults.rows.item(0)[key] >= options.wordsMin &&
+                    randWordResults.rows.item(0)[key] <= options.wordsMax
+                  ));
+
                 this.getPermutatedWords(word, this.db)
                   .then((words) => {
-                    // See how many valid words we'd have for each different middle letter
-                    const uniqueLetters = [...new Set(word.split(''))];
-                    let centerLetter = '';
+                    const letters = Object.assign(
+                      {},
+                      ...word.split('').map((w, i) => ({ [`${i + 1}`]: w })),
+                    );
 
-                    for (let i = 0; i < uniqueLetters.length; i += 1) {
-                      const matches = words.filter(w => (
-                        w.indexOf(uniqueLetters[i]) !== -1
-                      ));
-                      if (
-                        matches.length >= options.wordsMin &&
-                        matches.length <= options.wordsMax
-                      ) {
-                        centerLetter = uniqueLetters[i];
-                      }
+                    // Swap the selected letter into the center position
+                    if (centerLetter !== letters['5']) {
+                      const i = (String(Object.values(letters).indexOf(centerLetter) + 1));
+                      const swapLetter = letters[i];
+                      letters[i] = letters['5'];
+                      letters['5'] = swapLetter;
                     }
 
-                    // If we haven't found a suitable word range, then iterate again.
-                    if (centerLetter === '') {
-                      getNewWord();
+                    console.log(onlyWordsContaining(centerLetter, words));
 
-                    // Otherwise resolve the promise
-                    } else {
-                      const letters = Object.assign(
-                        {},
-                        ...word.split('').map((w, i) => ({ [`${i + 1}`]: w })),
-                      );
-
-                      // Swap the selected letter into the center position
-                      if (centerLetter !== letters['5']) {
-                        const i = (String(Object.values(letters).indexOf(centerLetter) + 1));
-                        const swapLetter = letters[i];
-                        letters[i] = letters['5'];
-                        letters['5'] = swapLetter;
-                      }
-
-                      console.log(onlyWordsContaining(centerLetter, words));
-
-                      resolve({
-                        letters,
-                        options,
-                        start,
-                        words: onlyWordsContaining(centerLetter, words),
-                      });
-                    }
+                    resolve({
+                      letters,
+                      options,
+                      start,
+                      words: onlyWordsContaining(centerLetter, words),
+                    });
                   });
-              },
-            );
-          });
-        };
-        getNewWord();
+              }
+            },
+          );
+        });
       }
     })
       .then((result) => {
