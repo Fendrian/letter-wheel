@@ -26,6 +26,8 @@ Most port forwarding is done via the vagrantfile, but there's some reverse port 
 
 If there's a problem connectiong to port 5037, either the ssh reverse port forwarding isn't working right or an adb server isn't running on the host machine. The command to start an adb server is in the Android SDK location which is displayed in the Android Studio SDK manager. Generally on a mac this is `~/Library/Android/sdk/platform-tools/adb start-server`.
 
+Note that when developing with an IDE or editor outside the VM (the usual way), filesystem events will not be forwarded to the VM by default. The recommended method for dealing with this [vagrant-fsnotify](https://github.com/adrienkohlbecker/vagrant-fsnotify), which can be installed (on the host machine) with `vagrant plugin install vagrant-fsnotify`, and then started with `vagrant fsnotify` once the VM is running (after `vagrant up` completes, in the same folder). This will forward filesystem events to the virtual machine.
+
 ## LICENSING NOTICE
 
 For the sake of convenience and conformance with general practice and standards, the Vagrantfile in this repository includes code which continues past a point in the Android SDK installation scripts where the developers intended the user to accept or reject the [Android SDK License Agreement](https://developer.android.com/studio/terms.html). Consequently, anyone running 'vagrant up', will be asserting their acceptance of said license agreement.
