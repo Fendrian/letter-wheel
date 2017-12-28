@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
+import { computed } from 'mobx';
 import { inject, observer } from 'mobx-react';
 import nativeTimer from 'react-native-timer';
 import * as Animatable from 'react-native-animatable';
@@ -61,20 +62,26 @@ export default class GameScreen extends React.Component {
   static propTypes = {
     appStore: PropTypes.shape({
       aboutModal: PropTypes.object,
+      letters: PropTypes.string.isRequired,
       navigator: PropTypes.object,
       gameModal: PropTypes.object,
       instructionsModal: PropTypes.object,
       orientation: PropTypes.number.isRequired,
+      selected: PropTypes.object.isRequired,
       scoreGame: PropTypes.func.isRequired,
+      submitWord: PropTypes.func.isRequired,
       timer: PropTypes.number.isRequired,
+      toggleSelected: PropTypes.func.isRequired,
     }).isRequired,
   }
+
   constructor() {
     super();
     this.state = {
       submitState: '',
     };
   }
+
   componentDidMount = () => {
     const { appStore } = this.props;
 
@@ -117,16 +124,31 @@ export default class GameScreen extends React.Component {
       1000,
     );
   }
+
   componentWillUnmount = () => {
     nativeTimer.clearInterval(this);
     KeyEvent.removeKeyUpListener();
   }
+
   onCorrect = () => {
     this.setState({ submitState: 'correct' });
   }
+
   onWrong = () => {
     this.setState({ submitState: 'incorrect' });
   }
+
+  @computed get grid() {
+    const grid = {};
+    Array.from(Array(9)).forEach((x, i) => {
+      grid[`${i}`] = {
+        letter: this.props.appStore.letters.substr(i, 1),
+        selected: this.props.appStore.selected.indexOf(`${i}`) !== -1,
+      };
+    });
+    return grid;
+  }
+
   renderGrid = () => {
     const { gridWrapper } = GameScreenStyle;
     if (this.state.submitState === 'incorrect') {
@@ -139,8 +161,11 @@ export default class GameScreen extends React.Component {
           style={gridWrapper}
         >
           <Grid
+            submitWord={this.props.appStore.submitWord}
+            grid={this.grid}
             onCorrect={this.onCorrect}
             onWrong={this.onWrong}
+            toggleSelected={this.props.appStore.toggleSelected}
           />
         </Animatable.View>
       );
@@ -154,8 +179,11 @@ export default class GameScreen extends React.Component {
           style={gridWrapper}
         >
           <Grid
+            submitWord={this.props.appStore.submitWord}
+            grid={this.grid}
             onCorrect={this.onCorrect}
             onWrong={this.onWrong}
+            toggleSelected={this.props.appStore.toggleSelected}
           />
         </Animatable.View>
       );
@@ -163,8 +191,11 @@ export default class GameScreen extends React.Component {
     return (
       <View style={gridWrapper}>
         <Grid
+          submitWord={this.props.appStore.submitWord}
+          grid={this.grid}
           onCorrect={this.onCorrect}
           onWrong={this.onWrong}
+          toggleSelected={this.props.appStore.toggleSelected}
         />
       </View>
     );

@@ -6,54 +6,39 @@ import {
   Vibration,
   View,
 } from 'react-native';
-import { inject, observer } from 'mobx-react';
 
 import GridStyle from '../styles/GridStyle';
 
-@inject('appStore') @observer
 export default class Grid extends React.Component {
   static propTypes = {
-    appStore: PropTypes.shape({
-      letters: PropTypes.object.isRequired,
-      selected: PropTypes.object.isRequired,
-      submitWord: PropTypes.func.isRequired,
-    }).isRequired,
+    grid: PropTypes.objectOf(PropTypes.object).isRequired,
     onCorrect: PropTypes.func,
     onWrong: PropTypes.func,
+    submitWord: PropTypes.func.isRequired,
+    toggleSelected: PropTypes.func.isRequired,
   }
   static defaultProps = {
     onCorrect() {},
     onWrong() {},
   }
-  selectBlock = (i) => {
-    const { selected } = this.props.appStore;
-    const copy = selected.slice();
-    const loc = selected.indexOf(i);
-    if (loc === -1) {
-      selected.replace([...copy, i]);
-    } else {
-      selected.replace(
-        copy.slice(0, loc).concat(copy.slice((loc + 1), copy.length)),
-      );
-    }
-  }
   makeBlock = (i) => {
-    const { props, selectBlock } = this;
-    const { letters, selected } = props.appStore;
+    const { letter, selected } = this.props.grid[i];
     let style = 'block';
-    if (i === '5') {
+    if (i === '4') {
       style = 'centerBlock';
     }
-    if (selected.indexOf(i) !== -1) {
+
+    if (selected) {
       style = `${style}Selected`;
     }
+
     return (
       <TouchableOpacity
-        onPress={() => { selectBlock(i); }}
+        onPress={() => { this.props.toggleSelected(i); }}
         onLongPress={() => {
           Vibration.vibrate(100);
-          if (selected.indexOf(i) === -1) {
-            selectBlock(i);
+          if (!selected) {
+            this.props.toggleSelected(i);
           }
           this.submitWord();
         }}
@@ -61,13 +46,13 @@ export default class Grid extends React.Component {
         key={`gridItem${i}`}
       >
         <Text style={GridStyle.letter}>
-          {letters[i].toUpperCase()}
+          {letter.toUpperCase()}
         </Text>
       </TouchableOpacity>
     );
   }
   submitWord = () => {
-    const wordValidity = this.props.appStore.submitWord();
+    const wordValidity = this.props.submitWord();
     if (wordValidity === true) {
       this.props.onCorrect();
     } else if (wordValidity === false) {
@@ -75,13 +60,12 @@ export default class Grid extends React.Component {
     }
   }
   render() {
-    const { makeBlock } = this;
-    const rows = [['1', '2', '3'], ['4', '5', '6'], ['7', '8', '9']].map(block => (
+    const rows = [['0', '1', '2'], ['3', '4', '5'], ['6', '7', '8']].map(block => (
       <View style={GridStyle.row} key={block.join('')}>
         {
-          block.map(i =>
-            makeBlock(i),
-          )
+          block.map(i => (
+            this.makeBlock(i)
+          ))
         }
       </View>
     ));

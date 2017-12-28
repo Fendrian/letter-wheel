@@ -201,17 +201,7 @@ describe('Mobx Store', () => {
       [],
       expect.any(Function),
     );
-    expect(store.letters).toEqual({
-      1: 'f',
-      2: 'l',
-      3: 'a',
-      4: 'p',
-      5: 'c',
-      6: 'a',
-      7: 'j',
-      8: 'k',
-      9: 's',
-    });
+    expect(store.letters).toEqual('flapcjaks');
     expect(store.words.peek()).toEqual([
       '77c2',
       'bca0ce269095',

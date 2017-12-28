@@ -1,4 +1,4 @@
-import { computed, observable } from 'mobx';
+import { action, computed, observable } from 'mobx';
 import { Alert, Dimensions, ListView } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import SQLite from 'react-native-sqlite-storage';
@@ -8,9 +8,7 @@ export default class AppState {
   @observable aboutModal = {};
   @observable gameModal = {};
   @observable instructionsModal = {};
-  @observable letters = {
-    1: '', 2: '', 3: '', 4: '', 5: '', 6: '', 7: '', 8: '', 9: '',
-  };
+  @observable letters = '         ';
   @observable loading = false;
   @observable navigator = {};
   @observable newGameOptions = {
@@ -22,12 +20,22 @@ export default class AppState {
   };
   @observable orientation = 0;
   @observable scored = false;
-  @observable selected = [];
   @observable statusText = '';
   @observable timer = -1;
   @observable tried = [];
   @observable width = 0;
   @observable words = [];
+
+  @observable selected = [];
+  @action toggleSelected = (letterIndex) => {
+    const copy = this.selected.slice();
+    const loc = this.selected.indexOf(letterIndex);
+    if (loc === -1) {
+      this.selected.replace([...copy, letterIndex]);
+    } else {
+      this.selected.remove(letterIndex);
+    }
+  }
 
   // Given a string, this function will randomly rearrange the string then return it.
   shuffle = (string) => {
@@ -153,7 +161,7 @@ export default class AppState {
     },
   }
 
-  newGame = options =>
+  @action newGame = options =>
     new Promise((resolve) => {
       const onlyWordsContaining = ((letter, words) =>
         words.filter(w => w.indexOf(letter) !== -1)
@@ -194,9 +202,6 @@ export default class AppState {
               if (!randWordResults.rows.item(0)) {
                 // TODO: Handle no word matching the specified range
               } else {
-                // Randomly shuffle the letters of the word to make the word grid
-                const word = this.shuffle(randWordResults.rows.item(0).word);
-
                 // Select a middle letter, shuffling first to maximize randomness
                 const centerLetter = this.shuffle(alphabet.join(''))
                   .split('').find(key => (
@@ -204,21 +209,14 @@ export default class AppState {
                     randWordResults.rows.item(0)[key] <= options.wordsMax
                   ));
 
-                this.getPermutatedWords(word, this.db)
+                // Randomly shuffle the letters of the word to make the word grid,
+                // making sure to place the selected center letter into the center.
+                const jumble = this.shuffle(randWordResults.rows.item(0).word)
+                  .replace(centerLetter, '');
+                const letters = `${jumble.substr(0, 4)}${centerLetter}${jumble.substr(4)}`;
+
+                this.getPermutatedWords(letters, this.db)
                   .then((words) => {
-                    const letters = Object.assign(
-                      {},
-                      ...word.split('').map((w, i) => ({ [`${i + 1}`]: w })),
-                    );
-
-                    // Swap the selected letter into the center position
-                    if (centerLetter !== letters['5']) {
-                      const i = (String(Object.values(letters).indexOf(centerLetter) + 1));
-                      const swapLetter = letters[i];
-                      letters[i] = letters['5'];
-                      letters['5'] = swapLetter;
-                    }
-
                     console.log(onlyWordsContaining(centerLetter, words));
 
                     resolve({
@@ -236,7 +234,7 @@ export default class AppState {
     })
       .then((result) => {
         // Load up the data store with the results
-        Object.assign(this.letters, result.letters);
+        this.letters = result.letters;
         this.words.replace(result.words);
         this.tried.replace((typeof (options.tried) === 'object') ? options.tried : []);
         this.selected.replace([]);
@@ -264,11 +262,11 @@ export default class AppState {
     }
 
     const word = this.selected.map(i => (
-      this.letters[i]
+      this.letters.substr(i, 1)
     )).join('');
 
     // If the middle letter isn't selected, fail
-    if (word.indexOf(this.letters[5]) === -1) {
+    if (word.indexOf(this.letters.substr(4, 1)) === -1) {
       this.setStatus('Missing middle letter');
       return false;
     }

@@ -20,7 +20,7 @@ export default class Control extends React.Component {
       dataSource: PropTypes.object.isRequired,
       gameModal: PropTypes.object,
       getScore: PropTypes.func.isRequired,
-      letters: PropTypes.object.isRequired,
+      letters: PropTypes.string.isRequired,
       scores: PropTypes.array.isRequired,
       selected: PropTypes.object.isRequired,
       statusText: PropTypes.string.isRequired,
@@ -46,9 +46,9 @@ export default class Control extends React.Component {
   }
   render() {
     const { appStore } = this.props;
-    const correct = appStore.tried.filter(tryEntry =>
-      (appStore.words.indexOf(tryEntry.word) !== -1),
-    ).length;
+    const correct = appStore.tried.filter(tryEntry => (
+      appStore.words.indexOf(tryEntry.word) !== -1
+    )).length;
     const {
       backspaceTouch,
       backspaceWrapper,
@@ -97,12 +97,12 @@ export default class Control extends React.Component {
               onPress={() => { appStore.selected.pop(); }}
               onLongPress={() => {
                 Vibration.vibrate(100);
-                appStore.selected.replace([]);
+                appStore.selected.clear();
               }}
               style={backspaceTouch}
             >
               <Icon
-                name={'md-backspace'}
+                name="md-backspace"
                 size={35}
               />
             </TouchableOpacity>
