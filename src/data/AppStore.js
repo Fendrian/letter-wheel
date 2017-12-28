@@ -161,92 +161,91 @@ export default class AppState {
     },
   }
 
-  @action newGame = options =>
-    new Promise((resolve) => {
-      const onlyWordsContaining = ((letter, words) =>
-        words.filter(w => w.indexOf(letter) !== -1)
-      );
+  @action async newGame({
+    letters,
+    timer,
+    tried,
+    wordsMax,
+    wordsMin,
+  }) {
+    const onlyWordsContaining = ((letter, words) =>
+      words.filter(w => w.indexOf(letter) !== -1)
+    );
 
-      const start = new Date().getTime();
-      // If we've been passed letters explicitly,
-      // use the provided letters and just get word list
-      if (typeof (options.letters) === 'object') {
-        const word = Object.values(options.letters).join('');
-        this.getPermutatedWords(word, this.db)
-          .then((words) => {
-            resolve({
-              letters: options.letters,
-              options,
-              start,
-              words: onlyWordsContaining(options.letters['5'], words),
-            });
-          });
+    let cancel = false;
+    let newLetters = '';
+    let newWords = [];
+    let permutations = [];
 
-      // If no letters are provided, find a new word that
-      // is suitable for the selected word match range
-      } else {
+    // If we've been passed letters explicitly,
+    // use the provided letters and just get word list
+    if (typeof (letters) === 'string') {
+      newLetters = letters;
+      permutations = await this.getPermutatedWords(letters, this.db);
+      newWords = onlyWordsContaining(letters.substr(4, 1), permutations);
+
+    // If no letters are provided, find a new word that
+    // is suitable for the selected word match range
+    // and get word list for it
+    } else {
+      const queryString = 'SELECT * FROM words WHERE ' +
+        'length(word)=9 AND' +
+        `${
+          alphabet.map((
+            char => `(${char} >= ${wordsMin} AND ${char} <= ${wordsMax})`
+          ))
+            .join(' OR ')
+          }` +
+        'ORDER BY RANDOM() ' +
+        'LIMIT 1';
+
+      await new Promise((resolve) => {
         this.db.transaction((tx) => {
           tx.executeSql(
-            'SELECT * FROM words WHERE ' +
-            'length(word)=9 AND' +
-            `${
-              alphabet.map((
-                char => `(${char} >= ${options.wordsMin} AND ${char} <= ${options.wordsMax})`
-              ))
-                .join(' OR ')
-              }` +
-            'ORDER BY RANDOM() ' +
-            'LIMIT 1',
+            queryString,
             [],
-            (tx1, randWordResults) => {
-              if (!randWordResults.rows.item(0)) {
+            async (x, { rows }) => {
+              const row = rows.item(0);
+
+              if (!row) {
                 // TODO: Handle no word matching the specified range
+                console.log('Cancelling');
+                cancel = true;
               } else {
-                // Select a middle letter, shuffling first to maximize randomness
                 const centerLetter = this.shuffle(alphabet.join(''))
-                  .split('').find(key => (
-                    randWordResults.rows.item(0)[key] >= options.wordsMin &&
-                    randWordResults.rows.item(0)[key] <= options.wordsMax
-                  ));
+                  .split('')
+                  .find(key => row[key] >= wordsMin && row[key] <= wordsMax);
 
-                // Randomly shuffle the letters of the word to make the word grid,
-                // making sure to place the selected center letter into the center.
-                const jumble = this.shuffle(randWordResults.rows.item(0).word)
-                  .replace(centerLetter, '');
-                const letters = `${jumble.substr(0, 4)}${centerLetter}${jumble.substr(4)}`;
+                const jumble = this.shuffle(row.word).replace(centerLetter, '');
+                newLetters = `${jumble.substr(0, 4)}${centerLetter}${jumble.substr(4)}`;
 
-                this.getPermutatedWords(letters, this.db)
-                  .then((words) => {
-                    console.log(onlyWordsContaining(centerLetter, words));
-
-                    resolve({
-                      letters,
-                      options,
-                      start,
-                      words: onlyWordsContaining(centerLetter, words),
-                    });
-                  });
+                permutations = await this.getPermutatedWords(newLetters, this.db);
+                newWords = onlyWordsContaining(centerLetter, permutations);
+                resolve();
               }
             },
           );
         });
-      }
-    })
-      .then((result) => {
-        // Load up the data store with the results
-        this.letters = result.letters;
-        this.words.replace(result.words);
-        this.tried.replace((typeof (options.tried) === 'object') ? options.tried : []);
-        this.selected.replace([]);
-        this.scored = false;
-        this.statusText = 'Welcome!';
-
-        if (typeof (options.timer) === 'number') {
-          this.timer = ((result.words.length - 1) * 4);
-        } else {
-          this.timer = -1;
-        }
       });
+    }
+
+    // Load up the data store with the results
+    if (!cancel) {
+      this.letters = newLetters;
+      this.words.replace(newWords);
+      this.tried.replace((typeof (tried) === 'object') ? tried : []);
+      this.selected.replace([]);
+      this.scored = false;
+      this.statusText = 'Welcome!';
+
+      if (typeof (timer) === 'number') {
+        this.timer = timer !== 1 ? ((newWords.length - 1) * 4) : timer;
+      } else {
+        this.timer = -1;
+      }
+      console.log(newWords);
+    }
+  }
 
   submitWord = () => {
     // If game has already been scored, fail
