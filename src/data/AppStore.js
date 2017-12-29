@@ -239,7 +239,7 @@ export default class AppState {
       this.statusText = 'Welcome!';
 
       if (typeof (timer) === 'number') {
-        this.timer = timer !== 1 ? ((newWords.length - 1) * 4) : timer;
+        this.timer = timer === -1 ? ((newWords.length - 1) * 4) : timer;
       } else {
         this.timer = -1;
       }

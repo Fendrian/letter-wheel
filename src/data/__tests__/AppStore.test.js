@@ -104,7 +104,7 @@ describe('Mobx Store', () => {
     );
   });
 
-  it('Provides a newGame function', async () => {
+  it('Provides a newGame function that can generate a new word', async () => {
     expect(store.newGame).toBeDefined();
     expect(typeof (store.newGame)).toEqual('function');
     store.shuffle = jest.fn(s => s);
@@ -115,6 +115,7 @@ describe('Mobx Store', () => {
         '4726',
         '9b46',
         'bca0ce269095',
+        'a95d96bj',
       ])
     ));
     const executeSql = jest.fn((query, list, next) => {
@@ -160,6 +161,8 @@ describe('Mobx Store', () => {
         func({ executeSql });
       }),
     };
+
+    // Test default new game
     await expect(store.newGame({
       wordsMin: 1,
       wordsMax: 50,
@@ -211,5 +214,76 @@ describe('Mobx Store', () => {
     expect(store.scored).toEqual(false);
     expect(store.statusText).toEqual('Welcome!');
     expect(store.timer).toEqual(-1);
+
+    // test new game with default timer
+    await expect(store.newGame({
+      timer: -1,
+      wordsMin: 1,
+      wordsMax: 50,
+    }))
+      .resolves.toEqual();
+    expect(store.timer).toEqual(4);
+  });
+
+  it('Provides a newGame function that can load a provided game', async () => {
+    expect(store.newGame).toBeDefined();
+    expect(typeof (store.newGame)).toEqual('function');
+    store.shuffle = jest.fn(s => s);
+    store.getPermutatedWords = jest.fn().mockReturnValue((
+      Promise.resolve([
+        '6047eeD0',
+        '77c2',
+        '4726',
+        '9b46',
+        'bca0ce269095',
+        'a95d96bj',
+      ])
+    ));
+    const executeSql = jest.fn();
+    store.db = {
+      transaction: jest.fn((func) => {
+        func({ executeSql });
+      }),
+    };
+
+    await expect(store.newGame({
+      timer: 50,
+      letters: 'flapjacks',
+      tried: [
+        '82d6604e',
+        '83d1',
+        '494d',
+      ],
+    }))
+      .resolves.toEqual();
+    expect(store.letters).toEqual('flapjacks');
+    expect(store.words.peek()).toEqual([
+      'a95d96bj',
+    ]);
+    expect(store.tried.peek()).toEqual([
+      '82d6604e',
+      '83d1',
+      '494d',
+    ]);
+    expect(store.db.transaction).toHaveBeenCalledTimes(0);
+    expect(executeSql).toHaveBeenCalledTimes(0);
+    expect(store.scored).toEqual(false);
+    expect(store.statusText).toEqual('Welcome!');
+    expect(store.timer).toEqual(50);
+  });
+
+  it('Provides a toggleSelected action', () => {
+    expect(store.toggleSelected).toEqual(expect.any(Function));
+    expect(store.selected.peek()).toEqual([]);
+    store.toggleSelected('3');
+    expect(store.selected.peek()).toEqual(['3']);
+    store.toggleSelected('8');
+    store.toggleSelected('1');
+    expect(store.selected.peek()).toEqual(['3', '8', '1']);
+    store.toggleSelected('3');
+    store.toggleSelected('9');
+    store.toggleSelected('2');
+    store.toggleSelected('1');
+    expect(store.selected.peek()).toEqual(['8', '9', '2']);
   });
 });
