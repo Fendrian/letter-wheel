@@ -243,7 +243,7 @@ export default class AppState {
     }
   }
 
-  submitWord = () => {
+  @action submitWord = () => {
     // If game has already been scored, fail
     if (this.scored === true) {
       this.setStatus('Game already scored');
@@ -293,9 +293,9 @@ export default class AppState {
     return false;
   }
 
-  setStatus = (message) => {
+  @action setStatus = (message) => {
     this.statusText = message;
-    setTimeout(() => {
+    setTimeout(action(() => {
       if (this.statusText === message) {
         if (this.scored === false) {
           this.statusText = '';
@@ -303,7 +303,7 @@ export default class AppState {
           this.statusText = this.getScore();
         }
       }
-    }, 3000);
+    }), 3000);
   }
 
   getScore = () => {

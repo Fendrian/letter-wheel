@@ -4,6 +4,8 @@ import { NavigationActions } from 'react-navigation';
 
 import AppStore from '../AppStore';
 
+jest.useFakeTimers();
+
 const random = jest.spyOn(Math, 'random')
   .mockReturnValue(0.25)
   .mockName('random');
@@ -534,5 +536,133 @@ describe('Mobx Store', () => {
     expect(store.tried.peek()).toEqual(['eeee']);
     expect(store.selected.peek()).toEqual([]);
     expect(store.statusText).toEqual('Unrecognized word.');
+  });
+
+  it('Provides a setStatus action that updates statusText', () => {
+    jest.spyOn(store, 'getScore').mockReturnValue('FF413678');
+
+    expect(store.setStatus).toEqual(expect.any(Function));
+    store.statusText = '';
+
+    // Basic usage
+    store.setStatus('50D412D324A8');
+    expect(store.statusText).toEqual('50D412D324A8');
+    expect(setTimeout).toHaveBeenCalledTimes(1);
+    expect(setTimeout).toHaveBeenCalledWith(expect.any(Function), 3000);
+
+    // If status text is same and game is not scored, clear after timer
+    setTimeout.mock.calls[0][0]();
+    expect(store.statusText).toEqual('');
+
+    // If status text is same and game is scored, set to score after timer
+    store.scored = true;
+    setTimeout.mockClear();
+    store.setStatus('0B2B0E79');
+    expect(store.statusText).toEqual('0B2B0E79');
+    setTimeout.mock.calls[0][0]();
+    expect(store.statusText).toEqual('FF413678');
+
+    // If status text is not the same, do nothing.
+    store.scored = false;
+    setTimeout.mockClear();
+    store.setStatus('E6EE45B6');
+    store.statusText = 'asdf';
+    setTimeout.mock.calls[0][0]();
+    expect(store.statusText).toEqual('asdf');
+  });
+
+  it('Provides a getScore function returning current score and distance to next level', () => {
+    expect(store.getScore).toEqual(expect.any(Function));
+
+    store.words.replace([
+      'been',
+      'bend',
+      'bended',
+      'bender',
+      'blend',
+      'blended',
+      'blender',
+      'blunder',
+      'blundered',
+      'bundle',
+    ]);
+    store.tried.replace([]);
+    store.scores = [
+      { percent: 0, text: '548E' },
+      { percent: 40, text: '9F81' },
+      { percent: 80, text: '7DA2' },
+      { percent: 100, text: '4683' },
+    ];
+
+    expect(store.getScore()).toEqual({ text: '548E', toNext: 4 });
+
+    store.tried.replace([
+      'blend',
+      'blended',
+      'blender',
+    ]);
+    expect(store.getScore()).toEqual({ text: '548E', toNext: 1 });
+
+    store.tried.replace([
+      'blend',
+      'blended',
+      'blender',
+      'asdf',
+      'rscvd',
+      'asdfsdfd',
+    ]);
+    expect(store.getScore()).toEqual({ text: '548E', toNext: 1 });
+
+    store.tried.replace([
+      'blend',
+      'blended',
+      'blender',
+      'asdf',
+      'rscvd',
+      'asdfsdfd',
+      'blunder',
+      'blundered',
+      'bundle',
+    ]);
+    expect(store.getScore()).toEqual({ text: '9F81', toNext: 2 });
+
+    store.tried.replace([
+      'blend',
+      'blended',
+      'blender',
+      'asdf',
+      'rscvd',
+      'asdfsdfd',
+      'blunder',
+      'blundered',
+      'bundle',
+      'been',
+      'bend',
+    ]);
+    expect(store.getScore()).toEqual({ text: '7DA2', toNext: 2 });
+
+    store.tried.replace([
+      'blend',
+      'blended',
+      'blender',
+      'asdf',
+      'rscvd',
+      'asdfsdfd',
+      'blunder',
+      'blundered',
+      'bundle',
+      'been',
+      'bend',
+      'bended',
+      'bender',
+    ]);
+    expect(store.getScore()).toEqual({ text: '4683', toNext: 0 });
+  });
+
+  it('Provides a scoreGame function that sets a scored state', () => {
+    expect(store.scoreGame).toEqual(expect.any(Function));
+    store.scoreGame();
+    expect(store.scored).toEqual(true);
+    expect(store.statusText).toEqual('Game scored');
   });
 });
