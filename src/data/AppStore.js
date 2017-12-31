@@ -82,16 +82,14 @@ export default class AppState {
     if (this.tried.length === 0 && this.scored !== true) {
       return [{ word: 'No words', style: 'neutral' }];
     }
-    const sorted = this.tried.sort((a, b) => {
-      if (a.word < b.word) { return -1; }
-      if (a.word > b.word) { return 1; }
-      return 0;
-    }).slice();
+    const triedWords = this.tried.sort().map(word => (
+      { word, style: this.words.indexOf(word) !== -1 ? 'correct' : 'incorrect' }
+    ));
 
     // If the game has been scored, display all words
     if (this.scored === true) {
       const notFound = this.words.sort().filter(word => (
-        (typeof (this.tried.find(w => (w.word === word))) === 'undefined')
+        (typeof (this.tried.find(w => (w === word))) === 'undefined')
       )).map(word => (
         ({ word, style: 'neutral' })
       ));
@@ -99,7 +97,7 @@ export default class AppState {
         [
           { word: ' ', style: 'neutral' },
           { word: 'Your words:', style: 'neutral' },
-          ...sorted,
+          ...triedWords,
         ]
         :
         [];
@@ -111,7 +109,7 @@ export default class AppState {
     }
 
     // ...Otherwise just show words that have been tried
-    return sorted;
+    return triedWords;
   }
 
   constructor() {
@@ -232,7 +230,7 @@ export default class AppState {
     if (!cancel) {
       this.letters = newLetters;
       this.words.replace(newWords);
-      this.tried.replace((typeof (tried) === 'object') ? tried : []);
+      this.tried.replace(Array.isArray(tried) ? tried : []);
       this.selected.replace([]);
       this.scored = false;
       this.statusText = 'Welcome!';
@@ -270,14 +268,14 @@ export default class AppState {
     }
 
     // If word already guessed, fail
-    if (this.tried.find(w => (w.word === word))) {
+    if (this.tried.find(w => (w === word))) {
       this.setStatus('Already tried');
       return null;
     }
 
     // If the word is correct, report to user and add time if relevant
     if (this.words.indexOf(word) !== -1) {
-      this.tried.push({ word, style: 'correct' });
+      this.tried.push(word);
       this.selected.replace([]);
       if (this.timer > -1) {
         const addTime = (word.length * 5);
@@ -290,7 +288,7 @@ export default class AppState {
     }
 
     // Finally, just fail
-    this.tried.push({ word, style: 'incorrect' });
+    this.tried.push(word);
     this.selected.replace([]);
     this.setStatus('Unrecognized word.');
     return false;
@@ -311,7 +309,7 @@ export default class AppState {
 
   getScore = () => {
     const correct = this.tried.filter(tryEntry => (
-      this.words.indexOf(tryEntry.word) !== -1
+      this.words.indexOf(tryEntry) !== -1
     )).length;
     const adjustedScores = this.scores.map(scoreObj => (
       {

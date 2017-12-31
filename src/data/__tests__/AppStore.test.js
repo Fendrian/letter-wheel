@@ -286,4 +286,34 @@ describe('Mobx Store', () => {
     expect(store.statusText).toEqual('Welcome!');
     expect(store.timer).toEqual(50);
   });
+
+  it('Provides a triedWordList computed with formatting indications', () => {
+    store.letters = 'halibut';
+    store.words = [
+      'alit',
+      'bail',
+      'built',
+      'hail',
+      'halt',
+      'haul',
+      'tail',
+    ];
+    expect(store.triedWordList).toEqual([
+      { word: 'No words', style: 'neutral' },
+    ]);
+    store.tried = [
+      'alit',
+      'yrasd',
+      'built',
+      'bail',
+      'asdf',
+    ];
+    expect(store.triedWordList).toEqual([
+      { word: 'alit', style: 'correct' },
+      { word: 'asdf', style: 'incorrect' },
+      { word: 'bail', style: 'correct' },
+      { word: 'built', style: 'correct' },
+      { word: 'yrasd', style: 'incorrect' },
+    ]);
+  });
 });

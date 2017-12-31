@@ -14,6 +14,8 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 import ControlStyle from '../styles/ControlStyle';
 
+const listDataSource = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
+
 @inject('appStore') @observer
 export default class Control extends React.Component {
   static propTypes = {
@@ -38,9 +40,8 @@ export default class Control extends React.Component {
     onWrong() {},
   }
   @computed get dataSource() {
-    return this.ds.cloneWithRows(this.props.appStore.triedWordList);
+    return listDataSource.cloneWithRows(this.props.appStore.triedWordList);
   }
-  ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
   submitWord = () => {
     const wordValidity = this.props.appStore.submitWord();
     if (wordValidity === true) {
@@ -52,7 +53,7 @@ export default class Control extends React.Component {
   render() {
     const { appStore } = this.props;
     const correct = appStore.tried.filter(tryEntry => (
-      appStore.words.indexOf(tryEntry.word) !== -1
+      appStore.words.indexOf(tryEntry) !== -1
     )).length;
     const {
       backspaceTouch,
