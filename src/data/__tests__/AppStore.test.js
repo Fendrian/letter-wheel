@@ -22,6 +22,21 @@ describe('Mobx Store', () => {
     expect(store).toBeInstanceOf(AppStore);
   });
 
+  it('Provides a toggleSelected action', () => {
+    expect(store.toggleSelected).toEqual(expect.any(Function));
+    expect(store.selected.peek()).toEqual([]);
+    store.toggleSelected('3');
+    expect(store.selected.peek()).toEqual(['3']);
+    store.toggleSelected('8');
+    store.toggleSelected('1');
+    expect(store.selected.peek()).toEqual(['3', '8', '1']);
+    store.toggleSelected('3');
+    store.toggleSelected('9');
+    store.toggleSelected('2');
+    store.toggleSelected('1');
+    expect(store.selected.peek()).toEqual(['8', '9', '2']);
+  });
+
   it('Provides a random shuffle function', () => {
     const inputString = 'abcdefghijklmnopqrstuvwxyz';
     random.mockReturnValue(0.11658899463133832);
@@ -270,20 +285,5 @@ describe('Mobx Store', () => {
     expect(store.scored).toEqual(false);
     expect(store.statusText).toEqual('Welcome!');
     expect(store.timer).toEqual(50);
-  });
-
-  it('Provides a toggleSelected action', () => {
-    expect(store.toggleSelected).toEqual(expect.any(Function));
-    expect(store.selected.peek()).toEqual([]);
-    store.toggleSelected('3');
-    expect(store.selected.peek()).toEqual(['3']);
-    store.toggleSelected('8');
-    store.toggleSelected('1');
-    expect(store.selected.peek()).toEqual(['3', '8', '1']);
-    store.toggleSelected('3');
-    store.toggleSelected('9');
-    store.toggleSelected('2');
-    store.toggleSelected('1');
-    expect(store.selected.peek()).toEqual(['8', '9', '2']);
   });
 });
