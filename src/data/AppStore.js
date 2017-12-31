@@ -217,8 +217,8 @@ export default class AppState {
 
                 permutations = await this.getPermutatedWords(newLetters, this.db);
                 newWords = onlyWordsContaining(centerLetter, permutations);
-                resolve();
               }
+              resolve();
             },
           );
         });

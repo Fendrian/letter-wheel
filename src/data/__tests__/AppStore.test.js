@@ -1,5 +1,6 @@
 import { Alert, Dimensions } from 'react-native';
 import SQLite from 'react-native-sqlite-storage';
+import { NavigationActions } from 'react-navigation';
 
 import AppStore from '../AppStore';
 
@@ -24,6 +25,12 @@ jest.mock('react-native-sqlite-storage', () => {
     openDatabase: jest.fn().mockReturnValue(dbMock),
   };
 });
+jest.mock('react-navigation', () => ({
+  NavigationActions: {
+    reset: jest.fn().mockReturnValue('F54036181AE4'),
+    navigate: jest.fn().mockReturnValue('C6036B1B1E09'),
+  },
+}));
 
 describe('Mobx Store', () => {
   let store;
@@ -49,6 +56,20 @@ describe('Mobx Store', () => {
     });
     expect(store.orientation).toEqual(1);
     expect(store.width).toEqual(800);
+    Dimensions.addEventListener.mock.calls[0][1]({
+      window: {
+        width: 200,
+        height: 300,
+      },
+    });
+    expect(store.orientation).toEqual(0);
+    expect(store.width).toEqual(200);
+
+    jest.clearAllMocks();
+    Dimensions.get.mockReturnValue({ width: 500, height: 300 });
+    const store2 = new AppStore();
+    expect(store2.orientation).toEqual(1);
+    expect(store2.width).toEqual(500);
   });
 
   it('Opens the \'main.db\' SQLite database', () => {
@@ -173,6 +194,101 @@ describe('Mobx Store', () => {
     );
   });
 
+  it('Provides a triedWordList computed with formatting indications', () => {
+    store.letters = 'halibut';
+    store.words = [
+      'alit',
+      'bail',
+      'built',
+      'hail',
+      'halt',
+      'haul',
+      'tail',
+    ];
+    expect(store.triedWordList).toEqual([
+      { word: 'No words', style: 'neutral' },
+    ]);
+
+    store.tried.replace([
+      'alit',
+      'yrasd',
+      'built',
+      'bail',
+      'asdf',
+    ]);
+    expect(store.triedWordList).toEqual([
+      { word: 'alit', style: 'correct' },
+      { word: 'asdf', style: 'incorrect' },
+      { word: 'bail', style: 'correct' },
+      { word: 'built', style: 'correct' },
+      { word: 'yrasd', style: 'incorrect' },
+    ]);
+
+    store.scored = true;
+    expect(store.triedWordList).toEqual([
+      { word: 'Not found:', style: 'neutral' },
+      { word: 'hail', style: 'neutral' },
+      { word: 'halt', style: 'neutral' },
+      { word: 'haul', style: 'neutral' },
+      { word: 'tail', style: 'neutral' },
+      { word: ' ', style: 'neutral' },
+      { word: 'Your words:', style: 'neutral' },
+      { word: 'alit', style: 'correct' },
+      { word: 'asdf', style: 'incorrect' },
+      { word: 'bail', style: 'correct' },
+      { word: 'built', style: 'correct' },
+      { word: 'yrasd', style: 'incorrect' },
+    ]);
+
+    store.tried.clear();
+    expect(store.triedWordList).toEqual([
+      { word: 'Not found:', style: 'neutral' },
+      { word: 'alit', style: 'neutral' },
+      { word: 'bail', style: 'neutral' },
+      { word: 'built', style: 'neutral' },
+      { word: 'hail', style: 'neutral' },
+      { word: 'halt', style: 'neutral' },
+      { word: 'haul', style: 'neutral' },
+      { word: 'tail', style: 'neutral' },
+    ]);
+  });
+
+  it('Provides a \'nav\' key with navigation functions on it', () => {
+    expect(store.nav).toEqual(expect.any(Object));
+    expect(store.nav.goto).toEqual(expect.any(Function));
+    expect(store.nav.resetto).toEqual(expect.any(Function));
+
+    store.navigator = {};
+    expect(store.nav.goto()).toEqual(false);
+    expect(store.nav.resetto()).toEqual(false);
+
+    store.navigator.dispatch = jest.fn().mockReturnValue('EC18A79B1E3B');
+    expect(store.nav.goto('5913349A')).toEqual('EC18A79B1E3B');
+    expect(store.navigator.dispatch).toHaveBeenCalledTimes(1);
+    expect(store.navigator.dispatch).toHaveBeenCalledWith({
+      type: 'Navigation/NAVIGATE',
+      routeName: '5913349A',
+    });
+
+    store.navigator.dispatch.mockClear();
+    store.navigator.dispatch = jest.fn().mockReturnValue('FE765CEFB8E0');
+    expect(store.nav.resetto('ED5E7583')).toEqual('FE765CEFB8E0');
+    expect(store.navigator.dispatch).toHaveBeenCalledTimes(1);
+    expect(store.navigator.dispatch).toHaveBeenCalledWith('F54036181AE4');
+    expect(NavigationActions.reset).toHaveBeenCalledTimes(1);
+    expect(NavigationActions.reset).toHaveBeenCalledWith({
+      index: 0,
+      actions: [
+        'C6036B1B1E09',
+      ],
+    });
+    expect(NavigationActions.navigate).toHaveBeenCalledTimes(1);
+    expect(NavigationActions.navigate).toHaveBeenCalledWith({
+      routeName: 'ED5E7583',
+    });
+  });
+
+
   it('Provides a newGame function that can generate a new word', async () => {
     expect(store.newGame).toBeDefined();
     expect(typeof (store.newGame)).toEqual('function');
@@ -187,40 +303,41 @@ describe('Mobx Store', () => {
         'a95d96bj',
       ])
     ));
+    const item = jest.fn().mockReturnValue({
+      word: 'flapjacks',
+      a: 65,
+      b: 0,
+      c: 41,
+      d: 0,
+      e: 0,
+      f: 14,
+      g: 0,
+      h: 0,
+      i: 0,
+      j: 11,
+      k: 31,
+      l: 48,
+      m: 0,
+      n: 0,
+      o: 0,
+      p: 34,
+      q: 0,
+      r: 0,
+      s: 42,
+      t: 0,
+      u: 0,
+      v: 0,
+      w: 0,
+      x: 0,
+      y: 0,
+      z: 0,
+    });
     const executeSql = jest.fn((query, list, next) => {
       next(
         null,
         {
           rows: {
-            item: jest.fn().mockReturnValue({
-              word: 'flapjacks',
-              a: 65,
-              b: 0,
-              c: 41,
-              d: 0,
-              e: 0,
-              f: 14,
-              g: 0,
-              h: 0,
-              i: 0,
-              j: 11,
-              k: 31,
-              l: 48,
-              m: 0,
-              n: 0,
-              o: 0,
-              p: 34,
-              q: 0,
-              r: 0,
-              s: 42,
-              t: 0,
-              u: 0,
-              v: 0,
-              w: 0,
-              x: 0,
-              y: 0,
-              z: 0,
-            }),
+            item,
           },
         },
       );
@@ -291,6 +408,23 @@ describe('Mobx Store', () => {
     }))
       .resolves.toEqual();
     expect(store.timer).toEqual(4);
+
+    // test new game with no matching word
+    item.mockReturnValue();
+    store.letters = 'unchanged';
+    store.words.replace([
+      'fish',
+      'food',
+    ]);
+    store.tried.replace(['nope']);
+    store.selected.replace(['1']);
+    await expect(store.newGame({
+      wordsMin: 1000000,
+      wordsMax: 1000001,
+    }))
+      .resolves.toEqual();
+    expect(Alert.alert).toHaveBeenCalledTimes(1);
+    expect(Alert.alert).toHaveBeenCalledWith('No suitable words found. Please expand search parameters.');
   });
 
   it('Provides a newGame function that can load a provided game', async () => {
@@ -338,52 +472,5 @@ describe('Mobx Store', () => {
     expect(store.scored).toEqual(false);
     expect(store.statusText).toEqual('Welcome!');
     expect(store.timer).toEqual(50);
-  });
-
-  it('Provides a triedWordList computed with formatting indications', () => {
-    store.letters = 'halibut';
-    store.words = [
-      'alit',
-      'bail',
-      'built',
-      'hail',
-      'halt',
-      'haul',
-      'tail',
-    ];
-    expect(store.triedWordList).toEqual([
-      { word: 'No words', style: 'neutral' },
-    ]);
-
-    store.tried = [
-      'alit',
-      'yrasd',
-      'built',
-      'bail',
-      'asdf',
-    ];
-    expect(store.triedWordList).toEqual([
-      { word: 'alit', style: 'correct' },
-      { word: 'asdf', style: 'incorrect' },
-      { word: 'bail', style: 'correct' },
-      { word: 'built', style: 'correct' },
-      { word: 'yrasd', style: 'incorrect' },
-    ]);
-
-    store.scored = true;
-    expect(store.triedWordList).toEqual([
-      { word: 'Not found:', style: 'neutral' },
-      { word: 'hail', style: 'neutral' },
-      { word: 'halt', style: 'neutral' },
-      { word: 'haul', style: 'neutral' },
-      { word: 'tail', style: 'neutral' },
-      { word: ' ', style: 'neutral' },
-      { word: 'Your words:', style: 'neutral' },
-      { word: 'alit', style: 'correct' },
-      { word: 'asdf', style: 'incorrect' },
-      { word: 'bail', style: 'correct' },
-      { word: 'built', style: 'correct' },
-      { word: 'yrasd', style: 'incorrect' },
-    ]);
   });
 });
