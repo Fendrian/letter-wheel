@@ -1,5 +1,5 @@
 import { action, computed, observable } from 'mobx';
-import { Alert, Dimensions, ListView } from 'react-native';
+import { Alert, Dimensions } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import SQLite from 'react-native-sqlite-storage';
 
@@ -77,11 +77,10 @@ export default class AppState {
       });
     });
 
-  // Data source logic for the game word list display
-  ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
-  @computed get dataSource() {
+  // Formatting logic for the game word list display
+  @computed get triedWordList() {
     if (this.tried.length === 0 && this.scored !== true) {
-      return this.ds.cloneWithRows([{ word: 'No words', style: 'neutral' }]);
+      return [{ word: 'No words', style: 'neutral' }];
     }
     const sorted = this.tried.sort((a, b) => {
       if (a.word < b.word) { return -1; }
@@ -104,15 +103,15 @@ export default class AppState {
         ]
         :
         [];
-      return this.ds.cloneWithRows([
+      return [
         { word: 'Not found:', style: 'neutral' },
         ...notFound,
         ...yourWords,
-      ]);
+      ];
     }
 
     // ...Otherwise just show words that have been tried
-    return this.ds.cloneWithRows(sorted);
+    return sorted;
   }
 
   constructor() {

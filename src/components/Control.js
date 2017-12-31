@@ -8,6 +8,7 @@ import {
   Text,
   TouchableOpacity,
 } from 'react-native';
+import { computed } from 'mobx';
 import { inject, observer } from 'mobx-react';
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -17,7 +18,7 @@ import ControlStyle from '../styles/ControlStyle';
 export default class Control extends React.Component {
   static propTypes = {
     appStore: PropTypes.shape({
-      dataSource: PropTypes.object.isRequired,
+      triedWordList: PropTypes.array.isRequired,
       gameModal: PropTypes.object,
       getScore: PropTypes.func.isRequired,
       letters: PropTypes.string.isRequired,
@@ -36,6 +37,10 @@ export default class Control extends React.Component {
     onCorrect() {},
     onWrong() {},
   }
+  @computed get dataSource() {
+    return this.ds.cloneWithRows(this.props.appStore.triedWordList);
+  }
+  ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
   submitWord = () => {
     const wordValidity = this.props.appStore.submitWord();
     if (wordValidity === true) {
@@ -117,7 +122,7 @@ export default class Control extends React.Component {
               </Text>
             </View>
             <ListView
-              dataSource={appStore.dataSource}
+              dataSource={this.dataSource}
               enableEmptySections
               renderRow={singleRow => (
                 <Text style={ControlStyle[singleRow.style]}>
