@@ -473,4 +473,66 @@ describe('Mobx Store', () => {
     expect(store.statusText).toEqual('Welcome!');
     expect(store.timer).toEqual(50);
   });
+
+  it('Provides a submitWord function with validation and user feedback', () => {
+    expect(store.submitWord).toEqual(expect.any(Function));
+
+    store.setStatus('');
+    store.letters = 'abcdefghe';
+    store.scored = true;
+    store.timer = 50;
+    store.tried.replace(['aade']);
+    store.words.replace([
+      'ache',
+      'cafe',
+    ]);
+    expect(store.submitWord()).toEqual(false);
+    expect(store.tried.peek()).toEqual(['aade']);
+    expect(store.statusText).toEqual('Game already scored');
+
+    store.scored = false;
+    store.selected.replace(['1', '2', '3']);
+    expect(store.submitWord()).toEqual(false);
+    expect(store.tried.peek()).toEqual(['aade']);
+    expect(store.statusText).toEqual('Too short');
+
+    store.selected.replace(['0', '1', '2', '3']);
+    expect(store.submitWord()).toEqual(false);
+    expect(store.tried.peek()).toEqual(['aade']);
+    expect(store.statusText).toEqual('Missing middle letter');
+
+    store.selected.replace(['0', '0', '3', '4']);
+    expect(store.submitWord()).toEqual(null);
+    expect(store.tried.peek()).toEqual(['aade']);
+    expect(store.statusText).toEqual('Already tried');
+
+    store.selected.replace(['0', '2', '7', '4']);
+    expect(store.submitWord()).toEqual(true);
+    expect(store.tried.peek()).toEqual([
+      'aade',
+      'ache',
+    ]);
+    expect(store.selected.peek()).toEqual([]);
+    expect(store.timer).toEqual(70);
+    expect(store.statusText).toEqual('Nice! +20 seconds.');
+
+    store.timer = -1;
+    store.selected.replace(['2', '0', '5', '4']);
+    store.tried.replace(['asdf']);
+    expect(store.submitWord()).toEqual(true);
+    expect(store.tried.peek()).toEqual([
+      'asdf',
+      'cafe',
+    ]);
+    expect(store.selected.peek()).toEqual([]);
+    expect(store.timer).toEqual(-1);
+    expect(store.statusText).toEqual('Nice!');
+
+    store.selected.replace(['4', '4', '4', '4']);
+    store.tried.replace([]);
+    expect(store.submitWord()).toEqual(false);
+    expect(store.tried.peek()).toEqual(['eeee']);
+    expect(store.selected.peek()).toEqual([]);
+    expect(store.statusText).toEqual('Unrecognized word.');
+  });
 });
