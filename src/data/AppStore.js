@@ -325,7 +325,8 @@ export default class AppState {
     return ({
       text: currentScore.text,
       toNext: (typeof (nextScore) !== 'undefined') ?
-        (nextScore.numWords - correct) :
+        (nextScore.numWords - correct)
+        :
         0,
     });
   }
