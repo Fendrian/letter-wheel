@@ -116,7 +116,7 @@ export default class AppState {
     const { width, height } = Dimensions.get('window');
     Dimensions.addEventListener('change', (data) => {
       this.orientation = (data.window.width < data.window.height) ? 0 : 1;
-      this.width = Dimensions.get('window').width;
+      this.width = data.window.width;
     });
     this.orientation = (width < height) ? 0 : 1;
     this.width = Dimensions.get('window').width;
@@ -205,8 +205,7 @@ export default class AppState {
               const row = rows.item(0);
 
               if (!row) {
-                // TODO: Handle no word matching the specified range
-                console.log('Cancelling');
+                Alert.alert('No suitable words found. Please expand search parameters.');
                 cancel = true;
               } else {
                 const centerLetter = this.shuffle(alphabet.join(''))

@@ -1,21 +1,75 @@
+import { Alert, Dimensions } from 'react-native';
+import SQLite from 'react-native-sqlite-storage';
+
 import AppStore from '../AppStore';
 
-const random = jest
-  .fn()
+const random = jest.spyOn(Math, 'random')
   .mockReturnValue(0.25)
   .mockName('random');
 
+jest.mock('react-native', () => (
+  {
+    Alert: {
+      alert: jest.fn(),
+    },
+    Dimensions: {
+      addEventListener: jest.fn().mockReturnValue(),
+      get: jest.fn().mockReturnValue({ width: 400, height: 800 }),
+    },
+  }
+));
+jest.mock('react-native-sqlite-storage', () => {
+  const dbMock = { transaction: jest.fn() };
+  return {
+    openDatabase: jest.fn().mockReturnValue(dbMock),
+  };
+});
 
 describe('Mobx Store', () => {
   let store;
-  const originalRandom = Math.random;
 
   beforeEach(() => {
-    Math.random = random;
     store = new AppStore();
   });
   afterEach(() => {
-    Math.random = originalRandom;
+    jest.clearAllMocks();
+  });
+
+  it('Adds an event listener to the dimensions', () => {
+    expect(Dimensions.addEventListener).toHaveBeenCalledTimes(1);
+    expect(Dimensions.addEventListener).toHaveBeenCalledWith('change', expect.any(Function));
+    expect(Dimensions.get).toHaveBeenCalledWith('window');
+    expect(store.orientation).toEqual(0);
+    expect(store.width).toEqual(400);
+    Dimensions.addEventListener.mock.calls[0][1]({
+      window: {
+        width: 800,
+        height: 400,
+      },
+    });
+    expect(store.orientation).toEqual(1);
+    expect(store.width).toEqual(800);
+  });
+
+  it('Opens the \'main.db\' SQLite database', () => {
+    expect(SQLite.openDatabase).toHaveBeenCalledWith(
+      {
+        name: 'main.db',
+        createFromLocation: 1,
+      },
+      expect.any(Function),
+      expect.any(Function),
+    );
+    expect(SQLite.openDatabase).toHaveBeenCalledTimes(1);
+    expect(store.db).toEqual(SQLite.openDatabase());
+    SQLite.openDatabase.mock.calls[0][2]();
+    expect(Alert.alert).toHaveBeenCalledTimes(1);
+    expect(Alert.alert).toHaveBeenCalledWith('Word database failed to open. Please re-install the app.');
+  });
+
+  it('Specifies score levels', () => {
+    expect(store.scores).toEqual(expect.any(Array));
+    expect(store.scores[0]).toEqual(expect.any(Object));
   });
 
   it('Exports an AppState component', () => {
@@ -171,11 +225,10 @@ describe('Mobx Store', () => {
         },
       );
     });
-    store.db = {
-      transaction: jest.fn((func) => {
+    store.db.transaction
+      .mockImplementation(((func) => {
         func({ executeSql });
-      }),
-    };
+      }));
 
     // Test default new game
     await expect(store.newGame({
@@ -301,6 +354,7 @@ describe('Mobx Store', () => {
     expect(store.triedWordList).toEqual([
       { word: 'No words', style: 'neutral' },
     ]);
+
     store.tried = [
       'alit',
       'yrasd',
@@ -309,6 +363,22 @@ describe('Mobx Store', () => {
       'asdf',
     ];
     expect(store.triedWordList).toEqual([
+      { word: 'alit', style: 'correct' },
+      { word: 'asdf', style: 'incorrect' },
+      { word: 'bail', style: 'correct' },
+      { word: 'built', style: 'correct' },
+      { word: 'yrasd', style: 'incorrect' },
+    ]);
+
+    store.scored = true;
+    expect(store.triedWordList).toEqual([
+      { word: 'Not found:', style: 'neutral' },
+      { word: 'hail', style: 'neutral' },
+      { word: 'halt', style: 'neutral' },
+      { word: 'haul', style: 'neutral' },
+      { word: 'tail', style: 'neutral' },
+      { word: ' ', style: 'neutral' },
+      { word: 'Your words:', style: 'neutral' },
       { word: 'alit', style: 'correct' },
       { word: 'asdf', style: 'incorrect' },
       { word: 'bail', style: 'correct' },
