@@ -1,27 +1,50 @@
-import { action, computed, observable } from 'mobx';
+import { action, computed, observable, runInAction, useStrict } from 'mobx';
 import { Alert, Dimensions } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import SQLite from 'react-native-sqlite-storage';
 
+useStrict(true);
+
 const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
 export default class AppState {
   @observable aboutModal = {};
+  @action loadAboutModal = (modal) => {
+    this.aboutModal = modal;
+  }
+
   @observable gameModal = {};
+  @action loadGameModal = (modal) => {
+    this.gameModal = modal;
+  }
+
   @observable instructionsModal = {};
+  @action loadInstructionsModal = (modal) => {
+    this.instructionsModal = modal;
+  }
+
   @observable letters = '         ';
   @observable loading = false;
+  @action setLoading = (bool) => {
+    this.loading = bool;
+  };
   @observable navigator = {};
-  @observable newGameOptions = {
+  @observable newGameOptions = observable.map({
     timed: false,
     wordRange: {
       min: 10,
       max: 49,
     },
-  };
+  });
+  @action setNewGameOptions = (key, val) => {
+    this.newGameOptions.set(key, val);
+  }
   @observable orientation = 0;
   @observable scored = false;
   @observable statusText = '';
   @observable timer = -1;
+  @action setTimer = (seconds) => {
+    this.timer = seconds;
+  }
   @observable tried = [];
   @observable width = 0;
   @observable words = [];
@@ -115,8 +138,10 @@ export default class AppState {
   constructor() {
     const { width, height } = Dimensions.get('window');
     Dimensions.addEventListener('change', (data) => {
-      this.orientation = (data.window.width < data.window.height) ? 0 : 1;
-      this.width = data.window.width;
+      runInAction(() => {
+        this.orientation = (data.window.width < data.window.height) ? 0 : 1;
+        this.width = data.window.width;
+      });
     });
     this.orientation = (width < height) ? 0 : 1;
     this.width = Dimensions.get('window').width;
@@ -158,7 +183,7 @@ export default class AppState {
     },
   }
 
-  @action async newGame({
+  async newGame({
     letters,
     timer,
     tried,
@@ -227,19 +252,21 @@ export default class AppState {
 
     // Load up the data store with the results
     if (!cancel) {
-      this.letters = newLetters;
-      this.words.replace(newWords);
-      this.tried.replace(Array.isArray(tried) ? tried : []);
-      this.selected.replace([]);
-      this.scored = false;
-      this.statusText = 'Welcome!';
+      runInAction(() => {
+        this.letters = newLetters;
+        this.words.replace(newWords);
+        this.tried.replace(Array.isArray(tried) ? tried : []);
+        this.selected.replace([]);
+        this.scored = false;
+        this.statusText = 'Welcome!';
 
-      if (typeof (timer) === 'number') {
-        this.timer = timer === -1 ? ((newWords.length - 1) * 4) : timer;
-      } else {
-        this.timer = -1;
-      }
-      console.log(newWords);
+        if (typeof (timer) === 'number') {
+          this.timer = timer === -1 ? ((newWords.length - 1) * 4) : timer;
+        } else {
+          this.timer = -1;
+        }
+        console.log(newWords);
+      });
     }
   }
 
@@ -279,7 +306,7 @@ export default class AppState {
       if (this.timer > -1) {
         const addTime = (word.length * 5);
         this.setStatus(`Nice! +${addTime} seconds.`);
-        this.timer += addTime;
+        this.timer = (this.timer + addTime);
       } else {
         this.setStatus('Nice!');
       }
@@ -331,7 +358,7 @@ export default class AppState {
     });
   }
 
-  scoreGame = () => {
+  @action scoreGame = () => {
     this.scored = true;
     this.statusText = 'Game scored';
   }

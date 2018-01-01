@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
-import { computed } from 'mobx';
+import { action, computed, observable } from 'mobx';
 import { inject, observer } from 'mobx-react';
 import nativeTimer from 'react-native-timer';
 import * as Animatable from 'react-native-animatable';
@@ -12,82 +12,53 @@ import GameScreenStyle from '../styles/GameScreenStyle';
 import Grid from '../components/Grid';
 import Control from '../components/Control';
 
-const customPulse = {
-  0: {
-    scale: 1,
-  },
-  0.05: {
-    scale: 1,
-  },
-  0.3: {
-    scale: 1.05,
-  },
-  0.7: {
-    scale: 0.95,
-  },
-  0.95: {
-    scale: 1,
-  },
-  1: {
-    scale: 1,
-  },
-};
-
-const customShake = {
-  0: {
-    translateX: 0,
-  },
-  0.25: {
-    translateX: -6,
-  },
-  0.375: {
-    translateX: 6,
-  },
-  0.5: {
-    translateX: -6,
-  },
-  0.625: {
-    translateX: 6,
-  },
-  0.75: {
-    translateX: -6,
-  },
-  1: {
-    translateX: 0,
-  },
-};
-
-@inject('appStore') @observer
+@inject('appStore')
+@observer
 export default class GameScreen extends React.Component {
   static propTypes = {
     appStore: PropTypes.shape({
       aboutModal: PropTypes.object,
-      letters: PropTypes.string.isRequired,
-      navigator: PropTypes.object,
       gameModal: PropTypes.object,
       instructionsModal: PropTypes.object,
+      letters: PropTypes.string.isRequired,
+      navigator: PropTypes.object,
       orientation: PropTypes.number.isRequired,
-      selected: PropTypes.object.isRequired,
       scoreGame: PropTypes.func.isRequired,
+      selected: PropTypes.object.isRequired,
+      setTimer: PropTypes.func.isRequired,
       submitWord: PropTypes.func.isRequired,
       timer: PropTypes.number.isRequired,
       toggleSelected: PropTypes.func.isRequired,
     }).isRequired,
   }
 
-  constructor() {
-    super();
-    this.state = {
-      submitState: '',
-    };
-  }
+  static customPulseAnimation = {
+    0.00: { scale: 1 },
+    0.05: { scale: 1 },
+    0.30: { scale: 1.05 },
+    0.70: { scale: 0.95 },
+    0.95: { scale: 1 },
+    1.00: { scale: 1 },
+  };
+
+  static customShakeAnimation = {
+    0.000: { translateX: 0 },
+    0.250: { translateX: -6 },
+    0.375: { translateX: 6 },
+    0.500: { translateX: -6 },
+    0.625: { translateX: 6 },
+    0.750: { translateX: -6 },
+    1.000: { translateX: 0 },
+  };
 
   componentDidMount = () => {
     const { appStore } = this.props;
 
     KeyEvent.onKeyUpListener((keyCode) => {
+      const SOFT_LEFT = 1;
+      const OPTION_KEY = 82;
       if (
-        (keyCode === 1 || keyCode === 82) &&
+        (keyCode === SOFT_LEFT || keyCode === OPTION_KEY) &&
         appStore.gameModal.state.isOpen !== true &&
         appStore.aboutModal.state.isOpen !== true &&
         appStore.instructionsModal.state.isOpen !== true
@@ -114,9 +85,9 @@ export default class GameScreen extends React.Component {
           appStore.instructionsModal.state.isOpen !== true
         ) {
           if (appStore.timer > 0) {
-            this.props.appStore.timer = (appStore.timer - 1);
+            this.props.appStore.setTimer(appStore.timer - 1);
           } else {
-            this.props.appStore.timer = -1;
+            this.props.appStore.setTimer(-1);
             appStore.scoreGame();
           }
         }
@@ -131,11 +102,11 @@ export default class GameScreen extends React.Component {
   }
 
   onCorrect = () => {
-    this.setState({ submitState: 'correct' });
+    this.triggerAnimation('correct');
   }
 
   onWrong = () => {
-    this.setState({ submitState: 'incorrect' });
+    this.triggerAnimation('incorrect');
   }
 
   @computed get grid() {
@@ -149,56 +120,57 @@ export default class GameScreen extends React.Component {
     return grid;
   }
 
+  @observable animationState = '';
+  @action triggerAnimation = (str) => {
+    this.animationState = str;
+  }
+  @action clearAnimation = () => {
+    this.animationState = '';
+  }
+
   renderGrid = () => {
     const { gridWrapper } = GameScreenStyle;
-    if (this.state.submitState === 'incorrect') {
-      return (
-        <Animatable.View
-          animation={customShake}
-          duration={500}
-          iterationCount={1}
-          onAnimationEnd={() => { this.setState({ submitState: '' }); }}
-          style={gridWrapper}
-        >
-          <Grid
-            submitWord={this.props.appStore.submitWord}
-            grid={this.grid}
-            onCorrect={this.onCorrect}
-            onWrong={this.onWrong}
-            toggleSelected={this.props.appStore.toggleSelected}
-          />
-        </Animatable.View>
-      );
-    } else if (this.state.submitState === 'correct') {
-      return (
-        <Animatable.View
-          animation={customPulse}
-          duration={1000}
-          iterationCount={1}
-          onAnimationEnd={() => { this.setState({ submitState: '' }); }}
-          style={gridWrapper}
-        >
-          <Grid
-            submitWord={this.props.appStore.submitWord}
-            grid={this.grid}
-            onCorrect={this.onCorrect}
-            onWrong={this.onWrong}
-            toggleSelected={this.props.appStore.toggleSelected}
-          />
-        </Animatable.View>
-      );
-    }
-    return (
-      <View style={gridWrapper}>
-        <Grid
-          submitWord={this.props.appStore.submitWord}
-          grid={this.grid}
-          onCorrect={this.onCorrect}
-          onWrong={this.onWrong}
-          toggleSelected={this.props.appStore.toggleSelected}
-        />
-      </View>
+    const GridComponent = (
+      <Grid
+        submitWord={this.props.appStore.submitWord}
+        grid={this.grid}
+        onCorrect={this.onCorrect}
+        onWrong={this.onWrong}
+        toggleSelected={this.props.appStore.toggleSelected}
+      />
     );
+    switch (this.animationState) {
+      case 'correct':
+        return (
+          <Animatable.View
+            animation={this.constructor.customPulseAnimation}
+            duration={1000}
+            iterationCount={1}
+            onAnimationEnd={this.clearAnimation}
+            style={gridWrapper}
+          >
+            {GridComponent}
+          </Animatable.View>
+        );
+      case 'incorrect':
+        return (
+          <Animatable.View
+            animation={this.constructor.customShakeAnimation}
+            duration={500}
+            iterationCount={1}
+            onAnimationEnd={this.clearAnimation}
+            style={gridWrapper}
+          >
+            {GridComponent}
+          </Animatable.View>
+        );
+      default:
+        return (
+          <View style={gridWrapper}>
+            {GridComponent}
+          </View>
+        );
+    }
   }
   render() {
     const { appStore } = this.props;

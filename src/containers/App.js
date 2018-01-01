@@ -8,7 +8,8 @@ import MenuModal from '../components/MenuModal';
 import AboutModal from '../components/AboutModal';
 import InstructionsModal from '../components/InstructionsModal';
 
-@inject('appStore') @observer
+@inject('appStore')
+@observer
 class App extends React.Component {
   static propTypes = {
     appStore: PropTypes.shape({
@@ -20,7 +21,11 @@ class App extends React.Component {
     const { appStore, children } = this.props;
     return (
       <View style={{ flex: 1 }}>
-        <Spinner visible={appStore.loading} textContent={'Loading...'} textStyle={{ color: '#FFF' }} />
+        <Spinner
+          visible={appStore.loading}
+          textContent="Loading..."
+          textStyle={{ color: '#FFF' }}
+        />
         {children}
         <MenuModal />
         <AboutModal />

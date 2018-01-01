@@ -10,25 +10,8 @@ import Button from 'react-native-button';
 import WrapperStyle from '../styles/WrapperStyle';
 import NewScreenStyle from '../styles/NewScreenStyle';
 
-const options = [
-  {
-    label: '10-49',
-    min: 10,
-    max: 49,
-  },
-  {
-    label: '50-99',
-    min: 50,
-    max: 99,
-  },
-  {
-    label: '100+',
-    min: 100,
-    max: 999,
-  },
-];
-
-@inject('appStore') @observer
+@inject('appStore')
+@observer
 export default class NewScreen extends React.Component {
   static propTypes = {
     appStore: PropTypes.shape({
@@ -39,90 +22,99 @@ export default class NewScreen extends React.Component {
       }).isRequired,
       newGame: PropTypes.func.isRequired,
       newGameOptions: PropTypes.shape({
-        timed: PropTypes.bool.isRequired,
-        wordRange: PropTypes.shape({
-          min: PropTypes.number,
-          max: PropTypes.number,
-        }).isRequired,
+        get: PropTypes.func.isRequired,
       }).isRequired,
+      setNewGameOptions: PropTypes.func.isRequired,
+      setLoading: PropTypes.func,
       width: PropTypes.number.isRequired,
     }).isRequired,
   }
-  constructor() {
-    super();
-    this.state = {
-      min: 0,
-      max: 0,
-    };
-  }
-  componentDidMount = () => {
-    this.setState(this.props.appStore.newGameOptions.wordRange);
-  }
+
+  static options = [
+    {
+      label: '10-49',
+      min: 10,
+      max: 49,
+    },
+    {
+      label: '50-99',
+      min: 50,
+      max: 99,
+    },
+    {
+      label: '100+',
+      min: 100,
+      max: 999,
+    },
+  ];
+
   onSliderMove = (sliderPosition) => {
     if (Array.isArray(sliderPosition)) {
-      const { newGameOptions } = this.props.appStore;
-      Object.assign(newGameOptions, {
-        wordRange: {
-          min: sliderPosition[0],
-          max: sliderPosition[1],
-        },
+      this.setSelectedOption({
+        min: sliderPosition[0],
+        max: sliderPosition[1],
       });
     }
   }
+
   setSelectedOption = ({ min, max }) => {
-    const { newGameOptions } = this.props.appStore;
-    const wordRange = { min, max };
-    Object.assign(newGameOptions, {
-      wordRange,
+    this.props.appStore.setNewGameOptions('wordRange', {
+      min,
+      max,
     });
-    this.setState(wordRange);
   }
+
   getSelectedOption = () => {
-    const { min, max } = this.props.appStore.newGameOptions.wordRange;
-    return options.indexOf(options.find(option => (
-      min === option.min && max === option.max
-    )));
+    const { min, max } = this.props.appStore.newGameOptions.get('wordRange');
+    return this.constructor.options.indexOf((
+      this.constructor.options.find(option => (
+        min === option.min && max === option.max
+      ))
+    ));
   }
+
   getSliderWidth = () => {
     const { width } = this.props.appStore;
     return width < 400 ? (width - 70) : 330;
   }
+
   toggleTimed = () => {
-    const { newGameOptions } = this.props.appStore;
-    Object.assign(newGameOptions, {
-      timed: !newGameOptions.timed,
-    });
+    this.props.appStore.setNewGameOptions(
+      'timed',
+      !this.props.appStore.newGameOptions.get('timed'),
+    );
   }
+
   start = () => {
     const { appStore } = this.props;
     const start = new Date().getTime();
-    this.props.appStore.loading = true;
+    const { min, max } = appStore.newGameOptions.get('wordRange');
+    appStore.setLoading(true);
     appStore.newGame({
-      wordsMin: appStore.newGameOptions.wordRange.min,
-      wordsMax: appStore.newGameOptions.wordRange.max,
-      timer: appStore.newGameOptions.timed ? -1 : undefined,
+      wordsMin: min,
+      wordsMax: max,
+      timer: appStore.newGameOptions.get('timed') ? -1 : undefined,
     })
       .then(() => {
         // Wait a minimum of 500ms to help the loading screen feel right
         const end = new Date().getTime();
         setTimeout(() => {
           appStore.nav.goto('Game');
-          this.props.appStore.loading = false;
+          this.props.appStore.setLoading(false);
         }, (500 - (end - start)));
       });
   }
+
   render() {
     const {
       start,
       setSelectedOption,
       toggleTimed,
     } = this;
-    const {
-      timed,
-      wordRange,
-    } = this.props.appStore.newGameOptions;
+    const timed = this.props.appStore.newGameOptions.get('timed');
+    const { min, max } = this.props.appStore.newGameOptions.get('wordRange');
     const { instructionsModal } = this.props.appStore;
-    const selected = [this.state.min, this.state.max];
+    const selected = [min, max];
     const optionsArray = [...Array.from(Array(91)).map((a, i) => i + 10), 999];
     const { container } = WrapperStyle;
     const {
@@ -161,7 +153,7 @@ export default class NewScreen extends React.Component {
                   containerBorderTint={tint}
                   extractText={option => option.label}
                   onSelection={setSelectedOption}
-                  options={options}
+                  options={this.constructor.options}
                   optionStyle={wordItems}
                   selectedIndex={this.getSelectedOption()}
                   separatorTint={tint}
@@ -173,9 +165,10 @@ export default class NewScreen extends React.Component {
             <View style={menuRow}>
               <Text style={wordsGenerated}>
                 {
-                  wordRange.max !== 999 ?
-                  `${wordRange.min} to ${wordRange.max} words` :
-                  `At least ${wordRange.min} words`
+                  max !== 999 ?
+                    `${min} to ${max} words`
+                    :
+                    `At least ${min} words`
                 }
               </Text>
             </View>

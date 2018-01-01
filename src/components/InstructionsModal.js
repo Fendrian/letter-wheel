@@ -6,11 +6,13 @@ import Modal from 'react-native-modalbox';
 
 import InstructionsModalStyle from '../styles/InstructionsModalStyle';
 
-@inject('appStore') @observer
+@inject('appStore')
+@observer
 class AboutModal extends React.Component {
   static propTypes = {
     appStore: PropTypes.shape({
       instructionsModal: PropTypes.object,
+      loadInstructionsModal: PropTypes.func.isRequired,
     }).isRequired,
   }
   render() {
@@ -18,10 +20,10 @@ class AboutModal extends React.Component {
     return (
       <Modal
         backButtonClose
-        entry={'bottom'}
-        position={'center'}
+        entry="bottom"
+        position="center"
         style={InstructionsModalStyle.modal}
-        ref={(ref) => { appStore.instructionsModal = ref; }}
+        ref={appStore.loadInstructionsModal}
         swipeToClose
       >
         <View style={InstructionsModalStyle.container}>

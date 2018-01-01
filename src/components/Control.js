@@ -16,7 +16,8 @@ import ControlStyle from '../styles/ControlStyle';
 
 const listDataSource = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
 
-@inject('appStore') @observer
+@inject('appStore')
+@observer
 export default class Control extends React.Component {
   static propTypes = {
     appStore: PropTypes.shape({
@@ -78,7 +79,8 @@ export default class Control extends React.Component {
       timerText,
     } = ControlStyle;
     const formattedTimer = appStore.timer / 60 >= 1 ?
-      `${Math.floor(appStore.timer / 60)}m ${appStore.timer % 60}s` :
+      `${Math.floor(appStore.timer / 60)}m ${appStore.timer % 60}s`
+      :
       `${appStore.timer % 60}s`;
     const score = appStore.getScore();
     const feedbackText = (() => {

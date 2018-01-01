@@ -6,11 +6,13 @@ import Modal from 'react-native-modalbox';
 
 import MenuModalStyle from '../styles/MenuModalStyle';
 
-@inject('appStore') @observer
+@inject('appStore')
+@observer
 export default class MenuModal extends React.Component {
   static propTypes = {
     appStore: PropTypes.shape({
       aboutModal: PropTypes.object,
+      loadAboutModal: PropTypes.func.isRequired,
       gameModal: PropTypes.object,
       instructionsModal: PropTypes.object,
       nav: PropTypes.object.isRequired,
@@ -29,10 +31,10 @@ export default class MenuModal extends React.Component {
     return (
       <Modal
         backButtonClose
-        entry={'bottom'}
-        position={'center'}
+        entry="bottom"
+        position="center"
         style={MenuModalStyle.modal}
-        ref={(ref) => { appStore.gameModal = ref; }}
+        ref={appStore.loadGameModal}
         swipeToClose
       >
         <View style={container}>

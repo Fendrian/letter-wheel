@@ -7,11 +7,13 @@ import Hyperlink from 'react-native-hyperlink';
 
 import AboutModalStyle from '../styles/AboutModalStyle';
 
-@inject('appStore') @observer
+@inject('appStore')
+@observer
 class AboutModal extends React.Component {
   static propTypes = {
     appStore: PropTypes.shape({
       aboutModal: PropTypes.object,
+      loadAboutModal: PropTypes.func.isRequired,
     }).isRequired,
   }
   render() {
@@ -19,10 +21,10 @@ class AboutModal extends React.Component {
     return (
       <Modal
         backButtonClose
-        entry={'bottom'}
-        position={'center'}
+        entry="bottom"
+        position="center"
         style={AboutModalStyle.modal}
-        ref={(ref) => { appStore.aboutModal = ref; }}
+        ref={appStore.loadAboutModal}
         swipeToClose
       >
         <View style={AboutModalStyle.container}>
@@ -41,7 +43,7 @@ class AboutModal extends React.Component {
           >
             <Text style={AboutModalStyle.text}>
               {'Original copyright © 2017 by Wolf Hatch. The source code for this app is released ' +
-              'under the MIT license at https://github.com/Fendrian/target-words'} 
+              'under the MIT license at https://github.com/Fendrian/target-words'}
             </Text>
           </Hyperlink>
           <Text style={AboutModalStyle.text}>
