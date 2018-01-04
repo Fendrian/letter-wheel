@@ -99,6 +99,64 @@ describe('Mobx Store', () => {
     expect(store).toBeInstanceOf(AppStore);
   });
 
+  it('Provides a loadAboutModal function that updates the aboutModal variable', () => {
+    expect(store.loadAboutModal).toEqual(expect.any(Function));
+    expect(store.aboutModal).toEqual({});
+    store.loadAboutModal({ fish: '4DF0A4293A9C' });
+    expect(store.aboutModal.fish).toEqual('4DF0A4293A9C');
+    store.loadAboutModal({});
+    expect(store.aboutModal).toEqual({});
+  });
+
+  it('Provides a loadGameModal function that updates the gameModal variable', () => {
+    expect(store.loadGameModal).toEqual(expect.any(Function));
+    expect(store.gameModal).toEqual({});
+    store.loadGameModal({ fish: '4DF0A4293A9C' });
+    expect(store.gameModal.fish).toEqual('4DF0A4293A9C');
+    store.loadGameModal({});
+    expect(store.gameModal).toEqual({});
+  });
+
+  it('Provides a loadInstructionsModal function that updates the instructionsModal variable', () => {
+    expect(store.loadInstructionsModal).toEqual(expect.any(Function));
+    expect(store.instructionsModal).toEqual({});
+    store.loadInstructionsModal({ fish: '4DF0A4293A9C' });
+    expect(store.instructionsModal.fish).toEqual('4DF0A4293A9C');
+    store.loadInstructionsModal({});
+    expect(store.instructionsModal).toEqual({});
+  });
+
+  it('Provides a setLoading function that updates the loading variable', () => {
+    expect(store.setLoading).toEqual(expect.any(Function));
+    expect(store.loading).toEqual(false);
+    store.setLoading(true);
+    expect(store.loading).toEqual(true);
+    store.setLoading(null);
+    expect(store.loading).toEqual(false);
+  });
+
+  it('Provides a setNewGameOptions function that updates the newGameOptions variable', () => {
+    expect(store.setNewGameOptions).toEqual(expect.any(Function));
+    expect(store.newGameOptions.get('asdf')).toEqual(undefined);
+    store.setNewGameOptions('asdf', true);
+    expect(store.newGameOptions.get('asdf')).toEqual(true);
+    store.setNewGameOptions('asdf', false);
+    expect(store.newGameOptions.get('asdf')).toEqual(false);
+    store.setNewGameOptions('7CFD8854AD3E', '644C70F7');
+    expect(store.newGameOptions.get('7CFD8854AD3E')).toEqual('644C70F7');
+  });
+
+  it('Provides a setTimer function that updates the timer variable', () => {
+    expect(store.setTimer).toEqual(expect.any(Function));
+    expect(store.timer).toEqual(-1);
+    store.setTimer(582);
+    expect(store.timer).toEqual(582);
+    store.setTimer(0);
+    expect(store.timer).toEqual(0);
+    store.setTimer(-1);
+    expect(store.timer).toEqual(-1);
+  });
+
   it('Provides a toggleSelected action', () => {
     expect(store.toggleSelected).toEqual(expect.any(Function));
     expect(store.selected.peek()).toEqual([]);

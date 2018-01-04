@@ -6,6 +6,7 @@ import SQLite from 'react-native-sqlite-storage';
 useStrict(true);
 
 const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
+
 export default class AppState {
   @observable aboutModal = {};
   @action loadAboutModal = (modal) => {
@@ -25,7 +26,7 @@ export default class AppState {
   @observable letters = '         ';
   @observable loading = false;
   @action setLoading = (bool) => {
-    this.loading = bool;
+    this.loading = !!bool;
   };
   @observable navigator = {};
   @observable newGameOptions = observable.map({
