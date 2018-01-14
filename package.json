@@ -17,6 +17,7 @@
     "setupFiles": [
       "./jest_setup.js"
     ],
+    "testEnvironment": "jsdom",
     "testPathIgnorePatterns": [
       "./node_modules/*",
       "./.history/*"

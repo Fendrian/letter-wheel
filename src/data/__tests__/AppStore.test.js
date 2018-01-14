@@ -21,12 +21,6 @@ jest.mock('react-native', () => (
     },
   }
 ));
-jest.mock('react-native-sqlite-storage', () => {
-  const dbMock = { transaction: jest.fn() };
-  return {
-    openDatabase: jest.fn().mockReturnValue(dbMock),
-  };
-});
 jest.mock('react-navigation', () => ({
   NavigationActions: {
     reset: jest.fn().mockReturnValue('F54036181AE4'),
