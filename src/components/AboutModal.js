@@ -9,7 +9,7 @@ import AboutModalStyle from '../styles/AboutModalStyle';
 
 @inject('appStore')
 @observer
-class AboutModal extends React.Component {
+export default class AboutModal extends React.Component {
   static propTypes = {
     appStore: PropTypes.shape({
       aboutModal: PropTypes.object,
@@ -42,7 +42,7 @@ class AboutModal extends React.Component {
             }}
           >
             <Text style={AboutModalStyle.text}>
-              {'Original copyright © 2017 by Wolf Hatch. The source code for this app is released ' +
+              {'Original copyright © 2017-2018 by Wolf Hatch. The source code for this app is released ' +
               'under the MIT license at https://github.com/Fendrian/target-words'}
             </Text>
           </Hyperlink>
@@ -57,12 +57,11 @@ class AboutModal extends React.Component {
             {' '}
           </Text>
           <Text style={AboutModalStyle.text}>
-            {'The base dictionary is Yet Another Word List by Mendel Leo Cooper, which is in the public domain.'}
+            {'The word dictionary is drawn from several open-source and public domain word lists. ' +
+            'Please see the project on github for more precise information about dictionary generation.'}
           </Text>
         </View>
       </Modal>
     );
   }
 }
-
-export default AboutModal;
