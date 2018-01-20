@@ -14,13 +14,10 @@ Object.keys(global.document.defaultView).forEach((property) => {
 
 // Suppress warnings about View from the non-native React parsers in jsdom
 const { error } = console;
+const jsdomWarning1 = new RegExp(/Warning:.*Always use lowercase HTML tags in React\./);
+const jsdomWarning2 = new RegExp(/Warning:.*If you meant to render a React component, start its name with an uppercase letter./);
 console.error = (...args) => { // eslint-disable-line no-console
-  if (
-    args[0].substring(0, 42) === 'Warning: <View /> is using uppercase HTML.' ||
-    args[0].substring(0, 56) === 'Warning: The tag <View> is unrecognized in this browser.' ||
-    args[0].substring(0, 42) === 'Warning: <Text /> is using uppercase HTML.' ||
-    args[0].substring(0, 56) === 'Warning: The tag <Text> is unrecognized in this browser.'
-  ) {
+  if (args[0].match(jsdomWarning1) || args[0].match(jsdomWarning2)) {
     return null;
   }
   return error(...args);
