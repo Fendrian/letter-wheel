@@ -17,12 +17,19 @@
     "setupFiles": [
       "./jest_setup.js"
     ],
+    "setupTestFrameworkScriptFile": "./jest_init.js",
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
     "testEnvironment": "jsdom",
     "testPathIgnorePatterns": [
       "./node_modules/*",
       "./.history/*"
     ],
-    "transformIgnorePatterns": []
+    "transformIgnorePatterns": [
+      "./node_modules/jsdom/*",
+      "./node_modules/request/*"
+    ]
   },
   "scripts": {
     "prebuild": "sudo mkdir -p /run/secrets && sudo bash -c 'read -rsp \"Keystore password: \" KEYSTORE && echo \"$KEYSTORE\" > /run/secrets/pwd'",
@@ -36,7 +43,8 @@
     "log-native": "tail -f -n 50 /vagrant/react-native.log",
     "start": "yarn dev",
     "poststart": "yarn deploy",
-    "test": "jest"
+    "test": "jest",
+    "test-update": "jest --updateSnapshot"
   },
   "dependencies": {
     "@ptomasroos/react-native-multi-slider": "^0.0.11",
@@ -68,6 +76,7 @@
   "devDependencies": {
     "enzyme": "^3.1.0",
     "enzyme-adapter-react-16": "^1.0.2",
+    "enzyme-to-json": "^3.3.0",
     "eslint": "^4.9.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.7.0",
@@ -75,6 +84,7 @@
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-react": "^7.1.0",
     "jest": "^22.0.4",
+    "jsdom": "^11.5.1",
     "react-dom": "^16.0.0",
     "react-test-renderer": "^16.0.0"
   }
