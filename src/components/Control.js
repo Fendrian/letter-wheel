@@ -8,54 +8,85 @@ import {
   Text,
   TouchableOpacity,
 } from 'react-native';
-import { computed } from 'mobx';
-import { inject, observer } from 'mobx-react';
+import { observer, PropTypes as MobxPropTypes } from 'mobx-react';
+import { computed, observable } from 'mobx';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import ControlStyle from '../styles/ControlStyle';
 
 const listDataSource = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
 
-@inject('appStore')
 @observer
 export default class Control extends React.Component {
   static propTypes = {
-    appStore: PropTypes.shape({
-      triedWordList: PropTypes.array.isRequired,
-      gameModal: PropTypes.object,
-      getScore: PropTypes.func.isRequired,
-      letters: PropTypes.string.isRequired,
-      scores: PropTypes.array.isRequired,
-      selected: PropTypes.object.isRequired,
-      statusText: PropTypes.string.isRequired,
-      submitWord: PropTypes.func.isRequired,
-      timer: PropTypes.number.isRequired,
-      tried: PropTypes.object.isRequired,
-      words: PropTypes.object.isRequired,
-    }).isRequired,
-    onCorrect: PropTypes.func,
-    onWrong: PropTypes.func,
+    clearSelected: PropTypes.func,
+    isScored: PropTypes.bool,
+    onMenu: PropTypes.func,
+    onSubmit: PropTypes.func,
+    scoreText: PropTypes.string,
+    wordsToNextLevel: PropTypes.number,
+    selectedLetters: PropTypes.string,
+    statusText: PropTypes.string,
+    timerString: PropTypes.string,
+    tried: MobxPropTypes.observableMap,
+    words: MobxPropTypes.observableMap,
   }
+
   static defaultProps = {
-    onCorrect() {},
-    onWrong() {},
+    clearSelected() {},
+    isScored: false,
+    onSubmit() {},
+    onMenu() {},
+    scoreText: '',
+    wordsToNextLevel: 0,
+    selectedLetters: '',
+    statusText: '',
+    timerString: '',
+    tried: observable.map(),
+    words: observable.map(),
   }
-  @computed get dataSource() {
-    return listDataSource.cloneWithRows(this.props.appStore.triedWordList);
-  }
-  submitWord = () => {
-    const wordValidity = this.props.appStore.submitWord();
-    if (wordValidity === true) {
-      this.props.onCorrect();
-    } else if (wordValidity === false) {
-      this.props.onWrong();
+
+  @computed get formattedTriedWords() {
+    if (this.props.tried.size === 0 && !this.props.isScored) {
+      return [{ word: 'No words', style: 'neutral' }];
     }
+    const triedWords = this.props.tried.keys().sort().map(word => (
+      { word, style: this.props.tried.get(word) ? 'correct' : 'incorrect' }
+    ));
+
+    // If the game has been scored, display all words
+    if (this.props.isScored === true) {
+      const notFound = [
+        { word: 'Not found:', style: 'neutral' },
+        ...this.props.words.keys()
+          .sort()
+          .filter(word => !this.props.tried.get(word))
+          .map(word => ({ word, style: 'neutral' })),
+      ];
+      const yourWords = [
+        { word: ' ', style: 'neutral' },
+        { word: 'Your words:', style: 'neutral' },
+        ...triedWords,
+      ];
+      return [
+        ...(notFound.length > 1 ? notFound : []),
+        ...(this.props.tried.size > 0 ? yourWords : []),
+      ];
+    }
+
+    // ...Otherwise just show words that have been tried
+    return triedWords;
   }
+
+  @computed get feedbackText() {
+    return this.props.wordsToNextLevel > 0 ?
+      `${this.props.wordsToNextLevel} word${this.props.wordsToNextLevel > 1 ? 's' : ''}\n` +
+      'to next level'
+      :
+      '';
+  }
+
   render() {
-    const { appStore } = this.props;
-    const correct = appStore.tried.filter(tryEntry => (
-      appStore.words.indexOf(tryEntry) !== -1
-    )).length;
     const {
       backspaceTouch,
       backspaceWrapper,
@@ -78,34 +109,27 @@ export default class Control extends React.Component {
       timerContainer,
       timerText,
     } = ControlStyle;
-    const formattedTimer = appStore.timer / 60 >= 1 ?
-      `${Math.floor(appStore.timer / 60)}m ${appStore.timer % 60}s`
-      :
-      `${appStore.timer % 60}s`;
-    const score = appStore.getScore();
-    const feedbackText = (() => {
-      const { toNext } = score;
-      if (toNext > 0) {
-        return `${toNext} word${toNext > 1 ? 's' : ''}\n to next level`;
-      }
-      return '';
-    })();
+
+    const correct = this.props.tried.values().filter(v => v).length;
+
+    const triedWordRows = listDataSource.cloneWithRows(this.formattedTriedWords);
+
     return (
       <View style={container}>
         <View style={entryContainer}>
           <View style={entryWrapper}>
             <Text style={entryText}>
-              {
-                appStore.selected.map(i => appStore.letters[i].toUpperCase()).join('')
-              }
+              {this.props.selectedLetters}
             </Text>
           </View>
           <View style={backspaceWrapper}>
             <TouchableOpacity
-              onPress={() => { appStore.selected.pop(); }}
+              onPress={() => {
+                this.props.clearSelected(1);
+              }}
               onLongPress={() => {
                 Vibration.vibrate(100);
-                appStore.selected.clear();
+                this.props.clearSelected(9);
               }}
               style={backspaceTouch}
             >
@@ -121,11 +145,11 @@ export default class Control extends React.Component {
           <View style={leftColumn}>
             <View style={leftColumnHeader}>
               <Text style={leftColumnHeaderText}>
-                {`${correct} / ${appStore.words.length}`}
+                {`${correct} / ${this.props.words.size}`}
               </Text>
             </View>
             <ListView
-              dataSource={this.dataSource}
+              dataSource={triedWordRows}
               enableEmptySections
               renderRow={singleRow => (
                 <Text style={ControlStyle[singleRow.style]}>
@@ -139,44 +163,41 @@ export default class Control extends React.Component {
           <View style={rightColumn}>
             <View style={resultContainer}>
               <Text style={resultText}>
-                {appStore.statusText}
+                {this.props.statusText}
               </Text>
             </View>
             <View style={buttonWrapper}>
               <Button
                 color="#999"
-                onPress={this.submitWord}
+                onPress={this.props.onSubmit}
                 title="Submit"
               />
             </View>
-            {appStore.timer !== -1 ?
+            {this.props.timerString ?
               <View style={timerContainer}>
                 <Text style={timerText}>
-                  {formattedTimer}
+                  {this.props.timerString}
                 </Text>
               </View>
               :
-              <View />
+              null
             }
             <View style={progressContainer}>
               <View>
                 <Text style={progressText}>
-                  {score.text !== '' ? `${score.text}!` : ' '}
+                  {(this.props.scoreText || ' ')}
                 </Text>
               </View>
               <View>
                 <Text style={progressTextSmall}>
-                  {feedbackText}
+                  {this.feedbackText}
                 </Text>
               </View>
             </View>
             <View style={buttonWrapper}>
               <Button
                 color="#999"
-                onPress={() => {
-                  appStore.gameModal.close();
-                  appStore.gameModal.open();
-                }}
+                onPress={this.props.onMenu}
                 title="Menu"
               />
             </View>

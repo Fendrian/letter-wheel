@@ -6,21 +6,29 @@ import Modal from 'react-native-modalbox';
 
 import MenuModalStyle from '../styles/MenuModalStyle';
 
-@inject('appStore')
+@inject('store')
 @observer
 export default class MenuModal extends React.Component {
   static propTypes = {
-    appStore: PropTypes.shape({
-      aboutModal: PropTypes.object,
-      loadAboutModal: PropTypes.func.isRequired,
-      gameModal: PropTypes.object,
-      instructionsModal: PropTypes.object,
+    isOpen: PropTypes.bool.isRequired,
+    onClosed: PropTypes.func.isRequired,
+    store: PropTypes.shape({
+      closeMenuModal: PropTypes.func.isRequired,
       nav: PropTypes.object.isRequired,
+      openAboutModal: PropTypes.func.isRequired,
+      openInstructionsModal: PropTypes.func.isRequired,
+      openMenuModal: PropTypes.func.isRequired,
       scoreGame: PropTypes.func.isRequired,
     }).isRequired,
   }
   render() {
-    const { appStore } = this.props;
+    const {
+      closeMenuModal,
+      nav,
+      openAboutModal,
+      openInstructionsModal,
+      scoreGame,
+    } = this.props.store;
     const {
       container,
       divider,
@@ -32,9 +40,10 @@ export default class MenuModal extends React.Component {
       <Modal
         backButtonClose
         entry="bottom"
+        isOpen={this.props.isOpen}
+        onClosed={this.props.onClosed}
         position="center"
         style={MenuModalStyle.modal}
-        ref={appStore.loadGameModal}
         swipeToClose
       >
         <View style={container}>
@@ -44,8 +53,8 @@ export default class MenuModal extends React.Component {
           <View style={divider} />
           <TouchableOpacity
             onPress={() => {
-              appStore.gameModal.close();
-              appStore.nav.resetto('New');
+              closeMenuModal();
+              nav.resetto('New');
             }}
             style={line}
           >
@@ -56,8 +65,8 @@ export default class MenuModal extends React.Component {
           <View style={divider} />
           <TouchableOpacity
             onPress={() => {
-              appStore.gameModal.close();
-              appStore.scoreGame();
+              closeMenuModal();
+              scoreGame();
             }}
             style={line}
           >
@@ -67,10 +76,7 @@ export default class MenuModal extends React.Component {
           </TouchableOpacity>
           <View style={divider} />
           <TouchableOpacity
-            onPress={() => {
-              appStore.gameModal.close();
-              appStore.instructionsModal.open();
-            }}
+            onPress={openInstructionsModal}
             style={line}
           >
             <Text style={text}>
@@ -79,10 +85,7 @@ export default class MenuModal extends React.Component {
           </TouchableOpacity>
           <View style={divider} />
           <TouchableOpacity
-            onPress={() => {
-              appStore.gameModal.close();
-              appStore.aboutModal.open();
-            }}
+            onPress={openAboutModal}
             style={line}
           >
             <Text style={text}>

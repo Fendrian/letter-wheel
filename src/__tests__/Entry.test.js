@@ -3,14 +3,14 @@ import { shallow } from 'enzyme';
 
 import Routes from '../Routes';
 import Entry from '../Entry';
-import AppStore from '../data/AppStore';
+import store from '../data/store';
 
 describe('Main entry file', () => {
-  it('Exports a Routes component', () => {
+  it('exports a Routes component', () => {
     expect(shallow(<Entry />).type()).toEqual(Routes);
   });
 
-  it('Provides an AppStore', () => {
-    expect(shallow(<Entry />).props().store).toBeInstanceOf(AppStore);
+  it('provides a store', () => {
+    expect(shallow(<Entry />).props().store).toBeInstanceOf(store);
   });
 });

@@ -8,28 +8,52 @@ import MenuModal from '../components/MenuModal';
 import AboutModal from '../components/AboutModal';
 import InstructionsModal from '../components/InstructionsModal';
 
-@inject('appStore')
+@inject('store')
 @observer
 class App extends React.Component {
   static propTypes = {
-    appStore: PropTypes.shape({
-      nav: PropTypes.object.isRequired,
+    store: PropTypes.shape({
+      closeAboutModal: PropTypes.func.isRequired,
+      closeMenuModal: PropTypes.func.isRequired,
+      closeInstructionsModal: PropTypes.func.isRequired,
+      loading: PropTypes.bool.isRequired,
+      isAboutModalOpen: PropTypes.bool.isRequired,
+      isMenuModalOpen: PropTypes.bool.isRequired,
+      isInstructionsModalOpen: PropTypes.bool.isRequired,
     }).isRequired,
     children: PropTypes.element.isRequired,
   }
   render() {
-    const { appStore, children } = this.props;
+    const { children } = this.props;
+    const {
+      closeAboutModal,
+      closeMenuModal,
+      closeInstructionsModal,
+      loading,
+      isAboutModalOpen,
+      isMenuModalOpen,
+      isInstructionsModalOpen,
+    } = this.props.store;
     return (
       <View style={{ flex: 1 }}>
         <Spinner
-          visible={appStore.loading}
+          visible={loading}
           textContent="Loading..."
           textStyle={{ color: '#FFF' }}
         />
         {children}
-        <MenuModal />
-        <AboutModal />
-        <InstructionsModal />
+        <MenuModal
+          isOpen={isMenuModalOpen}
+          onClosed={closeMenuModal}
+        />
+        <AboutModal
+          isOpen={isAboutModalOpen}
+          onClosed={closeAboutModal}
+        />
+        <InstructionsModal
+          isOpen={isInstructionsModalOpen}
+          onClosed={closeInstructionsModal}
+        />
       </View>
     );
   }

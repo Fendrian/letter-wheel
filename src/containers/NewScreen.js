@@ -10,11 +10,11 @@ import Button from 'react-native-button';
 import WrapperStyle from '../styles/WrapperStyle';
 import NewScreenStyle from '../styles/NewScreenStyle';
 
-@inject('appStore')
+@inject('store')
 @observer
 export default class NewScreen extends React.Component {
   static propTypes = {
-    appStore: PropTypes.shape({
+    store: PropTypes.shape({
       instructionsModal: PropTypes.object,
       loading: PropTypes.bool.isRequired,
       nav: PropTypes.shape({
@@ -58,14 +58,14 @@ export default class NewScreen extends React.Component {
   }
 
   setSelectedOption = ({ min, max }) => {
-    this.props.appStore.setNewGameOptions('wordRange', {
+    this.props.store.setNewGameOptions('wordRange', {
       min,
       max,
     });
   }
 
   getSelectedOption = () => {
-    const { min, max } = this.props.appStore.newGameOptions.get('wordRange');
+    const { min, max } = this.props.store.newGameOptions.get('wordRange');
     return this.constructor.options.indexOf((
       this.constructor.options.find(option => (
         min === option.min && max === option.max
@@ -74,33 +74,33 @@ export default class NewScreen extends React.Component {
   }
 
   getSliderWidth = () => {
-    const { width } = this.props.appStore;
+    const { width } = this.props.store;
     return width < 400 ? (width - 70) : 330;
   }
 
   toggleTimed = () => {
-    this.props.appStore.setNewGameOptions(
+    this.props.store.setNewGameOptions(
       'timed',
-      !this.props.appStore.newGameOptions.get('timed'),
+      !this.props.store.newGameOptions.get('timed'),
     );
   }
 
   start = () => {
-    const { appStore } = this.props;
+    const { store } = this.props;
     const start = new Date().getTime();
-    const { min, max } = appStore.newGameOptions.get('wordRange');
-    appStore.setLoading(true);
-    appStore.newGame({
+    const { min, max } = store.newGameOptions.get('wordRange');
+    store.setLoading(true);
+    store.newGame({
       wordsMin: min,
       wordsMax: max,
-      timer: appStore.newGameOptions.get('timed') ? -1 : undefined,
+      timer: store.newGameOptions.get('timed') ? -1 : undefined,
     })
       .then(() => {
         // Wait a minimum of 500ms to help the loading screen feel right
         const end = new Date().getTime();
         setTimeout(() => {
-          appStore.nav.goto('Game');
-          this.props.appStore.setLoading(false);
+          store.nav.goto('Game');
+          this.props.store.setLoading(false);
         }, (500 - (end - start)));
       });
   }
@@ -111,9 +111,9 @@ export default class NewScreen extends React.Component {
       setSelectedOption,
       toggleTimed,
     } = this;
-    const timed = this.props.appStore.newGameOptions.get('timed');
-    const { min, max } = this.props.appStore.newGameOptions.get('wordRange');
-    const { instructionsModal } = this.props.appStore;
+    const timed = this.props.store.newGameOptions.get('timed');
+    const { min, max } = this.props.store.newGameOptions.get('wordRange');
+    const { instructionsModal } = this.props.store;
     const selected = [min, max];
     const optionsArray = [...Array.from(Array(91)).map((a, i) => i + 10), 999];
     const { container } = WrapperStyle;
@@ -138,7 +138,7 @@ export default class NewScreen extends React.Component {
         <ScrollView
           contentContainerStyle={{ flexGrow: 1 }}
           style={{
-            width: this.props.appStore.width,
+            width: this.props.store.width,
           }}
         >
           <View style={wrapper}>

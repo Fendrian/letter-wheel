@@ -12,7 +12,7 @@ jest.mock('react-native', () => (
 jest.mock('../Entry', () => {});
 
 describe('Main index', () => {
-  it('Registers targetWords', () => {
+  it('registers targetWords', () => {
     const register = AppRegistry.registerComponent;
     expect(register).toHaveBeenCalledTimes(1);
     expect(register).toHaveBeenCalledWith(

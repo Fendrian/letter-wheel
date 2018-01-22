@@ -1,22 +1,13 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
-import { createRenderer } from 'react-test-renderer/shallow';
-import { shallow } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import { NavigationActions, StackNavigator } from 'react-navigation';
 import { Provider } from 'mobx-react';
 
 import Routes from '../Routes';
-import AppStore from '../data/AppStore';
+import AppStore from '../data/store';
 import NewScreen from '../containers/NewScreen';
 import GameScreen from '../containers/GameScreen';
 
-const reactShallow = createRenderer();
-
-jest.mock('../data/AppStore', () => (
-  class Store {
-    words = []
-  }
-));
 jest.mock('../containers/App', () => 'App');
 jest.mock('react-navigation', () => {
   // eslint-disable-next-line global-require
@@ -53,20 +44,20 @@ describe('Main routes file', () => {
     jest.clearAllMocks();
   });
 
-  it('Exports a MobX provider', () => {
-    expect(reactShallow.render(<Routes store={store} />).type).toEqual(Provider);
+  it('exports a MobX provider', () => {
+    expect(shallow(<Routes store={store} />).type()).toEqual(Provider);
   });
 
-  it('Provides the AppStore', () => {
-    expect(reactShallow.render(<Routes store={store} />).props.appStore).toBeInstanceOf(AppStore);
+  it('provides the store', () => {
+    expect(shallow(<Routes store={store} />).props().store).toBeInstanceOf(AppStore);
   });
 
-  it('Matches the snapshot', () => {
-    const tree = reactShallow.render(<Routes store={store} />);
+  it('matches the snapshot', () => {
+    const tree = shallow(<Routes store={store} />);
     expect(tree).toMatchSnapshot();
   });
 
-  it('Provides a static navScreens function', () => {
+  it('provides a static navScreens function', () => {
     expect(Routes.navScreens).toBeDefined();
     expect(Routes.navScreens({ store })).toEqual({
       Game: { screen: GameScreen },
@@ -74,20 +65,25 @@ describe('Main routes file', () => {
     });
   });
 
-  it('Provides a static navOptions function', () => {
+  it('provides a static navOptions function', () => {
     expect(Routes.navOptions).toBeDefined();
     expect(Routes.navOptions({ store })).toEqual({
       headerMode: 'none',
       initialRouteName: 'New',
     });
-    expect(Routes.navOptions({ store: { words: [1, 2, 3] } })).toEqual({
+    store.words.replace({
+      asphalt: true,
+      turbid: true,
+      renegade: true,
+    });
+    expect(Routes.navOptions({ store })).toEqual({
       headerMode: 'none',
       initialRouteName: 'Game',
     });
   });
 
-  it('Creates StackNavigator passing the static navScreens and navOptions', () => {
-    renderer.create(<Routes store={store} />);
+  it('creates StackNavigator passing the static navScreens and navOptions', () => {
+    mount(<Routes store={store} />);
     expect(Routes.navScreens).toHaveBeenCalledTimes(1);
     expect(Routes.navScreens).toHaveBeenCalledWith({ store });
     expect(Routes.navOptions).toHaveBeenCalledTimes(1);
@@ -99,18 +95,18 @@ describe('Main routes file', () => {
     );
   });
 
-  it('Creates ref to Nav component at store.navigator', () => {
+  it('creates ref to Nav component at store.navigator', () => {
     const Nav = StackNavigator();
-    renderer.create(<Routes store={store} />);
+    mount(<Routes store={store} />);
     expect(store.navigator).toBeDefined();
     expect(store.navigator.dispatch).toEqual(shallow(<Nav />).instance().dispatch);
     expect(store.navigator.render).toEqual(shallow(<Nav />).instance().render);
   });
 
-  it('Overrides the default router getStateForAction', () => {
+  it('overrides the default router getStateForAction', () => {
     const Nav = StackNavigator();
     const { getStateForAction } = Nav.router;
-    renderer.create(<Routes store={store} />);
+    mount(<Routes store={store} />);
     expect(getStateForAction(
       { type: NavigationActions.BACK },
       { routes: [{ routeName: 'Game' }], index: 0 },

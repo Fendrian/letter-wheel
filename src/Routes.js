@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Provider } from 'mobx-react';
 import { NavigationActions, StackNavigator } from 'react-navigation';
 
-import AppStore from './data/AppStore';
+import AppStore from './data/store';
 import NewScreen from './containers/NewScreen';
 import GameScreen from './containers/GameScreen';
 import App from './containers/App';
@@ -18,7 +18,7 @@ class Routes extends React.Component {
   });
   static navOptions = props => ({
     headerMode: 'none',
-    initialRouteName: props.store.words.length === 0 ? 'New' : 'Game',
+    initialRouteName: props.store.words.size === 0 ? 'New' : 'Game',
   });
   constructor(props) {
     super(props);
@@ -47,7 +47,7 @@ class Routes extends React.Component {
   render() {
     const { Nav, props: { store } } = this;
     return (
-      <Provider appStore={store}>
+      <Provider store={store}>
         <App>
           <Nav ref={(nav) => { store.navigator = nav; }} />
         </App>

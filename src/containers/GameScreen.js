@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
 import { action, computed, observable } from 'mobx';
-import { inject, observer } from 'mobx-react';
+import { inject, observer, PropTypes as MobxPropTypes } from 'mobx-react';
 import nativeTimer from 'react-native-timer';
 import * as Animatable from 'react-native-animatable';
 import KeyEvent from 'react-native-keyevent';
@@ -12,14 +12,13 @@ import GameScreenStyle from '../styles/GameScreenStyle';
 import Grid from '../components/Grid';
 import Control from '../components/Control';
 
-@inject('appStore')
+@inject('store')
 @observer
 export default class GameScreen extends React.Component {
   static propTypes = {
-    appStore: PropTypes.shape({
-      aboutModal: PropTypes.object,
-      gameModal: PropTypes.object,
-      instructionsModal: PropTypes.object,
+    store: PropTypes.shape({
+      clearSelected: PropTypes.func.isRequired,
+      openMenuModal: PropTypes.func.isRequired,
       letters: PropTypes.string.isRequired,
       navigator: PropTypes.object,
       orientation: PropTypes.number.isRequired,
@@ -28,6 +27,8 @@ export default class GameScreen extends React.Component {
       setTimer: PropTypes.func.isRequired,
       submitWord: PropTypes.func.isRequired,
       timer: PropTypes.number.isRequired,
+      tried: MobxPropTypes.observableMap,
+      words: MobxPropTypes.observableMap,
       toggleSelected: PropTypes.func.isRequired,
     }).isRequired,
   }
@@ -52,19 +53,18 @@ export default class GameScreen extends React.Component {
   };
 
   componentDidMount = () => {
-    const { appStore } = this.props;
+    const { store } = this.props;
 
     KeyEvent.onKeyUpListener((keyCode) => {
       const SOFT_LEFT = 1;
       const OPTION_KEY = 82;
       if (
         (keyCode === SOFT_LEFT || keyCode === OPTION_KEY) &&
-        appStore.gameModal.state.isOpen !== true &&
-        appStore.aboutModal.state.isOpen !== true &&
-        appStore.instructionsModal.state.isOpen !== true
+        !store.isMenuModalOpen.state.isOpen &&
+        !store.isAboutModalOpen &&
+        !store.isInstructionsModalOpen
       ) {
-        appStore.gameModal.close();
-        appStore.gameModal.open();
+        store.openMenuModal();
       }
     });
 
@@ -72,23 +72,23 @@ export default class GameScreen extends React.Component {
       this,
       'gameTimer',
       () => {
-        const { nav } = appStore.navigator.state;
+        const { nav } = store.navigator.state;
 
         // Only process the timer if it's active,
         // and the user is focused on the game screen
         if (
-          appStore.timer >= 0 &&
-          appStore.scored !== true &&
+          store.timer >= 0 &&
+          store.scored !== true &&
           nav.routes[nav.index].routeName === 'Game' &&
-          appStore.gameModal.state.isOpen !== true &&
-          appStore.aboutModal.state.isOpen !== true &&
-          appStore.instructionsModal.state.isOpen !== true
+          !store.isMenuModalOpen &&
+          !store.isAboutModalOpen &&
+          !store.isInstructionsModalOpen
         ) {
-          if (appStore.timer > 0) {
-            this.props.appStore.setTimer(appStore.timer - 1);
+          if (store.timer > 0) {
+            this.props.store.setTimer(store.timer - 1);
           } else {
-            this.props.appStore.setTimer(-1);
-            appStore.scoreGame();
+            this.props.store.setTimer(-1);
+            store.scoreGame();
           }
         }
       },
@@ -113,8 +113,8 @@ export default class GameScreen extends React.Component {
     const grid = {};
     Array.from(Array(9)).forEach((x, i) => {
       grid[`${i}`] = {
-        letter: this.props.appStore.letters.substr(i, 1),
-        selected: this.props.appStore.selected.indexOf(`${i}`) !== -1,
+        letter: this.props.store.letters.substr(i, 1),
+        selected: this.props.store.selected.indexOf(`${i}`) !== -1,
       };
     });
     return grid;
@@ -132,11 +132,11 @@ export default class GameScreen extends React.Component {
     const { gridWrapper } = GameScreenStyle;
     const GridComponent = (
       <Grid
-        submitWord={this.props.appStore.submitWord}
+        submitWord={this.props.store.submitWord}
         grid={this.grid}
         onCorrect={this.onCorrect}
         onWrong={this.onWrong}
-        toggleSelected={this.props.appStore.toggleSelected}
+        toggleSelected={this.props.store.toggleSelected}
       />
     );
     switch (this.animationState) {
@@ -173,18 +173,45 @@ export default class GameScreen extends React.Component {
     }
   }
   render() {
-    const { appStore } = this.props;
-    const orientation = appStore.orientation === 0 ? 'portrait' : 'landscape';
+    const { store } = this.props;
+    const orientation = store.orientation === 0 ? 'portrait' : 'landscape';
     const { dataWrapper } = GameScreenStyle;
     const { container } = WrapperStyle;
+    const { text: scoreText, toNext } = store.getScore();
+
+    let timerString = '';
+    if (store.timer >= 0) {
+      timerString = store.timer / 60 >= 1 ?
+        `${Math.floor(store.timer / 60)}m ${store.timer % 60}s`
+        :
+        `${store.timer % 60}s`;
+    }
+
     return (
       <View style={container}>
         <View style={GameScreenStyle[orientation]}>
           {this.renderGrid()}
           <View style={dataWrapper}>
             <Control
+              clearSelected={store.clearSelected}
+              isScored={store.scored}
               onCorrect={this.onCorrect}
+              onMenu={store.openMenuModal}
+              onSubmit={() => {
+                if (store.submitWord() === true) {
+                  this.onCorrect();
+                } else {
+                  this.onWrong();
+                }
+              }}
               onWrong={this.onWrong}
+              scoreText={scoreText}
+              selectedString={store.selected.map(i => store.letters[i].toUpperCase()).join('')}
+              statusText={store.statusText}
+              timerString={timerString}
+              tried={store.tried}
+              words={store.words}
+              wordsToNextLevel={toNext}
             />
           </View>
         </View>

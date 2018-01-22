@@ -1,4 +1,4 @@
-import { action, computed, observable, runInAction, useStrict } from 'mobx';
+import { action, observable, runInAction, useStrict } from 'mobx';
 import { Alert, Dimensions } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import SQLite from 'react-native-sqlite-storage';
@@ -7,20 +7,43 @@ useStrict(true);
 
 const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
 
-export default class AppState {
-  @observable aboutModal = {};
-  @action loadAboutModal = (modal) => {
-    this.aboutModal = modal;
+export default class store {
+  @observable isAboutModalOpen = false;
+  @action openAboutModal = () => {
+    if (!this.isAboutModalOpen) {
+      this.closeAllModals();
+      this.isAboutModalOpen = true;
+    }
+  }
+  @action closeAboutModal = () => {
+    this.isAboutModalOpen = false;
   }
 
-  @observable gameModal = {};
-  @action loadGameModal = (modal) => {
-    this.gameModal = modal;
+  @observable isMenuModalOpen = false;
+  @action openMenuModal = () => {
+    if (!this.isMenuModalOpen) {
+      this.closeAllModals();
+      this.isMenuModalOpen = true;
+    }
+  }
+  @action closeMenuModal = () => {
+    this.isMenuModalOpen = false;
   }
 
-  @observable instructionsModal = {};
-  @action loadInstructionsModal = (modal) => {
-    this.instructionsModal = modal;
+  @observable isInstructionsModalOpen = false;
+  @action openInstructionsModal = () => {
+    if (!this.isInstructionsModalOpen) {
+      this.closeAllModals();
+      this.isInstructionsModalOpen = true;
+    }
+  }
+  @action closeInstructionsModal = () => {
+    this.isInstructionsModalOpen = false;
+  }
+  closeAllModals = () => {
+    this.closeAboutModal();
+    this.closeInstructionsModal();
+    this.closeMenuModal();
   }
 
   @observable letters = '         ';
@@ -46,9 +69,9 @@ export default class AppState {
   @action setTimer = (seconds) => {
     this.timer = seconds;
   }
-  @observable tried = [];
+  @observable tried = observable.map();
   @observable width = 0;
-  @observable words = [];
+  @observable words = observable.map();
 
   @observable selected = [];
   @action toggleSelected = (letterIndex) => {
@@ -60,6 +83,18 @@ export default class AppState {
       this.selected.remove(letterIndex);
     }
   }
+  @action clearSelected = (num = 1) => {
+    const rangeEnd = this.selected.length - num;
+    this.selected.replace(this.selected.filter((s, i) => i < rangeEnd));
+  }
+
+  scores = [
+    { percent: 100, text: 'Exceptional!' },
+    { percent: 85, text: 'Excellent!' },
+    { percent: 65, text: 'Very Good!' },
+    { percent: 40, text: 'Good!' },
+    { percent: 0, text: '' },
+  ];
 
   // Given a string, this function will randomly rearrange the string then return it.
   shuffle = (string) => {
@@ -101,41 +136,6 @@ export default class AppState {
       });
     });
 
-  // Formatting logic for the game word list display
-  @computed get triedWordList() {
-    if (this.tried.length === 0 && this.scored !== true) {
-      return [{ word: 'No words', style: 'neutral' }];
-    }
-    const triedWords = this.tried.sort().map(word => (
-      { word, style: this.words.indexOf(word) !== -1 ? 'correct' : 'incorrect' }
-    ));
-
-    // If the game has been scored, display all words
-    if (this.scored === true) {
-      const notFound = this.words.sort().filter(word => (
-        (typeof (this.tried.find(w => (w === word))) === 'undefined')
-      )).map(word => (
-        ({ word, style: 'neutral' })
-      ));
-      const yourWords = this.tried.length !== 0 ?
-        [
-          { word: ' ', style: 'neutral' },
-          { word: 'Your words:', style: 'neutral' },
-          ...triedWords,
-        ]
-        :
-        [];
-      return [
-        { word: 'Not found:', style: 'neutral' },
-        ...notFound,
-        ...yourWords,
-      ];
-    }
-
-    // ...Otherwise just show words that have been tried
-    return triedWords;
-  }
-
   constructor() {
     const { width, height } = Dimensions.get('window');
     Dimensions.addEventListener('change', (data) => {
@@ -146,15 +146,6 @@ export default class AppState {
     });
     this.orientation = (width < height) ? 0 : 1;
     this.width = Dimensions.get('window').width;
-
-    // Add game score levels
-    this.scores = [
-      { percent: 0, text: '' },
-      { percent: 40, text: 'Good' },
-      { percent: 65, text: 'Very Good' },
-      { percent: 85, text: 'Excellent' },
-      { percent: 100, text: 'Exceptional' },
-    ];
 
     // Open the word database
     const ok = () => {};
@@ -187,7 +178,7 @@ export default class AppState {
   async newGame({
     letters,
     timer,
-    tried,
+    tried = [],
     wordsMax,
     wordsMin,
   }) {
@@ -255,8 +246,14 @@ export default class AppState {
     if (!cancel) {
       runInAction(() => {
         this.letters = newLetters;
-        this.words.replace(newWords);
-        this.tried.replace(Array.isArray(tried) ? tried : []);
+        this.words.clear();
+        newWords.forEach((word) => {
+          this.words.set(word, true);
+        });
+        this.tried.clear();
+        tried.forEach((word) => {
+          this.tried.set(word, (this.words.get(word) || false));
+        });
         this.selected.replace([]);
         this.scored = false;
         this.statusText = 'Welcome!';
@@ -266,7 +263,7 @@ export default class AppState {
         } else {
           this.timer = -1;
         }
-        console.log(newWords);
+        // console.log(newWords);
       });
     }
   }
@@ -295,14 +292,14 @@ export default class AppState {
     }
 
     // If word already guessed, fail
-    if (this.tried.find(w => (w === word))) {
+    if (this.tried.has(word)) {
       this.setStatus('Already tried');
       return null;
     }
 
     // If the word is correct, report to user and add time if relevant
-    if (this.words.indexOf(word) !== -1) {
-      this.tried.push(word);
+    if (this.words.has(word)) {
+      this.tried.set(word, true);
       this.selected.replace([]);
       if (this.timer > -1) {
         const addTime = (word.length * 5);
@@ -315,7 +312,7 @@ export default class AppState {
     }
 
     // Finally, just fail
-    this.tried.push(word);
+    this.tried.set(word, false);
     this.selected.replace([]);
     this.setStatus('Unrecognized word.');
     return false;
@@ -328,34 +325,23 @@ export default class AppState {
         if (this.scored === false) {
           this.statusText = '';
         } else {
-          this.statusText = this.getScore();
+          this.statusText = 'Game scored';
         }
       }
     }), 3000);
   }
 
   getScore = () => {
-    const correct = this.tried.filter(tryEntry => (
-      this.words.indexOf(tryEntry) !== -1
-    )).length;
-    const adjustedScores = this.scores.map(scoreObj => (
-      {
-        ...scoreObj,
-        numWords: (Math.floor((scoreObj.percent / 100) * this.words.length)),
-      }
-    ));
-    const currentScore = adjustedScores
-      .filter(a => (a.numWords <= correct))
-      .sort((a, b) => b.numWords - a.numWords)[0];
-    const nextScore = adjustedScores
-      .filter(a => (a.numWords > correct))
-      .sort((a, b) => a.numWords - b.numWords)[0];
+    const correct = this.tried.entries().filter(e => e[1]).length;
+    const absoluteScores = this.scores.map(scoreObj => ({
+      ...scoreObj,
+      numWords: (Math.floor((scoreObj.percent / 100) * this.words.size)),
+    }));
+    const currentScore = absoluteScores.find(({ numWords }) => (numWords <= correct));
+    const nextScore = absoluteScores[(absoluteScores.indexOf(currentScore) || 1) - 1];
     return ({
       text: currentScore.text,
-      toNext: (typeof (nextScore) !== 'undefined') ?
-        (nextScore.numWords - correct)
-        :
-        0,
+      toNext: nextScore.numWords - correct,
     });
   }
 

@@ -2,7 +2,7 @@ import { Alert, Dimensions } from 'react-native';
 import SQLite from 'react-native-sqlite-storage';
 import { NavigationActions } from 'react-navigation';
 
-import AppStore from '../AppStore';
+import AppStore from '../store';
 
 jest.useFakeTimers();
 
@@ -38,7 +38,7 @@ describe('Mobx Store', () => {
     jest.clearAllMocks();
   });
 
-  it('Adds an event listener to the dimensions', () => {
+  it('adds an event listener to the dimensions', () => {
     expect(Dimensions.addEventListener).toHaveBeenCalledTimes(1);
     expect(Dimensions.addEventListener).toHaveBeenCalledWith('change', expect.any(Function));
     expect(Dimensions.get).toHaveBeenCalledWith('window');
@@ -68,7 +68,7 @@ describe('Mobx Store', () => {
     expect(store2.width).toEqual(500);
   });
 
-  it('Opens the \'main.db\' SQLite database', () => {
+  it('opens the \'main.db\' SQLite database', () => {
     expect(SQLite.openDatabase).toHaveBeenCalledWith(
       {
         name: 'main.db',
@@ -82,45 +82,86 @@ describe('Mobx Store', () => {
     SQLite.openDatabase.mock.calls[0][2]();
     expect(Alert.alert).toHaveBeenCalledTimes(1);
     expect(Alert.alert).toHaveBeenCalledWith('Word database failed to open. Please re-install the app.');
+    SQLite.openDatabase.mock.calls[0][1]();
   });
 
-  it('Specifies score levels', () => {
+  it('specifies score levels', () => {
     expect(store.scores).toEqual(expect.any(Array));
     expect(store.scores[0]).toEqual(expect.any(Object));
   });
 
-  it('Exports an AppState component', () => {
+  it('exports an AppState component', () => {
     expect(store).toBeInstanceOf(AppStore);
   });
 
-  it('Provides a loadAboutModal function that updates the aboutModal variable', () => {
-    expect(store.loadAboutModal).toEqual(expect.any(Function));
-    expect(store.aboutModal).toEqual({});
-    store.loadAboutModal({ fish: '4DF0A4293A9C' });
-    expect(store.aboutModal.fish).toEqual('4DF0A4293A9C');
-    store.loadAboutModal({});
-    expect(store.aboutModal).toEqual({});
+  it('provides controls and state for About modal', () => {
+    jest.spyOn(store, 'closeAllModals');
+    expect(store.isAboutModalOpen).toEqual(false);
+    expect(store.openAboutModal).toEqual(expect.any(Function));
+    expect(store.closeAboutModal).toEqual(expect.any(Function));
+
+    store.openAboutModal();
+    expect(store.isAboutModalOpen).toEqual(true);
+    expect(store.closeAllModals).toHaveBeenCalledTimes(1);
+    store.closeAllModals.mockClear();
+    store.openAboutModal();
+    expect(store.isAboutModalOpen).toEqual(true);
+    expect(store.closeAllModals).toHaveBeenCalledTimes(0);
+    store.closeAboutModal();
+    expect(store.isAboutModalOpen).toEqual(false);
+    expect(store.closeAllModals).toHaveBeenCalledTimes(0);
   });
 
-  it('Provides a loadGameModal function that updates the gameModal variable', () => {
-    expect(store.loadGameModal).toEqual(expect.any(Function));
-    expect(store.gameModal).toEqual({});
-    store.loadGameModal({ fish: '4DF0A4293A9C' });
-    expect(store.gameModal.fish).toEqual('4DF0A4293A9C');
-    store.loadGameModal({});
-    expect(store.gameModal).toEqual({});
+  it('provides controls and state for Menu modal', () => {
+    jest.spyOn(store, 'closeAllModals');
+    expect(store.isMenuModalOpen).toEqual(false);
+    expect(store.openMenuModal).toEqual(expect.any(Function));
+    expect(store.closeMenuModal).toEqual(expect.any(Function));
+
+    store.openMenuModal();
+    expect(store.isMenuModalOpen).toEqual(true);
+    expect(store.closeAllModals).toHaveBeenCalledTimes(1);
+    store.closeAllModals.mockClear();
+    store.openMenuModal();
+    expect(store.isMenuModalOpen).toEqual(true);
+    expect(store.closeAllModals).toHaveBeenCalledTimes(0);
+    store.closeMenuModal();
+    expect(store.isMenuModalOpen).toEqual(false);
+    expect(store.closeAllModals).toHaveBeenCalledTimes(0);
   });
 
-  it('Provides a loadInstructionsModal function that updates the instructionsModal variable', () => {
-    expect(store.loadInstructionsModal).toEqual(expect.any(Function));
-    expect(store.instructionsModal).toEqual({});
-    store.loadInstructionsModal({ fish: '4DF0A4293A9C' });
-    expect(store.instructionsModal.fish).toEqual('4DF0A4293A9C');
-    store.loadInstructionsModal({});
-    expect(store.instructionsModal).toEqual({});
+  it('provides controls and state for Instructions modal', () => {
+    jest.spyOn(store, 'closeAllModals');
+    expect(store.isInstructionsModalOpen).toEqual(false);
+    expect(store.openInstructionsModal).toEqual(expect.any(Function));
+    expect(store.closeInstructionsModal).toEqual(expect.any(Function));
+
+    store.openInstructionsModal();
+    expect(store.isInstructionsModalOpen).toEqual(true);
+    expect(store.closeAllModals).toHaveBeenCalledTimes(1);
+    store.closeAllModals.mockClear();
+    store.openInstructionsModal();
+    expect(store.isInstructionsModalOpen).toEqual(true);
+    expect(store.closeAllModals).toHaveBeenCalledTimes(0);
+    store.closeInstructionsModal();
+    expect(store.isInstructionsModalOpen).toEqual(false);
+    expect(store.closeAllModals).toHaveBeenCalledTimes(0);
   });
 
-  it('Provides a setLoading function that updates the loading variable', () => {
+  it('provides a method to close all modals', () => {
+    jest.spyOn(store, 'closeAboutModal');
+    jest.spyOn(store, 'closeMenuModal');
+    jest.spyOn(store, 'closeInstructionsModal');
+
+    expect(store.closeAllModals).toEqual(expect.any(Function));
+    store.closeAllModals();
+
+    expect(store.closeAboutModal).toHaveBeenCalledTimes(1);
+    expect(store.closeMenuModal).toHaveBeenCalledTimes(1);
+    expect(store.closeInstructionsModal).toHaveBeenCalledTimes(1);
+  });
+
+  it('provides a setLoading function that updates the loading variable', () => {
     expect(store.setLoading).toEqual(expect.any(Function));
     expect(store.loading).toEqual(false);
     store.setLoading(true);
@@ -129,7 +170,7 @@ describe('Mobx Store', () => {
     expect(store.loading).toEqual(false);
   });
 
-  it('Provides a setNewGameOptions function that updates the newGameOptions variable', () => {
+  it('provides a setNewGameOptions function that updates the newGameOptions variable', () => {
     expect(store.setNewGameOptions).toEqual(expect.any(Function));
     expect(store.newGameOptions.get('asdf')).toEqual(undefined);
     store.setNewGameOptions('asdf', true);
@@ -140,7 +181,7 @@ describe('Mobx Store', () => {
     expect(store.newGameOptions.get('7CFD8854AD3E')).toEqual('644C70F7');
   });
 
-  it('Provides a setTimer function that updates the timer variable', () => {
+  it('provides a setTimer function that updates the timer variable', () => {
     expect(store.setTimer).toEqual(expect.any(Function));
     expect(store.timer).toEqual(-1);
     store.setTimer(582);
@@ -151,7 +192,7 @@ describe('Mobx Store', () => {
     expect(store.timer).toEqual(-1);
   });
 
-  it('Provides a toggleSelected action', () => {
+  it('provides a toggleSelected action', () => {
     expect(store.toggleSelected).toEqual(expect.any(Function));
     expect(store.selected.peek()).toEqual([]);
     store.toggleSelected('3');
@@ -166,7 +207,39 @@ describe('Mobx Store', () => {
     expect(store.selected.peek()).toEqual(['8', '9', '2']);
   });
 
-  it('Provides a random shuffle function', () => {
+  it('provides a clearSelected action that defaults to one but accepts any number', () => {
+    expect(store.clearSelected).toEqual(expect.any(Function));
+    expect(store.selected.peek()).toEqual([]);
+    store.clearSelected();
+    expect(store.selected.peek()).toEqual([]);
+    store.selected = ['3', '8', '2', '4', '6', '1'];
+    store.clearSelected();
+    expect(store.selected.peek()).toEqual(['3', '8', '2', '4', '6']);
+    store.clearSelected(2);
+    expect(store.selected.peek()).toEqual(['3', '8', '2']);
+    store.clearSelected(99);
+    expect(store.selected.peek()).toEqual([]);
+    store.selected = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
+    store.clearSelected(999);
+    expect(store.selected.peek()).toEqual([]);
+  });
+
+  it('provides a toggleSelected action', () => {
+    expect(store.toggleSelected).toEqual(expect.any(Function));
+    expect(store.selected.peek()).toEqual([]);
+    store.toggleSelected('3');
+    expect(store.selected.peek()).toEqual(['3']);
+    store.toggleSelected('8');
+    store.toggleSelected('1');
+    expect(store.selected.peek()).toEqual(['3', '8', '1']);
+    store.toggleSelected('3');
+    store.toggleSelected('9');
+    store.toggleSelected('2');
+    store.toggleSelected('1');
+    expect(store.selected.peek()).toEqual(['8', '9', '2']);
+  });
+
+  it('provides a random shuffle function', () => {
     const inputString = 'abcdefghijklmnopqrstuvwxyz';
     random.mockReturnValue(0.11658899463133832);
     expect(store.shuffle(inputString))
@@ -185,7 +258,7 @@ describe('Mobx Store', () => {
       .toEqual('abxcdevfghuijzklmynopwqrst');
   });
 
-  it('Provides a getPermutatedWords function', async () => {
+  it('provides a getPermutatedWords function', async () => {
     expect(store.getPermutatedWords).toBeDefined();
     expect(typeof (store.getPermutatedWords)).toEqual('function');
     const raw = jest.fn(() => ([
@@ -248,66 +321,7 @@ describe('Mobx Store', () => {
     );
   });
 
-  it('Provides a triedWordList computed with formatting indications', () => {
-    store.letters = 'halibut';
-    store.words = [
-      'alit',
-      'bail',
-      'built',
-      'hail',
-      'halt',
-      'haul',
-      'tail',
-    ];
-    expect(store.triedWordList).toEqual([
-      { word: 'No words', style: 'neutral' },
-    ]);
-
-    store.tried.replace([
-      'alit',
-      'yrasd',
-      'built',
-      'bail',
-      'asdf',
-    ]);
-    expect(store.triedWordList).toEqual([
-      { word: 'alit', style: 'correct' },
-      { word: 'asdf', style: 'incorrect' },
-      { word: 'bail', style: 'correct' },
-      { word: 'built', style: 'correct' },
-      { word: 'yrasd', style: 'incorrect' },
-    ]);
-
-    store.scored = true;
-    expect(store.triedWordList).toEqual([
-      { word: 'Not found:', style: 'neutral' },
-      { word: 'hail', style: 'neutral' },
-      { word: 'halt', style: 'neutral' },
-      { word: 'haul', style: 'neutral' },
-      { word: 'tail', style: 'neutral' },
-      { word: ' ', style: 'neutral' },
-      { word: 'Your words:', style: 'neutral' },
-      { word: 'alit', style: 'correct' },
-      { word: 'asdf', style: 'incorrect' },
-      { word: 'bail', style: 'correct' },
-      { word: 'built', style: 'correct' },
-      { word: 'yrasd', style: 'incorrect' },
-    ]);
-
-    store.tried.clear();
-    expect(store.triedWordList).toEqual([
-      { word: 'Not found:', style: 'neutral' },
-      { word: 'alit', style: 'neutral' },
-      { word: 'bail', style: 'neutral' },
-      { word: 'built', style: 'neutral' },
-      { word: 'hail', style: 'neutral' },
-      { word: 'halt', style: 'neutral' },
-      { word: 'haul', style: 'neutral' },
-      { word: 'tail', style: 'neutral' },
-    ]);
-  });
-
-  it('Provides a \'nav\' key with navigation functions on it', () => {
+  it('provides a \'nav\' key with navigation functions on it', () => {
     expect(store.nav).toEqual(expect.any(Object));
     expect(store.nav.goto).toEqual(expect.any(Function));
     expect(store.nav.resetto).toEqual(expect.any(Function));
@@ -342,8 +356,7 @@ describe('Mobx Store', () => {
     });
   });
 
-
-  it('Provides a newGame function that can generate a new word', async () => {
+  it('provides a newGame function that can generate a new word', async () => {
     expect(store.newGame).toBeDefined();
     expect(typeof (store.newGame)).toEqual('function');
     store.shuffle = jest.fn(s => s);
@@ -444,11 +457,11 @@ describe('Mobx Store', () => {
       expect.any(Function),
     );
     expect(store.letters).toEqual('flapcjaks');
-    expect(store.words.peek()).toEqual([
+    expect(store.words.keys()).toEqual([
       '77c2',
       'bca0ce269095',
     ]);
-    expect(store.tried.peek()).toEqual([]);
+    expect(store.tried.keys()).toEqual([]);
     expect(store.selected.peek()).toEqual([]);
     expect(store.scored).toEqual(false);
     expect(store.statusText).toEqual('Welcome!');
@@ -481,7 +494,7 @@ describe('Mobx Store', () => {
     expect(Alert.alert).toHaveBeenCalledWith('No suitable words found. Please expand search parameters.');
   });
 
-  it('Provides a newGame function that can load a provided game', async () => {
+  it('provides a newGame function that can load a provided game', async () => {
     expect(store.newGame).toBeDefined();
     expect(typeof (store.newGame)).toEqual('function');
     store.shuffle = jest.fn(s => s);
@@ -513,10 +526,10 @@ describe('Mobx Store', () => {
     }))
       .resolves.toEqual();
     expect(store.letters).toEqual('flapjacks');
-    expect(store.words.peek()).toEqual([
+    expect(store.words.keys()).toEqual([
       'a95d96bj',
     ]);
-    expect(store.tried.peek()).toEqual([
+    expect(store.tried.keys()).toEqual([
       '82d6604e',
       '83d1',
       '494d',
@@ -528,43 +541,43 @@ describe('Mobx Store', () => {
     expect(store.timer).toEqual(50);
   });
 
-  it('Provides a submitWord function with validation and user feedback', () => {
+  it('provides a submitWord function with validation and user feedback', () => {
     expect(store.submitWord).toEqual(expect.any(Function));
 
     store.setStatus('');
     store.letters = 'abcdefghe';
     store.scored = true;
     store.timer = 50;
-    store.tried.replace(['aade']);
-    store.words.replace([
-      'ache',
-      'cafe',
-    ]);
+    store.tried.replace({ aade: false });
+    store.words.replace({
+      ache: true,
+      cafe: true,
+    });
     expect(store.submitWord()).toEqual(false);
-    expect(store.tried.peek()).toEqual(['aade']);
+    expect(store.tried.entries()).toEqual([['aade', false]]);
     expect(store.statusText).toEqual('Game already scored');
 
     store.scored = false;
     store.selected.replace(['1', '2', '3']);
     expect(store.submitWord()).toEqual(false);
-    expect(store.tried.peek()).toEqual(['aade']);
+    expect(store.tried.entries()).toEqual([['aade', false]]);
     expect(store.statusText).toEqual('Too short');
 
     store.selected.replace(['0', '1', '2', '3']);
     expect(store.submitWord()).toEqual(false);
-    expect(store.tried.peek()).toEqual(['aade']);
+    expect(store.tried.entries()).toEqual([['aade', false]]);
     expect(store.statusText).toEqual('Missing middle letter');
 
     store.selected.replace(['0', '0', '3', '4']);
     expect(store.submitWord()).toEqual(null);
-    expect(store.tried.peek()).toEqual(['aade']);
+    expect(store.tried.entries()).toEqual([['aade', false]]);
     expect(store.statusText).toEqual('Already tried');
 
     store.selected.replace(['0', '2', '7', '4']);
     expect(store.submitWord()).toEqual(true);
-    expect(store.tried.peek()).toEqual([
-      'aade',
-      'ache',
+    expect(store.tried.entries()).toEqual([
+      ['aade', false],
+      ['ache', true],
     ]);
     expect(store.selected.peek()).toEqual([]);
     expect(store.timer).toEqual(70);
@@ -572,25 +585,25 @@ describe('Mobx Store', () => {
 
     store.timer = -1;
     store.selected.replace(['2', '0', '5', '4']);
-    store.tried.replace(['asdf']);
+    store.tried.replace({ asdf: false });
     expect(store.submitWord()).toEqual(true);
-    expect(store.tried.peek()).toEqual([
-      'asdf',
-      'cafe',
+    expect(store.tried.entries()).toEqual([
+      ['asdf', false],
+      ['cafe', true],
     ]);
     expect(store.selected.peek()).toEqual([]);
     expect(store.timer).toEqual(-1);
     expect(store.statusText).toEqual('Nice!');
 
     store.selected.replace(['4', '4', '4', '4']);
-    store.tried.replace([]);
+    store.tried.replace({});
     expect(store.submitWord()).toEqual(false);
-    expect(store.tried.peek()).toEqual(['eeee']);
+    expect(store.tried.entries()).toEqual([['eeee', false]]);
     expect(store.selected.peek()).toEqual([]);
     expect(store.statusText).toEqual('Unrecognized word.');
   });
 
-  it('Provides a setStatus action that updates statusText', () => {
+  it('provides a setStatus action that updates statusText', () => {
     jest.spyOn(store, 'getScore').mockReturnValue('FF413678');
 
     expect(store.setStatus).toEqual(expect.any(Function));
@@ -603,115 +616,124 @@ describe('Mobx Store', () => {
     expect(setTimeout).toHaveBeenCalledWith(expect.any(Function), 3000);
 
     // If status text is same and game is not scored, clear after timer
-    setTimeout.mock.calls[0][0]();
+    jest.runAllTimers();
     expect(store.statusText).toEqual('');
 
-    // If status text is same and game is scored, set to score after timer
+    // If status text is same and game is scored, set to scored text
     store.scored = true;
     setTimeout.mockClear();
     store.setStatus('0B2B0E79');
     expect(store.statusText).toEqual('0B2B0E79');
-    setTimeout.mock.calls[0][0]();
-    expect(store.statusText).toEqual('FF413678');
+    jest.runAllTimers();
+    expect(store.statusText).toEqual('Game scored');
 
     // If status text is not the same, do nothing.
     store.scored = false;
     setTimeout.mockClear();
     store.setStatus('E6EE45B6');
     store.statusText = 'asdf';
-    setTimeout.mock.calls[0][0]();
+    jest.runAllTimers();
     expect(store.statusText).toEqual('asdf');
   });
 
-  it('Provides a getScore function returning current score and distance to next level', () => {
+  it('provides a score list, reverse-sorted by threshold, with text descriptions', () => {
+    expect(store.scores).toEqual(expect.any(Array));
+    store.scores.forEach((score) => {
+      expect(score.percent).toEqual(expect.any(Number));
+      expect(score.text).toEqual(expect.any(String));
+    });
+    expect(store.scores.slice().sort((a, b) => (b.percent - a.percent))).toEqual(store.scores);
+  });
+
+  it('provides a getScore function returning current score and distance to next level', () => {
     expect(store.getScore).toEqual(expect.any(Function));
 
-    store.words.replace([
-      'been',
-      'bend',
-      'bended',
-      'bender',
-      'blend',
-      'blended',
-      'blender',
-      'blunder',
-      'blundered',
-      'bundle',
-    ]);
+    store.words.replace({
+      been: true,
+      bend: true,
+      bended: true,
+      bender: true,
+      blend: true,
+      blended: true,
+      blender: true,
+      blunder: true,
+      blundered: true,
+      bundle: true,
+    });
     store.tried.replace([]);
     store.scores = [
-      { percent: 0, text: '548E' },
-      { percent: 40, text: '9F81' },
-      { percent: 80, text: '7DA2' },
       { percent: 100, text: '4683' },
+      { percent: 80, text: '7DA2' },
+      { percent: 40, text: '9F81' },
+      { percent: 0, text: '548E' },
     ];
 
     expect(store.getScore()).toEqual({ text: '548E', toNext: 4 });
 
-    store.tried.replace([
-      'blend',
-      'blended',
-      'blender',
-    ]);
+    store.tried.replace({
+      blend: true,
+      blended: true,
+      blender: true,
+    });
     expect(store.getScore()).toEqual({ text: '548E', toNext: 1 });
 
-    store.tried.replace([
-      'blend',
-      'blended',
-      'blender',
-      'asdf',
-      'rscvd',
-      'asdfsdfd',
-    ]);
+    store.tried.replace({
+      blend: true,
+      blended: true,
+      blender: true,
+      asdf: false,
+      rscvd: false,
+      asdfsdfd: false,
+    });
     expect(store.getScore()).toEqual({ text: '548E', toNext: 1 });
 
-    store.tried.replace([
-      'blend',
-      'blended',
-      'blender',
-      'asdf',
-      'rscvd',
-      'asdfsdfd',
-      'blunder',
-      'blundered',
-      'bundle',
-    ]);
+    store.tried.replace({
+      blend: true,
+      blended: true,
+      blender: true,
+      asdf: false,
+      rscvd: false,
+      asdfsdfd: false,
+      blunder: true,
+      blundered: true,
+      bundle: true,
+    });
     expect(store.getScore()).toEqual({ text: '9F81', toNext: 2 });
 
-    store.tried.replace([
-      'blend',
-      'blended',
-      'blender',
-      'asdf',
-      'rscvd',
-      'asdfsdfd',
-      'blunder',
-      'blundered',
-      'bundle',
-      'been',
-      'bend',
-    ]);
+    store.tried.replace({
+      blend: true,
+      blended: true,
+      blender: true,
+      asdf: false,
+      rscvd: false,
+      asdfsdfd: false,
+      blunder: true,
+      blundered: true,
+      bundle: true,
+      been: true,
+      bend: true,
+    });
     expect(store.getScore()).toEqual({ text: '7DA2', toNext: 2 });
 
-    store.tried.replace([
-      'blend',
-      'blended',
-      'blender',
-      'asdf',
-      'rscvd',
-      'asdfsdfd',
-      'blunder',
-      'blundered',
-      'bundle',
-      'been',
-      'bend',
-      'bended',
-      'bender',
-    ]);
+    store.tried.replace({
+      blend: true,
+      blended: true,
+      blender: true,
+      asdf: false,
+      rscvd: false,
+      asdfsdfd: false,
+      blunder: true,
+      blundered: true,
+      bundle: true,
+      been: true,
+      bend: true,
+      bended: true,
+      bender: true,
+    });
     expect(store.getScore()).toEqual({ text: '4683', toNext: 0 });
   });
 
-  it('Provides a scoreGame function that sets a scored state', () => {
+  it('provides a scoreGame function that sets a scored state', () => {
     expect(store.scoreGame).toEqual(expect.any(Function));
     store.scoreGame();
     expect(store.scored).toEqual(true);
