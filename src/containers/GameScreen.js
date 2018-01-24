@@ -4,7 +4,6 @@ import { View } from 'react-native';
 import { action, computed, observable } from 'mobx';
 import { inject, observer, PropTypes as MobxPropTypes } from 'mobx-react';
 import nativeTimer from 'react-native-timer';
-import * as Animatable from 'react-native-animatable';
 import KeyEvent from 'react-native-keyevent';
 
 import WrapperStyle from '../styles/WrapperStyle';
@@ -32,25 +31,6 @@ export default class GameScreen extends React.Component {
       toggleSelected: PropTypes.func.isRequired,
     }).isRequired,
   }
-
-  static customPulseAnimation = {
-    0.00: { scale: 1 },
-    0.05: { scale: 1 },
-    0.30: { scale: 1.05 },
-    0.70: { scale: 0.95 },
-    0.95: { scale: 1 },
-    1.00: { scale: 1 },
-  };
-
-  static customShakeAnimation = {
-    0.000: { translateX: 0 },
-    0.250: { translateX: -6 },
-    0.375: { translateX: 6 },
-    0.500: { translateX: -6 },
-    0.625: { translateX: 6 },
-    0.750: { translateX: -6 },
-    1.000: { translateX: 0 },
-  };
 
   componentDidMount = () => {
     const { store } = this.props;
@@ -101,23 +81,15 @@ export default class GameScreen extends React.Component {
     KeyEvent.removeKeyUpListener();
   }
 
-  onCorrect = () => {
-    this.triggerAnimation('correct');
-  }
-
-  onWrong = () => {
-    this.triggerAnimation('incorrect');
-  }
-
-  @computed get grid() {
-    const grid = {};
+  @computed get gridEntries() {
+    const gridEntries = {};
     Array.from(Array(9)).forEach((x, i) => {
-      grid[`${i}`] = {
+      gridEntries[`${i}`] = {
         letter: this.props.store.letters.substr(i, 1),
         selected: this.props.store.selected.indexOf(`${i}`) !== -1,
       };
     });
-    return grid;
+    return gridEntries;
   }
 
   @observable animationState = '';
@@ -128,50 +100,6 @@ export default class GameScreen extends React.Component {
     this.animationState = '';
   }
 
-  renderGrid = () => {
-    const { gridWrapper } = GameScreenStyle;
-    const GridComponent = (
-      <Grid
-        submitWord={this.props.store.submitWord}
-        grid={this.grid}
-        onCorrect={this.onCorrect}
-        onWrong={this.onWrong}
-        toggleSelected={this.props.store.toggleSelected}
-      />
-    );
-    switch (this.animationState) {
-      case 'correct':
-        return (
-          <Animatable.View
-            animation={this.constructor.customPulseAnimation}
-            duration={1000}
-            iterationCount={1}
-            onAnimationEnd={this.clearAnimation}
-            style={gridWrapper}
-          >
-            {GridComponent}
-          </Animatable.View>
-        );
-      case 'incorrect':
-        return (
-          <Animatable.View
-            animation={this.constructor.customShakeAnimation}
-            duration={500}
-            iterationCount={1}
-            onAnimationEnd={this.clearAnimation}
-            style={gridWrapper}
-          >
-            {GridComponent}
-          </Animatable.View>
-        );
-      default:
-        return (
-          <View style={gridWrapper}>
-            {GridComponent}
-          </View>
-        );
-    }
-  }
   render() {
     const { store } = this.props;
     const orientation = store.orientation === 0 ? 'portrait' : 'landscape';
@@ -190,21 +118,26 @@ export default class GameScreen extends React.Component {
     return (
       <View style={container}>
         <View style={GameScreenStyle[orientation]}>
-          {this.renderGrid()}
+          <Grid
+            animationState={this.animationState}
+            clearAnimation={this.clearAnimation}
+            gridEntries={this.gridEntries}
+            submitWord={this.props.store.submitWord}
+            toggleSelected={this.props.store.toggleSelected}
+            triggerAnimation={this.triggerAnimation}
+          />
           <View style={dataWrapper}>
             <Control
               clearSelected={store.clearSelected}
               isScored={store.scored}
-              onCorrect={this.onCorrect}
               onMenu={store.openMenuModal}
               onSubmit={() => {
                 if (store.submitWord() === true) {
-                  this.onCorrect();
+                  this.triggerAnimation('correct');
                 } else {
-                  this.onWrong();
+                  this.triggerAnimation('incorrect');
                 }
               }}
-              onWrong={this.onWrong}
               scoreText={scoreText}
               selectedString={store.selected.map(i => store.letters[i].toUpperCase()).join('')}
               statusText={store.statusText}

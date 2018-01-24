@@ -7,11 +7,6 @@ jest.useFakeTimers();
 
 global.document = new JSDOM('');
 global.window = global.document.defaultView;
-Object.keys(global.document.defaultView).forEach((property) => {
-  if (typeof global[property] === 'undefined') {
-    global[property] = global.document.defaultView[property];
-  }
-});
 
 // Suppress warnings about View from the non-native React parsers in jsdom
 const { error } = console;

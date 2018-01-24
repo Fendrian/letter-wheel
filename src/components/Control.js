@@ -14,7 +14,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 import ControlStyle from '../styles/ControlStyle';
 
-const listDataSource = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
+const listDataSource = new ListView.DataSource({ rowHasChanged() {} });
 
 @observer
 export default class Control extends React.Component {

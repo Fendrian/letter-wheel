@@ -38,6 +38,12 @@ export default StyleSheet.create({
     ...block,
     backgroundColor: '#aa6',
   },
+  gridWrapper: {
+    alignItems: 'center',
+    height: 320,
+    justifyContent: 'center',
+    width: 320,
+  },
   letter: {
     color: '#000',
     fontSize: 60,

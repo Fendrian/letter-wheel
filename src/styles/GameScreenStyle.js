@@ -9,12 +9,6 @@ export default StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
   },
-  gridWrapper: {
-    alignItems: 'center',
-    height: 320,
-    justifyContent: 'center',
-    width: 320,
-  },
   dataWrapper: {
     flex: 1,
   },
