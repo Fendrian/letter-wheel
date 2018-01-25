@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Main App component matches the snapshot 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    textContent="Loading..."
+    textStyle={
+      Object {
+        "color": "#FFF",
+      }
+    }
+    visible={false}
+  >
+    7A9FEEAE-7F90-4135-B5B2-356DB9E822CB
+  </View>
+  C3D066C6-EFB0-4E46-AC72-6E2558B34F1B
+  <View
+    isOpen={false}
+    onClosed={[Function]}
+  >
+    D6BA4E9F-2C03-43BE-A2CB-9005355CE3C0
+  </View>
+  <View
+    isOpen={false}
+    onClosed={[Function]}
+  >
+    2B8A071D-EAE0-4755-B3DC-1DD7AA0B4725
+  </View>
+  <View
+    isOpen={false}
+    onClosed={[Function]}
+  >
+    8E4CFDDB-A054-462D-B718-C182E846D653
+  </View>
+</View>
+`;

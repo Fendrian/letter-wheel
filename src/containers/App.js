@@ -10,7 +10,7 @@ import InstructionsModal from '../components/InstructionsModal';
 
 @inject('store')
 @observer
-class App extends React.Component {
+export default class App extends React.Component {
   static propTypes = {
     store: PropTypes.shape({
       closeAboutModal: PropTypes.func.isRequired,
@@ -24,39 +24,27 @@ class App extends React.Component {
     children: PropTypes.element.isRequired,
   }
   render() {
-    const { children } = this.props;
-    const {
-      closeAboutModal,
-      closeMenuModal,
-      closeInstructionsModal,
-      loading,
-      isAboutModalOpen,
-      isMenuModalOpen,
-      isInstructionsModalOpen,
-    } = this.props.store;
     return (
       <View style={{ flex: 1 }}>
         <Spinner
-          visible={loading}
+          visible={this.props.store.loading}
           textContent="Loading..."
           textStyle={{ color: '#FFF' }}
         />
-        {children}
+        {this.props.children}
         <MenuModal
-          isOpen={isMenuModalOpen}
-          onClosed={closeMenuModal}
+          isOpen={this.props.store.isMenuModalOpen}
+          onClosed={this.props.store.closeMenuModal}
         />
         <AboutModal
-          isOpen={isAboutModalOpen}
-          onClosed={closeAboutModal}
+          isOpen={this.props.store.isAboutModalOpen}
+          onClosed={this.props.store.closeAboutModal}
         />
         <InstructionsModal
-          isOpen={isInstructionsModalOpen}
-          onClosed={closeInstructionsModal}
+          isOpen={this.props.store.isInstructionsModalOpen}
+          onClosed={this.props.store.closeInstructionsModal}
         />
       </View>
     );
   }
 }
-
-export default App;
