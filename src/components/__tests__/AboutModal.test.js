@@ -33,7 +33,7 @@ describe('About Modal', () => {
     ));
     render.setProps({ isOpen: false });
     expect(render.props().onClosed).toHaveBeenCalledTimes(0);
-    jest.runAllTimers();
+    jest.advanceTimersByTime(1000);
     expect(render.props().onClosed).toHaveBeenCalledTimes(1);
     render.setProps({ isOpen: true });
     expect(render.props().onClosed).toHaveBeenCalledTimes(1);

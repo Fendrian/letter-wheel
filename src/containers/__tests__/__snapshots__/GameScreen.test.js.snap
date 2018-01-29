@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Game Screen component matches the snapshot 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#e8e9ed",
+      "flex": 1,
+      "justifyContent": "center",
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "flex": 1,
+        "flexDirection": "column",
+      }
+    }
+  >
+    <View
+      animationState=""
+      clearAnimation={[Function]}
+      gridEntries={
+        Object {
+          "0": Object {
+            "letter": " ",
+            "selected": false,
+          },
+          "1": Object {
+            "letter": " ",
+            "selected": false,
+          },
+          "2": Object {
+            "letter": " ",
+            "selected": false,
+          },
+          "3": Object {
+            "letter": " ",
+            "selected": false,
+          },
+          "4": Object {
+            "letter": " ",
+            "selected": false,
+          },
+          "5": Object {
+            "letter": " ",
+            "selected": false,
+          },
+          "6": Object {
+            "letter": " ",
+            "selected": false,
+          },
+          "7": Object {
+            "letter": " ",
+            "selected": false,
+          },
+          "8": Object {
+            "letter": " ",
+            "selected": false,
+          },
+        }
+      }
+      submitWord={[Function]}
+      toggleSelected={[Function]}
+      triggerAnimation={[Function]}
+    >
+      18E4DC45-B77E-46C2-B7F5-D6AFA39240BB
+    </View>
+    <View
+      style={
+        Object {
+          "flex": 1,
+        }
+      }
+    >
+      <View
+        clearSelected={[Function]}
+        isScored={false}
+        onMenu={[Function]}
+        onSubmit={[Function]}
+        scoreText="Exceptional!"
+        selectedString=""
+        statusText=""
+        timerString=""
+        tried={Object {}}
+        words={Object {}}
+        wordsToNextLevel={0}
+      >
+        15D067E6-1538-46AD-89A0-8D8729169089
+      </View>
+    </View>
+  </View>
+</View>
+`;

@@ -323,10 +323,12 @@ describe('Mobx Store', () => {
 
   it('provides a \'nav\' key with navigation functions on it', () => {
     expect(store.nav).toEqual(expect.any(Object));
+    expect(store.nav.get).toEqual(expect.any(Function));
     expect(store.nav.goto).toEqual(expect.any(Function));
     expect(store.nav.resetto).toEqual(expect.any(Function));
 
     store.navigator = {};
+    expect(store.nav.get()).toEqual('none');
     expect(store.nav.goto()).toEqual(false);
     expect(store.nav.resetto()).toEqual(false);
 
@@ -337,6 +339,26 @@ describe('Mobx Store', () => {
       type: 'Navigation/NAVIGATE',
       routeName: '5913349A',
     });
+
+    store.navigator.dispatch.mockClear();
+    store.navigator.state = {
+      nav: { routes: [{ routeName: 'F2A9' }], index: 0 },
+    };
+    expect(store.navigator.state.nav.routes.length).toEqual(1);
+    expect(store.nav.get()).toEqual('F2A9');
+    store.navigator.state.nav = { routes: [{}, { routeName: '4DA1' }], index: 1 };
+    expect(store.nav.get()).toEqual('4DA1');
+    store.navigator.state.nav = {
+      routes: [
+        {},
+        { routeName: '4DA1' },
+        { routeName: 'CC27' },
+      ],
+      index: 1,
+    };
+    expect(store.nav.get()).toEqual('4DA1');
+    store.navigator.state.nav.index = 2;
+    expect(store.nav.get()).toEqual('CC27');
 
     store.navigator.dispatch.mockClear();
     store.navigator.dispatch = jest.fn().mockReturnValue('FE765CEFB8E0');
@@ -616,7 +638,7 @@ describe('Mobx Store', () => {
     expect(setTimeout).toHaveBeenCalledWith(expect.any(Function), 3000);
 
     // If status text is same and game is not scored, clear after timer
-    jest.runAllTimers();
+    jest.advanceTimersByTime(3000);
     expect(store.statusText).toEqual('');
 
     // If status text is same and game is scored, set to scored text
@@ -624,7 +646,7 @@ describe('Mobx Store', () => {
     setTimeout.mockClear();
     store.setStatus('0B2B0E79');
     expect(store.statusText).toEqual('0B2B0E79');
-    jest.runAllTimers();
+    jest.advanceTimersByTime(3000);
     expect(store.statusText).toEqual('Game scored');
 
     // If status text is not the same, do nothing.
@@ -632,7 +654,7 @@ describe('Mobx Store', () => {
     setTimeout.mockClear();
     store.setStatus('E6EE45B6');
     store.statusText = 'asdf';
-    jest.runAllTimers();
+    jest.advanceTimersByTime(3000);
     expect(store.statusText).toEqual('asdf');
   });
 

@@ -156,6 +156,16 @@ export default class store {
   }
 
   nav = {
+    get: () => {
+      if (
+        this.navigator &&
+        this.navigator.state &&
+        this.navigator.state.nav.routes.length > 0
+      ) {
+        return this.navigator.state.nav.routes[this.navigator.state.nav.index].routeName;
+      }
+      return 'none';
+    },
     goto: (screen) => {
       if (typeof (this.navigator.dispatch) === 'undefined') {
         return false;

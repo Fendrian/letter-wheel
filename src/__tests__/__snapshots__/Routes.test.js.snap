@@ -16,6 +16,7 @@ exports[`Main routes file matches the snapshot 1`] = `
       "letters": "         ",
       "loading": false,
       "nav": Object {
+        "get": [Function],
         "goto": [Function],
         "resetto": [Function],
       },

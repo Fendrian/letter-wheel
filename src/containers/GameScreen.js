@@ -40,7 +40,7 @@ export default class GameScreen extends React.Component {
       const OPTION_KEY = 82;
       if (
         (keyCode === SOFT_LEFT || keyCode === OPTION_KEY) &&
-        !store.isMenuModalOpen.state.isOpen &&
+        !store.isMenuModalOpen &&
         !store.isAboutModalOpen &&
         !store.isInstructionsModalOpen
       ) {
@@ -52,14 +52,12 @@ export default class GameScreen extends React.Component {
       this,
       'gameTimer',
       () => {
-        const { nav } = store.navigator.state;
-
         // Only process the timer if it's active,
         // and the user is focused on the game screen
         if (
           store.timer >= 0 &&
           store.scored !== true &&
-          nav.routes[nav.index].routeName === 'Game' &&
+          store.nav.get() === 'Game' &&
           !store.isMenuModalOpen &&
           !store.isAboutModalOpen &&
           !store.isInstructionsModalOpen
