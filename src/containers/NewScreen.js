@@ -10,6 +10,24 @@ import Button from 'react-native-button';
 import WrapperStyle from '../styles/WrapperStyle';
 import NewScreenStyle from '../styles/NewScreenStyle';
 
+const options = [
+  {
+    label: '10-49',
+    min: 10,
+    max: 49,
+  },
+  {
+    label: '50-99',
+    min: 50,
+    max: 99,
+  },
+  {
+    label: '100+',
+    min: 100,
+    max: 999,
+  },
+];
+
 @inject('store')
 @observer
 export default class NewScreen extends React.Component {
@@ -30,24 +48,6 @@ export default class NewScreen extends React.Component {
     }).isRequired,
   }
 
-  static options = [
-    {
-      label: '10-49',
-      min: 10,
-      max: 49,
-    },
-    {
-      label: '50-99',
-      min: 50,
-      max: 99,
-    },
-    {
-      label: '100+',
-      min: 100,
-      max: 999,
-    },
-  ];
-
   onSliderMove = (sliderPosition) => {
     if (Array.isArray(sliderPosition)) {
       this.setSelectedOption({
@@ -66,10 +66,8 @@ export default class NewScreen extends React.Component {
 
   getSelectedOption = () => {
     const { min, max } = this.props.store.newGameOptions.get('wordRange');
-    return this.constructor.options.indexOf((
-      this.constructor.options.find(option => (
-        min === option.min && max === option.max
-      ))
+    return options.findIndex(option => (
+      min === option.min && max === option.max
     ));
   }
 
@@ -153,7 +151,7 @@ export default class NewScreen extends React.Component {
                   containerBorderTint={tint}
                   extractText={option => option.label}
                   onSelection={setSelectedOption}
-                  options={this.constructor.options}
+                  options={options}
                   optionStyle={wordItems}
                   selectedIndex={this.getSelectedOption()}
                   separatorTint={tint}
