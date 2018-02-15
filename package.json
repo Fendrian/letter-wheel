@@ -13,6 +13,11 @@
   "jest": {
     "collectCoverage": true,
     "coverageDirectory": ".tmp/coverage",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "jest_setup.js",
+      "jest_init.js"
+    ],
     "preset": "react-native",
     "setupFiles": [
       "./jest_setup.js"
@@ -85,6 +90,7 @@
     "eslint-plugin-react": "^7.1.0",
     "jest": "^22.0.4",
     "jsdom": "^11.5.1",
+    "mockdate": "^2.0.2",
     "react-dom": "^16.0.0",
     "react-test-renderer": "^16.0.0"
   }

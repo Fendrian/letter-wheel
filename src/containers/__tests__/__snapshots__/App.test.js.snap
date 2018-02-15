@@ -15,11 +15,17 @@ exports[`Main App component matches the snapshot 1`] = `
         "color": "#FFF",
       }
     }
-    visible={false}
   >
     7A9FEEAE-7F90-4135-B5B2-356DB9E822CB
   </View>
-  C3D066C6-EFB0-4E46-AC72-6E2558B34F1B
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    disabled={false}
+    ellipsizeMode="tail"
+  >
+    C3D066C6-EFB0-4E46-AC72-6E2558B34F1B
+  </Text>
   <View
     isOpen={false}
     onClosed={[Function]}

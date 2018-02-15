@@ -1,4 +1,5 @@
 import React from 'react';
+import { Text } from 'react-native';
 import { mount } from 'enzyme';
 import Spinner from 'react-native-loading-spinner-overlay';
 import { runInAction } from 'mobx';
@@ -13,7 +14,7 @@ jest.mock('react-native-loading-spinner-overlay', () => {
   require('react'); // eslint-disable-line global-require
   const { View } = require('react-native'); // eslint-disable-line global-require
   return props => (
-    <View {...props}>
+    <View {...props} visible={undefined}>
       {'7A9FEEAE-7F90-4135-B5B2-356DB9E822CB'}
     </View>
   );
@@ -61,7 +62,9 @@ describe('Main App component', () => {
   it('matches the snapshot', () => {
     const render = mount((
       <App store={store}>
-        C3D066C6-EFB0-4E46-AC72-6E2558B34F1B
+        <Text>
+          C3D066C6-EFB0-4E46-AC72-6E2558B34F1B
+        </Text>
       </App>
     ));
     expect(render).toMatchSnapshot();
@@ -70,7 +73,9 @@ describe('Main App component', () => {
   it('exports the App component', () => {
     const render = mount((
       <App store={store}>
-        616DC9D6-CC2B-4D7A-8B54-B610A2422593
+        <Text>
+          616DC9D6-CC2B-4D7A-8B54-B610A2422593
+        </Text>
       </App>
     ));
     expect(render.find(App)).toHaveLength(1);
@@ -79,7 +84,9 @@ describe('Main App component', () => {
   it('renders a loading spinner', () => {
     const render = mount((
       <App store={store}>
-        5F82BC43-6BF3-41F2-A215-CB9F44F208F1
+        <Text>
+          5F82BC43-6BF3-41F2-A215-CB9F44F208F1
+        </Text>
       </App>
     ));
     expect(render.find(Spinner)).toHaveLength(1);
@@ -88,7 +95,9 @@ describe('Main App component', () => {
   it('renders the Menu modal', () => {
     const render = mount((
       <App store={store}>
-        289FAD8B-45FB-496A-9FEB-AD8DEDD75F25
+        <Text>
+          289FAD8B-45FB-496A-9FEB-AD8DEDD75F25
+        </Text>
       </App>
     ));
     expect(render.find(MenuModal)).toHaveLength(1);
@@ -105,7 +114,9 @@ describe('Main App component', () => {
   it('renders the About modal', () => {
     const render = mount((
       <App store={store}>
-        43032E29-AECF-4389-9D2F-665CBFC13DE9
+        <Text>
+          43032E29-AECF-4389-9D2F-665CBFC13DE9
+        </Text>
       </App>
     ));
     expect(render.find(AboutModal)).toHaveLength(1);
@@ -122,7 +133,9 @@ describe('Main App component', () => {
   it('renders the Instructions modal', () => {
     const render = mount((
       <App store={store}>
-        B9B8DC2D-99D7-4A0F-B7FD-A1CD6A74978D
+        <Text>
+          B9B8DC2D-99D7-4A0F-B7FD-A1CD6A74978D
+        </Text>
       </App>
     ));
     expect(render.find(InstructionsModal)).toHaveLength(1);
@@ -139,7 +152,9 @@ describe('Main App component', () => {
   it('returns on render', () => {
     const render = mount((
       <App store={store}>
-        B9B8DC2D-99D7-4A0F-B7FD-A1CD6A74978D
+        <Text>
+          B9B8DC2D-99D7-4A0F-B7FD-A1CD6A74978D
+        </Text>
       </App>
     ));
     expect(render.find(InstructionsModal)).toHaveLength(1);

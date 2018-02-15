@@ -33,7 +33,7 @@ const options = [
 export default class NewScreen extends React.Component {
   static propTypes = {
     store: PropTypes.shape({
-      instructionsModal: PropTypes.object,
+      openInstructionsModal: PropTypes.func,
       loading: PropTypes.bool.isRequired,
       nav: PropTypes.shape({
         goto: PropTypes.func.isRequired,
@@ -104,14 +104,8 @@ export default class NewScreen extends React.Component {
   }
 
   render() {
-    const {
-      start,
-      setSelectedOption,
-      toggleTimed,
-    } = this;
-    const timed = this.props.store.newGameOptions.get('timed');
     const { min, max } = this.props.store.newGameOptions.get('wordRange');
-    const { instructionsModal } = this.props.store;
+    const { openInstructionsModal } = this.props.store;
     const selected = [min, max];
     const optionsArray = [...Array.from(Array(91)).map((a, i) => i + 10), 999];
     const { container } = WrapperStyle;
@@ -150,7 +144,7 @@ export default class NewScreen extends React.Component {
                 <SegmentedControls
                   containerBorderTint={tint}
                   extractText={option => option.label}
-                  onSelection={setSelectedOption}
+                  onSelection={this.setSelectedOption}
                   options={options}
                   optionStyle={wordItems}
                   selectedIndex={this.getSelectedOption()}
@@ -163,10 +157,10 @@ export default class NewScreen extends React.Component {
             <View style={menuRow}>
               <Text style={wordsGenerated}>
                 {
-                  max !== 999 ?
+                  `${max !== 999 ?
                     `${min} to ${max} words`
                     :
-                    `At least ${min} words`
+                    `At least ${min} words`}`
                 }
               </Text>
             </View>
@@ -204,8 +198,8 @@ export default class NewScreen extends React.Component {
                   label="Timed Game:"
                   labelBefore
                   labelStyle={timerLabel}
-                  checked={timed}
-                  onChange={toggleTimed}
+                  checked={this.props.store.newGameOptions.get('timed')}
+                  onChange={this.toggleTimed}
                 />
               </View>
             </View>
@@ -213,10 +207,7 @@ export default class NewScreen extends React.Component {
               <Button
                 containerStyle={button}
                 style={buttonText}
-                onPress={() => {
-                  instructionsModal.close();
-                  instructionsModal.open();
-                }}
+                onPress={openInstructionsModal}
               >
                 Instructions
               </Button>
@@ -224,7 +215,7 @@ export default class NewScreen extends React.Component {
               <Button
                 containerStyle={button}
                 style={buttonText}
-                onPress={start}
+                onPress={this.start}
               >
                 Start Game
               </Button>

@@ -9,7 +9,6 @@ global.document = new JSDOM('');
 global.window = global.document.defaultView;
 
 // Suppress warnings about View from the non-native React parsers in jsdom
-const { error } = console;
 const jsdomWarning1 = new RegExp(/Warning:.*Always use lowercase HTML tags in React\./);
 const jsdomWarning2 = new RegExp(/Warning:.*If you meant to render a React component, start its name with an uppercase letter./);
 const jsdomWarning3 = new RegExp(/Warning: React does not recognize the `.*` prop on a DOM element./);
@@ -25,5 +24,5 @@ console.error = (...args) => { // eslint-disable-line no-console
   ) {
     return null;
   }
-  return error(...args);
+  throw new Error(...args);
 };
