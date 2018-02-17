@@ -3,3 +3,7 @@ node_js:
   - "node"
   - "7"
 cache: yarn
+before_install:
+  - pip install --user codecov
+after_success:
+  - codecov --file .tmp/coverage/lcov.info --disable search

@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/Fendrian/target-words.svg?branch=master)](https://travis-ci.org/Fendrian/target-words)
+[![codecov](https://codecov.io/gh/Fendrian/target-words/branch/master/graph/badge.svg)](https://codecov.io/gh/Fendrian/target-words)
+
 # TARGET WORDS
 
 ## A word-hunting game programmed in React Native
