@@ -1,10 +1,16 @@
 language: node_js
+
 node_js:
-  - "node"
   - "7"
-cache: yarn
+
+sudo: false
+
 before_install:
   - pip install --user codecov
+
+cache: yarn
+
 after_success:
   - codecov --file .tmp/coverage/lcov.info --disable search
+
 script: yarn test

@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/Fendrian/target-words.svg?branch=master)](https://travis-ci.org/Fendrian/target-words)
 [![codecov](https://codecov.io/gh/Fendrian/target-words/branch/master/graph/badge.svg)](https://codecov.io/gh/Fendrian/target-words)
+[![jest](https://facebook.github.io/jest/img/jest-badge.svg)](https://github.com/facebook/jest)
 
 # TARGET WORDS
 
