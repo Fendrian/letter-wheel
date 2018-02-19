@@ -29,7 +29,15 @@
     "testEnvironment": "jsdom",
     "testPathIgnorePatterns": [
       "./node_modules/*",
-      "./.history/*"
+      "./.history/*",
+      "./.tmp/*",
+      "./.vagrant/*",
+      "./.vscode/*",
+      "./android/*",
+      "./dictionary/*",
+      "./ios/*",
+      "./logo/*",
+      "./scripts/*"
     ],
     "transformIgnorePatterns": [
       "./node_modules/jsdom/*",

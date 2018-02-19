@@ -13,4 +13,4 @@ cache: yarn
 after_success:
   - codecov --file .tmp/coverage/lcov.info --disable search
 
-script: yarn test
+script: yarn test --runInBand
