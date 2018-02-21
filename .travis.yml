@@ -1,7 +1,5 @@
 language: node_js
 
-before_install:
-  - pip install --user codecov
 
 matrix:
   include:
@@ -9,7 +7,11 @@ matrix:
       node_js: 7
       cache:
         yarn: true
+      before_install:
+        - pip install --user codecov
       script: yarn test --runInBand
+      after_success:
+        - codecov --file .tmp/coverage/lcov.info --disable search
 
     - language: android
       sudo: required
@@ -34,6 +36,3 @@ matrix:
           - extra-google-m2repository
           - addon-google_apis-google-16
       script: yarn test-build
-
-after_success:
-  - codecov --file .tmp/coverage/lcov.info --disable search
