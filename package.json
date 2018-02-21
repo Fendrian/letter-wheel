@@ -57,6 +57,7 @@
     "start": "yarn dev",
     "poststart": "yarn deploy",
     "test": "jest",
+    "test-build": "cd ./android && BUILDTYPE=TEST ./gradlew assembleRelease",
     "test-update": "jest --updateSnapshot"
   },
   "dependencies": {

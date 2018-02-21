@@ -1,16 +1,39 @@
 language: node_js
 
-node_js:
-  - "7"
-
-sudo: false
-
 before_install:
   - pip install --user codecov
 
-cache: yarn
+matrix:
+  include:
+    - language: node_js
+      node_js: 7
+      cache:
+        yarn: true
+      script: yarn test --runInBand
+
+    - language: android
+      sudo: required
+      jdk: oraclejdk8
+      before_cache:
+        - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+        - rm -rf $HOME/.gradle/caches/*/plugin-resolution/
+      cache:
+        directories:
+          - $HOME/.yarn-cache
+          - $HOME/.gradle/caches/
+          - $HOME/.gradle/wrapper/
+      before_install:
+        - nvm install 7
+        - yarn
+      android:
+        components:
+          - build-tools-23.0.1
+          - android-23
+          - extra-android-m2repository
+          - extra-google-google_play_services
+          - extra-google-m2repository
+          - addon-google_apis-google-16
+      script: yarn test-build
 
 after_success:
   - codecov --file .tmp/coverage/lcov.info --disable search
-
-script: yarn test --runInBand
