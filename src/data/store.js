@@ -2,10 +2,12 @@ import { action, observable, runInAction, useStrict } from 'mobx';
 import { Alert, Dimensions } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import SQLite from 'react-native-sqlite-storage';
+import simpleStore from 'react-native-simple-store';
 
 useStrict(true);
 
 const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
+const appSaveKey = '0318C041EFF1ADFE8DA8';
 
 export default class store {
   @observable isAboutModalOpen = false;
@@ -68,6 +70,7 @@ export default class store {
   @observable timer = -1;
   @action setTimer = (seconds) => {
     this.timer = seconds;
+    simpleStore.update(appSaveKey, { timer: seconds });
   }
   @observable tried = observable.map();
   @observable width = 0;
@@ -187,8 +190,7 @@ export default class store {
 
   async newGame({
     letters,
-    timer,
-    tried = [],
+    timed,
     wordsMax,
     wordsMin,
   }) {
@@ -252,7 +254,7 @@ export default class store {
       });
     }
 
-    // Load up the data store with the results
+    // Load up the data store with the new game state
     if (!cancel) {
       runInAction(() => {
         this.letters = newLetters;
@@ -261,21 +263,52 @@ export default class store {
           this.words.set(word, true);
         });
         this.tried.clear();
-        tried.forEach((word) => {
-          this.tried.set(word, (this.words.get(word) || false));
-        });
         this.selected.replace([]);
         this.scored = false;
         this.statusText = 'Welcome!';
-
-        if (typeof (timer) === 'number') {
-          this.timer = timer === -1 ? ((newWords.length - 1) * 4) : timer;
-        } else {
-          this.timer = -1;
-        }
+        this.timer = timed ? ((newWords.length - 1) * 4) : -1;
         // console.log(newWords);
+
+        this.saveGame();
       });
     }
+  }
+
+  async saveGame() {
+    const gameState = {
+      letters: this.letters,
+      timer: this.timer,
+      tried: this.tried.toJS(),
+      newGameOptions: {
+        timed: this.newGameOptions.get('timed'),
+        wordRange: this.newGameOptions.get('wordRange'),
+      },
+      scored: this.scored,
+      words: this.words.keys(),
+    };
+    await simpleStore.save(appSaveKey, gameState);
+    return true;
+  }
+
+  async loadGame() {
+    const gameState = await simpleStore.get(appSaveKey);
+    if (gameState) {
+      runInAction(() => {
+        this.letters = gameState.letters;
+        this.words.clear();
+        gameState.words.forEach((word) => {
+          this.words.set(word, true);
+        });
+        this.tried.replace(gameState.tried);
+        this.selected.replace([]);
+        this.scored = gameState.scored;
+        this.statusText = '';
+        this.timer = gameState.timer;
+        this.newGameOptions.replace(gameState.newGameOptions);
+      });
+      return true;
+    }
+    return false;
   }
 
   @action submitWord = () => {
@@ -310,11 +343,12 @@ export default class store {
     // If the word is correct, report to user and add time if relevant
     if (this.words.has(word)) {
       this.tried.set(word, true);
+      simpleStore.update(appSaveKey, { tried: this.tried.toJS() });
       this.selected.replace([]);
       if (this.timer > -1) {
         const addTime = (word.length * 5);
         this.setStatus(`Nice! +${addTime} seconds.`);
-        this.timer = (this.timer + addTime);
+        this.setTimer(this.timer + addTime);
       } else {
         this.setStatus('Nice!');
       }
@@ -325,6 +359,7 @@ export default class store {
     this.tried.set(word, false);
     this.selected.replace([]);
     this.setStatus('Unrecognized word.');
+    simpleStore.update(appSaveKey, { tried: this.tried.toJS() });
     return false;
   }
 
@@ -358,5 +393,6 @@ export default class store {
   @action scoreGame = () => {
     this.scored = true;
     this.statusText = 'Game scored';
+    simpleStore.update(appSaveKey, { scored: true });
   }
 }

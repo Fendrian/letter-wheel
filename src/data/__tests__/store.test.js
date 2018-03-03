@@ -1,10 +1,12 @@
 import { Alert, Dimensions } from 'react-native';
 import SQLite from 'react-native-sqlite-storage';
 import { NavigationActions } from 'react-navigation';
+import simpleStore from 'react-native-simple-store';
 
 import AppStore from '../store';
 
 jest.useFakeTimers();
+const appSaveKey = '0318C041EFF1ADFE8DA8';
 
 const random = jest.spyOn(Math, 'random')
   .mockReturnValue(0.25)
@@ -26,6 +28,32 @@ jest.mock('react-navigation', () => ({
     reset: jest.fn().mockReturnValue('F54036181AE4'),
     navigate: jest.fn().mockReturnValue('C6036B1B1E09'),
   },
+}));
+jest.mock('react-native-simple-store', () => ({
+  get: jest.fn().mockReturnValue(Promise.resolve({
+    letters: 'lbedsfzny',
+    timer: 76,
+    tried: {
+      asde: false,
+      jafe: false,
+      ediops: true,
+    },
+    newGameOptions: {
+      timed: false,
+      wordRange: {
+        min: 43,
+        max: 99,
+      },
+    },
+    scored: false,
+    words: [
+      'fshdnn',
+      'aosjfg',
+      'ekbvpn',
+    ],
+  })),
+  save: jest.fn().mockReturnValue(Promise.resolve()),
+  update: jest.fn().mockReturnValue(Promise.resolve()),
 }));
 
 describe('Mobx Store', () => {
@@ -181,15 +209,27 @@ describe('Mobx Store', () => {
     expect(store.newGameOptions.get('7CFD8854AD3E')).toEqual('644C70F7');
   });
 
-  it('provides a setTimer function that updates the timer variable', () => {
+  it('provides a setTimer function that updates the timer variable and persistent storage', () => {
     expect(store.setTimer).toEqual(expect.any(Function));
     expect(store.timer).toEqual(-1);
+
     store.setTimer(582);
+    expect(simpleStore.update).toHaveBeenCalledTimes(1);
+    expect(simpleStore.update).toHaveBeenCalledWith(appSaveKey, { timer: 582 });
     expect(store.timer).toEqual(582);
+    simpleStore.update.mockClear();
+
     store.setTimer(0);
+    expect(simpleStore.update).toHaveBeenCalledTimes(1);
+    expect(simpleStore.update).toHaveBeenCalledWith(appSaveKey, { timer: 0 });
     expect(store.timer).toEqual(0);
+    simpleStore.update.mockClear();
+
     store.setTimer(-1);
+    expect(simpleStore.update).toHaveBeenCalledTimes(1);
+    expect(simpleStore.update).toHaveBeenCalledWith(appSaveKey, { timer: -1 });
     expect(store.timer).toEqual(-1);
+    simpleStore.update.mockClear();
   });
 
   it('provides a toggleSelected action', () => {
@@ -491,7 +531,7 @@ describe('Mobx Store', () => {
 
     // test new game with default timer
     await expect(store.newGame({
-      timer: -1,
+      timed: true,
       wordsMin: 1,
       wordsMax: 50,
     }))
@@ -523,8 +563,10 @@ describe('Mobx Store', () => {
     store.getPermutatedWords = jest.fn().mockReturnValue((
       Promise.resolve([
         '6047eeD0',
+        '6df3f9j78',
         '77c2',
         '4726',
+        'jjjjjjjj',
         '9b46',
         'bca0ce269095',
         'a95d96bj',
@@ -538,32 +580,107 @@ describe('Mobx Store', () => {
     };
 
     await expect(store.newGame({
-      timer: 50,
+      timed: true,
       letters: 'flapjacks',
-      tried: [
-        '82d6604e',
-        '83d1',
-        '494d',
-      ],
     }))
       .resolves.toEqual();
     expect(store.letters).toEqual('flapjacks');
     expect(store.words.keys()).toEqual([
+      '6df3f9j78',
+      'jjjjjjjj',
       'a95d96bj',
-    ]);
-    expect(store.tried.keys()).toEqual([
-      '82d6604e',
-      '83d1',
-      '494d',
     ]);
     expect(store.db.transaction).toHaveBeenCalledTimes(0);
     expect(executeSql).toHaveBeenCalledTimes(0);
     expect(store.scored).toEqual(false);
     expect(store.statusText).toEqual('Welcome!');
-    expect(store.timer).toEqual(50);
+    expect(store.timer).toEqual(8);
+  });
+
+  it('provides a saveGame function that writes game state to persistent storage', async () => {
+    expect(store.saveGame).toBeDefined();
+    expect(store.saveGame).toEqual(expect.any(Function));
+
+    store.letters = 'abcdefghe';
+    store.scored = true;
+    store.timer = 50;
+    store.tried.replace({ aade: false });
+    store.words.replace({
+      ache: true,
+      cafe: true,
+    });
+    store.newGameOptions.replace({
+      timed: true,
+      wordRange: {
+        min: 3,
+        max: 89,
+      },
+    });
+
+    await expect(store.saveGame()).resolves.toEqual(true);
+    expect(simpleStore.save).toHaveBeenCalledTimes(1);
+    expect(simpleStore.save).toHaveBeenCalledWith(
+      appSaveKey,
+      {
+        letters: 'abcdefghe',
+        timer: 50,
+        tried: {
+          aade: false,
+        },
+        newGameOptions: {
+          timed: true,
+          wordRange: {
+            min: 3,
+            max: 89,
+          },
+        },
+        scored: true,
+        words: [
+          'ache',
+          'cafe',
+        ],
+      },
+    );
+  });
+
+  it('provides a loadGame function that reads game state from persistent storage', async () => {
+    jest.clearAllMocks();
+    expect(store.loadGame).toBeDefined();
+    expect(store.loadGame).toEqual(expect.any(Function));
+
+    await expect(store.loadGame()).resolves.toEqual(true);
+    expect(simpleStore.get).toHaveBeenCalledTimes(1);
+    expect(simpleStore.get).toHaveBeenCalledWith(appSaveKey);
+
+    expect(store.letters).toEqual('lbedsfzny');
+    expect(store.timer).toEqual(76);
+    expect(store.tried.toJS()).toEqual({
+      asde: false,
+      jafe: false,
+      ediops: true,
+    });
+    expect(store.newGameOptions.toJS()).toEqual({
+      timed: false,
+      wordRange: {
+        min: 43,
+        max: 99,
+      },
+    });
+    expect(store.scored).toEqual(false);
+    expect(store.words.toJS()).toEqual({
+      fshdnn: true,
+      aosjfg: true,
+      ekbvpn: true,
+    });
+    expect(store.statusText).toEqual('');
+
+    simpleStore.get.mockReturnValueOnce(null);
+    await expect(store.loadGame()).resolves.toEqual(false);
+    expect(store.letters).toEqual('lbedsfzny');
   });
 
   it('provides a submitWord function with validation and user feedback', () => {
+    jest.spyOn(store, 'setTimer');
     expect(store.submitWord).toEqual(expect.any(Function));
 
     store.setStatus('');
@@ -604,6 +721,10 @@ describe('Mobx Store', () => {
     expect(store.selected.peek()).toEqual([]);
     expect(store.timer).toEqual(70);
     expect(store.statusText).toEqual('Nice! +20 seconds.');
+    expect(store.setTimer).toHaveBeenCalledTimes(1);
+    expect(store.setTimer).toHaveBeenCalledWith(70);
+    expect(simpleStore.update).toHaveBeenCalledWith(appSaveKey, { tried: store.tried.toJS() });
+    simpleStore.update.mockClear();
 
     store.timer = -1;
     store.selected.replace(['2', '0', '5', '4']);
@@ -616,6 +737,8 @@ describe('Mobx Store', () => {
     expect(store.selected.peek()).toEqual([]);
     expect(store.timer).toEqual(-1);
     expect(store.statusText).toEqual('Nice!');
+    expect(simpleStore.update).toHaveBeenCalledWith(appSaveKey, { tried: store.tried.toJS() });
+    simpleStore.update.mockClear();
 
     store.selected.replace(['4', '4', '4', '4']);
     store.tried.replace({});
@@ -623,6 +746,8 @@ describe('Mobx Store', () => {
     expect(store.tried.entries()).toEqual([['eeee', false]]);
     expect(store.selected.peek()).toEqual([]);
     expect(store.statusText).toEqual('Unrecognized word.');
+    expect(simpleStore.update).toHaveBeenCalledWith(appSaveKey, { tried: store.tried.toJS() });
+    simpleStore.update.mockClear();
   });
 
   it('provides a setStatus action that updates statusText', () => {
@@ -760,5 +885,7 @@ describe('Mobx Store', () => {
     store.scoreGame();
     expect(store.scored).toEqual(true);
     expect(store.statusText).toEqual('Game scored');
+    expect(simpleStore.update).toHaveBeenCalledTimes(1);
+    expect(simpleStore.update).toHaveBeenCalledWith(appSaveKey, { scored: true });
   });
 });

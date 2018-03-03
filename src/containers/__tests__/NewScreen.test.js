@@ -168,7 +168,7 @@ describe('New Screen component', () => {
     expect(store.newGame).toHaveBeenCalledWith({
       wordsMin: 0,
       wordsMax: 10,
-      timer: -1,
+      timed: true,
     });
     await resolvePromise('');
     jest.advanceTimersByTime(600);
@@ -184,7 +184,7 @@ describe('New Screen component', () => {
     expect(store.newGame).toHaveBeenCalledWith({
       wordsMin: 10,
       wordsMax: 49,
-      timer: undefined,
+      timed: false,
     });
 
     // Shouldn't ever stop loading if the promise doesn't resolve
