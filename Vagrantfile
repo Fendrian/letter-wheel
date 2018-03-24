@@ -46,6 +46,8 @@ Vagrant.configure("2") do |config|
         "node_modules",
         ".tmp",
         ".history",
+        "android/app/build",
+        "android/.gradle",
     ]
 
   # Provider-specific configuration so you can fine-tune various
