@@ -237,7 +237,7 @@ describe('Game Screen component', () => {
     expect(control.props().onMenu).toEqual(store.openMenuModal);
     expect(control.props().onSubmit).toEqual(expect.any(Function));
     expect(control.props().scoreText).toEqual(store.getScore().text);
-    expect(control.props().selectedString).toEqual('FCB');
+    expect(control.props().selectedLetters).toEqual('FCB');
     expect(control.props().statusText).toEqual(store.statusText);
     expect(control.props().statusText).toEqual('');
     expect(control.props().tried).toEqual(store.tried);

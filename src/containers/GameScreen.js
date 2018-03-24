@@ -137,7 +137,7 @@ export default class GameScreen extends React.Component {
                 }
               }}
               scoreText={scoreText}
-              selectedString={store.selected.map(i => store.letters[i].toUpperCase()).join('')}
+              selectedLetters={store.selected.map(i => store.letters[i].toUpperCase()).join('')}
               statusText={store.statusText}
               timerString={timerString}
               tried={store.tried}
