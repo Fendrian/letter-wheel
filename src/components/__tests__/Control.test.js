@@ -3,7 +3,6 @@ import { mount } from 'enzyme';
 import { observable } from 'mobx';
 import {
   Button,
-  TouchableOpacity,
   Vibration,
 } from 'react-native';
 
@@ -153,28 +152,6 @@ describe('Control component', () => {
     expect(instance.feedbackText).toEqual('8 words\nto next level');
     render.setProps({ wordsToNextLevel: 0 });
     expect(instance.feedbackText).toEqual('');
-  });
-
-  it('Provides a backspace button with a short and long press action', () => {
-    const render = mount((
-      <Control
-        clearSelected={jest.fn()}
-      />
-    ));
-    const backspace = render.find(TouchableOpacity).at(0);
-    expect(backspace.props().onPress).toEqual(expect.any(Function));
-    expect(backspace.props().onLongPress).toEqual(expect.any(Function));
-    expect(render.props().clearSelected).toHaveBeenCalledTimes(0);
-    backspace.props().onPress();
-    expect(render.props().clearSelected).toHaveBeenCalledTimes(1);
-    expect(render.props().clearSelected).toHaveBeenCalledWith(1);
-
-    render.props().clearSelected.mockClear();
-    backspace.props().onLongPress();
-    expect(Vibration.vibrate).toHaveBeenCalledTimes(1);
-    expect(Vibration.vibrate).toHaveBeenCalledWith(100);
-    expect(render.props().clearSelected).toHaveBeenCalledTimes(1);
-    expect(render.props().clearSelected).toHaveBeenCalledWith(9);
   });
 
   it('Provides a submit button', () => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import { View as AnimatableView } from 'react-native-animatable';
-import { TouchableOpacity, Vibration } from 'react-native';
+import { Text, TouchableOpacity, Vibration } from 'react-native';
 
 import Grid from '../Grid';
 
@@ -188,5 +188,50 @@ describe('Grid component', () => {
     expect(render.props().toggleSelected).toHaveBeenCalledTimes(1);
     expect(render.props().toggleSelected).toHaveBeenCalledWith('7');
     expect(render.props().submitWord).toHaveBeenCalledTimes(1);
+  });
+
+  it('provides a clearOne function', () => {
+    const render = mount((
+      <Grid
+        clearSelected={jest.fn()}
+      />
+    ));
+    expect(render.instance().clearOne).toEqual(expect.any(Function));
+    expect(render.instance().clearOne()).toBeUndefined();
+    expect(render.props().clearSelected).toHaveBeenCalledTimes(1);
+    expect(render.props().clearSelected).toHaveBeenCalledWith(1);
+  });
+
+  it('provides a clearAll function', () => {
+    const render = mount((
+      <Grid
+        clearSelected={jest.fn()}
+      />
+    ));
+    expect(render.instance().clearAll).toEqual(expect.any(Function));
+    expect(render.instance().clearAll()).toBeUndefined();
+    expect(render.props().clearSelected).toHaveBeenCalledTimes(1);
+    expect(render.props().clearSelected).toHaveBeenCalledWith(9);
+    expect(Vibration.vibrate).toHaveBeenCalledTimes(1);
+    expect(Vibration.vibrate).toHaveBeenCalledWith(100);
+  });
+
+  it('provides a display of the selected letters', () => {
+    const render = mount((
+      <Grid
+        selectedLetters="fish"
+      />
+    ));
+    expect(render.find(Text).find({ children: 'fish' })).toHaveLength(2);
+  });
+
+  it('provides a backspace button with a short and long press action', () => {
+    const render = mount((
+      <Grid />
+    ));
+    expect(render.find({
+      onPress: render.instance().clearOne,
+      onLongPress: render.instance().clearAll,
+    })).toHaveLength(1);
   });
 });

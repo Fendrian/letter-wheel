@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View } from 'react-native';
+import { Image, View } from 'react-native';
 import { action, computed, observable } from 'mobx';
 import { inject, observer, PropTypes as MobxPropTypes } from 'mobx-react';
 import nativeTimer from 'react-native-timer';
@@ -10,6 +10,8 @@ import WrapperStyle from '../styles/WrapperStyle';
 import GameScreenStyle from '../styles/GameScreenStyle';
 import Grid from '../components/Grid';
 import Control from '../components/Control';
+
+import background from '../images/Wood-background.jpg';
 
 @inject('store')
 @observer
@@ -114,19 +116,23 @@ export default class GameScreen extends React.Component {
     }
 
     return (
-      <View style={container}>
+      <Image
+        source={background}
+        style={container}
+      >
         <View style={GameScreenStyle[orientation]}>
           <Grid
             animationState={this.animationState}
             clearAnimation={this.clearAnimation}
+            clearSelected={store.clearSelected}
             gridEntries={this.gridEntries}
+            selectedLetters={store.selected.map(i => store.letters[i].toUpperCase()).join('')}
             submitWord={this.props.store.submitWord}
             toggleSelected={this.props.store.toggleSelected}
             triggerAnimation={this.triggerAnimation}
           />
           <View style={dataWrapper}>
             <Control
-              clearSelected={store.clearSelected}
               isScored={store.scored}
               onMenu={store.openMenuModal}
               onSubmit={() => {
@@ -137,7 +143,6 @@ export default class GameScreen extends React.Component {
                 }
               }}
               scoreText={scoreText}
-              selectedLetters={store.selected.map(i => store.letters[i].toUpperCase()).join('')}
               statusText={store.statusText}
               timerString={timerString}
               tried={store.tried}
@@ -146,7 +151,7 @@ export default class GameScreen extends React.Component {
             />
           </View>
         </View>
-      </View>
+      </Image>
     );
   }
 }

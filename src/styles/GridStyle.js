@@ -2,25 +2,37 @@ import { StyleSheet } from 'react-native';
 
 const block = {
   alignItems: 'center',
-  borderRadius: 3,
+  borderColor: '#000000',
+  borderWidth: 2,
   flex: (1 / 3),
   justifyContent: 'center',
-  margin: 1,
-  width: 98,
-  height: 98,
+  margin: 0,
 };
 
 export default StyleSheet.create({
   container: {
-    justifyContent: 'center',
     alignItems: 'center',
+    justifyContent: 'center',
+    margin: 3,
     width: 300,
     height: 300,
   },
   row: {
     flex: (1 / 3),
     flexDirection: 'row',
-    width: 300,
+    margin: 0,
+  },
+  backspaceTouch: {
+    alignItems: 'center',
+    borderRadius: 8,
+    height: 50,
+    justifyContent: 'center',
+    width: 60,
+  },
+  buttonWrapper: {
+    flex: 1,
+    justifyContent: 'center',
+    margin: 5,
   },
   block: {
     ...block,
@@ -38,11 +50,28 @@ export default StyleSheet.create({
     ...block,
     backgroundColor: '#aa6',
   },
+  entryContainer: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    height: 50,
+    justifyContent: 'flex-start',
+    marginHorizontal: 10,
+  },
+  entryWrapper: {
+    borderBottomWidth: 1,
+    borderBottomColor: '#444',
+    flex: 1,
+    height: 30,
+    marginLeft: 20,
+  },
+  entryText: {
+    color: '#000',
+    fontSize: 20,
+  },
   gridWrapper: {
     alignItems: 'center',
-    height: 320,
+    backgroundColor: '#ffffff',
     justifyContent: 'center',
-    width: 320,
   },
   letter: {
     color: '#000',

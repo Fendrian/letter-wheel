@@ -3,14 +3,11 @@ import PropTypes from 'prop-types';
 import {
   Button,
   ListView,
-  Vibration,
   View,
   Text,
-  TouchableOpacity,
 } from 'react-native';
 import { observer, PropTypes as MobxPropTypes } from 'mobx-react';
 import { computed, observable } from 'mobx';
-import Icon from 'react-native-vector-icons/Ionicons';
 
 import ControlStyle from '../styles/ControlStyle';
 
@@ -19,13 +16,11 @@ const listDataSource = new ListView.DataSource({ rowHasChanged() {} });
 @observer
 export default class Control extends React.Component {
   static propTypes = {
-    clearSelected: PropTypes.func,
     isScored: PropTypes.bool,
     onMenu: PropTypes.func,
     onSubmit: PropTypes.func,
     scoreText: PropTypes.string,
     wordsToNextLevel: PropTypes.number,
-    selectedLetters: PropTypes.string,
     statusText: PropTypes.string,
     timerString: PropTypes.string,
     tried: MobxPropTypes.observableMap,
@@ -33,13 +28,11 @@ export default class Control extends React.Component {
   }
 
   static defaultProps = {
-    clearSelected() {},
     isScored: false,
     onSubmit() {},
     onMenu() {},
     scoreText: '',
     wordsToNextLevel: 0,
-    selectedLetters: '',
     statusText: '',
     timerString: '',
     tried: observable.map(),
@@ -88,14 +81,9 @@ export default class Control extends React.Component {
 
   render() {
     const {
-      backspaceTouch,
-      backspaceWrapper,
       buttonWrapper,
       columnContainer,
       container,
-      entryContainer,
-      entryWrapper,
-      entryText,
       leftColumn,
       leftColumnHeader,
       leftColumnHeaderText,
@@ -116,30 +104,6 @@ export default class Control extends React.Component {
 
     return (
       <View style={container}>
-        <View style={entryContainer}>
-          <View style={entryWrapper}>
-            <Text style={entryText}>
-              {this.props.selectedLetters}
-            </Text>
-          </View>
-          <View style={backspaceWrapper}>
-            <TouchableOpacity
-              onPress={() => {
-                this.props.clearSelected(1);
-              }}
-              onLongPress={() => {
-                Vibration.vibrate(100);
-                this.props.clearSelected(9);
-              }}
-              style={backspaceTouch}
-            >
-              <Icon
-                name="md-backspace"
-                size={35}
-              />
-            </TouchableOpacity>
-          </View>
-        </View>
         <View style={columnContainer}>
 
           <View style={leftColumn}>

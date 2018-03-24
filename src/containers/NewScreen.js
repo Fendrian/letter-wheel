@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ScrollView, Text, View } from 'react-native';
+import { Image, ScrollView, Text, View } from 'react-native';
 import { inject, observer } from 'mobx-react';
 import { SegmentedControls } from 'react-native-radio-buttons';
 import MultiSlider from '@ptomasroos/react-native-multi-slider';
@@ -9,6 +9,8 @@ import Button from 'react-native-button';
 
 import WrapperStyle from '../styles/WrapperStyle';
 import NewScreenStyle from '../styles/NewScreenStyle';
+
+import background from '../images/Wood-background.jpg';
 
 const options = [
   {
@@ -126,7 +128,10 @@ export default class NewScreen extends React.Component {
     } = NewScreenStyle;
     const tint = '#555';
     return (
-      <View style={container}>
+      <Image
+        source={background}
+        style={container}
+      >
         <ScrollView
           contentContainerStyle={{ flexGrow: 1 }}
           style={{
@@ -222,7 +227,7 @@ export default class NewScreen extends React.Component {
             </View>
           </View>
         </ScrollView>
-      </View>
+      </Image>
     );
   }
 }

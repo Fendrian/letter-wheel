@@ -6,36 +6,6 @@ export default StyleSheet.create({
     flexDirection: 'column',
     flex: 1,
   },
-  backspaceTouch: {
-    alignItems: 'center',
-    borderRadius: 8,
-    height: 50,
-    justifyContent: 'center',
-    width: 60,
-  },
-  buttonWrapper: {
-    flex: 1,
-    justifyContent: 'center',
-    margin: 5,
-  },
-  entryContainer: {
-    alignItems: 'center',
-    flexDirection: 'row',
-    height: 50,
-    justifyContent: 'flex-start',
-    marginHorizontal: 10,
-  },
-  entryWrapper: {
-    borderBottomWidth: 1,
-    borderBottomColor: '#444',
-    flex: 1,
-    height: 30,
-    marginLeft: 20,
-  },
-  entryText: {
-    color: '#000',
-    fontSize: 20,
-  },
   timerContainer: {
     alignItems: 'center',
     flex: 1,
@@ -78,6 +48,7 @@ export default StyleSheet.create({
     borderRadius: 4,
     flex: 4,
     marginBottom: 10,
+    marginTop: 10,
     overflow: 'hidden',
   },
   leftColumnHeader: {
@@ -92,6 +63,9 @@ export default StyleSheet.create({
   },
   rightColumn: {
     flex: 6,
+    marginBottom: 10,
+    marginLeft: 10,
+    marginTop: 10,
   },
   row: {
     marginLeft: 10,

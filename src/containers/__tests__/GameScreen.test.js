@@ -213,11 +213,15 @@ describe('Game Screen component', () => {
   });
 
   it('renders a Grid element', () => {
+    runInAction(() => { store.letters = 'dfbecfbfb'; });
+    runInAction(() => { store.selected.replace(['1', '4', '8']); });
     const render = mount(<GameScreen.wrappedComponent store={store} />);
 
     const grid = render.find(Grid).at(0);
     expect(grid.props().animationState).toEqual('');
     expect(grid.props().clearAnimation).toEqual(render.instance().clearAnimation);
+    expect(grid.props().clearSelected).toEqual(store.clearSelected);
+    expect(grid.props().selectedLetters).toEqual('FCB');
     expect(grid.props().toggleSelected).toEqual(store.toggleSelected);
     expect(grid.props().gridEntries).toEqual(render.instance().gridEntries);
     expect(grid.props().submitWord).toEqual(store.submitWord);
@@ -232,12 +236,10 @@ describe('Game Screen component', () => {
     jest.spyOn(render.instance(), 'triggerAnimation');
 
     const control = render.find(Control).at(0);
-    expect(control.props().clearSelected).toEqual(store.clearSelected);
     expect(control.props().isScored).toEqual(store.scored);
     expect(control.props().onMenu).toEqual(store.openMenuModal);
     expect(control.props().onSubmit).toEqual(expect.any(Function));
     expect(control.props().scoreText).toEqual(store.getScore().text);
-    expect(control.props().selectedLetters).toEqual('FCB');
     expect(control.props().statusText).toEqual(store.statusText);
     expect(control.props().statusText).toEqual('');
     expect(control.props().tried).toEqual(store.tried);

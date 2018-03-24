@@ -5,9 +5,8 @@ exports[`Grid component matches the snapshot 1`] = `
   style={
     Object {
       "alignItems": "center",
-      "height": 320,
+      "backgroundColor": "#ffffff",
       "justifyContent": "center",
-      "width": 320,
     }
   }
 >
@@ -17,6 +16,7 @@ exports[`Grid component matches the snapshot 1`] = `
         "alignItems": "center",
         "height": 300,
         "justifyContent": "center",
+        "margin": 3,
         "width": 300,
       }
     }
@@ -26,7 +26,7 @@ exports[`Grid component matches the snapshot 1`] = `
         Object {
           "flex": 0.3333333333333333,
           "flexDirection": "row",
-          "width": 300,
+          "margin": 0,
         }
       }
     >
@@ -43,13 +43,12 @@ exports[`Grid component matches the snapshot 1`] = `
           Object {
             "alignItems": "center",
             "backgroundColor": "#fff",
-            "borderRadius": 3,
+            "borderColor": "#000000",
+            "borderWidth": 2,
             "flex": 0.3333333333333333,
-            "height": 98,
             "justifyContent": "center",
-            "margin": 1,
+            "margin": 0,
             "opacity": 1,
-            "width": 98,
           }
         }
       >
@@ -79,13 +78,12 @@ exports[`Grid component matches the snapshot 1`] = `
           Object {
             "alignItems": "center",
             "backgroundColor": "#fff",
-            "borderRadius": 3,
+            "borderColor": "#000000",
+            "borderWidth": 2,
             "flex": 0.3333333333333333,
-            "height": 98,
             "justifyContent": "center",
-            "margin": 1,
+            "margin": 0,
             "opacity": 1,
-            "width": 98,
           }
         }
       >
@@ -115,13 +113,12 @@ exports[`Grid component matches the snapshot 1`] = `
           Object {
             "alignItems": "center",
             "backgroundColor": "#fff",
-            "borderRadius": 3,
+            "borderColor": "#000000",
+            "borderWidth": 2,
             "flex": 0.3333333333333333,
-            "height": 98,
             "justifyContent": "center",
-            "margin": 1,
+            "margin": 0,
             "opacity": 1,
-            "width": 98,
           }
         }
       >
@@ -144,7 +141,7 @@ exports[`Grid component matches the snapshot 1`] = `
         Object {
           "flex": 0.3333333333333333,
           "flexDirection": "row",
-          "width": 300,
+          "margin": 0,
         }
       }
     >
@@ -161,13 +158,12 @@ exports[`Grid component matches the snapshot 1`] = `
           Object {
             "alignItems": "center",
             "backgroundColor": "#fff",
-            "borderRadius": 3,
+            "borderColor": "#000000",
+            "borderWidth": 2,
             "flex": 0.3333333333333333,
-            "height": 98,
             "justifyContent": "center",
-            "margin": 1,
+            "margin": 0,
             "opacity": 1,
-            "width": 98,
           }
         }
       >
@@ -197,13 +193,12 @@ exports[`Grid component matches the snapshot 1`] = `
           Object {
             "alignItems": "center",
             "backgroundColor": "#aaa",
-            "borderRadius": 3,
+            "borderColor": "#000000",
+            "borderWidth": 2,
             "flex": 0.3333333333333333,
-            "height": 98,
             "justifyContent": "center",
-            "margin": 1,
+            "margin": 0,
             "opacity": 1,
-            "width": 98,
           }
         }
       >
@@ -233,13 +228,12 @@ exports[`Grid component matches the snapshot 1`] = `
           Object {
             "alignItems": "center",
             "backgroundColor": "#fff",
-            "borderRadius": 3,
+            "borderColor": "#000000",
+            "borderWidth": 2,
             "flex": 0.3333333333333333,
-            "height": 98,
             "justifyContent": "center",
-            "margin": 1,
+            "margin": 0,
             "opacity": 1,
-            "width": 98,
           }
         }
       >
@@ -262,7 +256,7 @@ exports[`Grid component matches the snapshot 1`] = `
         Object {
           "flex": 0.3333333333333333,
           "flexDirection": "row",
-          "width": 300,
+          "margin": 0,
         }
       }
     >
@@ -279,13 +273,12 @@ exports[`Grid component matches the snapshot 1`] = `
           Object {
             "alignItems": "center",
             "backgroundColor": "#fff",
-            "borderRadius": 3,
+            "borderColor": "#000000",
+            "borderWidth": 2,
             "flex": 0.3333333333333333,
-            "height": 98,
             "justifyContent": "center",
-            "margin": 1,
+            "margin": 0,
             "opacity": 1,
-            "width": 98,
           }
         }
       >
@@ -315,13 +308,12 @@ exports[`Grid component matches the snapshot 1`] = `
           Object {
             "alignItems": "center",
             "backgroundColor": "#fff",
-            "borderRadius": 3,
+            "borderColor": "#000000",
+            "borderWidth": 2,
             "flex": 0.3333333333333333,
-            "height": 98,
             "justifyContent": "center",
-            "margin": 1,
+            "margin": 0,
             "opacity": 1,
-            "width": 98,
           }
         }
       >
@@ -351,13 +343,12 @@ exports[`Grid component matches the snapshot 1`] = `
           Object {
             "alignItems": "center",
             "backgroundColor": "#fff",
-            "borderRadius": 3,
+            "borderColor": "#000000",
+            "borderWidth": 2,
             "flex": 0.3333333333333333,
-            "height": 98,
             "justifyContent": "center",
-            "margin": 1,
+            "margin": 0,
             "opacity": 1,
-            "width": 98,
           }
         }
       >
@@ -376,6 +367,87 @@ exports[`Grid component matches the snapshot 1`] = `
       </View>
     </View>
   </View>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "height": 50,
+        "justifyContent": "flex-start",
+        "marginHorizontal": 10,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "borderBottomColor": "#444",
+          "borderBottomWidth": 1,
+          "flex": 1,
+          "height": 30,
+          "marginLeft": 20,
+        }
+      }
+    >
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        disabled={false}
+        ellipsizeMode="tail"
+        style={
+          Object {
+            "color": "#000",
+            "fontSize": 20,
+          }
+        }
+      />
+    </View>
+    <View>
+      <View
+        accessible={true}
+        isTVSelectable={true}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "borderRadius": 8,
+            "height": 50,
+            "justifyContent": "center",
+            "opacity": 1,
+            "width": 60,
+          }
+        }
+      >
+        <Text
+          accessible={true}
+          allowFontScaling={false}
+          disabled={false}
+          ellipsizeMode="tail"
+          style={
+            Array [
+              Object {
+                "color": undefined,
+                "fontSize": 35,
+              },
+              undefined,
+              Object {
+                "fontFamily": "Ionicons",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+              },
+            ]
+          }
+        >
+          
+        </Text>
+      </View>
+    </View>
+  </View>
 </View>
 `;
 
@@ -384,9 +456,8 @@ exports[`Grid component matches the snapshot 2`] = `
   style={
     Object {
       "alignItems": "center",
-      "height": 320,
+      "backgroundColor": "#ffffff",
       "justifyContent": "center",
-      "width": 320,
     }
   }
 >
@@ -396,6 +467,7 @@ exports[`Grid component matches the snapshot 2`] = `
         "alignItems": "center",
         "height": 300,
         "justifyContent": "center",
+        "margin": 3,
         "width": 300,
       }
     }
@@ -405,7 +477,7 @@ exports[`Grid component matches the snapshot 2`] = `
         Object {
           "flex": 0.3333333333333333,
           "flexDirection": "row",
-          "width": 300,
+          "margin": 0,
         }
       }
     >
@@ -422,13 +494,12 @@ exports[`Grid component matches the snapshot 2`] = `
           Object {
             "alignItems": "center",
             "backgroundColor": "#fff",
-            "borderRadius": 3,
+            "borderColor": "#000000",
+            "borderWidth": 2,
             "flex": 0.3333333333333333,
-            "height": 98,
             "justifyContent": "center",
-            "margin": 1,
+            "margin": 0,
             "opacity": 1,
-            "width": 98,
           }
         }
       >
@@ -460,13 +531,12 @@ exports[`Grid component matches the snapshot 2`] = `
           Object {
             "alignItems": "center",
             "backgroundColor": "#fff",
-            "borderRadius": 3,
+            "borderColor": "#000000",
+            "borderWidth": 2,
             "flex": 0.3333333333333333,
-            "height": 98,
             "justifyContent": "center",
-            "margin": 1,
+            "margin": 0,
             "opacity": 1,
-            "width": 98,
           }
         }
       >
@@ -498,13 +568,12 @@ exports[`Grid component matches the snapshot 2`] = `
           Object {
             "alignItems": "center",
             "backgroundColor": "#ffa",
-            "borderRadius": 3,
+            "borderColor": "#000000",
+            "borderWidth": 2,
             "flex": 0.3333333333333333,
-            "height": 98,
             "justifyContent": "center",
-            "margin": 1,
+            "margin": 0,
             "opacity": 1,
-            "width": 98,
           }
         }
       >
@@ -529,7 +598,7 @@ exports[`Grid component matches the snapshot 2`] = `
         Object {
           "flex": 0.3333333333333333,
           "flexDirection": "row",
-          "width": 300,
+          "margin": 0,
         }
       }
     >
@@ -546,13 +615,12 @@ exports[`Grid component matches the snapshot 2`] = `
           Object {
             "alignItems": "center",
             "backgroundColor": "#ffa",
-            "borderRadius": 3,
+            "borderColor": "#000000",
+            "borderWidth": 2,
             "flex": 0.3333333333333333,
-            "height": 98,
             "justifyContent": "center",
-            "margin": 1,
+            "margin": 0,
             "opacity": 1,
-            "width": 98,
           }
         }
       >
@@ -584,13 +652,12 @@ exports[`Grid component matches the snapshot 2`] = `
           Object {
             "alignItems": "center",
             "backgroundColor": "#aaa",
-            "borderRadius": 3,
+            "borderColor": "#000000",
+            "borderWidth": 2,
             "flex": 0.3333333333333333,
-            "height": 98,
             "justifyContent": "center",
-            "margin": 1,
+            "margin": 0,
             "opacity": 1,
-            "width": 98,
           }
         }
       >
@@ -622,13 +689,12 @@ exports[`Grid component matches the snapshot 2`] = `
           Object {
             "alignItems": "center",
             "backgroundColor": "#fff",
-            "borderRadius": 3,
+            "borderColor": "#000000",
+            "borderWidth": 2,
             "flex": 0.3333333333333333,
-            "height": 98,
             "justifyContent": "center",
-            "margin": 1,
+            "margin": 0,
             "opacity": 1,
-            "width": 98,
           }
         }
       >
@@ -653,7 +719,7 @@ exports[`Grid component matches the snapshot 2`] = `
         Object {
           "flex": 0.3333333333333333,
           "flexDirection": "row",
-          "width": 300,
+          "margin": 0,
         }
       }
     >
@@ -670,13 +736,12 @@ exports[`Grid component matches the snapshot 2`] = `
           Object {
             "alignItems": "center",
             "backgroundColor": "#fff",
-            "borderRadius": 3,
+            "borderColor": "#000000",
+            "borderWidth": 2,
             "flex": 0.3333333333333333,
-            "height": 98,
             "justifyContent": "center",
-            "margin": 1,
+            "margin": 0,
             "opacity": 1,
-            "width": 98,
           }
         }
       >
@@ -708,13 +773,12 @@ exports[`Grid component matches the snapshot 2`] = `
           Object {
             "alignItems": "center",
             "backgroundColor": "#fff",
-            "borderRadius": 3,
+            "borderColor": "#000000",
+            "borderWidth": 2,
             "flex": 0.3333333333333333,
-            "height": 98,
             "justifyContent": "center",
-            "margin": 1,
+            "margin": 0,
             "opacity": 1,
-            "width": 98,
           }
         }
       >
@@ -746,13 +810,12 @@ exports[`Grid component matches the snapshot 2`] = `
           Object {
             "alignItems": "center",
             "backgroundColor": "#ffa",
-            "borderRadius": 3,
+            "borderColor": "#000000",
+            "borderWidth": 2,
             "flex": 0.3333333333333333,
-            "height": 98,
             "justifyContent": "center",
-            "margin": 1,
+            "margin": 0,
             "opacity": 1,
-            "width": 98,
           }
         }
       >
@@ -769,6 +832,87 @@ exports[`Grid component matches the snapshot 2`] = `
           }
         >
           L
+        </Text>
+      </View>
+    </View>
+  </View>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "height": 50,
+        "justifyContent": "flex-start",
+        "marginHorizontal": 10,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "borderBottomColor": "#444",
+          "borderBottomWidth": 1,
+          "flex": 1,
+          "height": 30,
+          "marginLeft": 20,
+        }
+      }
+    >
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        disabled={false}
+        ellipsizeMode="tail"
+        style={
+          Object {
+            "color": "#000",
+            "fontSize": 20,
+          }
+        }
+      />
+    </View>
+    <View>
+      <View
+        accessible={true}
+        isTVSelectable={true}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "borderRadius": 8,
+            "height": 50,
+            "justifyContent": "center",
+            "opacity": 1,
+            "width": 60,
+          }
+        }
+      >
+        <Text
+          accessible={true}
+          allowFontScaling={false}
+          disabled={false}
+          ellipsizeMode="tail"
+          style={
+            Array [
+              Object {
+                "color": undefined,
+                "fontSize": 35,
+              },
+              undefined,
+              Object {
+                "fontFamily": "Ionicons",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+              },
+            ]
+          }
+        >
+          
         </Text>
       </View>
     </View>

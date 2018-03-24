@@ -1,13 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Game Screen component matches the snapshot 1`] = `
-<View
+<Image
+  source={1}
   style={
     Object {
       "alignItems": "center",
-      "backgroundColor": "#e8e9ed",
+      "alignSelf": "stretch",
       "flex": 1,
+      "height": undefined,
       "justifyContent": "center",
+      "width": undefined,
     }
   }
 >
@@ -22,6 +25,7 @@ exports[`Game Screen component matches the snapshot 1`] = `
     <View
       animationState=""
       clearAnimation={[Function]}
+      clearSelected={[Function]}
       gridEntries={
         Object {
           "0": Object {
@@ -62,6 +66,7 @@ exports[`Game Screen component matches the snapshot 1`] = `
           },
         }
       }
+      selectedLetters=""
       submitWord={[Function]}
       toggleSelected={[Function]}
       triggerAnimation={[Function]}
@@ -76,12 +81,10 @@ exports[`Game Screen component matches the snapshot 1`] = `
       }
     >
       <View
-        clearSelected={[Function]}
         isScored={false}
         onMenu={[Function]}
         onSubmit={[Function]}
         scoreText="Exceptional!"
-        selectedLetters=""
         statusText=""
         timerString=""
         tried={Object {}}
@@ -92,5 +95,5 @@ exports[`Game Screen component matches the snapshot 1`] = `
       </View>
     </View>
   </View>
-</View>
+</Image>
 `;

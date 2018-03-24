@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import { observer } from 'mobx-react';
 import * as Animatable from 'react-native-animatable';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 import GridStyle from '../styles/GridStyle';
 
@@ -35,6 +36,7 @@ export default class Grid extends React.Component {
   static propTypes = {
     animationState: PropTypes.string,
     clearAnimation: PropTypes.func,
+    clearSelected: PropTypes.func,
     gridEntries: PropTypes.oneOfType([
       PropTypes.objectOf(PropTypes.shape({
         letter: PropTypes.string,
@@ -45,6 +47,7 @@ export default class Grid extends React.Component {
         selected: PropTypes.bool,
       })),
     ]),
+    selectedLetters: PropTypes.string,
     submitWord: PropTypes.func,
     toggleSelected: PropTypes.func,
     triggerAnimation: PropTypes.func,
@@ -53,10 +56,12 @@ export default class Grid extends React.Component {
   static defaultProps = {
     animationState: '',
     clearAnimation() {},
+    clearSelected() {},
     gridEntries: Array.from(Array(9)).map(() => ({
       letter: '',
       selected: false,
     })),
+    selectedLetters: '',
     submitWord() {},
     toggleSelected() {},
     triggerAnimation() {},
@@ -91,6 +96,15 @@ export default class Grid extends React.Component {
         </Text>
       </TouchableOpacity>
     );
+  }
+
+  clearOne = () => {
+    this.props.clearSelected(1);
+  }
+
+  clearAll = () => {
+    Vibration.vibrate(100);
+    this.props.clearSelected(9);
   }
 
   submitWord = () => {
@@ -139,6 +153,25 @@ export default class Grid extends React.Component {
       >
         <View style={GridStyle.container}>
           {rows}
+        </View>
+        <View style={GridStyle.entryContainer}>
+          <View style={GridStyle.entryWrapper}>
+            <Text style={GridStyle.entryText}>
+              {this.props.selectedLetters}
+            </Text>
+          </View>
+          <View style={GridStyle.backspaceWrapper}>
+            <TouchableOpacity
+              onPress={this.clearOne}
+              onLongPress={this.clearAll}
+              style={GridStyle.backspaceTouch}
+            >
+              <Icon
+                name="md-backspace"
+                size={35}
+              />
+            </TouchableOpacity>
+          </View>
         </View>
       </Animatable.View>
     );

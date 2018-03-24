@@ -1,13 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`New Screen component matches the snapshot 1`] = `
-<View
+<Image
+  source={1}
   style={
     Object {
       "alignItems": "center",
-      "backgroundColor": "#e8e9ed",
+      "alignSelf": "stretch",
       "flex": 1,
+      "height": undefined,
       "justifyContent": "center",
+      "width": undefined,
     }
   }
 >
@@ -808,5 +811,5 @@ exports[`New Screen component matches the snapshot 1`] = `
       </View>
     </View>
   </RCTScrollView>
-</View>
+</Image>
 `;

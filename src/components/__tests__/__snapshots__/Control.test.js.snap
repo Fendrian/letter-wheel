@@ -13,87 +13,6 @@ exports[`Control component matches the snapshot 1`] = `
   <View
     style={
       Object {
-        "alignItems": "center",
-        "flexDirection": "row",
-        "height": 50,
-        "justifyContent": "flex-start",
-        "marginHorizontal": 10,
-      }
-    }
-  >
-    <View
-      style={
-        Object {
-          "borderBottomColor": "#444",
-          "borderBottomWidth": 1,
-          "flex": 1,
-          "height": 30,
-          "marginLeft": 20,
-        }
-      }
-    >
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        disabled={false}
-        ellipsizeMode="tail"
-        style={
-          Object {
-            "color": "#000",
-            "fontSize": 20,
-          }
-        }
-      />
-    </View>
-    <View>
-      <View
-        accessible={true}
-        isTVSelectable={true}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "alignItems": "center",
-            "borderRadius": 8,
-            "height": 50,
-            "justifyContent": "center",
-            "opacity": 1,
-            "width": 60,
-          }
-        }
-      >
-        <Text
-          accessible={true}
-          allowFontScaling={false}
-          disabled={false}
-          ellipsizeMode="tail"
-          style={
-            Array [
-              Object {
-                "color": undefined,
-                "fontSize": 35,
-              },
-              undefined,
-              Object {
-                "fontFamily": "Ionicons",
-                "fontStyle": "normal",
-                "fontWeight": "normal",
-              },
-            ]
-          }
-        >
-          
-        </Text>
-      </View>
-    </View>
-  </View>
-  <View
-    style={
-      Object {
         "flex": 1,
         "flexDirection": "row",
       }
@@ -106,6 +25,7 @@ exports[`Control component matches the snapshot 1`] = `
           "borderRadius": 4,
           "flex": 4,
           "marginBottom": 10,
+          "marginTop": 10,
           "overflow": "hidden",
         }
       }
@@ -173,6 +93,9 @@ exports[`Control component matches the snapshot 1`] = `
       style={
         Object {
           "flex": 6,
+          "marginBottom": 10,
+          "marginLeft": 10,
+          "marginTop": 10,
         }
       }
     >
@@ -198,15 +121,7 @@ exports[`Control component matches the snapshot 1`] = `
           }
         />
       </View>
-      <View
-        style={
-          Object {
-            "flex": 1,
-            "justifyContent": "center",
-            "margin": 5,
-          }
-        }
-      >
+      <View>
         <View
           accessibilityComponentType="button"
           accessibilityTraits={
@@ -301,15 +216,7 @@ exports[`Control component matches the snapshot 1`] = `
           />
         </View>
       </View>
-      <View
-        style={
-          Object {
-            "flex": 1,
-            "justifyContent": "center",
-            "margin": 5,
-          }
-        }
-      >
+      <View>
         <View
           accessibilityComponentType="button"
           accessibilityTraits={
@@ -380,89 +287,6 @@ exports[`Control component matches the snapshot 2`] = `
   <View
     style={
       Object {
-        "alignItems": "center",
-        "flexDirection": "row",
-        "height": 50,
-        "justifyContent": "flex-start",
-        "marginHorizontal": 10,
-      }
-    }
-  >
-    <View
-      style={
-        Object {
-          "borderBottomColor": "#444",
-          "borderBottomWidth": 1,
-          "flex": 1,
-          "height": 30,
-          "marginLeft": 20,
-        }
-      }
-    >
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        disabled={false}
-        ellipsizeMode="tail"
-        style={
-          Object {
-            "color": "#000",
-            "fontSize": 20,
-          }
-        }
-      >
-        akdc
-      </Text>
-    </View>
-    <View>
-      <View
-        accessible={true}
-        isTVSelectable={true}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "alignItems": "center",
-            "borderRadius": 8,
-            "height": 50,
-            "justifyContent": "center",
-            "opacity": 1,
-            "width": 60,
-          }
-        }
-      >
-        <Text
-          accessible={true}
-          allowFontScaling={false}
-          disabled={false}
-          ellipsizeMode="tail"
-          style={
-            Array [
-              Object {
-                "color": undefined,
-                "fontSize": 35,
-              },
-              undefined,
-              Object {
-                "fontFamily": "Ionicons",
-                "fontStyle": "normal",
-                "fontWeight": "normal",
-              },
-            ]
-          }
-        >
-          
-        </Text>
-      </View>
-    </View>
-  </View>
-  <View
-    style={
-      Object {
         "flex": 1,
         "flexDirection": "row",
       }
@@ -475,6 +299,7 @@ exports[`Control component matches the snapshot 2`] = `
           "borderRadius": 4,
           "flex": 4,
           "marginBottom": 10,
+          "marginTop": 10,
           "overflow": "hidden",
         }
       }
@@ -698,6 +523,9 @@ exports[`Control component matches the snapshot 2`] = `
       style={
         Object {
           "flex": 6,
+          "marginBottom": 10,
+          "marginLeft": 10,
+          "marginTop": 10,
         }
       }
     >
@@ -725,15 +553,7 @@ exports[`Control component matches the snapshot 2`] = `
           Game scored.
         </Text>
       </View>
-      <View
-        style={
-          Object {
-            "flex": 1,
-            "justifyContent": "center",
-            "margin": 5,
-          }
-        }
-      >
+      <View>
         <View
           accessibilityComponentType="button"
           accessibilityTraits={
@@ -855,15 +675,7 @@ to next level
           </Text>
         </View>
       </View>
-      <View
-        style={
-          Object {
-            "flex": 1,
-            "justifyContent": "center",
-            "margin": 5,
-          }
-        }
-      >
+      <View>
         <View
           accessibilityComponentType="button"
           accessibilityTraits={
