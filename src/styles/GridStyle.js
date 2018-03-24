@@ -13,7 +13,6 @@ export default StyleSheet.create({
   container: {
     alignItems: 'center',
     justifyContent: 'center',
-    margin: 3,
     width: 300,
     height: 300,
   },
@@ -70,8 +69,15 @@ export default StyleSheet.create({
   },
   gridWrapper: {
     alignItems: 'center',
-    backgroundColor: '#ffffff',
     justifyContent: 'center',
+    alignSelf: 'stretch',
+    width: undefined,
+    height: undefined,
+    paddingBottom: 2,
+    paddingLeft: 12,
+    paddingRight: 12,
+    paddingTop: 8,
+    resizeMode: 'cover',
   },
   letter: {
     color: '#000',

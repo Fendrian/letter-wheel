@@ -12,6 +12,8 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 import GridStyle from '../styles/GridStyle';
 
+import background from '../images/Grid-background.png';
+
 const customPulseAnimation = {
   0.00: { scale: 1 },
   0.05: { scale: 1 },
@@ -144,11 +146,12 @@ export default class Grid extends React.Component {
     }
 
     return (
-      <Animatable.View
+      <Animatable.Image
         animation={animationType.animation}
         duration={animationType.duration}
         iterationCount={1}
         onAnimationEnd={this.props.clearAnimation}
+        source={background}
         style={GridStyle.gridWrapper}
       >
         <View style={GridStyle.container}>
@@ -173,7 +176,7 @@ export default class Grid extends React.Component {
             </TouchableOpacity>
           </View>
         </View>
-      </Animatable.View>
+      </Animatable.Image>
     );
   }
 }
