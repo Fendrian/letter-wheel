@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button component matches the snapshot 1`] = `
+<Button
+  colour="yellow"
+  onPress={[Function]}
+  title=""
+>
+  <TouchableWithoutFeedback
+    onPress={[Function]}
+    onPressIn={[Function]}
+    onPressOut={[Function]}
+    style={
+      Object {
+        "height": "auto",
+        "width": 200,
+      }
+    }
+  >
+    <react-native-mock>
+      <ImageBackground
+        source={
+          Object {
+            "testUri": "src/images/buttonYellowPassive.png",
+          }
+        }
+        style={
+          Object {
+            "alignItems": "center",
+            "alignSelf": "stretch",
+            "height": undefined,
+            "justifyContent": "center",
+            "paddingBottom": 2,
+            "paddingLeft": 12,
+            "paddingRight": 12,
+            "paddingTop": 8,
+            "width": undefined,
+          }
+        }
+      >
+        <react-native-mock>
+          <View
+            pointerEvents="none"
+          >
+            <react-native-mock>
+              <Text
+                style={
+                  Object {
+                    "color": "#000000",
+                    "fontSize": 20,
+                    "marginBottom": 15,
+                  }
+                }
+              >
+                <react-native-mock />
+              </Text>
+            </react-native-mock>
+          </View>
+        </react-native-mock>
+      </ImageBackground>
+    </react-native-mock>
+  </TouchableWithoutFeedback>
+</Button>
+`;

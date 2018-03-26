@@ -2,6 +2,13 @@ import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import { JSDOM } from 'jsdom';
 
+jest.mock('react-native', () => {
+  // eslint-disable-next-line global-require
+  const ReactNative = require('react-native-mock-render');
+  ReactNative.Vibration = { vibrate: jest.fn() };
+  return ReactNative;
+}, { virtual: true });
+
 Enzyme.configure({ adapter: new Adapter() });
 jest.useFakeTimers();
 

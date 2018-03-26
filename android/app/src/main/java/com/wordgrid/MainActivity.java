@@ -17,7 +17,7 @@ public class MainActivity extends ReactActivity {
 
     @Override
     public boolean onKeyUp(int keyCode, KeyEvent event) {
-        KeyEventModule.getInstance().onKeyUpEvent(keyCode);
+        KeyEventModule.getInstance().onKeyUpEvent(keyCode, event);
         return super.onKeyUp(keyCode, event);
     }
 }

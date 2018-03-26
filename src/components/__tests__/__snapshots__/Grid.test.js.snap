@@ -1,921 +1,1049 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Grid component matches the snapshot 1`] = `
-<View
-  style={
-    Object {
-      "alignItems": "center",
-      "backgroundColor": "#ffffff",
-      "justifyContent": "center",
-    }
+<Grid
+  animationState=""
+  clearAnimation={[Function]}
+  clearSelected={[Function]}
+  gridEntries={
+    Array [
+      Object {
+        "letter": "",
+        "selected": false,
+      },
+      Object {
+        "letter": "",
+        "selected": false,
+      },
+      Object {
+        "letter": "",
+        "selected": false,
+      },
+      Object {
+        "letter": "",
+        "selected": false,
+      },
+      Object {
+        "letter": "",
+        "selected": false,
+      },
+      Object {
+        "letter": "",
+        "selected": false,
+      },
+      Object {
+        "letter": "",
+        "selected": false,
+      },
+      Object {
+        "letter": "",
+        "selected": false,
+      },
+      Object {
+        "letter": "",
+        "selected": false,
+      },
+    ]
   }
+  selectedLetters=""
+  submitWord={[Function]}
+  toggleSelected={[Function]}
+  triggerAnimation={[Function]}
 >
-  <View
+  <withAnimatable(View)
+    animation={
+      Object {
+        "0": Object {},
+        "1": Object {},
+      }
+    }
+    delay={0}
+    direction="normal"
+    duration={0}
+    iterationCount={1}
+    onAnimationBegin={[Function]}
+    onAnimationEnd={[Function]}
     style={
       Object {
         "alignItems": "center",
-        "height": 300,
+        "alignSelf": "stretch",
         "justifyContent": "center",
-        "margin": 3,
-        "width": 300,
       }
     }
+    useNativeDriver={false}
   >
-    <View
+    <AnimatedComponent
       style={
-        Object {
-          "flex": 0.3333333333333333,
-          "flexDirection": "row",
-          "margin": 0,
-        }
+        Array [
+          Object {
+            "alignItems": "center",
+            "alignSelf": "stretch",
+            "justifyContent": "center",
+          },
+          Object {},
+          Object {},
+        ]
       }
     >
-      <View
-        accessible={true}
-        isTVSelectable={true}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "alignItems": "center",
-            "backgroundColor": "#fff",
-            "borderColor": "#000000",
-            "borderWidth": 2,
-            "flex": 0.3333333333333333,
-            "justifyContent": "center",
-            "margin": 0,
-            "opacity": 1,
-          }
-        }
-      >
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          disabled={false}
-          ellipsizeMode="tail"
-          style={
-            Object {
-              "color": "#000",
-              "fontSize": 60,
-            }
-          }
-        />
-      </View>
-      <View
-        accessible={true}
-        isTVSelectable={true}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "alignItems": "center",
-            "backgroundColor": "#fff",
-            "borderColor": "#000000",
-            "borderWidth": 2,
-            "flex": 0.3333333333333333,
-            "justifyContent": "center",
-            "margin": 0,
-            "opacity": 1,
-          }
-        }
-      >
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          disabled={false}
-          ellipsizeMode="tail"
-          style={
-            Object {
-              "color": "#000",
-              "fontSize": 60,
-            }
-          }
-        />
-      </View>
-      <View
-        accessible={true}
-        isTVSelectable={true}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "alignItems": "center",
-            "backgroundColor": "#fff",
-            "borderColor": "#000000",
-            "borderWidth": 2,
-            "flex": 0.3333333333333333,
-            "justifyContent": "center",
-            "margin": 0,
-            "opacity": 1,
-          }
-        }
-      >
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          disabled={false}
-          ellipsizeMode="tail"
-          style={
-            Object {
-              "color": "#000",
-              "fontSize": 60,
-            }
-          }
-        />
-      </View>
-    </View>
-    <View
-      style={
-        Object {
-          "flex": 0.3333333333333333,
-          "flexDirection": "row",
-          "margin": 0,
-        }
-      }
-    >
-      <View
-        accessible={true}
-        isTVSelectable={true}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "alignItems": "center",
-            "backgroundColor": "#fff",
-            "borderColor": "#000000",
-            "borderWidth": 2,
-            "flex": 0.3333333333333333,
-            "justifyContent": "center",
-            "margin": 0,
-            "opacity": 1,
-          }
-        }
-      >
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          disabled={false}
-          ellipsizeMode="tail"
-          style={
-            Object {
-              "color": "#000",
-              "fontSize": 60,
-            }
-          }
-        />
-      </View>
-      <View
-        accessible={true}
-        isTVSelectable={true}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "alignItems": "center",
-            "backgroundColor": "#aaa",
-            "borderColor": "#000000",
-            "borderWidth": 2,
-            "flex": 0.3333333333333333,
-            "justifyContent": "center",
-            "margin": 0,
-            "opacity": 1,
-          }
-        }
-      >
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          disabled={false}
-          ellipsizeMode="tail"
-          style={
-            Object {
-              "color": "#000",
-              "fontSize": 60,
-            }
-          }
-        />
-      </View>
-      <View
-        accessible={true}
-        isTVSelectable={true}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "alignItems": "center",
-            "backgroundColor": "#fff",
-            "borderColor": "#000000",
-            "borderWidth": 2,
-            "flex": 0.3333333333333333,
-            "justifyContent": "center",
-            "margin": 0,
-            "opacity": 1,
-          }
-        }
-      >
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          disabled={false}
-          ellipsizeMode="tail"
-          style={
-            Object {
-              "color": "#000",
-              "fontSize": 60,
-            }
-          }
-        />
-      </View>
-    </View>
-    <View
-      style={
-        Object {
-          "flex": 0.3333333333333333,
-          "flexDirection": "row",
-          "margin": 0,
-        }
-      }
-    >
-      <View
-        accessible={true}
-        isTVSelectable={true}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "alignItems": "center",
-            "backgroundColor": "#fff",
-            "borderColor": "#000000",
-            "borderWidth": 2,
-            "flex": 0.3333333333333333,
-            "justifyContent": "center",
-            "margin": 0,
-            "opacity": 1,
-          }
-        }
-      >
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          disabled={false}
-          ellipsizeMode="tail"
-          style={
-            Object {
-              "color": "#000",
-              "fontSize": 60,
-            }
-          }
-        />
-      </View>
-      <View
-        accessible={true}
-        isTVSelectable={true}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "alignItems": "center",
-            "backgroundColor": "#fff",
-            "borderColor": "#000000",
-            "borderWidth": 2,
-            "flex": 0.3333333333333333,
-            "justifyContent": "center",
-            "margin": 0,
-            "opacity": 1,
-          }
-        }
-      >
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          disabled={false}
-          ellipsizeMode="tail"
-          style={
-            Object {
-              "color": "#000",
-              "fontSize": 60,
-            }
-          }
-        />
-      </View>
-      <View
-        accessible={true}
-        isTVSelectable={true}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "alignItems": "center",
-            "backgroundColor": "#fff",
-            "borderColor": "#000000",
-            "borderWidth": 2,
-            "flex": 0.3333333333333333,
-            "justifyContent": "center",
-            "margin": 0,
-            "opacity": 1,
-          }
-        }
-      >
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          disabled={false}
-          ellipsizeMode="tail"
-          style={
-            Object {
-              "color": "#000",
-              "fontSize": 60,
-            }
-          }
-        />
-      </View>
-    </View>
-  </View>
-  <View
-    style={
-      Object {
-        "alignItems": "center",
-        "flexDirection": "row",
-        "height": 50,
-        "justifyContent": "flex-start",
-        "marginHorizontal": 10,
-      }
-    }
-  >
-    <View
-      style={
-        Object {
-          "borderBottomColor": "#444",
-          "borderBottomWidth": 1,
-          "flex": 1,
-          "height": 30,
-          "marginLeft": 20,
-        }
-      }
-    >
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        disabled={false}
-        ellipsizeMode="tail"
-        style={
-          Object {
-            "color": "#000",
-            "fontSize": 20,
-          }
-        }
-      />
-    </View>
-    <View>
-      <View
-        accessible={true}
-        isTVSelectable={true}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "alignItems": "center",
-            "borderRadius": 8,
-            "height": 50,
-            "justifyContent": "center",
-            "opacity": 1,
-            "width": 60,
-          }
-        }
-      >
-        <Text
-          accessible={true}
-          allowFontScaling={false}
-          disabled={false}
-          ellipsizeMode="tail"
-          style={
-            Array [
+      <View>
+        <react-native-mock>
+          <ImageBackground
+            source={
               Object {
-                "color": undefined,
-                "fontSize": 35,
-              },
-              undefined,
+                "testUri": "src/images/gridBackground.png",
+              }
+            }
+            style={
               Object {
-                "fontFamily": "Ionicons",
-                "fontStyle": "normal",
-                "fontWeight": "normal",
-              },
-            ]
-          }
-        >
-          
-        </Text>
+                "alignItems": "center",
+                "alignSelf": "stretch",
+                "height": null,
+                "justifyContent": "center",
+                "paddingBottom": 2,
+                "paddingLeft": 12,
+                "paddingRight": 12,
+                "paddingTop": 8,
+                "width": null,
+              }
+            }
+          >
+            <react-native-mock>
+              <View
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "height": 300,
+                    "justifyContent": "center",
+                    "width": 300,
+                  }
+                }
+              >
+                <react-native-mock>
+                  <View
+                    key="012"
+                    style={
+                      Object {
+                        "flex": 0.3333333333333333,
+                        "flexDirection": "row",
+                        "margin": 0,
+                      }
+                    }
+                  >
+                    <react-native-mock>
+                      <TouchableOpacity
+                        key="gridItem0"
+                        onLongPress={[Function]}
+                        onPress={[Function]}
+                        style={
+                          Object {
+                            "alignItems": "center",
+                            "backgroundColor": "#fff",
+                            "borderColor": "#000000",
+                            "borderWidth": 2,
+                            "flex": 0.3333333333333333,
+                            "justifyContent": "center",
+                            "margin": 0,
+                          }
+                        }
+                      >
+                        <react-native-mock>
+                          <Text
+                            style={
+                              Object {
+                                "color": "#000",
+                                "fontSize": 60,
+                              }
+                            }
+                          >
+                            <react-native-mock />
+                          </Text>
+                        </react-native-mock>
+                      </TouchableOpacity>
+                      <TouchableOpacity
+                        key="gridItem1"
+                        onLongPress={[Function]}
+                        onPress={[Function]}
+                        style={
+                          Object {
+                            "alignItems": "center",
+                            "backgroundColor": "#fff",
+                            "borderColor": "#000000",
+                            "borderWidth": 2,
+                            "flex": 0.3333333333333333,
+                            "justifyContent": "center",
+                            "margin": 0,
+                          }
+                        }
+                      >
+                        <react-native-mock>
+                          <Text
+                            style={
+                              Object {
+                                "color": "#000",
+                                "fontSize": 60,
+                              }
+                            }
+                          >
+                            <react-native-mock />
+                          </Text>
+                        </react-native-mock>
+                      </TouchableOpacity>
+                      <TouchableOpacity
+                        key="gridItem2"
+                        onLongPress={[Function]}
+                        onPress={[Function]}
+                        style={
+                          Object {
+                            "alignItems": "center",
+                            "backgroundColor": "#fff",
+                            "borderColor": "#000000",
+                            "borderWidth": 2,
+                            "flex": 0.3333333333333333,
+                            "justifyContent": "center",
+                            "margin": 0,
+                          }
+                        }
+                      >
+                        <react-native-mock>
+                          <Text
+                            style={
+                              Object {
+                                "color": "#000",
+                                "fontSize": 60,
+                              }
+                            }
+                          >
+                            <react-native-mock />
+                          </Text>
+                        </react-native-mock>
+                      </TouchableOpacity>
+                    </react-native-mock>
+                  </View>
+                  <View
+                    key="345"
+                    style={
+                      Object {
+                        "flex": 0.3333333333333333,
+                        "flexDirection": "row",
+                        "margin": 0,
+                      }
+                    }
+                  >
+                    <react-native-mock>
+                      <TouchableOpacity
+                        key="gridItem3"
+                        onLongPress={[Function]}
+                        onPress={[Function]}
+                        style={
+                          Object {
+                            "alignItems": "center",
+                            "backgroundColor": "#fff",
+                            "borderColor": "#000000",
+                            "borderWidth": 2,
+                            "flex": 0.3333333333333333,
+                            "justifyContent": "center",
+                            "margin": 0,
+                          }
+                        }
+                      >
+                        <react-native-mock>
+                          <Text
+                            style={
+                              Object {
+                                "color": "#000",
+                                "fontSize": 60,
+                              }
+                            }
+                          >
+                            <react-native-mock />
+                          </Text>
+                        </react-native-mock>
+                      </TouchableOpacity>
+                      <TouchableOpacity
+                        key="gridItem4"
+                        onLongPress={[Function]}
+                        onPress={[Function]}
+                        style={
+                          Object {
+                            "alignItems": "center",
+                            "backgroundColor": "#aaa",
+                            "borderColor": "#000000",
+                            "borderWidth": 2,
+                            "flex": 0.3333333333333333,
+                            "justifyContent": "center",
+                            "margin": 0,
+                          }
+                        }
+                      >
+                        <react-native-mock>
+                          <Text
+                            style={
+                              Object {
+                                "color": "#000",
+                                "fontSize": 60,
+                              }
+                            }
+                          >
+                            <react-native-mock />
+                          </Text>
+                        </react-native-mock>
+                      </TouchableOpacity>
+                      <TouchableOpacity
+                        key="gridItem5"
+                        onLongPress={[Function]}
+                        onPress={[Function]}
+                        style={
+                          Object {
+                            "alignItems": "center",
+                            "backgroundColor": "#fff",
+                            "borderColor": "#000000",
+                            "borderWidth": 2,
+                            "flex": 0.3333333333333333,
+                            "justifyContent": "center",
+                            "margin": 0,
+                          }
+                        }
+                      >
+                        <react-native-mock>
+                          <Text
+                            style={
+                              Object {
+                                "color": "#000",
+                                "fontSize": 60,
+                              }
+                            }
+                          >
+                            <react-native-mock />
+                          </Text>
+                        </react-native-mock>
+                      </TouchableOpacity>
+                    </react-native-mock>
+                  </View>
+                  <View
+                    key="678"
+                    style={
+                      Object {
+                        "flex": 0.3333333333333333,
+                        "flexDirection": "row",
+                        "margin": 0,
+                      }
+                    }
+                  >
+                    <react-native-mock>
+                      <TouchableOpacity
+                        key="gridItem6"
+                        onLongPress={[Function]}
+                        onPress={[Function]}
+                        style={
+                          Object {
+                            "alignItems": "center",
+                            "backgroundColor": "#fff",
+                            "borderColor": "#000000",
+                            "borderWidth": 2,
+                            "flex": 0.3333333333333333,
+                            "justifyContent": "center",
+                            "margin": 0,
+                          }
+                        }
+                      >
+                        <react-native-mock>
+                          <Text
+                            style={
+                              Object {
+                                "color": "#000",
+                                "fontSize": 60,
+                              }
+                            }
+                          >
+                            <react-native-mock />
+                          </Text>
+                        </react-native-mock>
+                      </TouchableOpacity>
+                      <TouchableOpacity
+                        key="gridItem7"
+                        onLongPress={[Function]}
+                        onPress={[Function]}
+                        style={
+                          Object {
+                            "alignItems": "center",
+                            "backgroundColor": "#fff",
+                            "borderColor": "#000000",
+                            "borderWidth": 2,
+                            "flex": 0.3333333333333333,
+                            "justifyContent": "center",
+                            "margin": 0,
+                          }
+                        }
+                      >
+                        <react-native-mock>
+                          <Text
+                            style={
+                              Object {
+                                "color": "#000",
+                                "fontSize": 60,
+                              }
+                            }
+                          >
+                            <react-native-mock />
+                          </Text>
+                        </react-native-mock>
+                      </TouchableOpacity>
+                      <TouchableOpacity
+                        key="gridItem8"
+                        onLongPress={[Function]}
+                        onPress={[Function]}
+                        style={
+                          Object {
+                            "alignItems": "center",
+                            "backgroundColor": "#fff",
+                            "borderColor": "#000000",
+                            "borderWidth": 2,
+                            "flex": 0.3333333333333333,
+                            "justifyContent": "center",
+                            "margin": 0,
+                          }
+                        }
+                      >
+                        <react-native-mock>
+                          <Text
+                            style={
+                              Object {
+                                "color": "#000",
+                                "fontSize": 60,
+                              }
+                            }
+                          >
+                            <react-native-mock />
+                          </Text>
+                        </react-native-mock>
+                      </TouchableOpacity>
+                    </react-native-mock>
+                  </View>
+                </react-native-mock>
+              </View>
+              <View
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "height": 50,
+                    "justifyContent": "flex-start",
+                    "marginHorizontal": 10,
+                  }
+                }
+              >
+                <react-native-mock>
+                  <View
+                    style={
+                      Object {
+                        "borderBottomColor": "#444",
+                        "borderBottomWidth": 1,
+                        "flex": 1,
+                        "height": 30,
+                        "marginLeft": 20,
+                      }
+                    }
+                  >
+                    <react-native-mock>
+                      <Text
+                        style={
+                          Object {
+                            "color": "#000",
+                            "fontSize": 20,
+                          }
+                        }
+                      >
+                        <react-native-mock />
+                      </Text>
+                    </react-native-mock>
+                  </View>
+                  <View>
+                    <react-native-mock>
+                      <TouchableOpacity
+                        onLongPress={[Function]}
+                        onPress={[Function]}
+                        style={
+                          Object {
+                            "alignItems": "center",
+                            "borderRadius": 8,
+                            "height": 50,
+                            "justifyContent": "center",
+                            "width": 60,
+                          }
+                        }
+                      >
+                        <react-native-mock>
+                          <Icon
+                            allowFontScaling={false}
+                            name="md-backspace"
+                            size={35}
+                          >
+                            <Text
+                              allowFontScaling={false}
+                              style={
+                                Array [
+                                  Object {
+                                    "color": undefined,
+                                    "fontSize": 35,
+                                  },
+                                  undefined,
+                                  Object {
+                                    "fontFamily": "Ionicons",
+                                    "fontStyle": "normal",
+                                    "fontWeight": "normal",
+                                  },
+                                ]
+                              }
+                            >
+                              <react-native-mock>
+                                
+                              </react-native-mock>
+                            </Text>
+                          </Icon>
+                        </react-native-mock>
+                      </TouchableOpacity>
+                    </react-native-mock>
+                  </View>
+                </react-native-mock>
+              </View>
+            </react-native-mock>
+          </ImageBackground>
+        </react-native-mock>
       </View>
-    </View>
-  </View>
-</View>
+    </AnimatedComponent>
+  </withAnimatable(View)>
+</Grid>
 `;
 
 exports[`Grid component matches the snapshot 2`] = `
-<View
-  style={
-    Object {
-      "alignItems": "center",
-      "backgroundColor": "#ffffff",
-      "justifyContent": "center",
-    }
+<Grid
+  animationState=""
+  clearAnimation={[Function]}
+  clearSelected={[Function]}
+  gridEntries={
+    Array [
+      Object {
+        "letter": "a",
+        "selected": false,
+      },
+      Object {
+        "letter": "s",
+        "selected": false,
+      },
+      Object {
+        "letter": "d",
+        "selected": true,
+      },
+      Object {
+        "letter": "f",
+        "selected": true,
+      },
+      Object {
+        "letter": "g",
+        "selected": false,
+      },
+      Object {
+        "letter": "h",
+        "selected": false,
+      },
+      Object {
+        "letter": "j",
+        "selected": false,
+      },
+      Object {
+        "letter": "k",
+        "selected": false,
+      },
+      Object {
+        "letter": "l",
+        "selected": true,
+      },
+    ]
   }
+  selectedLetters=""
+  submitWord={[Function]}
+  toggleSelected={[Function]}
+  triggerAnimation={[Function]}
 >
-  <View
+  <withAnimatable(View)
+    animation={
+      Object {
+        "0": Object {},
+        "1": Object {},
+      }
+    }
+    delay={0}
+    direction="normal"
+    duration={0}
+    iterationCount={1}
+    onAnimationBegin={[Function]}
+    onAnimationEnd={[Function]}
     style={
       Object {
         "alignItems": "center",
-        "height": 300,
+        "alignSelf": "stretch",
         "justifyContent": "center",
-        "margin": 3,
-        "width": 300,
       }
     }
+    useNativeDriver={false}
   >
-    <View
+    <AnimatedComponent
       style={
-        Object {
-          "flex": 0.3333333333333333,
-          "flexDirection": "row",
-          "margin": 0,
-        }
+        Array [
+          Object {
+            "alignItems": "center",
+            "alignSelf": "stretch",
+            "justifyContent": "center",
+          },
+          Object {},
+          Object {},
+        ]
       }
     >
-      <View
-        accessible={true}
-        isTVSelectable={true}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "alignItems": "center",
-            "backgroundColor": "#fff",
-            "borderColor": "#000000",
-            "borderWidth": 2,
-            "flex": 0.3333333333333333,
-            "justifyContent": "center",
-            "margin": 0,
-            "opacity": 1,
-          }
-        }
-      >
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          disabled={false}
-          ellipsizeMode="tail"
-          style={
-            Object {
-              "color": "#000",
-              "fontSize": 60,
-            }
-          }
-        >
-          A
-        </Text>
-      </View>
-      <View
-        accessible={true}
-        isTVSelectable={true}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "alignItems": "center",
-            "backgroundColor": "#fff",
-            "borderColor": "#000000",
-            "borderWidth": 2,
-            "flex": 0.3333333333333333,
-            "justifyContent": "center",
-            "margin": 0,
-            "opacity": 1,
-          }
-        }
-      >
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          disabled={false}
-          ellipsizeMode="tail"
-          style={
-            Object {
-              "color": "#000",
-              "fontSize": 60,
-            }
-          }
-        >
-          S
-        </Text>
-      </View>
-      <View
-        accessible={true}
-        isTVSelectable={true}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "alignItems": "center",
-            "backgroundColor": "#ffa",
-            "borderColor": "#000000",
-            "borderWidth": 2,
-            "flex": 0.3333333333333333,
-            "justifyContent": "center",
-            "margin": 0,
-            "opacity": 1,
-          }
-        }
-      >
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          disabled={false}
-          ellipsizeMode="tail"
-          style={
-            Object {
-              "color": "#000",
-              "fontSize": 60,
-            }
-          }
-        >
-          D
-        </Text>
-      </View>
-    </View>
-    <View
-      style={
-        Object {
-          "flex": 0.3333333333333333,
-          "flexDirection": "row",
-          "margin": 0,
-        }
-      }
-    >
-      <View
-        accessible={true}
-        isTVSelectable={true}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "alignItems": "center",
-            "backgroundColor": "#ffa",
-            "borderColor": "#000000",
-            "borderWidth": 2,
-            "flex": 0.3333333333333333,
-            "justifyContent": "center",
-            "margin": 0,
-            "opacity": 1,
-          }
-        }
-      >
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          disabled={false}
-          ellipsizeMode="tail"
-          style={
-            Object {
-              "color": "#000",
-              "fontSize": 60,
-            }
-          }
-        >
-          F
-        </Text>
-      </View>
-      <View
-        accessible={true}
-        isTVSelectable={true}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "alignItems": "center",
-            "backgroundColor": "#aaa",
-            "borderColor": "#000000",
-            "borderWidth": 2,
-            "flex": 0.3333333333333333,
-            "justifyContent": "center",
-            "margin": 0,
-            "opacity": 1,
-          }
-        }
-      >
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          disabled={false}
-          ellipsizeMode="tail"
-          style={
-            Object {
-              "color": "#000",
-              "fontSize": 60,
-            }
-          }
-        >
-          G
-        </Text>
-      </View>
-      <View
-        accessible={true}
-        isTVSelectable={true}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "alignItems": "center",
-            "backgroundColor": "#fff",
-            "borderColor": "#000000",
-            "borderWidth": 2,
-            "flex": 0.3333333333333333,
-            "justifyContent": "center",
-            "margin": 0,
-            "opacity": 1,
-          }
-        }
-      >
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          disabled={false}
-          ellipsizeMode="tail"
-          style={
-            Object {
-              "color": "#000",
-              "fontSize": 60,
-            }
-          }
-        >
-          H
-        </Text>
-      </View>
-    </View>
-    <View
-      style={
-        Object {
-          "flex": 0.3333333333333333,
-          "flexDirection": "row",
-          "margin": 0,
-        }
-      }
-    >
-      <View
-        accessible={true}
-        isTVSelectable={true}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "alignItems": "center",
-            "backgroundColor": "#fff",
-            "borderColor": "#000000",
-            "borderWidth": 2,
-            "flex": 0.3333333333333333,
-            "justifyContent": "center",
-            "margin": 0,
-            "opacity": 1,
-          }
-        }
-      >
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          disabled={false}
-          ellipsizeMode="tail"
-          style={
-            Object {
-              "color": "#000",
-              "fontSize": 60,
-            }
-          }
-        >
-          J
-        </Text>
-      </View>
-      <View
-        accessible={true}
-        isTVSelectable={true}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "alignItems": "center",
-            "backgroundColor": "#fff",
-            "borderColor": "#000000",
-            "borderWidth": 2,
-            "flex": 0.3333333333333333,
-            "justifyContent": "center",
-            "margin": 0,
-            "opacity": 1,
-          }
-        }
-      >
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          disabled={false}
-          ellipsizeMode="tail"
-          style={
-            Object {
-              "color": "#000",
-              "fontSize": 60,
-            }
-          }
-        >
-          K
-        </Text>
-      </View>
-      <View
-        accessible={true}
-        isTVSelectable={true}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "alignItems": "center",
-            "backgroundColor": "#ffa",
-            "borderColor": "#000000",
-            "borderWidth": 2,
-            "flex": 0.3333333333333333,
-            "justifyContent": "center",
-            "margin": 0,
-            "opacity": 1,
-          }
-        }
-      >
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          disabled={false}
-          ellipsizeMode="tail"
-          style={
-            Object {
-              "color": "#000",
-              "fontSize": 60,
-            }
-          }
-        >
-          L
-        </Text>
-      </View>
-    </View>
-  </View>
-  <View
-    style={
-      Object {
-        "alignItems": "center",
-        "flexDirection": "row",
-        "height": 50,
-        "justifyContent": "flex-start",
-        "marginHorizontal": 10,
-      }
-    }
-  >
-    <View
-      style={
-        Object {
-          "borderBottomColor": "#444",
-          "borderBottomWidth": 1,
-          "flex": 1,
-          "height": 30,
-          "marginLeft": 20,
-        }
-      }
-    >
-      <Text
-        accessible={true}
-        allowFontScaling={true}
-        disabled={false}
-        ellipsizeMode="tail"
-        style={
-          Object {
-            "color": "#000",
-            "fontSize": 20,
-          }
-        }
-      />
-    </View>
-    <View>
-      <View
-        accessible={true}
-        isTVSelectable={true}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "alignItems": "center",
-            "borderRadius": 8,
-            "height": 50,
-            "justifyContent": "center",
-            "opacity": 1,
-            "width": 60,
-          }
-        }
-      >
-        <Text
-          accessible={true}
-          allowFontScaling={false}
-          disabled={false}
-          ellipsizeMode="tail"
-          style={
-            Array [
+      <View>
+        <react-native-mock>
+          <ImageBackground
+            source={
               Object {
-                "color": undefined,
-                "fontSize": 35,
-              },
-              undefined,
+                "testUri": "src/images/gridBackground.png",
+              }
+            }
+            style={
               Object {
-                "fontFamily": "Ionicons",
-                "fontStyle": "normal",
-                "fontWeight": "normal",
-              },
-            ]
-          }
-        >
-          
-        </Text>
+                "alignItems": "center",
+                "alignSelf": "stretch",
+                "height": null,
+                "justifyContent": "center",
+                "paddingBottom": 2,
+                "paddingLeft": 12,
+                "paddingRight": 12,
+                "paddingTop": 8,
+                "width": null,
+              }
+            }
+          >
+            <react-native-mock>
+              <View
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "height": 300,
+                    "justifyContent": "center",
+                    "width": 300,
+                  }
+                }
+              >
+                <react-native-mock>
+                  <View
+                    key="012"
+                    style={
+                      Object {
+                        "flex": 0.3333333333333333,
+                        "flexDirection": "row",
+                        "margin": 0,
+                      }
+                    }
+                  >
+                    <react-native-mock>
+                      <TouchableOpacity
+                        key="gridItem0"
+                        onLongPress={[Function]}
+                        onPress={[Function]}
+                        style={
+                          Object {
+                            "alignItems": "center",
+                            "backgroundColor": "#fff",
+                            "borderColor": "#000000",
+                            "borderWidth": 2,
+                            "flex": 0.3333333333333333,
+                            "justifyContent": "center",
+                            "margin": 0,
+                          }
+                        }
+                      >
+                        <react-native-mock>
+                          <Text
+                            style={
+                              Object {
+                                "color": "#000",
+                                "fontSize": 60,
+                              }
+                            }
+                          >
+                            <react-native-mock>
+                              A
+                            </react-native-mock>
+                          </Text>
+                        </react-native-mock>
+                      </TouchableOpacity>
+                      <TouchableOpacity
+                        key="gridItem1"
+                        onLongPress={[Function]}
+                        onPress={[Function]}
+                        style={
+                          Object {
+                            "alignItems": "center",
+                            "backgroundColor": "#fff",
+                            "borderColor": "#000000",
+                            "borderWidth": 2,
+                            "flex": 0.3333333333333333,
+                            "justifyContent": "center",
+                            "margin": 0,
+                          }
+                        }
+                      >
+                        <react-native-mock>
+                          <Text
+                            style={
+                              Object {
+                                "color": "#000",
+                                "fontSize": 60,
+                              }
+                            }
+                          >
+                            <react-native-mock>
+                              S
+                            </react-native-mock>
+                          </Text>
+                        </react-native-mock>
+                      </TouchableOpacity>
+                      <TouchableOpacity
+                        key="gridItem2"
+                        onLongPress={[Function]}
+                        onPress={[Function]}
+                        style={
+                          Object {
+                            "alignItems": "center",
+                            "backgroundColor": "#ffa",
+                            "borderColor": "#000000",
+                            "borderWidth": 2,
+                            "flex": 0.3333333333333333,
+                            "justifyContent": "center",
+                            "margin": 0,
+                          }
+                        }
+                      >
+                        <react-native-mock>
+                          <Text
+                            style={
+                              Object {
+                                "color": "#000",
+                                "fontSize": 60,
+                              }
+                            }
+                          >
+                            <react-native-mock>
+                              D
+                            </react-native-mock>
+                          </Text>
+                        </react-native-mock>
+                      </TouchableOpacity>
+                    </react-native-mock>
+                  </View>
+                  <View
+                    key="345"
+                    style={
+                      Object {
+                        "flex": 0.3333333333333333,
+                        "flexDirection": "row",
+                        "margin": 0,
+                      }
+                    }
+                  >
+                    <react-native-mock>
+                      <TouchableOpacity
+                        key="gridItem3"
+                        onLongPress={[Function]}
+                        onPress={[Function]}
+                        style={
+                          Object {
+                            "alignItems": "center",
+                            "backgroundColor": "#ffa",
+                            "borderColor": "#000000",
+                            "borderWidth": 2,
+                            "flex": 0.3333333333333333,
+                            "justifyContent": "center",
+                            "margin": 0,
+                          }
+                        }
+                      >
+                        <react-native-mock>
+                          <Text
+                            style={
+                              Object {
+                                "color": "#000",
+                                "fontSize": 60,
+                              }
+                            }
+                          >
+                            <react-native-mock>
+                              F
+                            </react-native-mock>
+                          </Text>
+                        </react-native-mock>
+                      </TouchableOpacity>
+                      <TouchableOpacity
+                        key="gridItem4"
+                        onLongPress={[Function]}
+                        onPress={[Function]}
+                        style={
+                          Object {
+                            "alignItems": "center",
+                            "backgroundColor": "#aaa",
+                            "borderColor": "#000000",
+                            "borderWidth": 2,
+                            "flex": 0.3333333333333333,
+                            "justifyContent": "center",
+                            "margin": 0,
+                          }
+                        }
+                      >
+                        <react-native-mock>
+                          <Text
+                            style={
+                              Object {
+                                "color": "#000",
+                                "fontSize": 60,
+                              }
+                            }
+                          >
+                            <react-native-mock>
+                              G
+                            </react-native-mock>
+                          </Text>
+                        </react-native-mock>
+                      </TouchableOpacity>
+                      <TouchableOpacity
+                        key="gridItem5"
+                        onLongPress={[Function]}
+                        onPress={[Function]}
+                        style={
+                          Object {
+                            "alignItems": "center",
+                            "backgroundColor": "#fff",
+                            "borderColor": "#000000",
+                            "borderWidth": 2,
+                            "flex": 0.3333333333333333,
+                            "justifyContent": "center",
+                            "margin": 0,
+                          }
+                        }
+                      >
+                        <react-native-mock>
+                          <Text
+                            style={
+                              Object {
+                                "color": "#000",
+                                "fontSize": 60,
+                              }
+                            }
+                          >
+                            <react-native-mock>
+                              H
+                            </react-native-mock>
+                          </Text>
+                        </react-native-mock>
+                      </TouchableOpacity>
+                    </react-native-mock>
+                  </View>
+                  <View
+                    key="678"
+                    style={
+                      Object {
+                        "flex": 0.3333333333333333,
+                        "flexDirection": "row",
+                        "margin": 0,
+                      }
+                    }
+                  >
+                    <react-native-mock>
+                      <TouchableOpacity
+                        key="gridItem6"
+                        onLongPress={[Function]}
+                        onPress={[Function]}
+                        style={
+                          Object {
+                            "alignItems": "center",
+                            "backgroundColor": "#fff",
+                            "borderColor": "#000000",
+                            "borderWidth": 2,
+                            "flex": 0.3333333333333333,
+                            "justifyContent": "center",
+                            "margin": 0,
+                          }
+                        }
+                      >
+                        <react-native-mock>
+                          <Text
+                            style={
+                              Object {
+                                "color": "#000",
+                                "fontSize": 60,
+                              }
+                            }
+                          >
+                            <react-native-mock>
+                              J
+                            </react-native-mock>
+                          </Text>
+                        </react-native-mock>
+                      </TouchableOpacity>
+                      <TouchableOpacity
+                        key="gridItem7"
+                        onLongPress={[Function]}
+                        onPress={[Function]}
+                        style={
+                          Object {
+                            "alignItems": "center",
+                            "backgroundColor": "#fff",
+                            "borderColor": "#000000",
+                            "borderWidth": 2,
+                            "flex": 0.3333333333333333,
+                            "justifyContent": "center",
+                            "margin": 0,
+                          }
+                        }
+                      >
+                        <react-native-mock>
+                          <Text
+                            style={
+                              Object {
+                                "color": "#000",
+                                "fontSize": 60,
+                              }
+                            }
+                          >
+                            <react-native-mock>
+                              K
+                            </react-native-mock>
+                          </Text>
+                        </react-native-mock>
+                      </TouchableOpacity>
+                      <TouchableOpacity
+                        key="gridItem8"
+                        onLongPress={[Function]}
+                        onPress={[Function]}
+                        style={
+                          Object {
+                            "alignItems": "center",
+                            "backgroundColor": "#ffa",
+                            "borderColor": "#000000",
+                            "borderWidth": 2,
+                            "flex": 0.3333333333333333,
+                            "justifyContent": "center",
+                            "margin": 0,
+                          }
+                        }
+                      >
+                        <react-native-mock>
+                          <Text
+                            style={
+                              Object {
+                                "color": "#000",
+                                "fontSize": 60,
+                              }
+                            }
+                          >
+                            <react-native-mock>
+                              L
+                            </react-native-mock>
+                          </Text>
+                        </react-native-mock>
+                      </TouchableOpacity>
+                    </react-native-mock>
+                  </View>
+                </react-native-mock>
+              </View>
+              <View
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "height": 50,
+                    "justifyContent": "flex-start",
+                    "marginHorizontal": 10,
+                  }
+                }
+              >
+                <react-native-mock>
+                  <View
+                    style={
+                      Object {
+                        "borderBottomColor": "#444",
+                        "borderBottomWidth": 1,
+                        "flex": 1,
+                        "height": 30,
+                        "marginLeft": 20,
+                      }
+                    }
+                  >
+                    <react-native-mock>
+                      <Text
+                        style={
+                          Object {
+                            "color": "#000",
+                            "fontSize": 20,
+                          }
+                        }
+                      >
+                        <react-native-mock />
+                      </Text>
+                    </react-native-mock>
+                  </View>
+                  <View>
+                    <react-native-mock>
+                      <TouchableOpacity
+                        onLongPress={[Function]}
+                        onPress={[Function]}
+                        style={
+                          Object {
+                            "alignItems": "center",
+                            "borderRadius": 8,
+                            "height": 50,
+                            "justifyContent": "center",
+                            "width": 60,
+                          }
+                        }
+                      >
+                        <react-native-mock>
+                          <Icon
+                            allowFontScaling={false}
+                            name="md-backspace"
+                            size={35}
+                          >
+                            <Text
+                              allowFontScaling={false}
+                              style={
+                                Array [
+                                  Object {
+                                    "color": undefined,
+                                    "fontSize": 35,
+                                  },
+                                  undefined,
+                                  Object {
+                                    "fontFamily": "Ionicons",
+                                    "fontStyle": "normal",
+                                    "fontWeight": "normal",
+                                  },
+                                ]
+                              }
+                            >
+                              <react-native-mock>
+                                
+                              </react-native-mock>
+                            </Text>
+                          </Icon>
+                        </react-native-mock>
+                      </TouchableOpacity>
+                    </react-native-mock>
+                  </View>
+                </react-native-mock>
+              </View>
+            </react-native-mock>
+          </ImageBackground>
+        </react-native-mock>
       </View>
-    </View>
-  </View>
-</View>
+    </AnimatedComponent>
+  </withAnimatable(View)>
+</Grid>
 `;

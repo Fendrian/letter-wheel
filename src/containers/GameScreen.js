@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Image, View } from 'react-native';
+import { ImageBackground, View } from 'react-native';
 import { action, computed, observable } from 'mobx';
 import { inject, observer, PropTypes as MobxPropTypes } from 'mobx-react';
 import nativeTimer from 'react-native-timer';
@@ -11,7 +11,7 @@ import GameScreenStyle from '../styles/GameScreenStyle';
 import Grid from '../components/Grid';
 import Control from '../components/Control';
 
-import background from '../images/Wood-background.jpg';
+import background from '../images/woodBackground.jpg';
 
 @inject('store')
 @observer
@@ -116,7 +116,7 @@ export default class GameScreen extends React.Component {
     }
 
     return (
-      <Image
+      <ImageBackground
         source={background}
         style={container}
       >
@@ -151,7 +151,7 @@ export default class GameScreen extends React.Component {
             />
           </View>
         </View>
-      </Image>
+      </ImageBackground>
     );
   }
 }

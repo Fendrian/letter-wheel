@@ -1,815 +1,1227 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`New Screen component matches the snapshot 1`] = `
-<Image
-  source={1}
-  style={
-    Object {
-      "alignItems": "center",
-      "alignSelf": "stretch",
-      "flex": 1,
-      "height": undefined,
-      "justifyContent": "center",
-      "width": undefined,
+<inject-NewScreen-with-store
+  store={
+    store {
+      "closeAllModals": [Function],
+      "db": Object {
+        "transaction": [MockFunction],
+      },
+      "getPermutatedWords": [Function],
+      "getScore": [Function],
+      "isAboutModalOpen": false,
+      "isInstructionsModalOpen": false,
+      "isMenuModalOpen": false,
+      "letters": "         ",
+      "loading": false,
+      "nav": Object {
+        "get": [Function],
+        "goto": [Function],
+        "resetto": [Function],
+      },
+      "navigator": Object {},
+      "newGameOptions": Object {
+        "timed": false,
+        "wordRange": Object {
+          "max": 49,
+          "min": 10,
+        },
+      },
+      "orientation": 0,
+      "scored": false,
+      "scores": Array [
+        Object {
+          "percent": 100,
+          "text": "Exceptional!",
+        },
+        Object {
+          "percent": 85,
+          "text": "Excellent!",
+        },
+        Object {
+          "percent": 65,
+          "text": "Very Good!",
+        },
+        Object {
+          "percent": 40,
+          "text": "Good!",
+        },
+        Object {
+          "percent": 0,
+          "text": "",
+        },
+      ],
+      "selected": Array [],
+      "shuffle": [Function],
+      "statusText": "",
+      "timer": -1,
+      "tried": Object {},
+      "width": 320,
+      "words": Object {},
     }
   }
 >
-  <RCTScrollView
-    contentContainerStyle={
-      Object {
-        "flexGrow": 1,
-      }
-    }
-    style={
-      Object {
-        "width": 750,
+  <NewScreen
+    store={
+      store {
+        "closeAllModals": [Function],
+        "db": Object {
+          "transaction": [MockFunction],
+        },
+        "getPermutatedWords": [Function],
+        "getScore": [Function],
+        "isAboutModalOpen": false,
+        "isInstructionsModalOpen": false,
+        "isMenuModalOpen": false,
+        "letters": "         ",
+        "loading": false,
+        "nav": Object {
+          "get": [Function],
+          "goto": [Function],
+          "resetto": [Function],
+        },
+        "navigator": Object {},
+        "newGameOptions": Object {
+          "timed": false,
+          "wordRange": Object {
+            "max": 49,
+            "min": 10,
+          },
+        },
+        "orientation": 0,
+        "scored": false,
+        "scores": Array [
+          Object {
+            "percent": 100,
+            "text": "Exceptional!",
+          },
+          Object {
+            "percent": 85,
+            "text": "Excellent!",
+          },
+          Object {
+            "percent": 65,
+            "text": "Very Good!",
+          },
+          Object {
+            "percent": 40,
+            "text": "Good!",
+          },
+          Object {
+            "percent": 0,
+            "text": "",
+          },
+        ],
+        "selected": Array [],
+        "shuffle": [Function],
+        "statusText": "",
+        "timer": -1,
+        "tried": Object {},
+        "width": 320,
+        "words": Object {},
       }
     }
   >
-    <View>
-      <View
-        style={
-          Object {
-            "alignContent": "center",
-            "flex": 1,
-            "justifyContent": "center",
-          }
+    <ImageBackground
+      source={
+        Object {
+          "testUri": "src/images/woodBackground.jpg",
         }
-      >
-        <View
+      }
+      style={
+        Object {
+          "alignItems": "center",
+          "alignSelf": "stretch",
+          "flex": 1,
+          "height": null,
+          "justifyContent": "center",
+          "width": null,
+        }
+      }
+    >
+      <react-native-mock>
+        <ScrollView
+          contentContainerStyle={
+            Object {
+              "flexGrow": 1,
+            }
+          }
           style={
             Object {
-              "marginBottom": 10,
+              "width": 320,
             }
           }
         >
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            disabled={false}
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "color": "#000",
-                "fontSize": 50,
-                "textAlign": "center",
-              }
-            }
-          >
-            NEW GAME
-          </Text>
-        </View>
-        <View
-          style={
-            Object {
-              "alignContent": "center",
-              "alignSelf": "center",
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "maxWidth": 400,
-              "paddingHorizontal": 25,
-              "paddingVertical": 10,
-            }
-          }
-        >
-          <View
-            style={
-              Object {
-                "flex": 1,
-                "marginHorizontal": 1,
-              }
-            }
-          >
+          <react-native-mock>
             <View
               style={
-                Array [
-                  Object {
-                    "backgroundColor": "#ffffff",
-                    "borderColor": "#555",
-                    "borderRadius": 5,
-                    "borderWidth": 1,
-                    "flexDirection": "row",
-                    "overflow": "hidden",
-                  },
-                  undefined,
-                ]
-              }
-            >
-              <View
-                accessible={true}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  Array [
-                    Array [
-                      Object {
-                        "backgroundColor": "#555",
-                        "opacity": 1,
-                        "paddingBottom": 5,
-                        "paddingTop": 5,
-                      },
-                      Object {
-                        "flex": 1,
-                      },
-                    ],
-                    undefined,
-                    undefined,
-                  ]
-                }
-              >
-                <Text
-                  accessible={true}
-                  allowFontScaling={true}
-                  disabled={false}
-                  ellipsizeMode="tail"
-                  style={
-                    Array [
-                      Object {
-                        "textAlign": "center",
-                      },
-                      Object {
-                        "fontSize": 20,
-                        "paddingVertical": 10,
-                      },
-                      Object {
-                        "color": "#ffffff",
-                      },
-                    ]
-                  }
-                >
-                  10-49
-                </Text>
-              </View>
-              <View
-                accessible={true}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  Array [
-                    Array [
-                      Array [
-                        Object {
-                          "backgroundColor": "#ffffff",
-                          "opacity": 1,
-                          "paddingBottom": 5,
-                          "paddingTop": 5,
-                        },
-                        Object {
-                          "flex": 1,
-                        },
-                      ],
-                      Object {
-                        "borderLeftColor": "#555",
-                        "borderLeftWidth": 1,
-                      },
-                    ],
-                    undefined,
-                    undefined,
-                  ]
-                }
-              >
-                <Text
-                  accessible={true}
-                  allowFontScaling={true}
-                  disabled={false}
-                  ellipsizeMode="tail"
-                  style={
-                    Array [
-                      Object {
-                        "textAlign": "center",
-                      },
-                      Object {
-                        "fontSize": 20,
-                        "paddingVertical": 10,
-                      },
-                      Object {
-                        "color": "#555",
-                      },
-                    ]
-                  }
-                >
-                  50-99
-                </Text>
-              </View>
-              <View
-                accessible={true}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  Array [
-                    Array [
-                      Array [
-                        Object {
-                          "backgroundColor": "#ffffff",
-                          "opacity": 1,
-                          "paddingBottom": 5,
-                          "paddingTop": 5,
-                        },
-                        Object {
-                          "flex": 1,
-                        },
-                      ],
-                      Object {
-                        "borderLeftColor": "#555",
-                        "borderLeftWidth": 1,
-                      },
-                    ],
-                    undefined,
-                    undefined,
-                  ]
-                }
-              >
-                <Text
-                  accessible={true}
-                  allowFontScaling={true}
-                  disabled={false}
-                  ellipsizeMode="tail"
-                  style={
-                    Array [
-                      Object {
-                        "textAlign": "center",
-                      },
-                      Object {
-                        "fontSize": 20,
-                        "paddingVertical": 10,
-                      },
-                      Object {
-                        "color": "#555",
-                      },
-                    ]
-                  }
-                >
-                  100+
-                </Text>
-              </View>
-            </View>
-          </View>
-        </View>
-        <View
-          style={
-            Object {
-              "alignContent": "center",
-              "alignSelf": "center",
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "maxWidth": 400,
-              "paddingHorizontal": 25,
-              "paddingVertical": 10,
-            }
-          }
-        >
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            disabled={false}
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "fontSize": 20,
-              }
-            }
-          >
-            10 to 49 words
-          </Text>
-        </View>
-        <View
-          style={
-            Object {
-              "alignContent": "center",
-              "alignSelf": "center",
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "maxWidth": 400,
-              "paddingHorizontal": 25,
-              "paddingVertical": 10,
-            }
-          }
-        >
-          <View
-            style={
-              Array [
                 Object {
-                  "height": 50,
-                  "position": "relative",
-                },
-                Object {
-                  "height": 30,
-                  "overflow": "visible",
-                  "paddingVertical": 20,
-                },
-              ]
-            }
-          >
-            <View
-              style={
-                Array [
-                  Object {
-                    "flexDirection": "row",
-                  },
-                  Object {
-                    "width": 330,
-                  },
-                ]
+                  "alignContent": "center",
+                  "flex": 1,
+                  "justifyContent": "center",
+                }
               }
             >
-              <View
-                style={
-                  Array [
-                    Object {
-                      "backgroundColor": "#A7A7A7",
-                      "borderRadius": 2,
-                      "height": 2,
-                    },
-                    Object {
-                      "alignSelf": "center",
-                      "borderRadius": 10,
-                      "height": 10,
-                    },
-                    Object {
-                      "backgroundColor": "#999",
-                    },
-                    Object {
-                      "width": 0,
-                    },
-                  ]
-                }
-              />
-              <View
-                style={
-                  Array [
-                    Object {
-                      "backgroundColor": "#A7A7A7",
-                      "borderRadius": 2,
-                      "height": 2,
-                    },
-                    Object {
-                      "alignSelf": "center",
-                      "borderRadius": 10,
-                      "height": 10,
-                    },
-                    Object {
-                      "backgroundColor": "#444",
-                    },
-                    Object {
-                      "width": 141.42857142857142,
-                    },
-                  ]
-                }
-              />
-              <View
-                style={
-                  Array [
-                    Object {
-                      "backgroundColor": "#A7A7A7",
-                      "borderRadius": 2,
-                      "height": 2,
-                    },
-                    Object {
-                      "alignSelf": "center",
-                      "borderRadius": 10,
-                      "height": 10,
-                    },
-                    Object {
-                      "backgroundColor": "#999",
-                    },
-                    Object {
-                      "width": 188.57142857142858,
-                    },
-                  ]
-                }
-              />
-              <View
-                style={
-                  Array [
-                    Object {
-                      "alignItems": "center",
-                      "backgroundColor": "transparent",
-                      "height": 48,
-                      "justifyContent": "center",
-                      "position": "absolute",
-                      "width": 48,
-                    },
-                    Object {
-                      "left": -24,
-                      "top": -24,
-                    },
-                    false,
-                  ]
-                }
-              >
+              <react-native-mock>
                 <View
-                  onMoveShouldSetResponder={[Function]}
-                  onMoveShouldSetResponderCapture={[Function]}
-                  onResponderEnd={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderReject={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderStart={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  onStartShouldSetResponderCapture={[Function]}
                   style={
-                    Array [
-                      Object {
-                        "alignItems": "center",
-                        "alignSelf": "stretch",
-                        "backgroundColor": "transparent",
-                        "justifyContent": "center",
-                      },
-                      Object {
-                        "borderRadius": 15,
-                      },
-                    ]
+                    Object {
+                      "marginBottom": 10,
+                    }
                   }
                 >
-                  <View
-                    accessible={true}
-                    isTVSelectable={true}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      Array [
-                        Object {
-                          "backgroundColor": "transparent",
-                        },
-                        undefined,
-                      ]
-                    }
-                  >
-                    <View
+                  <react-native-mock>
+                    <Text
                       style={
-                        Array [
-                          Object {
-                            "backgroundColor": "#FFFFFF",
-                            "borderColor": "#DDDDDD",
-                            "borderRadius": 30,
-                            "borderWidth": 1,
-                            "height": 30,
-                            "shadowColor": "#000000",
-                            "shadowOffset": Object {
-                              "height": 3,
-                              "width": 0,
-                            },
-                            "shadowOpacity": 0.2,
-                            "shadowRadius": 1,
-                            "width": 30,
-                          },
-                          Array [
-                            undefined,
-                            Object {
-                              "backgroundColor": "#fff",
-                              "borderColor": "#555",
-                              "borderRadius": 15,
-                              "borderWidth": 2,
-                              "height": 30,
-                              "width": 30,
-                            },
-                          ],
-                          undefined,
-                          undefined,
-                        ]
+                        Object {
+                          "color": "#000",
+                          "fontSize": 50,
+                          "textAlign": "center",
+                        }
                       }
-                    />
-                  </View>
+                    >
+                      <react-native-mock>
+                        NEW GAME
+                      </react-native-mock>
+                    </Text>
+                  </react-native-mock>
                 </View>
-              </View>
-              <View
-                style={
-                  Array [
-                    Object {
-                      "alignItems": "center",
-                      "backgroundColor": "transparent",
-                      "height": 48,
-                      "justifyContent": "center",
-                      "position": "absolute",
-                      "width": 48,
-                    },
-                    Object {
-                      "right": 164.57142857142858,
-                      "top": -24,
-                    },
-                  ]
-                }
-              >
                 <View
-                  onMoveShouldSetResponder={[Function]}
-                  onMoveShouldSetResponderCapture={[Function]}
-                  onResponderEnd={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderReject={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderStart={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  onStartShouldSetResponderCapture={[Function]}
                   style={
-                    Array [
-                      Object {
-                        "alignItems": "center",
-                        "alignSelf": "stretch",
-                        "backgroundColor": "transparent",
-                        "justifyContent": "center",
-                      },
-                      Object {
-                        "borderRadius": 15,
-                      },
-                    ]
-                  }
-                >
-                  <View
-                    accessible={true}
-                    isTVSelectable={true}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      Array [
-                        Object {
-                          "backgroundColor": "transparent",
-                        },
-                        undefined,
-                      ]
-                    }
-                  >
-                    <View
-                      style={
-                        Array [
-                          Object {
-                            "backgroundColor": "#FFFFFF",
-                            "borderColor": "#DDDDDD",
-                            "borderRadius": 30,
-                            "borderWidth": 1,
-                            "height": 30,
-                            "shadowColor": "#000000",
-                            "shadowOffset": Object {
-                              "height": 3,
-                              "width": 0,
-                            },
-                            "shadowOpacity": 0.2,
-                            "shadowRadius": 1,
-                            "width": 30,
-                          },
-                          Object {
-                            "backgroundColor": "#fff",
-                            "borderColor": "#555",
-                            "borderRadius": 15,
-                            "borderWidth": 2,
-                            "height": 30,
-                            "width": 30,
-                          },
-                          undefined,
-                          undefined,
-                        ]
-                      }
-                    />
-                  </View>
-                </View>
-              </View>
-            </View>
-          </View>
-        </View>
-        <View
-          style={
-            Object {
-              "alignContent": "center",
-              "alignSelf": "center",
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "maxWidth": 400,
-              "paddingHorizontal": 25,
-              "paddingVertical": 10,
-            }
-          }
-        >
-          <View
-            style={
-              Object {
-                "alignItems": "flex-end",
-                "flex": 1,
-                "marginHorizontal": 1,
-              }
-            }
-          >
-            <View
-              accessible={true}
-              isTVSelectable={true}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                Array [
-                  Object {
-                    "backgroundColor": "transparent",
-                  },
-                  undefined,
-                ]
-              }
-            >
-              <View
-                style={
-                  Array [
                     Object {
-                      "alignItems": "center",
+                      "alignContent": "center",
+                      "alignSelf": "center",
                       "flexDirection": "row",
-                      "marginBottom": 5,
-                    },
-                    undefined,
-                  ]
-                }
-              >
-                <View
-                  style={
-                    Object {
-                      "marginLeft": 10,
-                      "marginRight": 10,
+                      "justifyContent": "center",
+                      "maxWidth": 400,
+                      "paddingHorizontal": 25,
+                      "paddingVertical": 10,
                     }
                   }
                 >
-                  <Text
-                    accessible={true}
-                    allowFontScaling={true}
-                    disabled={false}
-                    ellipsizeMode="tail"
-                    numberOfLines={1}
-                    style={
-                      Array [
+                  <react-native-mock>
+                    <View
+                      style={
                         Object {
-                          "color": "grey",
-                          "fontSize": 15,
-                        },
+                          "flex": 1,
+                          "marginHorizontal": 1,
+                        }
+                      }
+                    >
+                      <react-native-mock>
+                        <SegmentedControls
+                          containerBorderTint="#555"
+                          extractText={[Function]}
+                          onSelection={[Function]}
+                          optionStyle={
+                            Object {
+                              "fontSize": 20,
+                              "paddingVertical": 10,
+                            }
+                          }
+                          options={
+                            Array [
+                              Object {
+                                "label": "10-49",
+                                "max": 49,
+                                "min": 10,
+                              },
+                              Object {
+                                "label": "50-99",
+                                "max": 99,
+                                "min": 50,
+                              },
+                              Object {
+                                "label": "100+",
+                                "max": 999,
+                                "min": 100,
+                              },
+                            ]
+                          }
+                          selectedIndex={0}
+                          separatorTint="#555"
+                          style={
+                            Object {
+                              "flex": 1,
+                            }
+                          }
+                          tint="#555"
+                        >
+                          <RadioButtons
+                            containerBorderTint="#555"
+                            extractText={[Function]}
+                            onSelection={[Function]}
+                            optionStyle={
+                              Object {
+                                "fontSize": 20,
+                                "paddingVertical": 10,
+                              }
+                            }
+                            options={
+                              Array [
+                                Object {
+                                  "label": "10-49",
+                                  "max": 49,
+                                  "min": 10,
+                                },
+                                Object {
+                                  "label": "50-99",
+                                  "max": 99,
+                                  "min": 50,
+                                },
+                                Object {
+                                  "label": "100+",
+                                  "max": 999,
+                                  "min": 100,
+                                },
+                              ]
+                            }
+                            renderContainer={[Function]}
+                            renderOption={[Function]}
+                            selectedIndex={0}
+                            separatorTint="#555"
+                            style={
+                              Object {
+                                "flex": 1,
+                              }
+                            }
+                            testOptionEqual={[Function]}
+                            tint="#555"
+                          >
+                            <View
+                              style={
+                                Array [
+                                  Object {
+                                    "backgroundColor": "#ffffff",
+                                    "borderColor": "#555",
+                                    "borderRadius": 5,
+                                    "borderWidth": 1,
+                                    "flexDirection": "row",
+                                    "overflow": "hidden",
+                                  },
+                                  undefined,
+                                ]
+                              }
+                            >
+                              <react-native-mock>
+                                <TouchableWithoutFeedback
+                                  disabled={false}
+                                  key="0"
+                                  onPress={[Function]}
+                                >
+                                  <react-native-mock>
+                                    <View
+                                      style={
+                                        Array [
+                                          Array [
+                                            Object {
+                                              "backgroundColor": "#555",
+                                              "opacity": 1,
+                                              "paddingBottom": 5,
+                                              "paddingTop": 5,
+                                            },
+                                            Object {
+                                              "flex": 1,
+                                            },
+                                          ],
+                                          undefined,
+                                          undefined,
+                                        ]
+                                      }
+                                    >
+                                      <react-native-mock>
+                                        <Text
+                                          allowFontScaling={true}
+                                          style={
+                                            Array [
+                                              Object {
+                                                "textAlign": "center",
+                                              },
+                                              Object {
+                                                "fontSize": 20,
+                                                "paddingVertical": 10,
+                                              },
+                                              Object {
+                                                "color": "#ffffff",
+                                              },
+                                            ]
+                                          }
+                                        >
+                                          <react-native-mock>
+                                            10-49
+                                          </react-native-mock>
+                                        </Text>
+                                      </react-native-mock>
+                                    </View>
+                                  </react-native-mock>
+                                </TouchableWithoutFeedback>
+                                <TouchableWithoutFeedback
+                                  disabled={false}
+                                  key="1"
+                                  onPress={[Function]}
+                                >
+                                  <react-native-mock>
+                                    <View
+                                      style={
+                                        Array [
+                                          Array [
+                                            Array [
+                                              Object {
+                                                "backgroundColor": "#ffffff",
+                                                "opacity": 1,
+                                                "paddingBottom": 5,
+                                                "paddingTop": 5,
+                                              },
+                                              Object {
+                                                "flex": 1,
+                                              },
+                                            ],
+                                            Object {
+                                              "borderLeftColor": "#555",
+                                              "borderLeftWidth": 1,
+                                            },
+                                          ],
+                                          undefined,
+                                          undefined,
+                                        ]
+                                      }
+                                    >
+                                      <react-native-mock>
+                                        <Text
+                                          allowFontScaling={true}
+                                          style={
+                                            Array [
+                                              Object {
+                                                "textAlign": "center",
+                                              },
+                                              Object {
+                                                "fontSize": 20,
+                                                "paddingVertical": 10,
+                                              },
+                                              Object {
+                                                "color": "#555",
+                                              },
+                                            ]
+                                          }
+                                        >
+                                          <react-native-mock>
+                                            50-99
+                                          </react-native-mock>
+                                        </Text>
+                                      </react-native-mock>
+                                    </View>
+                                  </react-native-mock>
+                                </TouchableWithoutFeedback>
+                                <TouchableWithoutFeedback
+                                  disabled={false}
+                                  key="2"
+                                  onPress={[Function]}
+                                >
+                                  <react-native-mock>
+                                    <View
+                                      style={
+                                        Array [
+                                          Array [
+                                            Array [
+                                              Object {
+                                                "backgroundColor": "#ffffff",
+                                                "opacity": 1,
+                                                "paddingBottom": 5,
+                                                "paddingTop": 5,
+                                              },
+                                              Object {
+                                                "flex": 1,
+                                              },
+                                            ],
+                                            Object {
+                                              "borderLeftColor": "#555",
+                                              "borderLeftWidth": 1,
+                                            },
+                                          ],
+                                          undefined,
+                                          undefined,
+                                        ]
+                                      }
+                                    >
+                                      <react-native-mock>
+                                        <Text
+                                          allowFontScaling={true}
+                                          style={
+                                            Array [
+                                              Object {
+                                                "textAlign": "center",
+                                              },
+                                              Object {
+                                                "fontSize": 20,
+                                                "paddingVertical": 10,
+                                              },
+                                              Object {
+                                                "color": "#555",
+                                              },
+                                            ]
+                                          }
+                                        >
+                                          <react-native-mock>
+                                            100+
+                                          </react-native-mock>
+                                        </Text>
+                                      </react-native-mock>
+                                    </View>
+                                  </react-native-mock>
+                                </TouchableWithoutFeedback>
+                              </react-native-mock>
+                            </View>
+                          </RadioButtons>
+                        </SegmentedControls>
+                      </react-native-mock>
+                    </View>
+                  </react-native-mock>
+                </View>
+                <View
+                  style={
+                    Object {
+                      "alignContent": "center",
+                      "alignSelf": "center",
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "maxWidth": 400,
+                      "paddingHorizontal": 25,
+                      "paddingVertical": 10,
+                    }
+                  }
+                >
+                  <react-native-mock>
+                    <Text
+                      style={
+                        Object {
+                          "fontSize": 20,
+                        }
+                      }
+                    >
+                      <react-native-mock>
+                        10 to 49 words
+                      </react-native-mock>
+                    </Text>
+                  </react-native-mock>
+                </View>
+                <View
+                  style={
+                    Object {
+                      "alignContent": "center",
+                      "alignSelf": "center",
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "maxWidth": 400,
+                      "paddingHorizontal": 25,
+                      "paddingVertical": 10,
+                    }
+                  }
+                >
+                  <react-native-mock>
+                    <MultiSlider
+                      allowOverlap={false}
+                      containerStyle={
+                        Object {
+                          "height": 30,
+                          "overflow": "visible",
+                          "paddingVertical": 20,
+                        }
+                      }
+                      customMarker={[Function]}
+                      enabledOne={true}
+                      enabledTwo={true}
+                      markerOffsetX={0}
+                      markerOffsetY={0}
+                      markerStyle={
+                        Object {
+                          "backgroundColor": "#fff",
+                          "borderColor": "#555",
+                          "borderRadius": 15,
+                          "borderWidth": 2,
+                          "height": 30,
+                          "width": 30,
+                        }
+                      }
+                      max={10}
+                      min={0}
+                      onValuesChange={[Function]}
+                      onValuesChangeFinish={[Function]}
+                      onValuesChangeStart={[Function]}
+                      optionsArray={
+                        Array [
+                          10,
+                          11,
+                          12,
+                          13,
+                          14,
+                          15,
+                          16,
+                          17,
+                          18,
+                          19,
+                          20,
+                          21,
+                          22,
+                          23,
+                          24,
+                          25,
+                          26,
+                          27,
+                          28,
+                          29,
+                          30,
+                          31,
+                          32,
+                          33,
+                          34,
+                          35,
+                          36,
+                          37,
+                          38,
+                          39,
+                          40,
+                          41,
+                          42,
+                          43,
+                          44,
+                          45,
+                          46,
+                          47,
+                          48,
+                          49,
+                          50,
+                          51,
+                          52,
+                          53,
+                          54,
+                          55,
+                          56,
+                          57,
+                          58,
+                          59,
+                          60,
+                          61,
+                          62,
+                          63,
+                          64,
+                          65,
+                          66,
+                          67,
+                          68,
+                          69,
+                          70,
+                          71,
+                          72,
+                          73,
+                          74,
+                          75,
+                          76,
+                          77,
+                          78,
+                          79,
+                          80,
+                          81,
+                          82,
+                          83,
+                          84,
+                          85,
+                          86,
+                          87,
+                          88,
+                          89,
+                          90,
+                          91,
+                          92,
+                          93,
+                          94,
+                          95,
+                          96,
+                          97,
+                          98,
+                          99,
+                          100,
+                          999,
+                        ]
+                      }
+                      selectedStyle={
+                        Object {
+                          "backgroundColor": "#444",
+                        }
+                      }
+                      sliderLength={250}
+                      snapped={false}
+                      step={1}
+                      touchDimensions={
+                        Object {
+                          "borderRadius": 15,
+                          "height": 50,
+                          "slipDisplacement": 200,
+                          "width": 50,
+                        }
+                      }
+                      trackStyle={
+                        Object {
+                          "alignSelf": "center",
+                          "borderRadius": 10,
+                          "height": 10,
+                        }
+                      }
+                      unselectedStyle={
+                        Object {
+                          "backgroundColor": "#999",
+                        }
+                      }
+                      values={
+                        Array [
+                          10,
+                          49,
+                        ]
+                      }
+                    >
+                      <View
+                        style={
+                          Array [
+                            Object {
+                              "height": 50,
+                              "position": "relative",
+                            },
+                            Object {
+                              "height": 30,
+                              "overflow": "visible",
+                              "paddingVertical": 20,
+                            },
+                          ]
+                        }
+                      >
+                        <react-native-mock>
+                          <View
+                            style={
+                              Array [
+                                Object {
+                                  "flexDirection": "row",
+                                },
+                                Object {
+                                  "width": 250,
+                                },
+                              ]
+                            }
+                          >
+                            <react-native-mock>
+                              <View
+                                style={
+                                  Array [
+                                    Object {
+                                      "backgroundColor": "#A7A7A7",
+                                      "borderRadius": 2,
+                                      "height": 2,
+                                    },
+                                    Object {
+                                      "alignSelf": "center",
+                                      "borderRadius": 10,
+                                      "height": 10,
+                                    },
+                                    Object {
+                                      "backgroundColor": "#999",
+                                    },
+                                    Object {
+                                      "width": 0,
+                                    },
+                                  ]
+                                }
+                              >
+                                <react-native-mock />
+                              </View>
+                              <View
+                                style={
+                                  Array [
+                                    Object {
+                                      "backgroundColor": "#A7A7A7",
+                                      "borderRadius": 2,
+                                      "height": 2,
+                                    },
+                                    Object {
+                                      "alignSelf": "center",
+                                      "borderRadius": 10,
+                                      "height": 10,
+                                    },
+                                    Object {
+                                      "backgroundColor": "#444",
+                                    },
+                                    Object {
+                                      "width": 107.14285714285714,
+                                    },
+                                  ]
+                                }
+                              >
+                                <react-native-mock />
+                              </View>
+                              <View
+                                style={
+                                  Array [
+                                    Object {
+                                      "backgroundColor": "#A7A7A7",
+                                      "borderRadius": 2,
+                                      "height": 2,
+                                    },
+                                    Object {
+                                      "alignSelf": "center",
+                                      "borderRadius": 10,
+                                      "height": 10,
+                                    },
+                                    Object {
+                                      "backgroundColor": "#999",
+                                    },
+                                    Object {
+                                      "width": 142.85714285714286,
+                                    },
+                                  ]
+                                }
+                              >
+                                <react-native-mock />
+                              </View>
+                              <View
+                                style={
+                                  Array [
+                                    Object {
+                                      "alignItems": "center",
+                                      "backgroundColor": "transparent",
+                                      "height": 48,
+                                      "justifyContent": "center",
+                                      "position": "absolute",
+                                      "width": 48,
+                                    },
+                                    Object {
+                                      "left": -24,
+                                      "top": -24,
+                                    },
+                                    false,
+                                  ]
+                                }
+                              >
+                                <react-native-mock>
+                                  <View
+                                    onMoveShouldSetResponder={[Function]}
+                                    onMoveShouldSetResponderCapture={[Function]}
+                                    onResponderEnd={[Function]}
+                                    onResponderGrant={[Function]}
+                                    onResponderMove={[Function]}
+                                    onResponderReject={[Function]}
+                                    onResponderRelease={[Function]}
+                                    onResponderStart={[Function]}
+                                    onResponderTerminate={[Function]}
+                                    onResponderTerminationRequest={[Function]}
+                                    onStartShouldSetResponder={[Function]}
+                                    onStartShouldSetResponderCapture={[Function]}
+                                    style={
+                                      Array [
+                                        Object {
+                                          "alignItems": "center",
+                                          "alignSelf": "stretch",
+                                          "backgroundColor": "transparent",
+                                          "justifyContent": "center",
+                                        },
+                                        Object {
+                                          "borderRadius": 15,
+                                        },
+                                      ]
+                                    }
+                                  >
+                                    <react-native-mock>
+                                      <DefaultMarker
+                                        currentValue={10}
+                                        enabled={true}
+                                        markerStyle={
+                                          Array [
+                                            undefined,
+                                            Object {
+                                              "backgroundColor": "#fff",
+                                              "borderColor": "#555",
+                                              "borderRadius": 15,
+                                              "borderWidth": 2,
+                                              "height": 30,
+                                              "width": 30,
+                                            },
+                                          ]
+                                        }
+                                      >
+                                        <TouchableHighlight>
+                                          <react-native-mock>
+                                            <View
+                                              style={
+                                                Array [
+                                                  Object {
+                                                    "backgroundColor": "#FFFFFF",
+                                                    "borderColor": "#DDDDDD",
+                                                    "borderRadius": 30,
+                                                    "borderWidth": 1,
+                                                    "height": 30,
+                                                    "shadowColor": "#000000",
+                                                    "shadowOffset": Object {
+                                                      "height": 3,
+                                                      "width": 0,
+                                                    },
+                                                    "shadowOpacity": 0.2,
+                                                    "shadowRadius": 1,
+                                                    "width": 30,
+                                                  },
+                                                  Array [
+                                                    undefined,
+                                                    Object {
+                                                      "backgroundColor": "#fff",
+                                                      "borderColor": "#555",
+                                                      "borderRadius": 15,
+                                                      "borderWidth": 2,
+                                                      "height": 30,
+                                                      "width": 30,
+                                                    },
+                                                  ],
+                                                  undefined,
+                                                  undefined,
+                                                ]
+                                              }
+                                            >
+                                              <react-native-mock />
+                                            </View>
+                                          </react-native-mock>
+                                        </TouchableHighlight>
+                                      </DefaultMarker>
+                                    </react-native-mock>
+                                  </View>
+                                </react-native-mock>
+                              </View>
+                              <View
+                                style={
+                                  Array [
+                                    Object {
+                                      "alignItems": "center",
+                                      "backgroundColor": "transparent",
+                                      "height": 48,
+                                      "justifyContent": "center",
+                                      "position": "absolute",
+                                      "width": 48,
+                                    },
+                                    Object {
+                                      "right": 118.85714285714286,
+                                      "top": -24,
+                                    },
+                                  ]
+                                }
+                              >
+                                <react-native-mock>
+                                  <View
+                                    onMoveShouldSetResponder={[Function]}
+                                    onMoveShouldSetResponderCapture={[Function]}
+                                    onResponderEnd={[Function]}
+                                    onResponderGrant={[Function]}
+                                    onResponderMove={[Function]}
+                                    onResponderReject={[Function]}
+                                    onResponderRelease={[Function]}
+                                    onResponderStart={[Function]}
+                                    onResponderTerminate={[Function]}
+                                    onResponderTerminationRequest={[Function]}
+                                    onStartShouldSetResponder={[Function]}
+                                    onStartShouldSetResponderCapture={[Function]}
+                                    style={
+                                      Array [
+                                        Object {
+                                          "alignItems": "center",
+                                          "alignSelf": "stretch",
+                                          "backgroundColor": "transparent",
+                                          "justifyContent": "center",
+                                        },
+                                        Object {
+                                          "borderRadius": 15,
+                                        },
+                                      ]
+                                    }
+                                  >
+                                    <react-native-mock>
+                                      <DefaultMarker
+                                        currentValue={49}
+                                        enabled={true}
+                                        markerStyle={
+                                          Object {
+                                            "backgroundColor": "#fff",
+                                            "borderColor": "#555",
+                                            "borderRadius": 15,
+                                            "borderWidth": 2,
+                                            "height": 30,
+                                            "width": 30,
+                                          }
+                                        }
+                                      >
+                                        <TouchableHighlight>
+                                          <react-native-mock>
+                                            <View
+                                              style={
+                                                Array [
+                                                  Object {
+                                                    "backgroundColor": "#FFFFFF",
+                                                    "borderColor": "#DDDDDD",
+                                                    "borderRadius": 30,
+                                                    "borderWidth": 1,
+                                                    "height": 30,
+                                                    "shadowColor": "#000000",
+                                                    "shadowOffset": Object {
+                                                      "height": 3,
+                                                      "width": 0,
+                                                    },
+                                                    "shadowOpacity": 0.2,
+                                                    "shadowRadius": 1,
+                                                    "width": 30,
+                                                  },
+                                                  Object {
+                                                    "backgroundColor": "#fff",
+                                                    "borderColor": "#555",
+                                                    "borderRadius": 15,
+                                                    "borderWidth": 2,
+                                                    "height": 30,
+                                                    "width": 30,
+                                                  },
+                                                  undefined,
+                                                  undefined,
+                                                ]
+                                              }
+                                            >
+                                              <react-native-mock />
+                                            </View>
+                                          </react-native-mock>
+                                        </TouchableHighlight>
+                                      </DefaultMarker>
+                                    </react-native-mock>
+                                  </View>
+                                </react-native-mock>
+                              </View>
+                            </react-native-mock>
+                          </View>
+                        </react-native-mock>
+                      </View>
+                    </MultiSlider>
+                  </react-native-mock>
+                </View>
+                <View
+                  style={
+                    Object {
+                      "alignContent": "center",
+                      "alignSelf": "center",
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "maxWidth": 400,
+                      "paddingHorizontal": 25,
+                      "paddingVertical": 10,
+                    }
+                  }
+                >
+                  <react-native-mock>
+                    <View
+                      style={
+                        Object {
+                          "alignItems": "flex-end",
+                          "flex": 1,
+                          "marginHorizontal": 1,
+                        }
+                      }
+                    >
+                      <react-native-mock>
+                        <Component
+                          checked={false}
+                          label="Timed Game:"
+                          labelBefore={true}
+                          labelStyle={
+                            Object {
+                              "color": "#000",
+                              "fontSize": 20,
+                            }
+                          }
+                          onChange={[Function]}
+                        >
+                          <View
+                            checked={false}
+                            label="Timed Game:"
+                            labelBefore={true}
+                            labelStyle={
+                              Object {
+                                "color": "#000",
+                                "fontSize": 20,
+                              }
+                            }
+                            onChange={[Function]}
+                          >
+                            <react-native-mock>
+                              7A9FEEAE-7F90-4135-B5B2-356DB9E822CB
+                            </react-native-mock>
+                          </View>
+                        </Component>
+                      </react-native-mock>
+                    </View>
+                  </react-native-mock>
+                </View>
+                <View
+                  style={
+                    Object {
+                      "alignContent": "center",
+                      "alignSelf": "center",
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "maxWidth": 400,
+                      "paddingHorizontal": 25,
+                      "paddingVertical": 10,
+                    }
+                  }
+                >
+                  <react-native-mock>
+                    <Button
+                      containerStyle={
+                        Object {
+                          "alignContent": "center",
+                          "backgroundColor": "#999",
+                          "borderRadius": 4,
+                          "height": 60,
+                          "justifyContent": "center",
+                          "paddingHorizontal": 20,
+                        }
+                      }
+                      onPress={[Function]}
+                      style={
                         Object {
                           "color": "#000",
                           "fontSize": 20,
-                        },
-                      ]
-                    }
-                  >
-                    Timed Game:
-                  </Text>
+                          "lineHeight": 20,
+                        }
+                      }
+                    >
+                      <TouchableOpacity
+                        accessibilityComponentType="button"
+                        accessibilityTraits="button"
+                        activeOpacity={0.2}
+                        onPress={[Function]}
+                        style={
+                          Array [
+                            Object {
+                              "alignContent": "center",
+                              "backgroundColor": "#999",
+                              "borderRadius": 4,
+                              "height": 60,
+                              "justifyContent": "center",
+                              "paddingHorizontal": 20,
+                            },
+                            null,
+                          ]
+                        }
+                      >
+                        <react-native-mock>
+                          <Text
+                            key="0"
+                            style={
+                              Array [
+                                Object {
+                                  "color": "#007aff",
+                                  "fontSize": 17,
+                                  "fontWeight": "500",
+                                  "textAlign": "center",
+                                },
+                                null,
+                                Object {
+                                  "color": "#000",
+                                  "fontSize": 20,
+                                  "lineHeight": 20,
+                                },
+                                null,
+                              ]
+                            }
+                          >
+                            <react-native-mock>
+                              Instructions
+                            </react-native-mock>
+                          </Text>
+                        </react-native-mock>
+                      </TouchableOpacity>
+                    </Button>
+                    <View
+                      style={
+                        Object {
+                          "flex": 1,
+                        }
+                      }
+                    >
+                      <react-native-mock />
+                    </View>
+                    <Button
+                      containerStyle={
+                        Object {
+                          "alignContent": "center",
+                          "backgroundColor": "#999",
+                          "borderRadius": 4,
+                          "height": 60,
+                          "justifyContent": "center",
+                          "paddingHorizontal": 20,
+                        }
+                      }
+                      onPress={[Function]}
+                      style={
+                        Object {
+                          "color": "#000",
+                          "fontSize": 20,
+                          "lineHeight": 20,
+                        }
+                      }
+                    >
+                      <TouchableOpacity
+                        accessibilityComponentType="button"
+                        accessibilityTraits="button"
+                        activeOpacity={0.2}
+                        onPress={[Function]}
+                        style={
+                          Array [
+                            Object {
+                              "alignContent": "center",
+                              "backgroundColor": "#999",
+                              "borderRadius": 4,
+                              "height": 60,
+                              "justifyContent": "center",
+                              "paddingHorizontal": 20,
+                            },
+                            null,
+                          ]
+                        }
+                      >
+                        <react-native-mock>
+                          <Text
+                            key="0"
+                            style={
+                              Array [
+                                Object {
+                                  "color": "#007aff",
+                                  "fontSize": 17,
+                                  "fontWeight": "500",
+                                  "textAlign": "center",
+                                },
+                                null,
+                                Object {
+                                  "color": "#000",
+                                  "fontSize": 20,
+                                  "lineHeight": 20,
+                                },
+                                null,
+                              ]
+                            }
+                          >
+                            <react-native-mock>
+                              Start Game
+                            </react-native-mock>
+                          </Text>
+                        </react-native-mock>
+                      </TouchableOpacity>
+                    </Button>
+                  </react-native-mock>
                 </View>
-                <Image
-                  source={1}
-                  style={
-                    Array [
-                      Object {
-                        "height": 26,
-                        "width": 26,
-                      },
-                      undefined,
-                    ]
-                  }
-                />
-              </View>
+              </react-native-mock>
             </View>
-          </View>
-        </View>
-        <View
-          style={
-            Object {
-              "alignContent": "center",
-              "alignSelf": "center",
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "maxWidth": 400,
-              "paddingHorizontal": 25,
-              "paddingVertical": 10,
-            }
-          }
-        >
-          <View
-            accessibilityComponentType="button"
-            accessibilityTraits="button"
-            accessible={true}
-            isTVSelectable={true}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "alignContent": "center",
-                "backgroundColor": "#999",
-                "borderRadius": 4,
-                "height": 60,
-                "justifyContent": "center",
-                "opacity": 1,
-                "paddingHorizontal": 20,
-              }
-            }
-          >
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              disabled={false}
-              ellipsizeMode="tail"
-              style={
-                Array [
-                  Object {
-                    "color": "#007aff",
-                    "fontSize": 17,
-                    "fontWeight": "500",
-                    "textAlign": "center",
-                  },
-                  null,
-                  Object {
-                    "color": "#000",
-                    "fontSize": 20,
-                    "lineHeight": 20,
-                  },
-                  null,
-                ]
-              }
-            >
-              Instructions
-            </Text>
-          </View>
-          <View
-            style={
-              Object {
-                "flex": 1,
-              }
-            }
-          />
-          <View
-            accessibilityComponentType="button"
-            accessibilityTraits="button"
-            accessible={true}
-            isTVSelectable={true}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "alignContent": "center",
-                "backgroundColor": "#999",
-                "borderRadius": 4,
-                "height": 60,
-                "justifyContent": "center",
-                "opacity": 1,
-                "paddingHorizontal": 20,
-              }
-            }
-          >
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              disabled={false}
-              ellipsizeMode="tail"
-              style={
-                Array [
-                  Object {
-                    "color": "#007aff",
-                    "fontSize": 17,
-                    "fontWeight": "500",
-                    "textAlign": "center",
-                  },
-                  null,
-                  Object {
-                    "color": "#000",
-                    "fontSize": 20,
-                    "lineHeight": 20,
-                  },
-                  null,
-                ]
-              }
-            >
-              Start Game
-            </Text>
-          </View>
-        </View>
-      </View>
-    </View>
-  </RCTScrollView>
-</Image>
+          </react-native-mock>
+        </ScrollView>
+      </react-native-mock>
+    </ImageBackground>
+  </NewScreen>
+</inject-NewScreen-with-store>
 `;

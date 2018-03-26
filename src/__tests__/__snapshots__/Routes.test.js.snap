@@ -57,7 +57,7 @@ exports[`Main routes file matches the snapshot 1`] = `
       "statusText": "",
       "timer": -1,
       "tried": Object {},
-      "width": 750,
+      "width": 320,
       "words": Object {},
     }
   }

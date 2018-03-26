@@ -1,271 +1,362 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Instructions Modal matches the snapshot 1`] = `<View />`;
-
-exports[`Instructions Modal matches the snapshot 2`] = `
-<View
-  pointerEvents="box-none"
-  style={
-    Array [
-      Object {
-        "backgroundColor": "rgba(0,0,0,0)",
-        "zIndex": 2,
-      },
-      Object {
-        "bottom": 0,
-        "left": 0,
-        "position": "absolute",
-        "right": 0,
-        "top": 0,
-      },
-    ]
-  }
+exports[`Instructions Modal matches the snapshot 1`] = `
+<InstructionsModal
+  isOpen={false}
+  onClosed={[MockFunction]}
 >
-  <View
-    onLayout={[Function]}
-    pointerEvents="box-none"
+  <ModalBox
+    animationDuration={400}
+    backButtonClose={true}
+    backdrop={true}
+    backdropColor="black"
+    backdropContent={null}
+    backdropOpacity={0.5}
+    backdropPressToClose={true}
+    coverScreen={false}
+    easing={[Function]}
+    entry="bottom"
+    isOpen={false}
+    keyboardTopOffset={22}
+    onClosed={[MockFunction]}
+    position="center"
+    startOpen={false}
     style={
       Object {
-        "flex": 1,
+        "alignItems": "center",
+        "backgroundColor": "transparent",
+        "justifyContent": "center",
+        "width": 270,
       }
     }
+    swipeThreshold={50}
+    swipeToClose={true}
+  >
+    <View>
+      <react-native-mock />
+    </View>
+  </ModalBox>
+</InstructionsModal>
+`;
+
+exports[`Instructions Modal matches the snapshot 2`] = `
+<InstructionsModal
+  isOpen={true}
+  onClosed={[MockFunction]}
+>
+  <ModalBox
+    animationDuration={400}
+    backButtonClose={true}
+    backdrop={true}
+    backdropColor="black"
+    backdropContent={null}
+    backdropOpacity={0.5}
+    backdropPressToClose={true}
+    coverScreen={false}
+    easing={[Function]}
+    entry="bottom"
+    isOpen={true}
+    keyboardTopOffset={22}
+    onClosed={[MockFunction]}
+    position="center"
+    startOpen={false}
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "transparent",
+        "justifyContent": "center",
+        "width": 270,
+      }
+    }
+    swipeThreshold={50}
+    swipeToClose={true}
   >
     <View
-      accessible={true}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
+      pointerEvents="box-none"
       style={
-        Object {
-          "bottom": 0,
-          "left": 0,
-          "opacity": 0,
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-        }
-      }
-    >
-      <View
-        style={
-          Array [
-            Object {
-              "bottom": 0,
-              "left": 0,
-              "position": "absolute",
-              "right": 0,
-              "top": 0,
-            },
-            Object {
-              "backgroundColor": "black",
-              "opacity": 0.5,
-            },
-          ]
-        }
-      />
-    </View>
-    <View
-      onLayout={[Function]}
-      onMoveShouldSetResponder={[Function]}
-      onMoveShouldSetResponderCapture={[Function]}
-      onResponderEnd={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderReject={[Function]}
-      onResponderRelease={[Function]}
-      onResponderStart={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      onStartShouldSetResponderCapture={[Function]}
-      style={
-        Object {
-          "alignItems": "center",
-          "backgroundColor": "transparent",
-          "height": 1334,
-          "justifyContent": "center",
-          "transform": Array [
-            Object {
-              "translateY": 1334,
-            },
-            Object {
-              "translateX": 0,
-            },
-          ],
-          "width": 700,
-        }
-      }
-    >
-      <View
-        style={
+        Array [
           Object {
-            "backgroundColor": "#fff",
-            "borderRadius": 4,
-            "padding": 20,
-          }
-        }
-      >
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          disabled={false}
-          ellipsizeMode="tail"
+            "backgroundColor": "rgba(0,0,0,0)",
+            "zIndex": 2,
+          },
+          Object {
+            "bottom": 0,
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          },
+        ]
+      }
+    >
+      <react-native-mock>
+        <View
+          onLayout={[Function]}
+          pointerEvents="box-none"
           style={
             Object {
-              "color": "#000",
-              "fontSize": 18,
+              "flex": 1,
             }
           }
         >
-          Target Words is a word-finding game. Select letters from the grid to make words, then click "submit" to see if you found one! Each letter can be used once per word, and every word must contain the center letter.
-        </Text>
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          disabled={false}
-          ellipsizeMode="tail"
-          style={
-            Object {
-              "color": "#000",
-              "fontSize": 18,
-            }
-          }
-        >
-           
-        </Text>
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          disabled={false}
-          ellipsizeMode="tail"
-          style={
-            Object {
-              "color": "#000",
-              "fontSize": 18,
-            }
-          }
-        >
-          Try variations on valid words you find: "Word", "wording", "words", "wordings", and "worded" are all valid, for example, and both American and British spellings are valid.
-        </Text>
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          disabled={false}
-          ellipsizeMode="tail"
-          style={
-            Object {
-              "color": "#000",
-              "fontSize": 18,
-            }
-          }
-        >
-           
-        </Text>
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          disabled={false}
-          ellipsizeMode="tail"
-          style={
-            Object {
-              "color": "#000",
-              "fontSize": 18,
-            }
-          }
-        >
-          For a challenge, try timed mode. Time is added for each correct word, but the clock is relentless!
-        </Text>
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          disabled={false}
-          ellipsizeMode="tail"
-          style={
-            Object {
-              "color": "#000",
-              "fontSize": 18,
-            }
-          }
-        >
-           
-        </Text>
-        <View>
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            disabled={false}
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "color": "#000",
-                "fontSize": 18,
+          <react-native-mock>
+            <TouchableWithoutFeedback
+              onPress={[Function]}
+            >
+              <react-native-mock>
+                <AnimatedComponent
+                  style={
+                    Array [
+                      Object {
+                        "bottom": 0,
+                        "left": 0,
+                        "position": "absolute",
+                        "right": 0,
+                        "top": 0,
+                      },
+                      Object {
+                        "opacity": AnimatedValue {
+                          "_animation": null,
+                          "_children": Array [],
+                          "_listeners": Object {},
+                          "_offset": 0,
+                          "_value": 0,
+                        },
+                      },
+                    ]
+                  }
+                >
+                  <View>
+                    <react-native-mock>
+                      <View
+                        style={
+                          Array [
+                            Object {
+                              "bottom": 0,
+                              "left": 0,
+                              "position": "absolute",
+                              "right": 0,
+                              "top": 0,
+                            },
+                            Object {
+                              "backgroundColor": "black",
+                              "opacity": 0.5,
+                            },
+                          ]
+                        }
+                      >
+                        <react-native-mock />
+                      </View>
+                    </react-native-mock>
+                  </View>
+                </AnimatedComponent>
+              </react-native-mock>
+            </TouchableWithoutFeedback>
+            <AnimatedComponent
+              onLayout={[Function]}
+              onMoveShouldSetResponder={[Function]}
+              onMoveShouldSetResponderCapture={[Function]}
+              onResponderEnd={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderReject={[Function]}
+              onResponderRelease={[Function]}
+              onResponderStart={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              onStartShouldSetResponderCapture={[Function]}
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "white",
+                  },
+                  Object {
+                    "height": 768,
+                    "width": 320,
+                  },
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "transparent",
+                    "justifyContent": "center",
+                    "width": 270,
+                  },
+                  Object {
+                    "transform": Array [
+                      Object {
+                        "translateY": AnimatedValue {
+                          "_animation": null,
+                          "_children": Array [],
+                          "_listeners": Object {},
+                          "_offset": 0,
+                          "_value": 768,
+                        },
+                      },
+                      Object {
+                        "translateX": 0,
+                      },
+                    ],
+                  },
+                ]
               }
-            }
-          >
-            Speed tips:
-          </Text>
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            disabled={false}
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "color": "#000",
-                "fontSize": 18,
-              }
-            }
-          >
-              • Long-press letters to submit
-          </Text>
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            disabled={false}
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "color": "#000",
-                "fontSize": 18,
-              }
-            }
-          >
-              • Long-press backspace to clear
-          </Text>
+            >
+              <View>
+                <react-native-mock>
+                  <View
+                    style={
+                      Object {
+                        "backgroundColor": "#fff",
+                        "borderRadius": 4,
+                        "padding": 20,
+                      }
+                    }
+                  >
+                    <react-native-mock>
+                      <Text
+                        style={
+                          Object {
+                            "color": "#000",
+                            "fontSize": 18,
+                          }
+                        }
+                      >
+                        <react-native-mock>
+                          Target Words is a word-finding game. Select letters from the grid to make words, then click "submit" to see if you found one! Each letter can be used once per word, and every word must contain the center letter.
+                        </react-native-mock>
+                      </Text>
+                      <Text
+                        style={
+                          Object {
+                            "color": "#000",
+                            "fontSize": 18,
+                          }
+                        }
+                      >
+                        <react-native-mock>
+                           
+                        </react-native-mock>
+                      </Text>
+                      <Text
+                        style={
+                          Object {
+                            "color": "#000",
+                            "fontSize": 18,
+                          }
+                        }
+                      >
+                        <react-native-mock>
+                          Try variations on valid words you find: "Word", "wording", "words", "wordings", and "worded" are all valid, for example, and both American and British spellings are valid.
+                        </react-native-mock>
+                      </Text>
+                      <Text
+                        style={
+                          Object {
+                            "color": "#000",
+                            "fontSize": 18,
+                          }
+                        }
+                      >
+                        <react-native-mock>
+                           
+                        </react-native-mock>
+                      </Text>
+                      <Text
+                        style={
+                          Object {
+                            "color": "#000",
+                            "fontSize": 18,
+                          }
+                        }
+                      >
+                        <react-native-mock>
+                          For a challenge, try timed mode. Time is added for each correct word, but the clock is relentless!
+                        </react-native-mock>
+                      </Text>
+                      <Text
+                        style={
+                          Object {
+                            "color": "#000",
+                            "fontSize": 18,
+                          }
+                        }
+                      >
+                        <react-native-mock>
+                           
+                        </react-native-mock>
+                      </Text>
+                      <View>
+                        <react-native-mock>
+                          <Text
+                            style={
+                              Object {
+                                "color": "#000",
+                                "fontSize": 18,
+                              }
+                            }
+                          >
+                            <react-native-mock>
+                              Speed tips:
+                            </react-native-mock>
+                          </Text>
+                          <Text
+                            style={
+                              Object {
+                                "color": "#000",
+                                "fontSize": 18,
+                              }
+                            }
+                          >
+                            <react-native-mock>
+                                • Long-press letters to submit
+                            </react-native-mock>
+                          </Text>
+                          <Text
+                            style={
+                              Object {
+                                "color": "#000",
+                                "fontSize": 18,
+                              }
+                            }
+                          >
+                            <react-native-mock>
+                                • Long-press backspace to clear
+                            </react-native-mock>
+                          </Text>
+                        </react-native-mock>
+                      </View>
+                      <Text
+                        style={
+                          Object {
+                            "color": "#000",
+                            "fontSize": 18,
+                          }
+                        }
+                      >
+                        <react-native-mock>
+                           
+                        </react-native-mock>
+                      </Text>
+                      <Text
+                        style={
+                          Object {
+                            "color": "#000",
+                            "fontSize": 18,
+                          }
+                        }
+                      >
+                        <react-native-mock>
+                          Good luck!
+                        </react-native-mock>
+                      </Text>
+                    </react-native-mock>
+                  </View>
+                </react-native-mock>
+              </View>
+            </AnimatedComponent>
+          </react-native-mock>
         </View>
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          disabled={false}
-          ellipsizeMode="tail"
-          style={
-            Object {
-              "color": "#000",
-              "fontSize": 18,
-            }
-          }
-        >
-           
-        </Text>
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          disabled={false}
-          ellipsizeMode="tail"
-          style={
-            Object {
-              "color": "#000",
-              "fontSize": 18,
-            }
-          }
-        >
-          Good luck!
-        </Text>
-      </View>
+      </react-native-mock>
     </View>
-  </View>
-</View>
+  </ModalBox>
+</InstructionsModal>
 `;

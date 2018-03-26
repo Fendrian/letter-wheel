@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  Button,
   ListView,
   View,
   Text,
 } from 'react-native';
 import { observer, PropTypes as MobxPropTypes } from 'mobx-react';
 import { computed, observable } from 'mobx';
+import Button from './Button';
 
 import ControlStyle from '../styles/ControlStyle';
 
@@ -132,7 +132,7 @@ export default class Control extends React.Component {
             </View>
             <View style={buttonWrapper}>
               <Button
-                color="#999"
+                colour="blue"
                 onPress={this.props.onSubmit}
                 title="Submit"
               />
@@ -160,7 +160,6 @@ export default class Control extends React.Component {
             </View>
             <View style={buttonWrapper}>
               <Button
-                color="#999"
                 onPress={this.props.onMenu}
                 title="Menu"
               />

@@ -67,17 +67,21 @@ export default StyleSheet.create({
     color: '#000',
     fontSize: 20,
   },
-  gridWrapper: {
+  gridBackground: {
     alignItems: 'center',
     justifyContent: 'center',
     alignSelf: 'stretch',
-    width: undefined,
-    height: undefined,
+    width: null,
+    height: null,
     paddingBottom: 2,
     paddingLeft: 12,
     paddingRight: 12,
     paddingTop: 8,
-    resizeMode: 'cover',
+  },
+  gridWrapper: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    alignSelf: 'stretch',
   },
   letter: {
     color: '#000',

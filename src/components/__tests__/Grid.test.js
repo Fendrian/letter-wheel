@@ -5,8 +5,6 @@ import { Text, TouchableOpacity, Vibration } from 'react-native';
 
 import Grid from '../Grid';
 
-Vibration.vibrate = jest.fn();
-
 describe('Grid component', () => {
   afterEach(() => {
     jest.clearAllMocks();

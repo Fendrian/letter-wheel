@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
+  ImageBackground,
   Text,
   TouchableOpacity,
   Vibration,
@@ -12,7 +13,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 import GridStyle from '../styles/GridStyle';
 
-import background from '../images/Grid-background.png';
+import background from '../images/gridBackground.png';
 
 const customPulseAnimation = {
   0.00: { scale: 1 },
@@ -128,6 +129,16 @@ export default class Grid extends React.Component {
         }
       </View>
     ));
+    const {
+      backspaceWrapper,
+      backspaceTouch,
+      container,
+      entryContainer,
+      entryText,
+      entryWrapper,
+      gridBackground,
+      gridWrapper,
+    } = GridStyle;
 
     const animationType = {};
     switch (this.props.animationState) {
@@ -146,37 +157,41 @@ export default class Grid extends React.Component {
     }
 
     return (
-      <Animatable.Image
+      <Animatable.View
         animation={animationType.animation}
         duration={animationType.duration}
         iterationCount={1}
         onAnimationEnd={this.props.clearAnimation}
-        source={background}
-        style={GridStyle.gridWrapper}
+        style={gridWrapper}
       >
-        <View style={GridStyle.container}>
-          {rows}
-        </View>
-        <View style={GridStyle.entryContainer}>
-          <View style={GridStyle.entryWrapper}>
-            <Text style={GridStyle.entryText}>
-              {this.props.selectedLetters}
-            </Text>
+        <ImageBackground
+          source={background}
+          style={gridBackground}
+        >
+          <View style={container}>
+            {rows}
           </View>
-          <View style={GridStyle.backspaceWrapper}>
-            <TouchableOpacity
-              onPress={this.clearOne}
-              onLongPress={this.clearAll}
-              style={GridStyle.backspaceTouch}
-            >
-              <Icon
-                name="md-backspace"
-                size={35}
-              />
-            </TouchableOpacity>
+          <View style={entryContainer}>
+            <View style={entryWrapper}>
+              <Text style={entryText}>
+                {this.props.selectedLetters}
+              </Text>
+            </View>
+            <View style={backspaceWrapper}>
+              <TouchableOpacity
+                onPress={this.clearOne}
+                onLongPress={this.clearAll}
+                style={backspaceTouch}
+              >
+                <Icon
+                  name="md-backspace"
+                  size={35}
+                />
+              </TouchableOpacity>
+            </View>
           </View>
-        </View>
-      </Animatable.Image>
+        </ImageBackground>
+      </Animatable.View>
     );
   }
 }

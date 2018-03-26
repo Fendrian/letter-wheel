@@ -1,99 +1,299 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Game Screen component matches the snapshot 1`] = `
-<Image
-  source={1}
-  style={
-    Object {
-      "alignItems": "center",
-      "alignSelf": "stretch",
-      "flex": 1,
-      "height": undefined,
-      "justifyContent": "center",
-      "width": undefined,
+<inject-GameScreen-with-store
+  store={
+    store {
+      "closeAllModals": [Function],
+      "db": Object {
+        "transaction": [MockFunction],
+      },
+      "getPermutatedWords": [Function],
+      "getScore": [Function],
+      "isAboutModalOpen": false,
+      "isInstructionsModalOpen": false,
+      "isMenuModalOpen": false,
+      "letters": "         ",
+      "loading": false,
+      "nav": Object {
+        "get": [Function],
+        "goto": [Function],
+        "resetto": [Function],
+      },
+      "navigator": Object {},
+      "newGameOptions": Object {
+        "timed": false,
+        "wordRange": Object {
+          "max": 49,
+          "min": 10,
+        },
+      },
+      "orientation": 0,
+      "scored": false,
+      "scores": Array [
+        Object {
+          "percent": 100,
+          "text": "Exceptional!",
+        },
+        Object {
+          "percent": 85,
+          "text": "Excellent!",
+        },
+        Object {
+          "percent": 65,
+          "text": "Very Good!",
+        },
+        Object {
+          "percent": 40,
+          "text": "Good!",
+        },
+        Object {
+          "percent": 0,
+          "text": "",
+        },
+      ],
+      "selected": Array [],
+      "shuffle": [Function],
+      "statusText": "",
+      "timer": -1,
+      "tried": Object {},
+      "width": 320,
+      "words": Object {},
     }
   }
 >
-  <View
-    style={
-      Object {
-        "flex": 1,
-        "flexDirection": "column",
+  <GameScreen
+    store={
+      store {
+        "closeAllModals": [Function],
+        "db": Object {
+          "transaction": [MockFunction],
+        },
+        "getPermutatedWords": [Function],
+        "getScore": [Function],
+        "isAboutModalOpen": false,
+        "isInstructionsModalOpen": false,
+        "isMenuModalOpen": false,
+        "letters": "         ",
+        "loading": false,
+        "nav": Object {
+          "get": [Function],
+          "goto": [Function],
+          "resetto": [Function],
+        },
+        "navigator": Object {},
+        "newGameOptions": Object {
+          "timed": false,
+          "wordRange": Object {
+            "max": 49,
+            "min": 10,
+          },
+        },
+        "orientation": 0,
+        "scored": false,
+        "scores": Array [
+          Object {
+            "percent": 100,
+            "text": "Exceptional!",
+          },
+          Object {
+            "percent": 85,
+            "text": "Excellent!",
+          },
+          Object {
+            "percent": 65,
+            "text": "Very Good!",
+          },
+          Object {
+            "percent": 40,
+            "text": "Good!",
+          },
+          Object {
+            "percent": 0,
+            "text": "",
+          },
+        ],
+        "selected": Array [],
+        "shuffle": [Function],
+        "statusText": "",
+        "timer": -1,
+        "tried": Object {},
+        "width": 320,
+        "words": Object {},
       }
     }
   >
-    <View
-      animationState=""
-      clearAnimation={[Function]}
-      clearSelected={[Function]}
-      gridEntries={
+    <ImageBackground
+      source={
         Object {
-          "0": Object {
-            "letter": " ",
-            "selected": false,
-          },
-          "1": Object {
-            "letter": " ",
-            "selected": false,
-          },
-          "2": Object {
-            "letter": " ",
-            "selected": false,
-          },
-          "3": Object {
-            "letter": " ",
-            "selected": false,
-          },
-          "4": Object {
-            "letter": " ",
-            "selected": false,
-          },
-          "5": Object {
-            "letter": " ",
-            "selected": false,
-          },
-          "6": Object {
-            "letter": " ",
-            "selected": false,
-          },
-          "7": Object {
-            "letter": " ",
-            "selected": false,
-          },
-          "8": Object {
-            "letter": " ",
-            "selected": false,
-          },
+          "testUri": "src/images/woodBackground.jpg",
         }
       }
-      selectedLetters=""
-      submitWord={[Function]}
-      toggleSelected={[Function]}
-      triggerAnimation={[Function]}
-    >
-      18E4DC45-B77E-46C2-B7F5-D6AFA39240BB
-    </View>
-    <View
       style={
         Object {
+          "alignItems": "center",
+          "alignSelf": "stretch",
           "flex": 1,
+          "height": null,
+          "justifyContent": "center",
+          "width": null,
         }
       }
     >
-      <View
-        isScored={false}
-        onMenu={[Function]}
-        onSubmit={[Function]}
-        scoreText="Exceptional!"
-        statusText=""
-        timerString=""
-        tried={Object {}}
-        words={Object {}}
-        wordsToNextLevel={0}
-      >
-        15D067E6-1538-46AD-89A0-8D8729169089
-      </View>
-    </View>
-  </View>
-</Image>
+      <react-native-mock>
+        <View
+          style={
+            Object {
+              "flex": 1,
+              "flexDirection": "column",
+            }
+          }
+        >
+          <react-native-mock>
+            <Component
+              animationState=""
+              clearAnimation={[Function]}
+              clearSelected={[Function]}
+              gridEntries={
+                Object {
+                  "0": Object {
+                    "letter": " ",
+                    "selected": false,
+                  },
+                  "1": Object {
+                    "letter": " ",
+                    "selected": false,
+                  },
+                  "2": Object {
+                    "letter": " ",
+                    "selected": false,
+                  },
+                  "3": Object {
+                    "letter": " ",
+                    "selected": false,
+                  },
+                  "4": Object {
+                    "letter": " ",
+                    "selected": false,
+                  },
+                  "5": Object {
+                    "letter": " ",
+                    "selected": false,
+                  },
+                  "6": Object {
+                    "letter": " ",
+                    "selected": false,
+                  },
+                  "7": Object {
+                    "letter": " ",
+                    "selected": false,
+                  },
+                  "8": Object {
+                    "letter": " ",
+                    "selected": false,
+                  },
+                }
+              }
+              selectedLetters=""
+              submitWord={[Function]}
+              toggleSelected={[Function]}
+              triggerAnimation={[Function]}
+            >
+              <View
+                animationState=""
+                clearAnimation={[Function]}
+                clearSelected={[Function]}
+                gridEntries={
+                  Object {
+                    "0": Object {
+                      "letter": " ",
+                      "selected": false,
+                    },
+                    "1": Object {
+                      "letter": " ",
+                      "selected": false,
+                    },
+                    "2": Object {
+                      "letter": " ",
+                      "selected": false,
+                    },
+                    "3": Object {
+                      "letter": " ",
+                      "selected": false,
+                    },
+                    "4": Object {
+                      "letter": " ",
+                      "selected": false,
+                    },
+                    "5": Object {
+                      "letter": " ",
+                      "selected": false,
+                    },
+                    "6": Object {
+                      "letter": " ",
+                      "selected": false,
+                    },
+                    "7": Object {
+                      "letter": " ",
+                      "selected": false,
+                    },
+                    "8": Object {
+                      "letter": " ",
+                      "selected": false,
+                    },
+                  }
+                }
+                selectedLetters=""
+                submitWord={[Function]}
+                toggleSelected={[Function]}
+                triggerAnimation={[Function]}
+              >
+                <react-native-mock>
+                  18E4DC45-B77E-46C2-B7F5-D6AFA39240BB
+                </react-native-mock>
+              </View>
+            </Component>
+            <View
+              style={
+                Object {
+                  "flex": 1,
+                }
+              }
+            >
+              <react-native-mock>
+                <Component
+                  isScored={false}
+                  onMenu={[Function]}
+                  onSubmit={[Function]}
+                  scoreText="Exceptional!"
+                  statusText=""
+                  timerString=""
+                  tried={Object {}}
+                  words={Object {}}
+                  wordsToNextLevel={0}
+                >
+                  <View
+                    isScored={false}
+                    onMenu={[Function]}
+                    onSubmit={[Function]}
+                    scoreText="Exceptional!"
+                    statusText=""
+                    timerString=""
+                    tried={Object {}}
+                    words={Object {}}
+                    wordsToNextLevel={0}
+                  >
+                    <react-native-mock>
+                      15D067E6-1538-46AD-89A0-8D8729169089
+                    </react-native-mock>
+                  </View>
+                </Component>
+              </react-native-mock>
+            </View>
+          </react-native-mock>
+        </View>
+      </react-native-mock>
+    </ImageBackground>
+  </GameScreen>
+</inject-GameScreen-with-store>
 `;

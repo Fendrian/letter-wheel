@@ -1,734 +1,717 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Control component matches the snapshot 1`] = `
-<View
-  style={
-    Object {
-      "flex": 1,
-      "flexDirection": "column",
-      "justifyContent": "center",
-    }
-  }
+<Control
+  isScored={false}
+  onMenu={[Function]}
+  onSubmit={[Function]}
+  scoreText=""
+  statusText=""
+  timerString=""
+  tried={Object {}}
+  words={Object {}}
+  wordsToNextLevel={0}
 >
   <View
     style={
       Object {
         "flex": 1,
-        "flexDirection": "row",
+        "flexDirection": "column",
+        "justifyContent": "center",
       }
     }
   >
-    <View
-      style={
-        Object {
-          "backgroundColor": "#ccc",
-          "borderRadius": 4,
-          "flex": 4,
-          "marginBottom": 10,
-          "marginTop": 10,
-          "overflow": "hidden",
-        }
-      }
-    >
+    <react-native-mock>
       <View
         style={
           Object {
-            "alignItems": "center",
-            "backgroundColor": "#aaa",
-            "justifyContent": "center",
-          }
-        }
-      >
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          disabled={false}
-          ellipsizeMode="tail"
-          style={
-            Object {
-              "color": "#444",
-              "fontSize": 15,
-              "margin": 5,
-            }
-          }
-        >
-          0 / 0
-        </Text>
-      </View>
-      <RCTScrollView
-        dataSource={
-          ListViewDataSource {
-            "items": 1,
-          }
-        }
-        enableEmptySections={true}
-        renderRow={[Function]}
-        renderScrollComponent={[Function]}
-        style={
-          Object {
-            "marginBottom": 10,
-            "marginLeft": 10,
-          }
-        }
-      >
-        <View>
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            disabled={false}
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "color": "#444",
-                "fontSize": 20,
-              }
-            }
-          >
-            No words
-          </Text>
-        </View>
-      </RCTScrollView>
-    </View>
-    <View
-      style={
-        Object {
-          "flex": 6,
-          "marginBottom": 10,
-          "marginLeft": 10,
-          "marginTop": 10,
-        }
-      }
-    >
-      <View
-        style={
-          Object {
-            "alignItems": "center",
             "flex": 1,
-            "justifyContent": "center",
+            "flexDirection": "row",
           }
         }
       >
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          disabled={false}
-          ellipsizeMode="tail"
-          style={
-            Object {
-              "color": "#444",
-              "fontSize": 20,
-            }
-          }
-        />
-      </View>
-      <View>
-        <View
-          accessibilityComponentType="button"
-          accessibilityTraits={
-            Array [
-              "button",
-            ]
-          }
-          accessible={true}
-          isTVSelectable={true}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            Object {
-              "opacity": 1,
-            }
-          }
-        >
+        <react-native-mock>
           <View
             style={
-              Array [
-                Object {},
-              ]
+              Object {
+                "backgroundColor": "#ccc",
+                "borderRadius": 4,
+                "flex": 4,
+                "marginBottom": 10,
+                "marginTop": 10,
+                "overflow": "hidden",
+              }
             }
           >
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              disabled={false}
-              ellipsizeMode="tail"
-              style={
-                Array [
+            <react-native-mock>
+              <View
+                style={
                   Object {
-                    "color": "#007AFF",
-                    "fontSize": 18,
-                    "padding": 8,
-                    "textAlign": "center",
-                  },
+                    "alignItems": "center",
+                    "backgroundColor": "#aaa",
+                    "justifyContent": "center",
+                  }
+                }
+              >
+                <react-native-mock>
+                  <Text
+                    style={
+                      Object {
+                        "color": "#444",
+                        "fontSize": 15,
+                        "margin": 5,
+                      }
+                    }
+                  >
+                    <react-native-mock>
+                      0 / 0
+                    </react-native-mock>
+                  </Text>
+                </react-native-mock>
+              </View>
+              <ListView
+                dataSource={
+                  ListViewDataSource {
+                    "_dataBlob": Array [
+                      Object {
+                        "style": "neutral",
+                        "word": "No words",
+                      },
+                    ],
+                  }
+                }
+                enableEmptySections={true}
+                renderRow={[Function]}
+                renderScrollComponent={[Function]}
+                style={
                   Object {
-                    "color": "#999",
-                  },
-                ]
-              }
-            >
-              Submit
-            </Text>
+                    "marginBottom": 10,
+                    "marginLeft": 10,
+                  }
+                }
+              >
+                <react-native-mock />
+              </ListView>
+            </react-native-mock>
           </View>
-        </View>
-      </View>
-      <View
-        style={
-          Object {
-            "alignItems": "center",
-            "flex": 2,
-            "justifyContent": "center",
-          }
-        }
-      >
-        <View>
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            disabled={false}
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "color": "#227711",
-                "fontSize": 30,
-                "textAlign": "center",
-              }
-            }
-          >
-             
-          </Text>
-        </View>
-        <View>
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            disabled={false}
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "color": "#000",
-                "fontSize": 20,
-                "textAlign": "center",
-              }
-            }
-          />
-        </View>
-      </View>
-      <View>
-        <View
-          accessibilityComponentType="button"
-          accessibilityTraits={
-            Array [
-              "button",
-            ]
-          }
-          accessible={true}
-          isTVSelectable={true}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            Object {
-              "opacity": 1,
-            }
-          }
-        >
           <View
             style={
-              Array [
-                Object {},
-              ]
+              Object {
+                "flex": 6,
+                "marginBottom": 10,
+                "marginLeft": 10,
+                "marginTop": 10,
+              }
             }
           >
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              disabled={false}
-              ellipsizeMode="tail"
-              style={
-                Array [
+            <react-native-mock>
+              <View
+                style={
                   Object {
-                    "color": "#007AFF",
-                    "fontSize": 18,
-                    "padding": 8,
-                    "textAlign": "center",
-                  },
+                    "alignItems": "center",
+                    "flex": 1,
+                    "justifyContent": "center",
+                  }
+                }
+              >
+                <react-native-mock>
+                  <Text
+                    style={
+                      Object {
+                        "color": "#444",
+                        "fontSize": 20,
+                      }
+                    }
+                  >
+                    <react-native-mock />
+                  </Text>
+                </react-native-mock>
+              </View>
+              <View>
+                <react-native-mock>
+                  <Button
+                    colour="blue"
+                    onPress={[Function]}
+                    title="Submit"
+                  >
+                    <TouchableWithoutFeedback
+                      onPress={[Function]}
+                      onPressIn={[Function]}
+                      onPressOut={[Function]}
+                      style={
+                        Object {
+                          "height": "auto",
+                          "width": 200,
+                        }
+                      }
+                    >
+                      <react-native-mock>
+                        <ImageBackground
+                          source={
+                            Object {
+                              "testUri": "src/images/buttonBluePassive.png",
+                            }
+                          }
+                          style={
+                            Object {
+                              "alignItems": "center",
+                              "alignSelf": "stretch",
+                              "height": undefined,
+                              "justifyContent": "center",
+                              "paddingBottom": 2,
+                              "paddingLeft": 12,
+                              "paddingRight": 12,
+                              "paddingTop": 8,
+                              "width": undefined,
+                            }
+                          }
+                        >
+                          <react-native-mock>
+                            <View
+                              pointerEvents="none"
+                            >
+                              <react-native-mock>
+                                <Text
+                                  style={
+                                    Object {
+                                      "color": "#000000",
+                                      "fontSize": 20,
+                                      "marginBottom": 15,
+                                    }
+                                  }
+                                >
+                                  <react-native-mock>
+                                    Submit
+                                  </react-native-mock>
+                                </Text>
+                              </react-native-mock>
+                            </View>
+                          </react-native-mock>
+                        </ImageBackground>
+                      </react-native-mock>
+                    </TouchableWithoutFeedback>
+                  </Button>
+                </react-native-mock>
+              </View>
+              <View
+                style={
                   Object {
-                    "color": "#999",
-                  },
-                ]
-              }
-            >
-              Menu
-            </Text>
+                    "alignItems": "center",
+                    "flex": 2,
+                    "justifyContent": "center",
+                  }
+                }
+              >
+                <react-native-mock>
+                  <View>
+                    <react-native-mock>
+                      <Text
+                        style={
+                          Object {
+                            "color": "#227711",
+                            "fontSize": 30,
+                            "textAlign": "center",
+                          }
+                        }
+                      >
+                        <react-native-mock>
+                           
+                        </react-native-mock>
+                      </Text>
+                    </react-native-mock>
+                  </View>
+                  <View>
+                    <react-native-mock>
+                      <Text
+                        style={
+                          Object {
+                            "color": "#000",
+                            "fontSize": 20,
+                            "textAlign": "center",
+                          }
+                        }
+                      >
+                        <react-native-mock />
+                      </Text>
+                    </react-native-mock>
+                  </View>
+                </react-native-mock>
+              </View>
+              <View>
+                <react-native-mock>
+                  <Button
+                    colour="yellow"
+                    onPress={[Function]}
+                    title="Menu"
+                  >
+                    <TouchableWithoutFeedback
+                      onPress={[Function]}
+                      onPressIn={[Function]}
+                      onPressOut={[Function]}
+                      style={
+                        Object {
+                          "height": "auto",
+                          "width": 200,
+                        }
+                      }
+                    >
+                      <react-native-mock>
+                        <ImageBackground
+                          source={
+                            Object {
+                              "testUri": "src/images/buttonYellowPassive.png",
+                            }
+                          }
+                          style={
+                            Object {
+                              "alignItems": "center",
+                              "alignSelf": "stretch",
+                              "height": undefined,
+                              "justifyContent": "center",
+                              "paddingBottom": 2,
+                              "paddingLeft": 12,
+                              "paddingRight": 12,
+                              "paddingTop": 8,
+                              "width": undefined,
+                            }
+                          }
+                        >
+                          <react-native-mock>
+                            <View
+                              pointerEvents="none"
+                            >
+                              <react-native-mock>
+                                <Text
+                                  style={
+                                    Object {
+                                      "color": "#000000",
+                                      "fontSize": 20,
+                                      "marginBottom": 15,
+                                    }
+                                  }
+                                >
+                                  <react-native-mock>
+                                    Menu
+                                  </react-native-mock>
+                                </Text>
+                              </react-native-mock>
+                            </View>
+                          </react-native-mock>
+                        </ImageBackground>
+                      </react-native-mock>
+                    </TouchableWithoutFeedback>
+                  </Button>
+                </react-native-mock>
+              </View>
+            </react-native-mock>
           </View>
-        </View>
+        </react-native-mock>
       </View>
-    </View>
+    </react-native-mock>
   </View>
-</View>
+</Control>
 `;
 
 exports[`Control component matches the snapshot 2`] = `
-<View
-  style={
+<Control
+  isScored={true}
+  onMenu={[Function]}
+  onSubmit={[Function]}
+  scoreText="Nice!"
+  selectedLetters="akdc"
+  statusText="Game scored."
+  timerString="1m 20s"
+  tried={
     Object {
-      "flex": 1,
-      "flexDirection": "column",
-      "justifyContent": "center",
+      "alit": true,
+      "asdf": false,
+      "bail": true,
+      "built": true,
+      "yrasd": false,
     }
   }
+  words={
+    Object {
+      "alit": true,
+      "bail": true,
+      "built": true,
+      "hail": true,
+      "halt": true,
+      "haul": true,
+      "tail": true,
+    }
+  }
+  wordsToNextLevel={5}
 >
   <View
     style={
       Object {
         "flex": 1,
-        "flexDirection": "row",
+        "flexDirection": "column",
+        "justifyContent": "center",
       }
     }
   >
-    <View
-      style={
-        Object {
-          "backgroundColor": "#ccc",
-          "borderRadius": 4,
-          "flex": 4,
-          "marginBottom": 10,
-          "marginTop": 10,
-          "overflow": "hidden",
-        }
-      }
-    >
+    <react-native-mock>
       <View
         style={
           Object {
-            "alignItems": "center",
-            "backgroundColor": "#aaa",
-            "justifyContent": "center",
-          }
-        }
-      >
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          disabled={false}
-          ellipsizeMode="tail"
-          style={
-            Object {
-              "color": "#444",
-              "fontSize": 15,
-              "margin": 5,
-            }
-          }
-        >
-          3 / 7
-        </Text>
-      </View>
-      <RCTScrollView
-        dataSource={
-          ListViewDataSource {
-            "items": 12,
-          }
-        }
-        enableEmptySections={true}
-        renderRow={[Function]}
-        renderScrollComponent={[Function]}
-        style={
-          Object {
-            "marginBottom": 10,
-            "marginLeft": 10,
-          }
-        }
-      >
-        <View>
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            disabled={false}
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "color": "#444",
-                "fontSize": 20,
-              }
-            }
-          >
-            Not found:
-          </Text>
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            disabled={false}
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "color": "#444",
-                "fontSize": 20,
-              }
-            }
-          >
-            hail
-          </Text>
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            disabled={false}
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "color": "#444",
-                "fontSize": 20,
-              }
-            }
-          >
-            halt
-          </Text>
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            disabled={false}
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "color": "#444",
-                "fontSize": 20,
-              }
-            }
-          >
-            haul
-          </Text>
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            disabled={false}
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "color": "#444",
-                "fontSize": 20,
-              }
-            }
-          >
-            tail
-          </Text>
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            disabled={false}
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "color": "#444",
-                "fontSize": 20,
-              }
-            }
-          >
-             
-          </Text>
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            disabled={false}
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "color": "#444",
-                "fontSize": 20,
-              }
-            }
-          >
-            Your words:
-          </Text>
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            disabled={false}
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "color": "#227711",
-                "fontSize": 20,
-              }
-            }
-          >
-            alit
-          </Text>
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            disabled={false}
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "color": "#772211",
-                "fontSize": 20,
-                "textDecorationLine": "line-through",
-              }
-            }
-          >
-            asdf
-          </Text>
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            disabled={false}
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "color": "#227711",
-                "fontSize": 20,
-              }
-            }
-          >
-            bail
-          </Text>
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            disabled={false}
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "color": "#227711",
-                "fontSize": 20,
-              }
-            }
-          >
-            built
-          </Text>
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            disabled={false}
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "color": "#772211",
-                "fontSize": 20,
-                "textDecorationLine": "line-through",
-              }
-            }
-          >
-            yrasd
-          </Text>
-        </View>
-      </RCTScrollView>
-    </View>
-    <View
-      style={
-        Object {
-          "flex": 6,
-          "marginBottom": 10,
-          "marginLeft": 10,
-          "marginTop": 10,
-        }
-      }
-    >
-      <View
-        style={
-          Object {
-            "alignItems": "center",
             "flex": 1,
-            "justifyContent": "center",
+            "flexDirection": "row",
           }
         }
       >
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          disabled={false}
-          ellipsizeMode="tail"
-          style={
-            Object {
-              "color": "#444",
-              "fontSize": 20,
-            }
-          }
-        >
-          Game scored.
-        </Text>
-      </View>
-      <View>
-        <View
-          accessibilityComponentType="button"
-          accessibilityTraits={
-            Array [
-              "button",
-            ]
-          }
-          accessible={true}
-          isTVSelectable={true}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            Object {
-              "opacity": 1,
-            }
-          }
-        >
+        <react-native-mock>
           <View
             style={
-              Array [
-                Object {},
-              ]
+              Object {
+                "backgroundColor": "#ccc",
+                "borderRadius": 4,
+                "flex": 4,
+                "marginBottom": 10,
+                "marginTop": 10,
+                "overflow": "hidden",
+              }
             }
           >
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              disabled={false}
-              ellipsizeMode="tail"
-              style={
-                Array [
+            <react-native-mock>
+              <View
+                style={
                   Object {
-                    "color": "#007AFF",
-                    "fontSize": 18,
-                    "padding": 8,
-                    "textAlign": "center",
-                  },
+                    "alignItems": "center",
+                    "backgroundColor": "#aaa",
+                    "justifyContent": "center",
+                  }
+                }
+              >
+                <react-native-mock>
+                  <Text
+                    style={
+                      Object {
+                        "color": "#444",
+                        "fontSize": 15,
+                        "margin": 5,
+                      }
+                    }
+                  >
+                    <react-native-mock>
+                      3 / 7
+                    </react-native-mock>
+                  </Text>
+                </react-native-mock>
+              </View>
+              <ListView
+                dataSource={
+                  ListViewDataSource {
+                    "_dataBlob": Array [
+                      Object {
+                        "style": "neutral",
+                        "word": "Not found:",
+                      },
+                      Object {
+                        "style": "neutral",
+                        "word": "hail",
+                      },
+                      Object {
+                        "style": "neutral",
+                        "word": "halt",
+                      },
+                      Object {
+                        "style": "neutral",
+                        "word": "haul",
+                      },
+                      Object {
+                        "style": "neutral",
+                        "word": "tail",
+                      },
+                      Object {
+                        "style": "neutral",
+                        "word": " ",
+                      },
+                      Object {
+                        "style": "neutral",
+                        "word": "Your words:",
+                      },
+                      Object {
+                        "style": "correct",
+                        "word": "alit",
+                      },
+                      Object {
+                        "style": "incorrect",
+                        "word": "asdf",
+                      },
+                      Object {
+                        "style": "correct",
+                        "word": "bail",
+                      },
+                      Object {
+                        "style": "correct",
+                        "word": "built",
+                      },
+                      Object {
+                        "style": "incorrect",
+                        "word": "yrasd",
+                      },
+                    ],
+                  }
+                }
+                enableEmptySections={true}
+                renderRow={[Function]}
+                renderScrollComponent={[Function]}
+                style={
                   Object {
-                    "color": "#999",
-                  },
-                ]
-              }
-            >
-              Submit
-            </Text>
+                    "marginBottom": 10,
+                    "marginLeft": 10,
+                  }
+                }
+              >
+                <react-native-mock />
+              </ListView>
+            </react-native-mock>
           </View>
-        </View>
-      </View>
-      <View
-        style={
-          Object {
-            "alignItems": "center",
-            "flex": 1,
-            "justifyContent": "center",
-          }
-        }
-      >
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          disabled={false}
-          ellipsizeMode="tail"
-          style={
-            Object {
-              "color": "#000",
-              "fontSize": 20,
-            }
-          }
-        >
-          1m 20s
-        </Text>
-      </View>
-      <View
-        style={
-          Object {
-            "alignItems": "center",
-            "flex": 2,
-            "justifyContent": "center",
-          }
-        }
-      >
-        <View>
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            disabled={false}
-            ellipsizeMode="tail"
+          <View
             style={
               Object {
-                "color": "#227711",
-                "fontSize": 30,
-                "textAlign": "center",
+                "flex": 6,
+                "marginBottom": 10,
+                "marginLeft": 10,
+                "marginTop": 10,
               }
             }
           >
-            Nice!
-          </Text>
-        </View>
-        <View>
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            disabled={false}
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "color": "#000",
-                "fontSize": 20,
-                "textAlign": "center",
-              }
-            }
-          >
-            5 words
+            <react-native-mock>
+              <View
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "flex": 1,
+                    "justifyContent": "center",
+                  }
+                }
+              >
+                <react-native-mock>
+                  <Text
+                    style={
+                      Object {
+                        "color": "#444",
+                        "fontSize": 20,
+                      }
+                    }
+                  >
+                    <react-native-mock>
+                      Game scored.
+                    </react-native-mock>
+                  </Text>
+                </react-native-mock>
+              </View>
+              <View>
+                <react-native-mock>
+                  <Button
+                    colour="blue"
+                    onPress={[Function]}
+                    title="Submit"
+                  >
+                    <TouchableWithoutFeedback
+                      onPress={[Function]}
+                      onPressIn={[Function]}
+                      onPressOut={[Function]}
+                      style={
+                        Object {
+                          "height": "auto",
+                          "width": 200,
+                        }
+                      }
+                    >
+                      <react-native-mock>
+                        <ImageBackground
+                          source={
+                            Object {
+                              "testUri": "src/images/buttonBluePassive.png",
+                            }
+                          }
+                          style={
+                            Object {
+                              "alignItems": "center",
+                              "alignSelf": "stretch",
+                              "height": undefined,
+                              "justifyContent": "center",
+                              "paddingBottom": 2,
+                              "paddingLeft": 12,
+                              "paddingRight": 12,
+                              "paddingTop": 8,
+                              "width": undefined,
+                            }
+                          }
+                        >
+                          <react-native-mock>
+                            <View
+                              pointerEvents="none"
+                            >
+                              <react-native-mock>
+                                <Text
+                                  style={
+                                    Object {
+                                      "color": "#000000",
+                                      "fontSize": 20,
+                                      "marginBottom": 15,
+                                    }
+                                  }
+                                >
+                                  <react-native-mock>
+                                    Submit
+                                  </react-native-mock>
+                                </Text>
+                              </react-native-mock>
+                            </View>
+                          </react-native-mock>
+                        </ImageBackground>
+                      </react-native-mock>
+                    </TouchableWithoutFeedback>
+                  </Button>
+                </react-native-mock>
+              </View>
+              <View
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "flex": 1,
+                    "justifyContent": "center",
+                  }
+                }
+              >
+                <react-native-mock>
+                  <Text
+                    style={
+                      Object {
+                        "color": "#000",
+                        "fontSize": 20,
+                      }
+                    }
+                  >
+                    <react-native-mock>
+                      1m 20s
+                    </react-native-mock>
+                  </Text>
+                </react-native-mock>
+              </View>
+              <View
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "flex": 2,
+                    "justifyContent": "center",
+                  }
+                }
+              >
+                <react-native-mock>
+                  <View>
+                    <react-native-mock>
+                      <Text
+                        style={
+                          Object {
+                            "color": "#227711",
+                            "fontSize": 30,
+                            "textAlign": "center",
+                          }
+                        }
+                      >
+                        <react-native-mock>
+                          Nice!
+                        </react-native-mock>
+                      </Text>
+                    </react-native-mock>
+                  </View>
+                  <View>
+                    <react-native-mock>
+                      <Text
+                        style={
+                          Object {
+                            "color": "#000",
+                            "fontSize": 20,
+                            "textAlign": "center",
+                          }
+                        }
+                      >
+                        <react-native-mock>
+                          5 words
 to next level
-          </Text>
-        </View>
-      </View>
-      <View>
-        <View
-          accessibilityComponentType="button"
-          accessibilityTraits={
-            Array [
-              "button",
-            ]
-          }
-          accessible={true}
-          isTVSelectable={true}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            Object {
-              "opacity": 1,
-            }
-          }
-        >
-          <View
-            style={
-              Array [
-                Object {},
-              ]
-            }
-          >
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              disabled={false}
-              ellipsizeMode="tail"
-              style={
-                Array [
-                  Object {
-                    "color": "#007AFF",
-                    "fontSize": 18,
-                    "padding": 8,
-                    "textAlign": "center",
-                  },
-                  Object {
-                    "color": "#999",
-                  },
-                ]
-              }
-            >
-              Menu
-            </Text>
+                        </react-native-mock>
+                      </Text>
+                    </react-native-mock>
+                  </View>
+                </react-native-mock>
+              </View>
+              <View>
+                <react-native-mock>
+                  <Button
+                    colour="yellow"
+                    onPress={[Function]}
+                    title="Menu"
+                  >
+                    <TouchableWithoutFeedback
+                      onPress={[Function]}
+                      onPressIn={[Function]}
+                      onPressOut={[Function]}
+                      style={
+                        Object {
+                          "height": "auto",
+                          "width": 200,
+                        }
+                      }
+                    >
+                      <react-native-mock>
+                        <ImageBackground
+                          source={
+                            Object {
+                              "testUri": "src/images/buttonYellowPassive.png",
+                            }
+                          }
+                          style={
+                            Object {
+                              "alignItems": "center",
+                              "alignSelf": "stretch",
+                              "height": undefined,
+                              "justifyContent": "center",
+                              "paddingBottom": 2,
+                              "paddingLeft": 12,
+                              "paddingRight": 12,
+                              "paddingTop": 8,
+                              "width": undefined,
+                            }
+                          }
+                        >
+                          <react-native-mock>
+                            <View
+                              pointerEvents="none"
+                            >
+                              <react-native-mock>
+                                <Text
+                                  style={
+                                    Object {
+                                      "color": "#000000",
+                                      "fontSize": 20,
+                                      "marginBottom": 15,
+                                    }
+                                  }
+                                >
+                                  <react-native-mock>
+                                    Menu
+                                  </react-native-mock>
+                                </Text>
+                              </react-native-mock>
+                            </View>
+                          </react-native-mock>
+                        </ImageBackground>
+                      </react-native-mock>
+                    </TouchableWithoutFeedback>
+                  </Button>
+                </react-native-mock>
+              </View>
+            </react-native-mock>
           </View>
-        </View>
+        </react-native-mock>
       </View>
-    </View>
+    </react-native-mock>
   </View>
-</View>
+</Control>
 `;

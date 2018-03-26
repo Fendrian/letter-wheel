@@ -6,7 +6,7 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'stretch',
-    width: undefined,
-    height: undefined,
+    width: null,
+    height: null,
   },
 });

@@ -1,41 +1,171 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Loading Screen component matches the snapshot 1`] = `
-<Image
-  source={1}
-  style={
-    Object {
-      "alignItems": "center",
-      "alignSelf": "stretch",
-      "flex": 1,
-      "height": undefined,
-      "justifyContent": "center",
-      "width": undefined,
+<inject-LoadingScreen-with-store
+  store={
+    store {
+      "closeAllModals": [Function],
+      "db": Object {
+        "transaction": [MockFunction],
+      },
+      "getPermutatedWords": [Function],
+      "getScore": [Function],
+      "isAboutModalOpen": false,
+      "isInstructionsModalOpen": false,
+      "isMenuModalOpen": false,
+      "letters": "         ",
+      "loading": false,
+      "nav": Object {
+        "get": [Function],
+        "goto": [Function],
+        "resetto": [Function],
+      },
+      "navigator": Object {},
+      "newGameOptions": Object {
+        "timed": false,
+        "wordRange": Object {
+          "max": 49,
+          "min": 10,
+        },
+      },
+      "orientation": 0,
+      "scored": false,
+      "scores": Array [
+        Object {
+          "percent": 100,
+          "text": "Exceptional!",
+        },
+        Object {
+          "percent": 85,
+          "text": "Excellent!",
+        },
+        Object {
+          "percent": 65,
+          "text": "Very Good!",
+        },
+        Object {
+          "percent": 40,
+          "text": "Good!",
+        },
+        Object {
+          "percent": 0,
+          "text": "",
+        },
+      ],
+      "selected": Array [],
+      "shuffle": [Function],
+      "statusText": "",
+      "timer": -1,
+      "tried": Object {},
+      "width": 320,
+      "words": Object {},
     }
   }
 >
-  <View
-    style={
-      Object {
-        "alignContent": "center",
-        "flex": 1,
-        "justifyContent": "center",
+  <LoadingScreen
+    store={
+      store {
+        "closeAllModals": [Function],
+        "db": Object {
+          "transaction": [MockFunction],
+        },
+        "getPermutatedWords": [Function],
+        "getScore": [Function],
+        "isAboutModalOpen": false,
+        "isInstructionsModalOpen": false,
+        "isMenuModalOpen": false,
+        "letters": "         ",
+        "loading": false,
+        "nav": Object {
+          "get": [Function],
+          "goto": [Function],
+          "resetto": [Function],
+        },
+        "navigator": Object {},
+        "newGameOptions": Object {
+          "timed": false,
+          "wordRange": Object {
+            "max": 49,
+            "min": 10,
+          },
+        },
+        "orientation": 0,
+        "scored": false,
+        "scores": Array [
+          Object {
+            "percent": 100,
+            "text": "Exceptional!",
+          },
+          Object {
+            "percent": 85,
+            "text": "Excellent!",
+          },
+          Object {
+            "percent": 65,
+            "text": "Very Good!",
+          },
+          Object {
+            "percent": 40,
+            "text": "Good!",
+          },
+          Object {
+            "percent": 0,
+            "text": "",
+          },
+        ],
+        "selected": Array [],
+        "shuffle": [Function],
+        "statusText": "",
+        "timer": -1,
+        "tried": Object {},
+        "width": 320,
+        "words": Object {},
       }
     }
   >
-    <Text
-      accessible={true}
-      allowFontScaling={true}
-      disabled={false}
-      ellipsizeMode="tail"
+    <ImageBackground
+      source={
+        Object {
+          "testUri": "src/images/woodBackground.jpg",
+        }
+      }
       style={
         Object {
-          "fontSize": 20,
+          "alignItems": "center",
+          "alignSelf": "stretch",
+          "flex": 1,
+          "height": null,
+          "justifyContent": "center",
+          "width": null,
         }
       }
     >
-      Loading...
-    </Text>
-  </View>
-</Image>
+      <react-native-mock>
+        <View
+          style={
+            Object {
+              "alignContent": "center",
+              "flex": 1,
+              "justifyContent": "center",
+            }
+          }
+        >
+          <react-native-mock>
+            <Text
+              style={
+                Object {
+                  "fontSize": 20,
+                }
+              }
+            >
+              <react-native-mock>
+                Loading...
+              </react-native-mock>
+            </Text>
+          </react-native-mock>
+        </View>
+      </react-native-mock>
+    </ImageBackground>
+  </LoadingScreen>
+</inject-LoadingScreen-with-store>
 `;

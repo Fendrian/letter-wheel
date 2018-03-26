@@ -1,14 +1,11 @@
 import React from 'react';
+import { ListView } from 'react-native';
 import { mount } from 'enzyme';
 import { observable } from 'mobx';
-import {
-  Button,
-  Vibration,
-} from 'react-native';
 
 import Control from '../Control';
-
-Vibration.vibrate = jest.fn();
+import ControlStyle from '../../styles/ControlStyle';
+import Button from '../Button';
 
 describe('Control component', () => {
   afterEach(() => {
@@ -44,10 +41,11 @@ describe('Control component', () => {
         tail: true,
       }),
     });
+    render.update();
     expect(render).toMatchSnapshot();
   });
 
-  it('Provides a formattedTriedWords computed with formatting indications', () => {
+  it('provides a formattedTriedWords computed with formatting indications', () => {
     const render = mount((
       <Control />
     ));
@@ -138,7 +136,7 @@ describe('Control component', () => {
     ]);
   });
 
-  it('Provides a feedbackText computed which returns number of words to next level', () => {
+  it('provides a feedbackText computed which returns number of words to next level', () => {
     const render = mount((
       <Control />
     ));
@@ -154,7 +152,7 @@ describe('Control component', () => {
     expect(instance.feedbackText).toEqual('');
   });
 
-  it('Provides a submit button', () => {
+  it('provides a submit button', () => {
     const render = mount((
       <Control
         onSubmit={jest.fn()}
@@ -167,7 +165,7 @@ describe('Control component', () => {
     expect(render.props().onSubmit).toHaveBeenCalledTimes(1);
   });
 
-  it('Provides a menu button', () => {
+  it('provides a menu button', () => {
     const render = mount((
       <Control
         onMenu={jest.fn()}
@@ -178,5 +176,49 @@ describe('Control component', () => {
     expect(render.props().onMenu).toHaveBeenCalledTimes(0);
     menu.props().onPress();
     expect(render.props().onMenu).toHaveBeenCalledTimes(1);
+  });
+
+  it('provides a list of tried words', () => {
+    const render = mount((
+      <Control
+        onMenu={jest.fn()}
+        isScored
+        scoreText="Nice!"
+        wordsToNextLevel={5}
+        selectedLetters="akdc"
+        statusText="Welcome!"
+        timerString="30s"
+        tried={observable.map({
+          bail: true,
+          asdf: false,
+        })}
+        words={observable.map({
+          bail: true,
+          built: true,
+        })}
+      />
+    ));
+    const list = render.find(ListView).at(0);
+    // eslint-disable-next-line no-underscore-dangle
+    expect(list.props().dataSource._dataBlob).toEqual([
+      { word: 'Not found:', style: 'neutral' },
+      { word: 'built', style: 'neutral' },
+      { word: ' ', style: 'neutral' },
+      { word: 'Your words:', style: 'neutral' },
+      { word: 'asdf', style: 'incorrect' },
+      { word: 'bail', style: 'correct' },
+    ]);
+    const { renderRow } = list.props();
+    const result1 = mount(renderRow({ word: 'bail', style: 'correct' }));
+    expect(result1.props().style).toEqual(ControlStyle.correct);
+    expect(result1.props().children).toEqual('bail');
+
+    const result2 = mount(renderRow({ word: 'lafe', style: 'incorrect' }));
+    expect(result2.props().style).toEqual(ControlStyle.incorrect);
+    expect(result2.props().children).toEqual('lafe');
+
+    const result3 = mount(renderRow({ word: 'words', style: 'neutral' }));
+    expect(result3.props().style).toEqual(ControlStyle.neutral);
+    expect(result3.props().children).toEqual('words');
   });
 });

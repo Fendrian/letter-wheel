@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Image, ScrollView, Text, View } from 'react-native';
+import { ImageBackground, ScrollView, Text, View } from 'react-native';
 import { inject, observer } from 'mobx-react';
 import { SegmentedControls } from 'react-native-radio-buttons';
 import MultiSlider from '@ptomasroos/react-native-multi-slider';
@@ -10,7 +10,7 @@ import Button from 'react-native-button';
 import WrapperStyle from '../styles/WrapperStyle';
 import NewScreenStyle from '../styles/NewScreenStyle';
 
-import background from '../images/Wood-background.jpg';
+import background from '../images/woodBackground.jpg';
 
 const options = [
   {
@@ -107,7 +107,6 @@ export default class NewScreen extends React.Component {
 
   render() {
     const { min, max } = this.props.store.newGameOptions.get('wordRange');
-    const { openInstructionsModal } = this.props.store;
     const selected = [min, max];
     const optionsArray = [...Array.from(Array(91)).map((a, i) => i + 10), 999];
     const { container } = WrapperStyle;
@@ -128,7 +127,7 @@ export default class NewScreen extends React.Component {
     } = NewScreenStyle;
     const tint = '#555';
     return (
-      <Image
+      <ImageBackground
         source={background}
         style={container}
       >
@@ -212,7 +211,7 @@ export default class NewScreen extends React.Component {
               <Button
                 containerStyle={button}
                 style={buttonText}
-                onPress={openInstructionsModal}
+                onPress={this.props.store.openInstructionsModal}
               >
                 Instructions
               </Button>
@@ -227,7 +226,7 @@ export default class NewScreen extends React.Component {
             </View>
           </View>
         </ScrollView>
-      </Image>
+      </ImageBackground>
     );
   }
 }

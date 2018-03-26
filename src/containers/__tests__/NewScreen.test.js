@@ -10,6 +10,16 @@ import Button from 'react-native-button';
 import AppStore from '../../data/store';
 import NewScreen from '../NewScreen';
 
+jest.mock('react-native-checkbox', () => {
+  require('react'); // eslint-disable-line global-require
+  const { View } = require('react-native'); // eslint-disable-line global-require
+  return props => (
+    <View {...props} visible={undefined}>
+      {'7A9FEEAE-7F90-4135-B5B2-356DB9E822CB'}
+    </View>
+  );
+});
+
 describe('New Screen component', () => {
   let store;
 
@@ -114,7 +124,7 @@ describe('New Screen component', () => {
     const render = mount(<NewScreen.wrappedComponent store={store} />);
 
     expect(render.instance().getSliderWidth).toEqual(expect.any(Function));
-    expect(render.instance().getSliderWidth()).toEqual(330);
+    expect(render.instance().getSliderWidth()).toEqual(250);
 
     runInAction(() => { store.width = 400; });
     expect(render.instance().getSliderWidth()).toEqual(330);

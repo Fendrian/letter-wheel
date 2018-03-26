@@ -1,243 +1,354 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`About Modal matches the snapshot 1`] = `<View />`;
-
-exports[`About Modal matches the snapshot 2`] = `
-<View
-  pointerEvents="box-none"
-  style={
-    Array [
-      Object {
-        "backgroundColor": "rgba(0,0,0,0)",
-        "zIndex": 2,
-      },
-      Object {
-        "bottom": 0,
-        "left": 0,
-        "position": "absolute",
-        "right": 0,
-        "top": 0,
-      },
-    ]
-  }
+exports[`About Modal matches the snapshot 1`] = `
+<AboutModal
+  isOpen={false}
+  onClosed={[MockFunction]}
 >
-  <View
-    onLayout={[Function]}
-    pointerEvents="box-none"
+  <ModalBox
+    animationDuration={400}
+    backButtonClose={true}
+    backdrop={true}
+    backdropColor="black"
+    backdropContent={null}
+    backdropOpacity={0.5}
+    backdropPressToClose={true}
+    coverScreen={false}
+    easing={[Function]}
+    entry="bottom"
+    isOpen={false}
+    keyboardTopOffset={22}
+    onClosed={[MockFunction]}
+    position="center"
+    startOpen={false}
     style={
       Object {
-        "flex": 1,
+        "alignItems": "center",
+        "backgroundColor": "transparent",
+        "justifyContent": "center",
+        "width": 270,
       }
     }
+    swipeThreshold={50}
+    swipeToClose={true}
+  >
+    <View>
+      <react-native-mock />
+    </View>
+  </ModalBox>
+</AboutModal>
+`;
+
+exports[`About Modal matches the snapshot 2`] = `
+<AboutModal
+  isOpen={true}
+  onClosed={[MockFunction]}
+>
+  <ModalBox
+    animationDuration={400}
+    backButtonClose={true}
+    backdrop={true}
+    backdropColor="black"
+    backdropContent={null}
+    backdropOpacity={0.5}
+    backdropPressToClose={true}
+    coverScreen={false}
+    easing={[Function]}
+    entry="bottom"
+    isOpen={true}
+    keyboardTopOffset={22}
+    onClosed={[MockFunction]}
+    position="center"
+    startOpen={false}
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "transparent",
+        "justifyContent": "center",
+        "width": 270,
+      }
+    }
+    swipeThreshold={50}
+    swipeToClose={true}
   >
     <View
-      accessible={true}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
+      pointerEvents="box-none"
       style={
-        Object {
-          "bottom": 0,
-          "left": 0,
-          "opacity": 0,
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-        }
-      }
-    >
-      <View
-        style={
-          Array [
-            Object {
-              "bottom": 0,
-              "left": 0,
-              "position": "absolute",
-              "right": 0,
-              "top": 0,
-            },
-            Object {
-              "backgroundColor": "black",
-              "opacity": 0.5,
-            },
-          ]
-        }
-      />
-    </View>
-    <View
-      onLayout={[Function]}
-      onMoveShouldSetResponder={[Function]}
-      onMoveShouldSetResponderCapture={[Function]}
-      onResponderEnd={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderReject={[Function]}
-      onResponderRelease={[Function]}
-      onResponderStart={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      onStartShouldSetResponderCapture={[Function]}
-      style={
-        Object {
-          "alignItems": "center",
-          "backgroundColor": "transparent",
-          "height": 1334,
-          "justifyContent": "center",
-          "transform": Array [
-            Object {
-              "translateY": 1334,
-            },
-            Object {
-              "translateX": 0,
-            },
-          ],
-          "width": 700,
-        }
-      }
-    >
-      <View
-        style={
+        Array [
           Object {
-            "backgroundColor": "#fff",
-            "borderRadius": 4,
-            "padding": 20,
-          }
-        }
-      >
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          disabled={false}
-          ellipsizeMode="tail"
-          style={
-            Object {
-              "color": "#000",
-              "fontSize": 18,
-            }
-          }
-        >
-          Target Words is based on the popular newspaper game Target, and inspired by the long-abandoned Target app for Android by Ben Buxton.
-        </Text>
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          disabled={false}
-          ellipsizeMode="tail"
-          style={
-            Object {
-              "color": "#000",
-              "fontSize": 18,
-            }
-          }
-        >
-           
-        </Text>
+            "backgroundColor": "rgba(0,0,0,0)",
+            "zIndex": 2,
+          },
+          Object {
+            "bottom": 0,
+            "left": 0,
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+          },
+        ]
+      }
+    >
+      <react-native-mock>
         <View
-          linkStyle={
+          onLayout={[Function]}
+          pointerEvents="box-none"
+          style={
             Object {
-              "color": "#2980b9",
+              "flex": 1,
             }
           }
-          onPress={[Function]}
         >
-          <Text
-            accessible={true}
-            allowFontScaling={true}
-            disabled={false}
-            ellipsizeMode="tail"
-            style={
-              Object {
-                "color": "#000",
-                "fontSize": 18,
-              }
-            }
-          >
-            Original copyright © 2017-2018 by Wolf Hatch. The source code for this app is released under the MIT license at 
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              disabled={false}
-              ellipsizeMode="tail"
-              onLongPress={[Function]}
+          <react-native-mock>
+            <TouchableWithoutFeedback
               onPress={[Function]}
+            >
+              <react-native-mock>
+                <AnimatedComponent
+                  style={
+                    Array [
+                      Object {
+                        "bottom": 0,
+                        "left": 0,
+                        "position": "absolute",
+                        "right": 0,
+                        "top": 0,
+                      },
+                      Object {
+                        "opacity": AnimatedValue {
+                          "_animation": null,
+                          "_children": Array [],
+                          "_listeners": Object {},
+                          "_offset": 0,
+                          "_value": 0,
+                        },
+                      },
+                    ]
+                  }
+                >
+                  <View>
+                    <react-native-mock>
+                      <View
+                        style={
+                          Array [
+                            Object {
+                              "bottom": 0,
+                              "left": 0,
+                              "position": "absolute",
+                              "right": 0,
+                              "top": 0,
+                            },
+                            Object {
+                              "backgroundColor": "black",
+                              "opacity": 0.5,
+                            },
+                          ]
+                        }
+                      >
+                        <react-native-mock />
+                      </View>
+                    </react-native-mock>
+                  </View>
+                </AnimatedComponent>
+              </react-native-mock>
+            </TouchableWithoutFeedback>
+            <AnimatedComponent
+              onLayout={[Function]}
+              onMoveShouldSetResponder={[Function]}
+              onMoveShouldSetResponderCapture={[Function]}
+              onResponderEnd={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderReject={[Function]}
+              onResponderRelease={[Function]}
+              onResponderStart={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              onStartShouldSetResponderCapture={[Function]}
               style={
                 Array [
                   Object {
-                    "color": "#000",
-                    "fontSize": 18,
+                    "backgroundColor": "white",
                   },
                   Object {
-                    "color": "#2980b9",
+                    "height": 768,
+                    "width": 320,
+                  },
+                  Object {
+                    "alignItems": "center",
+                    "backgroundColor": "transparent",
+                    "justifyContent": "center",
+                    "width": 270,
+                  },
+                  Object {
+                    "transform": Array [
+                      Object {
+                        "translateY": AnimatedValue {
+                          "_animation": null,
+                          "_children": Array [],
+                          "_listeners": Object {},
+                          "_offset": 0,
+                          "_value": 768,
+                        },
+                      },
+                      Object {
+                        "translateX": 0,
+                      },
+                    ],
                   },
                 ]
               }
             >
-              https://github.com/Fendrian/target-words
-            </Text>
-          </Text>
+              <View>
+                <react-native-mock>
+                  <View
+                    style={
+                      Object {
+                        "backgroundColor": "#fff",
+                        "borderRadius": 4,
+                        "padding": 20,
+                      }
+                    }
+                  >
+                    <react-native-mock>
+                      <Text
+                        style={
+                          Object {
+                            "color": "#000",
+                            "fontSize": 18,
+                          }
+                        }
+                      >
+                        <react-native-mock>
+                          Target Words is based on the popular newspaper game Target, and inspired by the long-abandoned Target app for Android by Ben Buxton.
+                        </react-native-mock>
+                      </Text>
+                      <Text
+                        style={
+                          Object {
+                            "color": "#000",
+                            "fontSize": 18,
+                          }
+                        }
+                      >
+                        <react-native-mock>
+                           
+                        </react-native-mock>
+                      </Text>
+                      <_class
+                        linkStyle={
+                          Object {
+                            "color": "#2980b9",
+                          }
+                        }
+                        onPress={[Function]}
+                      >
+                        <Hyperlink
+                          linkStyle={
+                            Object {
+                              "color": "#2980b9",
+                            }
+                          }
+                          onPress={[Function]}
+                        >
+                          <View>
+                            <react-native-mock>
+                              <Text
+                                key=".0"
+                                onLongPress={[Function]}
+                                style={
+                                  Object {
+                                    "color": "#000",
+                                    "fontSize": 18,
+                                  }
+                                }
+                              >
+                                <react-native-mock>
+                                  Original copyright © 2017-2018 by Wolf Hatch. The source code for this app is released under the MIT license at 
+                                  <Text
+                                    key="https://github.com/Fendrian/target-words112"
+                                    onLongPress={[Function]}
+                                    onPress={[Function]}
+                                    style={
+                                      Array [
+                                        Object {
+                                          "color": "#000",
+                                          "fontSize": 18,
+                                        },
+                                        Object {
+                                          "color": "#2980b9",
+                                        },
+                                      ]
+                                    }
+                                  >
+                                    <react-native-mock>
+                                      https://github.com/Fendrian/target-words
+                                    </react-native-mock>
+                                  </Text>
+                                </react-native-mock>
+                              </Text>
+                            </react-native-mock>
+                          </View>
+                        </Hyperlink>
+                      </_class>
+                      <Text
+                        style={
+                          Object {
+                            "color": "#000",
+                            "fontSize": 18,
+                          }
+                        }
+                      >
+                        <react-native-mock>
+                           
+                        </react-native-mock>
+                      </Text>
+                      <Text
+                        style={
+                          Object {
+                            "color": "#000",
+                            "fontSize": 18,
+                          }
+                        }
+                      >
+                        <react-native-mock>
+                          The code base is primarily coded in Javascript using React-Native, with additional Javascript libraries from NPM that can be viewed in the package.json file on GitHub.
+                        </react-native-mock>
+                      </Text>
+                      <Text
+                        style={
+                          Object {
+                            "color": "#000",
+                            "fontSize": 18,
+                          }
+                        }
+                      >
+                        <react-native-mock>
+                           
+                        </react-native-mock>
+                      </Text>
+                      <Text
+                        style={
+                          Object {
+                            "color": "#000",
+                            "fontSize": 18,
+                          }
+                        }
+                      >
+                        <react-native-mock>
+                          The word dictionary is drawn from several open-source and public domain word lists. Please see the project on github for more precise information about dictionary generation.
+                        </react-native-mock>
+                      </Text>
+                    </react-native-mock>
+                  </View>
+                </react-native-mock>
+              </View>
+            </AnimatedComponent>
+          </react-native-mock>
         </View>
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          disabled={false}
-          ellipsizeMode="tail"
-          style={
-            Object {
-              "color": "#000",
-              "fontSize": 18,
-            }
-          }
-        >
-           
-        </Text>
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          disabled={false}
-          ellipsizeMode="tail"
-          style={
-            Object {
-              "color": "#000",
-              "fontSize": 18,
-            }
-          }
-        >
-          The code base is primarily coded in Javascript using React-Native, with additional Javascript libraries from NPM that can be viewed in the package.json file on GitHub.
-        </Text>
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          disabled={false}
-          ellipsizeMode="tail"
-          style={
-            Object {
-              "color": "#000",
-              "fontSize": 18,
-            }
-          }
-        >
-           
-        </Text>
-        <Text
-          accessible={true}
-          allowFontScaling={true}
-          disabled={false}
-          ellipsizeMode="tail"
-          style={
-            Object {
-              "color": "#000",
-              "fontSize": 18,
-            }
-          }
-        >
-          The word dictionary is drawn from several open-source and public domain word lists. Please see the project on github for more precise information about dictionary generation.
-        </Text>
-      </View>
+      </react-native-mock>
     </View>
-  </View>
-</View>
+  </ModalBox>
+</AboutModal>
 `;

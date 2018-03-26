@@ -1,48 +1,204 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Main App component matches the snapshot 1`] = `
-<View
-  style={
-    Object {
-      "flex": 1,
+<inject-App-with-store
+  store={
+    store {
+      "closeAllModals": [Function],
+      "db": Object {
+        "transaction": [MockFunction],
+      },
+      "getPermutatedWords": [Function],
+      "getScore": [Function],
+      "isAboutModalOpen": false,
+      "isInstructionsModalOpen": false,
+      "isMenuModalOpen": false,
+      "letters": "         ",
+      "loading": false,
+      "nav": Object {
+        "get": [Function],
+        "goto": [Function],
+        "resetto": [Function],
+      },
+      "navigator": Object {},
+      "newGameOptions": Object {
+        "timed": false,
+        "wordRange": Object {
+          "max": 49,
+          "min": 10,
+        },
+      },
+      "orientation": 0,
+      "scored": false,
+      "scores": Array [
+        Object {
+          "percent": 100,
+          "text": "Exceptional!",
+        },
+        Object {
+          "percent": 85,
+          "text": "Excellent!",
+        },
+        Object {
+          "percent": 65,
+          "text": "Very Good!",
+        },
+        Object {
+          "percent": 40,
+          "text": "Good!",
+        },
+        Object {
+          "percent": 0,
+          "text": "",
+        },
+      ],
+      "selected": Array [],
+      "shuffle": [Function],
+      "statusText": "",
+      "timer": -1,
+      "tried": Object {},
+      "width": 320,
+      "words": Object {},
     }
   }
 >
-  <View
-    textContent="Loading..."
-    textStyle={
-      Object {
-        "color": "#FFF",
+  <App
+    store={
+      store {
+        "closeAllModals": [Function],
+        "db": Object {
+          "transaction": [MockFunction],
+        },
+        "getPermutatedWords": [Function],
+        "getScore": [Function],
+        "isAboutModalOpen": false,
+        "isInstructionsModalOpen": false,
+        "isMenuModalOpen": false,
+        "letters": "         ",
+        "loading": false,
+        "nav": Object {
+          "get": [Function],
+          "goto": [Function],
+          "resetto": [Function],
+        },
+        "navigator": Object {},
+        "newGameOptions": Object {
+          "timed": false,
+          "wordRange": Object {
+            "max": 49,
+            "min": 10,
+          },
+        },
+        "orientation": 0,
+        "scored": false,
+        "scores": Array [
+          Object {
+            "percent": 100,
+            "text": "Exceptional!",
+          },
+          Object {
+            "percent": 85,
+            "text": "Excellent!",
+          },
+          Object {
+            "percent": 65,
+            "text": "Very Good!",
+          },
+          Object {
+            "percent": 40,
+            "text": "Good!",
+          },
+          Object {
+            "percent": 0,
+            "text": "",
+          },
+        ],
+        "selected": Array [],
+        "shuffle": [Function],
+        "statusText": "",
+        "timer": -1,
+        "tried": Object {},
+        "width": 320,
+        "words": Object {},
       }
     }
   >
-    7A9FEEAE-7F90-4135-B5B2-356DB9E822CB
-  </View>
-  <Text
-    accessible={true}
-    allowFontScaling={true}
-    disabled={false}
-    ellipsizeMode="tail"
-  >
-    C3D066C6-EFB0-4E46-AC72-6E2558B34F1B
-  </Text>
-  <View
-    isOpen={false}
-    onClosed={[Function]}
-  >
-    D6BA4E9F-2C03-43BE-A2CB-9005355CE3C0
-  </View>
-  <View
-    isOpen={false}
-    onClosed={[Function]}
-  >
-    2B8A071D-EAE0-4755-B3DC-1DD7AA0B4725
-  </View>
-  <View
-    isOpen={false}
-    onClosed={[Function]}
-  >
-    8E4CFDDB-A054-462D-B718-C182E846D653
-  </View>
-</View>
+    <View
+      style={
+        Object {
+          "flex": 1,
+        }
+      }
+    >
+      <react-native-mock>
+        <Component
+          textContent="Loading..."
+          textStyle={
+            Object {
+              "color": "#FFF",
+            }
+          }
+          visible={false}
+        >
+          <View
+            textContent="Loading..."
+            textStyle={
+              Object {
+                "color": "#FFF",
+              }
+            }
+          >
+            <react-native-mock>
+              7A9FEEAE-7F90-4135-B5B2-356DB9E822CB
+            </react-native-mock>
+          </View>
+        </Component>
+        <Text>
+          <react-native-mock>
+            C3D066C6-EFB0-4E46-AC72-6E2558B34F1B
+          </react-native-mock>
+        </Text>
+        <Component
+          isOpen={false}
+          onClosed={[Function]}
+        >
+          <View
+            isOpen={false}
+            onClosed={[Function]}
+          >
+            <react-native-mock>
+              D6BA4E9F-2C03-43BE-A2CB-9005355CE3C0
+            </react-native-mock>
+          </View>
+        </Component>
+        <Component
+          isOpen={false}
+          onClosed={[Function]}
+        >
+          <View
+            isOpen={false}
+            onClosed={[Function]}
+          >
+            <react-native-mock>
+              2B8A071D-EAE0-4755-B3DC-1DD7AA0B4725
+            </react-native-mock>
+          </View>
+        </Component>
+        <Component
+          isOpen={false}
+          onClosed={[Function]}
+        >
+          <View
+            isOpen={false}
+            onClosed={[Function]}
+          >
+            <react-native-mock>
+              8E4CFDDB-A054-462D-B718-C182E846D653
+            </react-native-mock>
+          </View>
+        </Component>
+      </react-native-mock>
+    </View>
+  </App>
+</inject-App-with-store>
 `;

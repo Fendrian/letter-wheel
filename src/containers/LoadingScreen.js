@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Image, Text, View } from 'react-native';
+import { ImageBackground, Text, View } from 'react-native';
 import { inject, observer } from 'mobx-react';
 
 import WrapperStyle from '../styles/WrapperStyle';
 import LoadingScreenStyle from '../styles/LoadingScreenStyle';
 
-import background from '../images/Wood-background.jpg';
+import background from '../images/woodBackground.jpg';
 
 @inject('store')
 @observer
@@ -38,7 +38,7 @@ export default class LoadingScreen extends React.Component {
       wrapper,
     } = LoadingScreenStyle;
     return (
-      <Image
+      <ImageBackground
         source={background}
         style={container}
       >
@@ -47,7 +47,7 @@ export default class LoadingScreen extends React.Component {
             Loading...
           </Text>
         </View>
-      </Image>
+      </ImageBackground>
     );
   }
 }
