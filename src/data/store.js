@@ -1,10 +1,12 @@
-import { action, observable, runInAction, useStrict } from 'mobx';
+import { action, configure, observable, runInAction } from 'mobx';
 import { Alert, Dimensions } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import SQLite from 'react-native-sqlite-storage';
 import simpleStore from 'react-native-simple-store';
 
-useStrict(true);
+configure({
+  enforceActions: true,
+});
 
 const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
 const appSaveKey = '0318C041EFF1ADFE8DA8';
@@ -278,14 +280,14 @@ export default class store {
     const gameState = {
       letters: this.letters,
       timer: this.timer,
-      tried: this.tried.toJS(),
+      tried: this.tried.toJSON(),
       newGameOptions: {
         timed: this.newGameOptions.get('timed'),
         wordRange: this.newGameOptions.get('wordRange'),
       },
       scored: this.scored,
-      words: this.words.keys(),
-    };
+      words: [...this.words].map(([key]) => key),
+    }
     await simpleStore.save(appSaveKey, gameState);
     return true;
   }
@@ -343,7 +345,7 @@ export default class store {
     // If the word is correct, report to user and add time if relevant
     if (this.words.has(word)) {
       this.tried.set(word, true);
-      simpleStore.update(appSaveKey, { tried: this.tried.toJS() });
+      simpleStore.update(appSaveKey, { tried: this.tried.toJSON() });
       this.selected.replace([]);
       if (this.timer > -1) {
         const addTime = (word.length * 5);
@@ -359,7 +361,7 @@ export default class store {
     this.tried.set(word, false);
     this.selected.replace([]);
     this.setStatus('Unrecognized word.');
-    simpleStore.update(appSaveKey, { tried: this.tried.toJS() });
+    simpleStore.update(appSaveKey, { tried: this.tried.toJSON() });
     return false;
   }
 
@@ -377,7 +379,7 @@ export default class store {
   }
 
   getScore = () => {
-    const correct = this.tried.entries().filter(e => e[1]).length;
+    const correct = Array.from(this.tried).filter(([, t]) => t).length;
     const absoluteScores = this.scores.map(scoreObj => ({
       ...scoreObj,
       numWords: (Math.floor((scoreObj.percent / 100) * this.words.size)),

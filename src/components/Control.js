@@ -43,7 +43,7 @@ export default class Control extends React.Component {
     if (this.props.tried.size === 0 && !this.props.isScored) {
       return [{ word: 'No words', style: 'neutral' }];
     }
-    const triedWords = this.props.tried.keys().sort().map(word => (
+    const triedWords = [...this.props.tried].sort().map(([word]) => (
       { word, style: this.props.tried.get(word) ? 'correct' : 'incorrect' }
     ));
 
@@ -51,7 +51,7 @@ export default class Control extends React.Component {
     if (this.props.isScored === true) {
       const notFound = [
         { word: 'Not found:', style: 'neutral' },
-        ...this.props.words.keys()
+        ...[...this.props.words].map(([key]) => key)
           .sort()
           .filter(word => !this.props.tried.get(word))
           .map(word => ({ word, style: 'neutral' })),
@@ -73,8 +73,8 @@ export default class Control extends React.Component {
 
   @computed get feedbackText() {
     return this.props.wordsToNextLevel > 0 ?
-      `${this.props.wordsToNextLevel} word${this.props.wordsToNextLevel > 1 ? 's' : ''}\n` +
-      'to next level'
+      `${this.props.wordsToNextLevel} word${this.props.wordsToNextLevel > 1 ? 's' : ''}` +
+      ' to level up'
       :
       '';
   }
@@ -98,7 +98,7 @@ export default class Control extends React.Component {
       timerText,
     } = ControlStyle;
 
-    const correct = this.props.tried.values().filter(v => v).length;
+    const correct = Array.from(this.props.tried).filter(([, t]) => t).length;
 
     const triedWordRows = listDataSource.cloneWithRows(this.formattedTriedWords);
 

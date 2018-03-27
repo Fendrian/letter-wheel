@@ -795,6 +795,7 @@ exports[`New Screen component matches the snapshot 1`] = `
                                       "left": -24,
                                       "top": -24,
                                     },
+                                    undefined,
                                     false,
                                   ]
                                 }
@@ -905,6 +906,7 @@ exports[`New Screen component matches the snapshot 1`] = `
                                       "right": 118.85714285714286,
                                       "top": -24,
                                     },
+                                    undefined,
                                   ]
                                 }
                               >

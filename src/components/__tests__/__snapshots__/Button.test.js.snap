@@ -47,6 +47,7 @@ exports[`Button component matches the snapshot 1`] = `
                 style={
                   Object {
                     "color": "#000000",
+                    "fontFamily": "Grundschrift-Bold",
                     "fontSize": 20,
                     "marginBottom": 15,
                   }

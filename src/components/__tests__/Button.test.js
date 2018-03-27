@@ -1,7 +1,7 @@
 import React from 'react';
 import { ImageBackground, TouchableWithoutFeedback } from 'react-native';
 import { mount } from 'enzyme';
-import { isAction, isObservable, runInAction } from 'mobx';
+import { isAction, isObservableProp, runInAction } from 'mobx';
 
 import Button from '../Button';
 
@@ -22,7 +22,7 @@ describe('Button component', () => {
       <Button />
     ));
     expect(render.instance().isPressing).toEqual(false);
-    expect(isObservable(render.instance(), 'isPressing')).toBeTruthy();
+    expect(isObservableProp(render.instance(), 'isPressing')).toBeTruthy();
   });
 
   it('provides a \'beginPress\' action method', () => {

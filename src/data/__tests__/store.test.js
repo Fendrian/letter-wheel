@@ -519,11 +519,11 @@ describe('Mobx Store', () => {
       expect.any(Function),
     );
     expect(store.letters).toEqual('flapcjaks');
-    expect(store.words.keys()).toEqual([
+    expect(Array.from(store.words).map(([k]) => k)).toEqual([
       '77c2',
       'bca0ce269095',
     ]);
-    expect(store.tried.keys()).toEqual([]);
+    expect(Array.from(store.tried).map(([k]) => k)).toEqual([]);
     expect(store.selected.peek()).toEqual([]);
     expect(store.scored).toEqual(false);
     expect(store.statusText).toEqual('Welcome!');
@@ -585,7 +585,7 @@ describe('Mobx Store', () => {
     }))
       .resolves.toEqual();
     expect(store.letters).toEqual('flapjacks');
-    expect(store.words.keys()).toEqual([
+    expect(Array.from(store.words).map(([key]) => key)).toEqual([
       '6df3f9j78',
       'jjjjjjjj',
       'a95d96bj',
@@ -654,12 +654,12 @@ describe('Mobx Store', () => {
 
     expect(store.letters).toEqual('lbedsfzny');
     expect(store.timer).toEqual(76);
-    expect(store.tried.toJS()).toEqual({
+    expect(store.tried.toJSON()).toEqual({
       asde: false,
       jafe: false,
       ediops: true,
     });
-    expect(store.newGameOptions.toJS()).toEqual({
+    expect(store.newGameOptions.toJSON()).toEqual({
       timed: false,
       wordRange: {
         min: 43,
@@ -667,7 +667,7 @@ describe('Mobx Store', () => {
       },
     });
     expect(store.scored).toEqual(false);
-    expect(store.words.toJS()).toEqual({
+    expect(store.words.toJSON()).toEqual({
       fshdnn: true,
       aosjfg: true,
       ekbvpn: true,
@@ -693,28 +693,28 @@ describe('Mobx Store', () => {
       cafe: true,
     });
     expect(store.submitWord()).toEqual(false);
-    expect(store.tried.entries()).toEqual([['aade', false]]);
+    expect(Array.from(store.tried)).toEqual([['aade', false]]);
     expect(store.statusText).toEqual('Game already scored');
 
     store.scored = false;
     store.selected.replace(['1', '2', '3']);
     expect(store.submitWord()).toEqual(false);
-    expect(store.tried.entries()).toEqual([['aade', false]]);
+    expect(Array.from(store.tried)).toEqual([['aade', false]]);
     expect(store.statusText).toEqual('Too short');
 
     store.selected.replace(['0', '1', '2', '3']);
     expect(store.submitWord()).toEqual(false);
-    expect(store.tried.entries()).toEqual([['aade', false]]);
+    expect(Array.from(store.tried)).toEqual([['aade', false]]);
     expect(store.statusText).toEqual('Missing middle letter');
 
     store.selected.replace(['0', '0', '3', '4']);
     expect(store.submitWord()).toEqual(null);
-    expect(store.tried.entries()).toEqual([['aade', false]]);
+    expect(Array.from(store.tried)).toEqual([['aade', false]]);
     expect(store.statusText).toEqual('Already tried');
 
     store.selected.replace(['0', '2', '7', '4']);
     expect(store.submitWord()).toEqual(true);
-    expect(store.tried.entries()).toEqual([
+    expect(Array.from(store.tried)).toEqual([
       ['aade', false],
       ['ache', true],
     ]);
@@ -723,30 +723,30 @@ describe('Mobx Store', () => {
     expect(store.statusText).toEqual('Nice! +20 seconds.');
     expect(store.setTimer).toHaveBeenCalledTimes(1);
     expect(store.setTimer).toHaveBeenCalledWith(70);
-    expect(simpleStore.update).toHaveBeenCalledWith(appSaveKey, { tried: store.tried.toJS() });
+    expect(simpleStore.update).toHaveBeenCalledWith(appSaveKey, { tried: store.tried.toJSON() });
     simpleStore.update.mockClear();
 
     store.timer = -1;
     store.selected.replace(['2', '0', '5', '4']);
     store.tried.replace({ asdf: false });
     expect(store.submitWord()).toEqual(true);
-    expect(store.tried.entries()).toEqual([
+    expect(Array.from(store.tried)).toEqual([
       ['asdf', false],
       ['cafe', true],
     ]);
     expect(store.selected.peek()).toEqual([]);
     expect(store.timer).toEqual(-1);
     expect(store.statusText).toEqual('Nice!');
-    expect(simpleStore.update).toHaveBeenCalledWith(appSaveKey, { tried: store.tried.toJS() });
+    expect(simpleStore.update).toHaveBeenCalledWith(appSaveKey, { tried: store.tried.toJSON() });
     simpleStore.update.mockClear();
 
     store.selected.replace(['4', '4', '4', '4']);
     store.tried.replace({});
     expect(store.submitWord()).toEqual(false);
-    expect(store.tried.entries()).toEqual([['eeee', false]]);
+    expect(Array.from(store.tried)).toEqual([['eeee', false]]);
     expect(store.selected.peek()).toEqual([]);
     expect(store.statusText).toEqual('Unrecognized word.');
-    expect(simpleStore.update).toHaveBeenCalledWith(appSaveKey, { tried: store.tried.toJS() });
+    expect(simpleStore.update).toHaveBeenCalledWith(appSaveKey, { tried: store.tried.toJSON() });
     simpleStore.update.mockClear();
   });
 

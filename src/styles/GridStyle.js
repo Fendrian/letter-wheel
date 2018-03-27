@@ -64,6 +64,7 @@ export default StyleSheet.create({
     marginLeft: 20,
   },
   entryText: {
+    fontFamily: 'RujisHandwritingFontv.2.0',
     color: '#000',
     fontSize: 20,
   },
@@ -85,6 +86,8 @@ export default StyleSheet.create({
   },
   letter: {
     color: '#000',
+    fontFamily: 'OFLGoudyStM',
     fontSize: 60,
+    marginTop: 11,
   },
 });

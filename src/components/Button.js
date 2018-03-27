@@ -60,7 +60,7 @@ export default class Button extends React.Component {
             <Text
               style={ButtonStyle.text}
             >
-              {this.props.title}
+              {this.props.title.toUpperCase()}
             </Text>
           </View>
         </ImageBackground>

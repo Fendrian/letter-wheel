@@ -17,6 +17,7 @@ export default StyleSheet.create({
     paddingTop: 8,
   },
   text: {
+    fontFamily: 'Grundschrift-Bold',
     color: '#000000',
     fontSize: 20,
     marginBottom: 15,

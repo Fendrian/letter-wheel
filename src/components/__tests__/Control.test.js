@@ -136,18 +136,18 @@ describe('Control component', () => {
     ]);
   });
 
-  it('provides a feedbackText computed which returns number of words to next level', () => {
+  it('provides a feedbackText computed which returns number of words to level up', () => {
     const render = mount((
       <Control />
     ));
     const instance = render.instance();
     expect(instance.feedbackText).toEqual('');
     render.setProps({ wordsToNextLevel: 1 });
-    expect(instance.feedbackText).toEqual('1 word\nto next level');
+    expect(instance.feedbackText).toEqual('1 word to level up');
     render.setProps({ wordsToNextLevel: 2 });
-    expect(instance.feedbackText).toEqual('2 words\nto next level');
+    expect(instance.feedbackText).toEqual('2 words to level up');
     render.setProps({ wordsToNextLevel: 8 });
-    expect(instance.feedbackText).toEqual('8 words\nto next level');
+    expect(instance.feedbackText).toEqual('8 words to level up');
     render.setProps({ wordsToNextLevel: 0 });
     expect(instance.feedbackText).toEqual('');
   });

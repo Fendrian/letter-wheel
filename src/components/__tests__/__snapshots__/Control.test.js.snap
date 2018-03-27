@@ -34,7 +34,7 @@ exports[`Control component matches the snapshot 1`] = `
           <View
             style={
               Object {
-                "backgroundColor": "#ccc",
+                "backgroundColor": "#fff",
                 "borderRadius": 4,
                 "flex": 4,
                 "marginBottom": 10,
@@ -48,7 +48,7 @@ exports[`Control component matches the snapshot 1`] = `
                 style={
                   Object {
                     "alignItems": "center",
-                    "backgroundColor": "#aaa",
+                    "backgroundColor": "#b3c9d0",
                     "justifyContent": "center",
                   }
                 }
@@ -58,6 +58,7 @@ exports[`Control component matches the snapshot 1`] = `
                     style={
                       Object {
                         "color": "#444",
+                        "fontFamily": "RujisHandwritingFontv.2.0",
                         "fontSize": 15,
                         "margin": 5,
                       }
@@ -119,6 +120,7 @@ exports[`Control component matches the snapshot 1`] = `
                     style={
                       Object {
                         "color": "#444",
+                        "fontFamily": "RujisHandwritingFontv.2.0",
                         "fontSize": 20,
                       }
                     }
@@ -175,13 +177,14 @@ exports[`Control component matches the snapshot 1`] = `
                                   style={
                                     Object {
                                       "color": "#000000",
+                                      "fontFamily": "Grundschrift-Bold",
                                       "fontSize": 20,
                                       "marginBottom": 15,
                                     }
                                   }
                                 >
                                   <react-native-mock>
-                                    Submit
+                                    SUBMIT
                                   </react-native-mock>
                                 </Text>
                               </react-native-mock>
@@ -209,6 +212,7 @@ exports[`Control component matches the snapshot 1`] = `
                         style={
                           Object {
                             "color": "#227711",
+                            "fontFamily": "RujisHandwritingFontv.2.0",
                             "fontSize": 30,
                             "textAlign": "center",
                           }
@@ -226,7 +230,8 @@ exports[`Control component matches the snapshot 1`] = `
                         style={
                           Object {
                             "color": "#000",
-                            "fontSize": 20,
+                            "fontFamily": "RujisHandwritingFontv.2.0",
+                            "fontSize": 16,
                             "textAlign": "center",
                           }
                         }
@@ -285,13 +290,14 @@ exports[`Control component matches the snapshot 1`] = `
                                   style={
                                     Object {
                                       "color": "#000000",
+                                      "fontFamily": "Grundschrift-Bold",
                                       "fontSize": 20,
                                       "marginBottom": 15,
                                     }
                                   }
                                 >
                                   <react-native-mock>
-                                    Menu
+                                    MENU
                                   </react-native-mock>
                                 </Text>
                               </react-native-mock>
@@ -365,7 +371,7 @@ exports[`Control component matches the snapshot 2`] = `
           <View
             style={
               Object {
-                "backgroundColor": "#ccc",
+                "backgroundColor": "#fff",
                 "borderRadius": 4,
                 "flex": 4,
                 "marginBottom": 10,
@@ -379,7 +385,7 @@ exports[`Control component matches the snapshot 2`] = `
                 style={
                   Object {
                     "alignItems": "center",
-                    "backgroundColor": "#aaa",
+                    "backgroundColor": "#b3c9d0",
                     "justifyContent": "center",
                   }
                 }
@@ -389,6 +395,7 @@ exports[`Control component matches the snapshot 2`] = `
                     style={
                       Object {
                         "color": "#444",
+                        "fontFamily": "RujisHandwritingFontv.2.0",
                         "fontSize": 15,
                         "margin": 5,
                       }
@@ -494,6 +501,7 @@ exports[`Control component matches the snapshot 2`] = `
                     style={
                       Object {
                         "color": "#444",
+                        "fontFamily": "RujisHandwritingFontv.2.0",
                         "fontSize": 20,
                       }
                     }
@@ -552,13 +560,14 @@ exports[`Control component matches the snapshot 2`] = `
                                   style={
                                     Object {
                                       "color": "#000000",
+                                      "fontFamily": "Grundschrift-Bold",
                                       "fontSize": 20,
                                       "marginBottom": 15,
                                     }
                                   }
                                 >
                                   <react-native-mock>
-                                    Submit
+                                    SUBMIT
                                   </react-native-mock>
                                 </Text>
                               </react-native-mock>
@@ -584,6 +593,7 @@ exports[`Control component matches the snapshot 2`] = `
                     style={
                       Object {
                         "color": "#000",
+                        "fontFamily": "RujisHandwritingFontv.2.0",
                         "fontSize": 20,
                       }
                     }
@@ -610,6 +620,7 @@ exports[`Control component matches the snapshot 2`] = `
                         style={
                           Object {
                             "color": "#227711",
+                            "fontFamily": "RujisHandwritingFontv.2.0",
                             "fontSize": 30,
                             "textAlign": "center",
                           }
@@ -627,14 +638,14 @@ exports[`Control component matches the snapshot 2`] = `
                         style={
                           Object {
                             "color": "#000",
-                            "fontSize": 20,
+                            "fontFamily": "RujisHandwritingFontv.2.0",
+                            "fontSize": 16,
                             "textAlign": "center",
                           }
                         }
                       >
                         <react-native-mock>
-                          5 words
-to next level
+                          5 words to level up
                         </react-native-mock>
                       </Text>
                     </react-native-mock>
@@ -689,13 +700,14 @@ to next level
                                   style={
                                     Object {
                                       "color": "#000000",
+                                      "fontFamily": "Grundschrift-Bold",
                                       "fontSize": 20,
                                       "marginBottom": 15,
                                     }
                                   }
                                 >
                                   <react-native-mock>
-                                    Menu
+                                    MENU
                                   </react-native-mock>
                                 </Text>
                               </react-native-mock>
