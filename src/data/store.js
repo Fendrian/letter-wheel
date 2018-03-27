@@ -126,10 +126,9 @@ export default class store {
           '(length(word) >= 4)',
           '(length(word) <= 9)',
           `(word GLOB '*[${uniqueLettersInWord}]*')`, // INCLUDE words with any of our letters
-          ...alphabet.map((letter) => { // EXCLUDE words containing too many of any letter
-            const occurrencesInWord = word.split(letter).length - 1;
-            return `(word NOT LIKE '${(`%${letter}`).repeat(occurrencesInWord + 1)}%')`;
-          }),
+          ...alphabet.map(letter => ( // EXCLUDE words containing too many of any letter
+            `(word NOT LIKE '${(`%${letter}`).repeat(word.split(letter).length)}%')`
+          )),
         ].join(' AND ')}`;
 
         new Promise((wordsResolve) => {
@@ -223,7 +222,7 @@ export default class store {
             char => `(${char} >= ${wordsMin} AND ${char} <= ${wordsMax})`
           ))
             .join(' OR ')
-          }` +
+        }` +
         'ORDER BY RANDOM() ' +
         'LIMIT 1';
 
@@ -287,7 +286,7 @@ export default class store {
       },
       scored: this.scored,
       words: [...this.words].map(([key]) => key),
-    }
+    };
     await simpleStore.save(appSaveKey, gameState);
     return true;
   }
