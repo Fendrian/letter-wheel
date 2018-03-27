@@ -98,7 +98,7 @@ export default class Control extends React.Component {
       timerText,
     } = ControlStyle;
 
-    const correct = Array.from(this.props.tried).filter(([, t]) => t).length;
+    const correct = [...this.props.tried].filter(([, t]) => t).length;
 
     const triedWordRows = listDataSource.cloneWithRows(this.formattedTriedWords);
 

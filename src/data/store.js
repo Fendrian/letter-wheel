@@ -379,7 +379,7 @@ export default class store {
   }
 
   getScore = () => {
-    const correct = Array.from(this.tried).filter(([, t]) => t).length;
+    const correct = [...this.tried].filter(([, t]) => t).length;
     const absoluteScores = this.scores.map(scoreObj => ({
       ...scoreObj,
       numWords: (Math.floor((scoreObj.percent / 100) * this.words.size)),
