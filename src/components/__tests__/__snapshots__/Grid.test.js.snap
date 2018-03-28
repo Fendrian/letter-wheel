@@ -131,6 +131,7 @@ exports[`Grid component matches the snapshot 1`] = `
                   >
                     <react-native-mock>
                       <TouchableOpacity
+                        activeOpacity={0.8}
                         key="gridItem0"
                         onLongPress={[Function]}
                         onPress={[Function]}
@@ -147,21 +148,37 @@ exports[`Grid component matches the snapshot 1`] = `
                         }
                       >
                         <react-native-mock>
-                          <Text
+                          <ImageBackground
+                            source={null}
                             style={
                               Object {
-                                "color": "#000",
-                                "fontFamily": "OFLGoudyStM",
-                                "fontSize": 60,
-                                "marginTop": 11,
+                                "alignItems": "center",
+                                "alignSelf": "stretch",
+                                "height": null,
+                                "justifyContent": "center",
+                                "width": null,
                               }
                             }
                           >
-                            <react-native-mock />
-                          </Text>
+                            <react-native-mock>
+                              <Text
+                                style={
+                                  Object {
+                                    "color": "#000",
+                                    "fontFamily": "OFLGoudyStM",
+                                    "fontSize": 60,
+                                    "marginTop": 11,
+                                  }
+                                }
+                              >
+                                <react-native-mock />
+                              </Text>
+                            </react-native-mock>
+                          </ImageBackground>
                         </react-native-mock>
                       </TouchableOpacity>
                       <TouchableOpacity
+                        activeOpacity={0.8}
                         key="gridItem1"
                         onLongPress={[Function]}
                         onPress={[Function]}
@@ -178,21 +195,37 @@ exports[`Grid component matches the snapshot 1`] = `
                         }
                       >
                         <react-native-mock>
-                          <Text
+                          <ImageBackground
+                            source={null}
                             style={
                               Object {
-                                "color": "#000",
-                                "fontFamily": "OFLGoudyStM",
-                                "fontSize": 60,
-                                "marginTop": 11,
+                                "alignItems": "center",
+                                "alignSelf": "stretch",
+                                "height": null,
+                                "justifyContent": "center",
+                                "width": null,
                               }
                             }
                           >
-                            <react-native-mock />
-                          </Text>
+                            <react-native-mock>
+                              <Text
+                                style={
+                                  Object {
+                                    "color": "#000",
+                                    "fontFamily": "OFLGoudyStM",
+                                    "fontSize": 60,
+                                    "marginTop": 11,
+                                  }
+                                }
+                              >
+                                <react-native-mock />
+                              </Text>
+                            </react-native-mock>
+                          </ImageBackground>
                         </react-native-mock>
                       </TouchableOpacity>
                       <TouchableOpacity
+                        activeOpacity={0.8}
                         key="gridItem2"
                         onLongPress={[Function]}
                         onPress={[Function]}
@@ -209,18 +242,33 @@ exports[`Grid component matches the snapshot 1`] = `
                         }
                       >
                         <react-native-mock>
-                          <Text
+                          <ImageBackground
+                            source={null}
                             style={
                               Object {
-                                "color": "#000",
-                                "fontFamily": "OFLGoudyStM",
-                                "fontSize": 60,
-                                "marginTop": 11,
+                                "alignItems": "center",
+                                "alignSelf": "stretch",
+                                "height": null,
+                                "justifyContent": "center",
+                                "width": null,
                               }
                             }
                           >
-                            <react-native-mock />
-                          </Text>
+                            <react-native-mock>
+                              <Text
+                                style={
+                                  Object {
+                                    "color": "#000",
+                                    "fontFamily": "OFLGoudyStM",
+                                    "fontSize": 60,
+                                    "marginTop": 11,
+                                  }
+                                }
+                              >
+                                <react-native-mock />
+                              </Text>
+                            </react-native-mock>
+                          </ImageBackground>
                         </react-native-mock>
                       </TouchableOpacity>
                     </react-native-mock>
@@ -237,6 +285,7 @@ exports[`Grid component matches the snapshot 1`] = `
                   >
                     <react-native-mock>
                       <TouchableOpacity
+                        activeOpacity={0.8}
                         key="gridItem3"
                         onLongPress={[Function]}
                         onPress={[Function]}
@@ -253,21 +302,37 @@ exports[`Grid component matches the snapshot 1`] = `
                         }
                       >
                         <react-native-mock>
-                          <Text
+                          <ImageBackground
+                            source={null}
                             style={
                               Object {
-                                "color": "#000",
-                                "fontFamily": "OFLGoudyStM",
-                                "fontSize": 60,
-                                "marginTop": 11,
+                                "alignItems": "center",
+                                "alignSelf": "stretch",
+                                "height": null,
+                                "justifyContent": "center",
+                                "width": null,
                               }
                             }
                           >
-                            <react-native-mock />
-                          </Text>
+                            <react-native-mock>
+                              <Text
+                                style={
+                                  Object {
+                                    "color": "#000",
+                                    "fontFamily": "OFLGoudyStM",
+                                    "fontSize": 60,
+                                    "marginTop": 11,
+                                  }
+                                }
+                              >
+                                <react-native-mock />
+                              </Text>
+                            </react-native-mock>
+                          </ImageBackground>
                         </react-native-mock>
                       </TouchableOpacity>
                       <TouchableOpacity
+                        activeOpacity={0.8}
                         key="gridItem4"
                         onLongPress={[Function]}
                         onPress={[Function]}
@@ -284,21 +349,37 @@ exports[`Grid component matches the snapshot 1`] = `
                         }
                       >
                         <react-native-mock>
-                          <Text
+                          <ImageBackground
+                            source={null}
                             style={
                               Object {
-                                "color": "#000",
-                                "fontFamily": "OFLGoudyStM",
-                                "fontSize": 60,
-                                "marginTop": 11,
+                                "alignItems": "center",
+                                "alignSelf": "stretch",
+                                "height": null,
+                                "justifyContent": "center",
+                                "width": null,
                               }
                             }
                           >
-                            <react-native-mock />
-                          </Text>
+                            <react-native-mock>
+                              <Text
+                                style={
+                                  Object {
+                                    "color": "#000",
+                                    "fontFamily": "OFLGoudyStM",
+                                    "fontSize": 60,
+                                    "marginTop": 11,
+                                  }
+                                }
+                              >
+                                <react-native-mock />
+                              </Text>
+                            </react-native-mock>
+                          </ImageBackground>
                         </react-native-mock>
                       </TouchableOpacity>
                       <TouchableOpacity
+                        activeOpacity={0.8}
                         key="gridItem5"
                         onLongPress={[Function]}
                         onPress={[Function]}
@@ -315,18 +396,33 @@ exports[`Grid component matches the snapshot 1`] = `
                         }
                       >
                         <react-native-mock>
-                          <Text
+                          <ImageBackground
+                            source={null}
                             style={
                               Object {
-                                "color": "#000",
-                                "fontFamily": "OFLGoudyStM",
-                                "fontSize": 60,
-                                "marginTop": 11,
+                                "alignItems": "center",
+                                "alignSelf": "stretch",
+                                "height": null,
+                                "justifyContent": "center",
+                                "width": null,
                               }
                             }
                           >
-                            <react-native-mock />
-                          </Text>
+                            <react-native-mock>
+                              <Text
+                                style={
+                                  Object {
+                                    "color": "#000",
+                                    "fontFamily": "OFLGoudyStM",
+                                    "fontSize": 60,
+                                    "marginTop": 11,
+                                  }
+                                }
+                              >
+                                <react-native-mock />
+                              </Text>
+                            </react-native-mock>
+                          </ImageBackground>
                         </react-native-mock>
                       </TouchableOpacity>
                     </react-native-mock>
@@ -343,6 +439,7 @@ exports[`Grid component matches the snapshot 1`] = `
                   >
                     <react-native-mock>
                       <TouchableOpacity
+                        activeOpacity={0.8}
                         key="gridItem6"
                         onLongPress={[Function]}
                         onPress={[Function]}
@@ -359,21 +456,37 @@ exports[`Grid component matches the snapshot 1`] = `
                         }
                       >
                         <react-native-mock>
-                          <Text
+                          <ImageBackground
+                            source={null}
                             style={
                               Object {
-                                "color": "#000",
-                                "fontFamily": "OFLGoudyStM",
-                                "fontSize": 60,
-                                "marginTop": 11,
+                                "alignItems": "center",
+                                "alignSelf": "stretch",
+                                "height": null,
+                                "justifyContent": "center",
+                                "width": null,
                               }
                             }
                           >
-                            <react-native-mock />
-                          </Text>
+                            <react-native-mock>
+                              <Text
+                                style={
+                                  Object {
+                                    "color": "#000",
+                                    "fontFamily": "OFLGoudyStM",
+                                    "fontSize": 60,
+                                    "marginTop": 11,
+                                  }
+                                }
+                              >
+                                <react-native-mock />
+                              </Text>
+                            </react-native-mock>
+                          </ImageBackground>
                         </react-native-mock>
                       </TouchableOpacity>
                       <TouchableOpacity
+                        activeOpacity={0.8}
                         key="gridItem7"
                         onLongPress={[Function]}
                         onPress={[Function]}
@@ -390,21 +503,37 @@ exports[`Grid component matches the snapshot 1`] = `
                         }
                       >
                         <react-native-mock>
-                          <Text
+                          <ImageBackground
+                            source={null}
                             style={
                               Object {
-                                "color": "#000",
-                                "fontFamily": "OFLGoudyStM",
-                                "fontSize": 60,
-                                "marginTop": 11,
+                                "alignItems": "center",
+                                "alignSelf": "stretch",
+                                "height": null,
+                                "justifyContent": "center",
+                                "width": null,
                               }
                             }
                           >
-                            <react-native-mock />
-                          </Text>
+                            <react-native-mock>
+                              <Text
+                                style={
+                                  Object {
+                                    "color": "#000",
+                                    "fontFamily": "OFLGoudyStM",
+                                    "fontSize": 60,
+                                    "marginTop": 11,
+                                  }
+                                }
+                              >
+                                <react-native-mock />
+                              </Text>
+                            </react-native-mock>
+                          </ImageBackground>
                         </react-native-mock>
                       </TouchableOpacity>
                       <TouchableOpacity
+                        activeOpacity={0.8}
                         key="gridItem8"
                         onLongPress={[Function]}
                         onPress={[Function]}
@@ -421,18 +550,33 @@ exports[`Grid component matches the snapshot 1`] = `
                         }
                       >
                         <react-native-mock>
-                          <Text
+                          <ImageBackground
+                            source={null}
                             style={
                               Object {
-                                "color": "#000",
-                                "fontFamily": "OFLGoudyStM",
-                                "fontSize": 60,
-                                "marginTop": 11,
+                                "alignItems": "center",
+                                "alignSelf": "stretch",
+                                "height": null,
+                                "justifyContent": "center",
+                                "width": null,
                               }
                             }
                           >
-                            <react-native-mock />
-                          </Text>
+                            <react-native-mock>
+                              <Text
+                                style={
+                                  Object {
+                                    "color": "#000",
+                                    "fontFamily": "OFLGoudyStM",
+                                    "fontSize": 60,
+                                    "marginTop": 11,
+                                  }
+                                }
+                              >
+                                <react-native-mock />
+                              </Text>
+                            </react-native-mock>
+                          </ImageBackground>
                         </react-native-mock>
                       </TouchableOpacity>
                     </react-native-mock>
@@ -665,6 +809,7 @@ exports[`Grid component matches the snapshot 2`] = `
                   >
                     <react-native-mock>
                       <TouchableOpacity
+                        activeOpacity={0.8}
                         key="gridItem0"
                         onLongPress={[Function]}
                         onPress={[Function]}
@@ -681,23 +826,39 @@ exports[`Grid component matches the snapshot 2`] = `
                         }
                       >
                         <react-native-mock>
-                          <Text
+                          <ImageBackground
+                            source={null}
                             style={
                               Object {
-                                "color": "#000",
-                                "fontFamily": "OFLGoudyStM",
-                                "fontSize": 60,
-                                "marginTop": 11,
+                                "alignItems": "center",
+                                "alignSelf": "stretch",
+                                "height": null,
+                                "justifyContent": "center",
+                                "width": null,
                               }
                             }
                           >
                             <react-native-mock>
-                              A
+                              <Text
+                                style={
+                                  Object {
+                                    "color": "#000",
+                                    "fontFamily": "OFLGoudyStM",
+                                    "fontSize": 60,
+                                    "marginTop": 11,
+                                  }
+                                }
+                              >
+                                <react-native-mock>
+                                  A
+                                </react-native-mock>
+                              </Text>
                             </react-native-mock>
-                          </Text>
+                          </ImageBackground>
                         </react-native-mock>
                       </TouchableOpacity>
                       <TouchableOpacity
+                        activeOpacity={0.8}
                         key="gridItem1"
                         onLongPress={[Function]}
                         onPress={[Function]}
@@ -714,30 +875,46 @@ exports[`Grid component matches the snapshot 2`] = `
                         }
                       >
                         <react-native-mock>
-                          <Text
+                          <ImageBackground
+                            source={null}
                             style={
                               Object {
-                                "color": "#000",
-                                "fontFamily": "OFLGoudyStM",
-                                "fontSize": 60,
-                                "marginTop": 11,
+                                "alignItems": "center",
+                                "alignSelf": "stretch",
+                                "height": null,
+                                "justifyContent": "center",
+                                "width": null,
                               }
                             }
                           >
                             <react-native-mock>
-                              S
+                              <Text
+                                style={
+                                  Object {
+                                    "color": "#000",
+                                    "fontFamily": "OFLGoudyStM",
+                                    "fontSize": 60,
+                                    "marginTop": 11,
+                                  }
+                                }
+                              >
+                                <react-native-mock>
+                                  S
+                                </react-native-mock>
+                              </Text>
                             </react-native-mock>
-                          </Text>
+                          </ImageBackground>
                         </react-native-mock>
                       </TouchableOpacity>
                       <TouchableOpacity
+                        activeOpacity={0.8}
                         key="gridItem2"
                         onLongPress={[Function]}
                         onPress={[Function]}
                         style={
                           Object {
                             "alignItems": "center",
-                            "backgroundColor": "#ffa",
+                            "backgroundColor": "#fff",
                             "borderColor": "#000000",
                             "borderWidth": 2,
                             "flex": 0.3333333333333333,
@@ -747,20 +924,39 @@ exports[`Grid component matches the snapshot 2`] = `
                         }
                       >
                         <react-native-mock>
-                          <Text
+                          <ImageBackground
+                            source={
+                              Object {
+                                "testUri": "src/images/select3.png",
+                              }
+                            }
                             style={
                               Object {
-                                "color": "#000",
-                                "fontFamily": "OFLGoudyStM",
-                                "fontSize": 60,
-                                "marginTop": 11,
+                                "alignItems": "center",
+                                "alignSelf": "stretch",
+                                "height": null,
+                                "justifyContent": "center",
+                                "width": null,
                               }
                             }
                           >
                             <react-native-mock>
-                              D
+                              <Text
+                                style={
+                                  Object {
+                                    "color": "#000",
+                                    "fontFamily": "OFLGoudyStM",
+                                    "fontSize": 60,
+                                    "marginTop": 11,
+                                  }
+                                }
+                              >
+                                <react-native-mock>
+                                  D
+                                </react-native-mock>
+                              </Text>
                             </react-native-mock>
-                          </Text>
+                          </ImageBackground>
                         </react-native-mock>
                       </TouchableOpacity>
                     </react-native-mock>
@@ -777,13 +973,14 @@ exports[`Grid component matches the snapshot 2`] = `
                   >
                     <react-native-mock>
                       <TouchableOpacity
+                        activeOpacity={0.8}
                         key="gridItem3"
                         onLongPress={[Function]}
                         onPress={[Function]}
                         style={
                           Object {
                             "alignItems": "center",
-                            "backgroundColor": "#ffa",
+                            "backgroundColor": "#fff",
                             "borderColor": "#000000",
                             "borderWidth": 2,
                             "flex": 0.3333333333333333,
@@ -793,23 +990,43 @@ exports[`Grid component matches the snapshot 2`] = `
                         }
                       >
                         <react-native-mock>
-                          <Text
+                          <ImageBackground
+                            source={
+                              Object {
+                                "testUri": "src/images/select4.png",
+                              }
+                            }
                             style={
                               Object {
-                                "color": "#000",
-                                "fontFamily": "OFLGoudyStM",
-                                "fontSize": 60,
-                                "marginTop": 11,
+                                "alignItems": "center",
+                                "alignSelf": "stretch",
+                                "height": null,
+                                "justifyContent": "center",
+                                "width": null,
                               }
                             }
                           >
                             <react-native-mock>
-                              F
+                              <Text
+                                style={
+                                  Object {
+                                    "color": "#000",
+                                    "fontFamily": "OFLGoudyStM",
+                                    "fontSize": 60,
+                                    "marginTop": 11,
+                                  }
+                                }
+                              >
+                                <react-native-mock>
+                                  F
+                                </react-native-mock>
+                              </Text>
                             </react-native-mock>
-                          </Text>
+                          </ImageBackground>
                         </react-native-mock>
                       </TouchableOpacity>
                       <TouchableOpacity
+                        activeOpacity={0.8}
                         key="gridItem4"
                         onLongPress={[Function]}
                         onPress={[Function]}
@@ -826,23 +1043,39 @@ exports[`Grid component matches the snapshot 2`] = `
                         }
                       >
                         <react-native-mock>
-                          <Text
+                          <ImageBackground
+                            source={null}
                             style={
                               Object {
-                                "color": "#000",
-                                "fontFamily": "OFLGoudyStM",
-                                "fontSize": 60,
-                                "marginTop": 11,
+                                "alignItems": "center",
+                                "alignSelf": "stretch",
+                                "height": null,
+                                "justifyContent": "center",
+                                "width": null,
                               }
                             }
                           >
                             <react-native-mock>
-                              G
+                              <Text
+                                style={
+                                  Object {
+                                    "color": "#000",
+                                    "fontFamily": "OFLGoudyStM",
+                                    "fontSize": 60,
+                                    "marginTop": 11,
+                                  }
+                                }
+                              >
+                                <react-native-mock>
+                                  G
+                                </react-native-mock>
+                              </Text>
                             </react-native-mock>
-                          </Text>
+                          </ImageBackground>
                         </react-native-mock>
                       </TouchableOpacity>
                       <TouchableOpacity
+                        activeOpacity={0.8}
                         key="gridItem5"
                         onLongPress={[Function]}
                         onPress={[Function]}
@@ -859,20 +1092,35 @@ exports[`Grid component matches the snapshot 2`] = `
                         }
                       >
                         <react-native-mock>
-                          <Text
+                          <ImageBackground
+                            source={null}
                             style={
                               Object {
-                                "color": "#000",
-                                "fontFamily": "OFLGoudyStM",
-                                "fontSize": 60,
-                                "marginTop": 11,
+                                "alignItems": "center",
+                                "alignSelf": "stretch",
+                                "height": null,
+                                "justifyContent": "center",
+                                "width": null,
                               }
                             }
                           >
                             <react-native-mock>
-                              H
+                              <Text
+                                style={
+                                  Object {
+                                    "color": "#000",
+                                    "fontFamily": "OFLGoudyStM",
+                                    "fontSize": 60,
+                                    "marginTop": 11,
+                                  }
+                                }
+                              >
+                                <react-native-mock>
+                                  H
+                                </react-native-mock>
+                              </Text>
                             </react-native-mock>
-                          </Text>
+                          </ImageBackground>
                         </react-native-mock>
                       </TouchableOpacity>
                     </react-native-mock>
@@ -889,6 +1137,7 @@ exports[`Grid component matches the snapshot 2`] = `
                   >
                     <react-native-mock>
                       <TouchableOpacity
+                        activeOpacity={0.8}
                         key="gridItem6"
                         onLongPress={[Function]}
                         onPress={[Function]}
@@ -905,23 +1154,39 @@ exports[`Grid component matches the snapshot 2`] = `
                         }
                       >
                         <react-native-mock>
-                          <Text
+                          <ImageBackground
+                            source={null}
                             style={
                               Object {
-                                "color": "#000",
-                                "fontFamily": "OFLGoudyStM",
-                                "fontSize": 60,
-                                "marginTop": 11,
+                                "alignItems": "center",
+                                "alignSelf": "stretch",
+                                "height": null,
+                                "justifyContent": "center",
+                                "width": null,
                               }
                             }
                           >
                             <react-native-mock>
-                              J
+                              <Text
+                                style={
+                                  Object {
+                                    "color": "#000",
+                                    "fontFamily": "OFLGoudyStM",
+                                    "fontSize": 60,
+                                    "marginTop": 11,
+                                  }
+                                }
+                              >
+                                <react-native-mock>
+                                  J
+                                </react-native-mock>
+                              </Text>
                             </react-native-mock>
-                          </Text>
+                          </ImageBackground>
                         </react-native-mock>
                       </TouchableOpacity>
                       <TouchableOpacity
+                        activeOpacity={0.8}
                         key="gridItem7"
                         onLongPress={[Function]}
                         onPress={[Function]}
@@ -938,30 +1203,46 @@ exports[`Grid component matches the snapshot 2`] = `
                         }
                       >
                         <react-native-mock>
-                          <Text
+                          <ImageBackground
+                            source={null}
                             style={
                               Object {
-                                "color": "#000",
-                                "fontFamily": "OFLGoudyStM",
-                                "fontSize": 60,
-                                "marginTop": 11,
+                                "alignItems": "center",
+                                "alignSelf": "stretch",
+                                "height": null,
+                                "justifyContent": "center",
+                                "width": null,
                               }
                             }
                           >
                             <react-native-mock>
-                              K
+                              <Text
+                                style={
+                                  Object {
+                                    "color": "#000",
+                                    "fontFamily": "OFLGoudyStM",
+                                    "fontSize": 60,
+                                    "marginTop": 11,
+                                  }
+                                }
+                              >
+                                <react-native-mock>
+                                  K
+                                </react-native-mock>
+                              </Text>
                             </react-native-mock>
-                          </Text>
+                          </ImageBackground>
                         </react-native-mock>
                       </TouchableOpacity>
                       <TouchableOpacity
+                        activeOpacity={0.8}
                         key="gridItem8"
                         onLongPress={[Function]}
                         onPress={[Function]}
                         style={
                           Object {
                             "alignItems": "center",
-                            "backgroundColor": "#ffa",
+                            "backgroundColor": "#fff",
                             "borderColor": "#000000",
                             "borderWidth": 2,
                             "flex": 0.3333333333333333,
@@ -971,20 +1252,39 @@ exports[`Grid component matches the snapshot 2`] = `
                         }
                       >
                         <react-native-mock>
-                          <Text
+                          <ImageBackground
+                            source={
+                              Object {
+                                "testUri": "src/images/select9.png",
+                              }
+                            }
                             style={
                               Object {
-                                "color": "#000",
-                                "fontFamily": "OFLGoudyStM",
-                                "fontSize": 60,
-                                "marginTop": 11,
+                                "alignItems": "center",
+                                "alignSelf": "stretch",
+                                "height": null,
+                                "justifyContent": "center",
+                                "width": null,
                               }
                             }
                           >
                             <react-native-mock>
-                              L
+                              <Text
+                                style={
+                                  Object {
+                                    "color": "#000",
+                                    "fontFamily": "OFLGoudyStM",
+                                    "fontSize": 60,
+                                    "marginTop": 11,
+                                  }
+                                }
+                              >
+                                <react-native-mock>
+                                  L
+                                </react-native-mock>
+                              </Text>
                             </react-native-mock>
-                          </Text>
+                          </ImageBackground>
                         </react-native-mock>
                       </TouchableOpacity>
                     </react-native-mock>

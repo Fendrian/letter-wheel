@@ -37,10 +37,6 @@ export default StyleSheet.create({
     ...block,
     backgroundColor: '#fff',
   },
-  blockSelected: {
-    ...block,
-    backgroundColor: '#ffa',
-  },
   centerBlock: {
     ...block,
     backgroundColor: '#aaa',
@@ -78,6 +74,13 @@ export default StyleSheet.create({
     paddingLeft: 12,
     paddingRight: 12,
     paddingTop: 8,
+  },
+  gridSelect: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    alignSelf: 'stretch',
+    width: null,
+    height: null,
   },
   gridWrapper: {
     alignItems: 'center',

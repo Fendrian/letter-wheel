@@ -14,6 +14,15 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import GridStyle from '../styles/GridStyle';
 
 import background from '../images/gridBackground.png';
+import select1 from '../images/select1.png';
+import select2 from '../images/select2.png';
+import select3 from '../images/select3.png';
+import select4 from '../images/select4.png';
+import select5 from '../images/select5.png';
+import select6 from '../images/select6.png';
+import select7 from '../images/select7.png';
+import select8 from '../images/select8.png';
+import select9 from '../images/select9.png';
 
 const customPulseAnimation = {
   0.00: { scale: 1 },
@@ -33,6 +42,18 @@ const customShakeAnimation = {
   0.750: { translateX: -6 },
   1.000: { translateX: 0 },
 };
+
+const selectImages = [
+  select1,
+  select2,
+  select3,
+  select4,
+  select5,
+  select6,
+  select7,
+  select8,
+  select9,
+];
 
 @observer
 export default class Grid extends React.Component {
@@ -77,12 +98,9 @@ export default class Grid extends React.Component {
       style = 'centerBlock';
     }
 
-    if (selected) {
-      style = `${style}Selected`;
-    }
-
     return (
       <TouchableOpacity
+        activeOpacity={0.8}
         onPress={() => { this.props.toggleSelected(i); }}
         onLongPress={() => {
           Vibration.vibrate(100);
@@ -94,9 +112,14 @@ export default class Grid extends React.Component {
         style={GridStyle[style]}
         key={`gridItem${i}`}
       >
-        <Text style={GridStyle.letter}>
-          {letter.toUpperCase()}
-        </Text>
+        <ImageBackground
+          source={selected ? selectImages[i] : null}
+          style={GridStyle.gridSelect}
+        >
+          <Text style={GridStyle.letter}>
+            {letter.toUpperCase()}
+          </Text>
+        </ImageBackground>
       </TouchableOpacity>
     );
   }
