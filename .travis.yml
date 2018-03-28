@@ -27,6 +27,7 @@ matrix:
       before_install:
         - nvm install 7
         - yarn
+        - yes | sdkmanager "platforms;android-26"
       android:
         components:
           - build-tools-23.0.1
