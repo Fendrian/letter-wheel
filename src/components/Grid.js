@@ -188,6 +188,7 @@ export default class Grid extends React.Component {
         style={gridWrapper}
       >
         <ImageBackground
+          resizeMode="stretch"
           source={background}
           style={gridBackground}
         >

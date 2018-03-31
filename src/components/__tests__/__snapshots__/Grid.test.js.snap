@@ -68,6 +68,9 @@ exports[`Grid component matches the snapshot 1`] = `
         "alignItems": "center",
         "alignSelf": "stretch",
         "justifyContent": "center",
+        "marginBottom": -5,
+        "top": 0,
+        "zIndex": 100,
       }
     }
     useNativeDriver={false}
@@ -79,6 +82,9 @@ exports[`Grid component matches the snapshot 1`] = `
             "alignItems": "center",
             "alignSelf": "stretch",
             "justifyContent": "center",
+            "marginBottom": -5,
+            "top": 0,
+            "zIndex": 100,
           },
           Object {},
           Object {},
@@ -88,6 +94,7 @@ exports[`Grid component matches the snapshot 1`] = `
       <View>
         <react-native-mock>
           <ImageBackground
+            resizeMode="stretch"
             source={
               Object {
                 "testUri": "src/images/gridBackground.png",
@@ -100,9 +107,9 @@ exports[`Grid component matches the snapshot 1`] = `
                 "height": null,
                 "justifyContent": "center",
                 "paddingBottom": 2,
-                "paddingLeft": 12,
-                "paddingRight": 12,
-                "paddingTop": 8,
+                "paddingLeft": 15,
+                "paddingRight": 15,
+                "paddingTop": 5,
                 "width": null,
               }
             }
@@ -746,6 +753,9 @@ exports[`Grid component matches the snapshot 2`] = `
         "alignItems": "center",
         "alignSelf": "stretch",
         "justifyContent": "center",
+        "marginBottom": -5,
+        "top": 0,
+        "zIndex": 100,
       }
     }
     useNativeDriver={false}
@@ -757,6 +767,9 @@ exports[`Grid component matches the snapshot 2`] = `
             "alignItems": "center",
             "alignSelf": "stretch",
             "justifyContent": "center",
+            "marginBottom": -5,
+            "top": 0,
+            "zIndex": 100,
           },
           Object {},
           Object {},
@@ -766,6 +779,7 @@ exports[`Grid component matches the snapshot 2`] = `
       <View>
         <react-native-mock>
           <ImageBackground
+            resizeMode="stretch"
             source={
               Object {
                 "testUri": "src/images/gridBackground.png",
@@ -778,9 +792,9 @@ exports[`Grid component matches the snapshot 2`] = `
                 "height": null,
                 "justifyContent": "center",
                 "paddingBottom": 2,
-                "paddingLeft": 12,
-                "paddingRight": 12,
-                "paddingTop": 8,
+                "paddingLeft": 15,
+                "paddingRight": 15,
+                "paddingTop": 5,
                 "width": null,
               }
             }

@@ -1,11 +1,13 @@
 import React from 'react';
-import { ListView } from 'react-native';
+import { Image, ListView, Text, View } from 'react-native';
 import { mount } from 'enzyme';
-import { observable } from 'mobx';
+import { observable, isObservableProp } from 'mobx';
 
 import Control from '../Control';
 import ControlStyle from '../../styles/ControlStyle';
 import Button from '../Button';
+
+import listBody from '../../images/listBody.png';
 
 describe('Control component', () => {
   afterEach(() => {
@@ -43,6 +45,29 @@ describe('Control component', () => {
     });
     render.update();
     expect(render).toMatchSnapshot();
+  });
+
+  it('provides a listHeight observable', () => {
+    const render = mount((
+      <Control />
+    ));
+    const instance = render.instance();
+    expect(instance.listHeight).toEqual(1000);
+    expect(isObservableProp(instance, 'listHeight')).toBeTruthy();
+  });
+
+  it('provides a setListHeightFromEvent function', () => {
+    const render = mount((
+      <Control />
+    ));
+    const instance = render.instance();
+    expect(instance.setListHeightFromEvent).toEqual(expect.any(Function));
+    expect(instance.setListHeightFromEvent({ nativeEvent: { layout: { height: 5 } } }))
+      .toBeUndefined();
+    expect(instance.listHeight).toEqual(5);
+    expect(instance.setListHeightFromEvent({ nativeEvent: { layout: { height: 1518 } } }))
+      .toBeUndefined();
+    expect(instance.listHeight).toEqual(1518);
   });
 
   it('provides a formattedTriedWords computed with formatting indications', () => {
@@ -178,6 +203,16 @@ describe('Control component', () => {
     expect(render.props().onMenu).toHaveBeenCalledTimes(1);
   });
 
+  it('sets height of tried word list on layout', () => {
+    const render = mount((
+      <Control />
+    ));
+    const instance = render.instance();
+    const listParent = render.find({ onLayout: instance.setListHeightFromEvent });
+    expect(listParent).toHaveLength(1);
+    expect(listParent.find(ListView)).toHaveLength(1);
+  });
+
   it('provides a list of tried words', () => {
     const render = mount((
       <Control
@@ -210,15 +245,43 @@ describe('Control component', () => {
     ]);
     const { renderRow } = list.props();
     const result1 = mount(renderRow({ word: 'bail', style: 'correct' }));
-    expect(result1.props().style).toEqual(ControlStyle.correct);
-    expect(result1.props().children).toEqual('bail');
+    expect(result1.find(Text).at(0).props().style).toEqual(ControlStyle.correct);
+    expect(result1.find(Text).at(0).props().children).toEqual('bail');
 
     const result2 = mount(renderRow({ word: 'lafe', style: 'incorrect' }));
-    expect(result2.props().style).toEqual(ControlStyle.incorrect);
-    expect(result2.props().children).toEqual('lafe');
+    expect(result2.find(Text).at(0).props().style).toEqual(ControlStyle.incorrect);
+    expect(result2.find(Text).at(0).props().children).toEqual('lafe');
 
     const result3 = mount(renderRow({ word: 'words', style: 'neutral' }));
-    expect(result3.props().style).toEqual(ControlStyle.neutral);
-    expect(result3.props().children).toEqual('words');
+    expect(result3.find(Text).at(0).props().style).toEqual(ControlStyle.neutral);
+    expect(result3.find(Text).at(0).props().children).toEqual('words');
+  });
+
+  it('renders a header on the list', () => {
+    const render = mount((
+      <Control />
+    ));
+    const list = render.find(ListView).at(0);
+    expect(list.props().renderHeader).toEqual(expect.any(Function));
+    const header = mount(list.props().renderHeader());
+
+    expect(header.find(Image)).toHaveLength(1);
+    expect(header.find(Image).props().source).toEqual(listBody);
+    expect(header.find(Image).props().resizeMode).toEqual('stretch');
+    expect(header.find(Image).props().fadeDuration).toEqual(0);
+  });
+
+  it('renders a footer on the list', () => {
+    const render = mount((
+      <Control />
+    ));
+    const list = render.find(ListView).at(0);
+    expect(list.props().renderFooter).toEqual(expect.any(Function));
+    const footer = mount(list.props().renderFooter());
+
+    expect(footer.find(Image)).toHaveLength(1);
+    expect(footer.find(Image).props().source).toEqual(listBody);
+    expect(footer.find(Image).props().resizeMode).toEqual('stretch');
+    expect(footer.find(Image).props().fadeDuration).toEqual(0);
   });
 });

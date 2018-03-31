@@ -19,6 +19,7 @@ exports[`Button component matches the snapshot 1`] = `
   >
     <react-native-mock>
       <ImageBackground
+        fadeDuration={0}
         source={
           Object {
             "testUri": "src/images/buttonYellowPassive.png",

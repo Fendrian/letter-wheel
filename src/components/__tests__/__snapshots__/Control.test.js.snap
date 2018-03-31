@@ -27,6 +27,7 @@ exports[`Control component matches the snapshot 1`] = `
           Object {
             "flex": 1,
             "flexDirection": "row",
+            "overflow": "visible",
           }
         }
       >
@@ -34,22 +35,106 @@ exports[`Control component matches the snapshot 1`] = `
           <View
             style={
               Object {
-                "backgroundColor": "#fff",
-                "borderRadius": 4,
                 "flex": 4,
-                "marginBottom": 10,
-                "marginTop": 10,
-                "overflow": "hidden",
+                "marginLeft": 5,
               }
             }
           >
             <react-native-mock>
+              <Image
+                source={
+                  Object {
+                    "testUri": "src/images/leftPapers.png",
+                  }
+                }
+                style={
+                  Object {
+                    "height": 600,
+                    "position": "absolute",
+                    "right": -20,
+                    "top": -10,
+                    "width": 300,
+                  }
+                }
+              >
+                <react-native-mock />
+              </Image>
+              <View
+                onLayout={[Function]}
+                style={
+                  Object {
+                    "flex": 1,
+                  }
+                }
+              >
+                <react-native-mock>
+                  <ListView
+                    contentContainerStyle={
+                      Array [
+                        Object {
+                          "alignItems": "center",
+                          "justifyContent": "center",
+                          "overflow": "visible",
+                        },
+                        Object {
+                          "paddingBottom": 925,
+                        },
+                      ]
+                    }
+                    dataSource={
+                      ListViewDataSource {
+                        "_dataBlob": Array [
+                          Object {
+                            "style": "neutral",
+                            "word": "No words",
+                          },
+                        ],
+                      }
+                    }
+                    enableEmptySections={true}
+                    overScrollMode="never"
+                    renderFooter={[Function]}
+                    renderHeader={[Function]}
+                    renderRow={[Function]}
+                    renderScrollComponent={[Function]}
+                    scrollRenderAheadDistance={500}
+                    showsVerticalScrollIndicator={false}
+                  >
+                    <react-native-mock />
+                  </ListView>
+                </react-native-mock>
+              </View>
+              <Image
+                source={
+                  Object {
+                    "testUri": "src/images/bluePaper.png",
+                  }
+                }
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "alignSelf": "stretch",
+                    "bottom": -156,
+                    "height": 200,
+                    "justifyContent": "center",
+                    "position": "absolute",
+                    "right": 5,
+                    "width": 250,
+                  }
+                }
+              >
+                <react-native-mock />
+              </Image>
               <View
                 style={
                   Object {
                     "alignItems": "center",
-                    "backgroundColor": "#b3c9d0",
+                    "bottom": 5,
+                    "flex": 1,
                     "justifyContent": "center",
+                    "left": 0,
+                    "position": "absolute",
+                    "right": 0,
                   }
                 }
               >
@@ -70,29 +155,6 @@ exports[`Control component matches the snapshot 1`] = `
                   </Text>
                 </react-native-mock>
               </View>
-              <ListView
-                dataSource={
-                  ListViewDataSource {
-                    "_dataBlob": Array [
-                      Object {
-                        "style": "neutral",
-                        "word": "No words",
-                      },
-                    ],
-                  }
-                }
-                enableEmptySections={true}
-                renderRow={[Function]}
-                renderScrollComponent={[Function]}
-                style={
-                  Object {
-                    "marginBottom": 10,
-                    "marginLeft": 10,
-                  }
-                }
-              >
-                <react-native-mock />
-              </ListView>
             </react-native-mock>
           </View>
           <View
@@ -149,6 +211,7 @@ exports[`Control component matches the snapshot 1`] = `
                     >
                       <react-native-mock>
                         <ImageBackground
+                          fadeDuration={0}
                           source={
                             Object {
                               "testUri": "src/images/buttonBluePassive.png",
@@ -262,6 +325,7 @@ exports[`Control component matches the snapshot 1`] = `
                     >
                       <react-native-mock>
                         <ImageBackground
+                          fadeDuration={0}
                           source={
                             Object {
                               "testUri": "src/images/buttonYellowPassive.png",
@@ -364,6 +428,7 @@ exports[`Control component matches the snapshot 2`] = `
           Object {
             "flex": 1,
             "flexDirection": "row",
+            "overflow": "visible",
           }
         }
       >
@@ -371,22 +436,150 @@ exports[`Control component matches the snapshot 2`] = `
           <View
             style={
               Object {
-                "backgroundColor": "#fff",
-                "borderRadius": 4,
                 "flex": 4,
-                "marginBottom": 10,
-                "marginTop": 10,
-                "overflow": "hidden",
+                "marginLeft": 5,
               }
             }
           >
             <react-native-mock>
+              <Image
+                source={
+                  Object {
+                    "testUri": "src/images/leftPapers.png",
+                  }
+                }
+                style={
+                  Object {
+                    "height": 600,
+                    "position": "absolute",
+                    "right": -20,
+                    "top": -10,
+                    "width": 300,
+                  }
+                }
+              >
+                <react-native-mock />
+              </Image>
+              <View
+                onLayout={[Function]}
+                style={
+                  Object {
+                    "flex": 1,
+                  }
+                }
+              >
+                <react-native-mock>
+                  <ListView
+                    contentContainerStyle={
+                      Array [
+                        Object {
+                          "alignItems": "center",
+                          "justifyContent": "center",
+                          "overflow": "visible",
+                        },
+                        Object {
+                          "paddingBottom": 650,
+                        },
+                      ]
+                    }
+                    dataSource={
+                      ListViewDataSource {
+                        "_dataBlob": Array [
+                          Object {
+                            "style": "neutral",
+                            "word": "Not found:",
+                          },
+                          Object {
+                            "style": "neutral",
+                            "word": "hail",
+                          },
+                          Object {
+                            "style": "neutral",
+                            "word": "halt",
+                          },
+                          Object {
+                            "style": "neutral",
+                            "word": "haul",
+                          },
+                          Object {
+                            "style": "neutral",
+                            "word": "tail",
+                          },
+                          Object {
+                            "style": "neutral",
+                            "word": " ",
+                          },
+                          Object {
+                            "style": "neutral",
+                            "word": "Your words:",
+                          },
+                          Object {
+                            "style": "correct",
+                            "word": "alit",
+                          },
+                          Object {
+                            "style": "incorrect",
+                            "word": "asdf",
+                          },
+                          Object {
+                            "style": "correct",
+                            "word": "bail",
+                          },
+                          Object {
+                            "style": "correct",
+                            "word": "built",
+                          },
+                          Object {
+                            "style": "incorrect",
+                            "word": "yrasd",
+                          },
+                        ],
+                      }
+                    }
+                    enableEmptySections={true}
+                    overScrollMode="never"
+                    renderFooter={[Function]}
+                    renderHeader={[Function]}
+                    renderRow={[Function]}
+                    renderScrollComponent={[Function]}
+                    scrollRenderAheadDistance={500}
+                    showsVerticalScrollIndicator={false}
+                  >
+                    <react-native-mock />
+                  </ListView>
+                </react-native-mock>
+              </View>
+              <Image
+                source={
+                  Object {
+                    "testUri": "src/images/bluePaper.png",
+                  }
+                }
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "alignSelf": "stretch",
+                    "bottom": -156,
+                    "height": 200,
+                    "justifyContent": "center",
+                    "position": "absolute",
+                    "right": 5,
+                    "width": 250,
+                  }
+                }
+              >
+                <react-native-mock />
+              </Image>
               <View
                 style={
                   Object {
                     "alignItems": "center",
-                    "backgroundColor": "#b3c9d0",
+                    "bottom": 5,
+                    "flex": 1,
                     "justifyContent": "center",
+                    "left": 0,
+                    "position": "absolute",
+                    "right": 0,
                   }
                 }
               >
@@ -407,73 +600,6 @@ exports[`Control component matches the snapshot 2`] = `
                   </Text>
                 </react-native-mock>
               </View>
-              <ListView
-                dataSource={
-                  ListViewDataSource {
-                    "_dataBlob": Array [
-                      Object {
-                        "style": "neutral",
-                        "word": "Not found:",
-                      },
-                      Object {
-                        "style": "neutral",
-                        "word": "hail",
-                      },
-                      Object {
-                        "style": "neutral",
-                        "word": "halt",
-                      },
-                      Object {
-                        "style": "neutral",
-                        "word": "haul",
-                      },
-                      Object {
-                        "style": "neutral",
-                        "word": "tail",
-                      },
-                      Object {
-                        "style": "neutral",
-                        "word": " ",
-                      },
-                      Object {
-                        "style": "neutral",
-                        "word": "Your words:",
-                      },
-                      Object {
-                        "style": "correct",
-                        "word": "alit",
-                      },
-                      Object {
-                        "style": "incorrect",
-                        "word": "asdf",
-                      },
-                      Object {
-                        "style": "correct",
-                        "word": "bail",
-                      },
-                      Object {
-                        "style": "correct",
-                        "word": "built",
-                      },
-                      Object {
-                        "style": "incorrect",
-                        "word": "yrasd",
-                      },
-                    ],
-                  }
-                }
-                enableEmptySections={true}
-                renderRow={[Function]}
-                renderScrollComponent={[Function]}
-                style={
-                  Object {
-                    "marginBottom": 10,
-                    "marginLeft": 10,
-                  }
-                }
-              >
-                <react-native-mock />
-              </ListView>
             </react-native-mock>
           </View>
           <View
@@ -532,6 +658,7 @@ exports[`Control component matches the snapshot 2`] = `
                     >
                       <react-native-mock>
                         <ImageBackground
+                          fadeDuration={0}
                           source={
                             Object {
                               "testUri": "src/images/buttonBluePassive.png",
@@ -672,6 +799,7 @@ exports[`Control component matches the snapshot 2`] = `
                     >
                       <react-native-mock>
                         <ImageBackground
+                          fadeDuration={0}
                           source={
                             Object {
                               "testUri": "src/images/buttonYellowPassive.png",

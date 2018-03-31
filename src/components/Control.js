@@ -1,15 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
+  Image,
+  ImageBackground,
   ListView,
   View,
   Text,
 } from 'react-native';
 import { observer, PropTypes as MobxPropTypes } from 'mobx-react';
-import { computed, observable } from 'mobx';
+import { action, computed, observable } from 'mobx';
 import Button from './Button';
 
 import ControlStyle from '../styles/ControlStyle';
+
+import bluePaper from '../images/bluePaper.png';
+import leftPapers from '../images/leftPapers.png';
+import listBody from '../images/listBody.png';
 
 const listDataSource = new ListView.DataSource({ rowHasChanged() {} });
 
@@ -79,49 +85,110 @@ export default class Control extends React.Component {
       '';
   }
 
+  @action setListHeightFromEvent = (event) => {
+    this.listHeight = event.nativeEvent.layout.height;
+  }
+  @observable listHeight = 1000;
+
   render() {
     const {
+      bluePaper: bluePaperStyle,
       buttonWrapper,
       columnContainer,
       container,
       leftColumn,
-      leftColumnHeader,
-      leftColumnHeaderText,
+      leftPapers: leftPapersStyle,
+      listContainer,
       resultContainer,
       resultText,
       rightColumn,
-      row,
       progressContainer,
       progressText,
       progressTextSmall,
       timerContainer,
       timerText,
+      wordCount,
+      wordCountText,
+      wordWrapper,
     } = ControlStyle;
 
     const correct = [...this.props.tried].filter(([, t]) => t).length;
 
     const triedWordRows = listDataSource.cloneWithRows(this.formattedTriedWords);
 
+    const leftListBottomPadding = Math.max(
+      this.listHeight - (25 * this.formattedTriedWords.length) - 50,
+      20,
+    );
+
     return (
       <View style={container}>
         <View style={columnContainer}>
 
           <View style={leftColumn}>
-            <View style={leftColumnHeader}>
-              <Text style={leftColumnHeaderText}>
+            <Image
+              source={leftPapers}
+              style={leftPapersStyle}
+            />
+            <View
+              onLayout={this.setListHeightFromEvent}
+              style={wordWrapper}
+            >
+              <ListView
+                contentContainerStyle={[
+                  listContainer,
+                  { paddingBottom: leftListBottomPadding },
+                ]}
+                dataSource={triedWordRows}
+                enableEmptySections
+                overScrollMode="never"
+                renderFooter={() => (
+                  <View
+                    style={ControlStyle.rowWrapper}
+                  >
+                    <Image
+                      fadeDuration={0}
+                      resizeMode="stretch"
+                      style={ControlStyle.rowEndImage}
+                      source={listBody}
+                    />
+                  </View>
+                )}
+                renderHeader={() => (
+                  <Image
+                    fadeDuration={0}
+                    resizeMode="stretch"
+                    style={ControlStyle.rowStartImage}
+                    source={listBody}
+                  />
+                )}
+                renderRow={singleRow => (
+                  <View style={ControlStyle.rowWrapper}>
+                    <ImageBackground
+                      fadeDuration={0}
+                      resizeMode="stretch"
+                      style={ControlStyle.rowWrapperImage}
+                      source={listBody}
+                    >
+                      <Text style={ControlStyle[singleRow.style]}>
+                        {singleRow.word}
+                      </Text>
+                    </ImageBackground>
+                  </View>
+                )}
+                scrollRenderAheadDistance={500}
+                showsVerticalScrollIndicator={false}
+              />
+            </View>
+            <Image
+              source={bluePaper}
+              style={bluePaperStyle}
+            />
+            <View style={wordCount}>
+              <Text style={wordCountText}>
                 {`${correct} / ${this.props.words.size}`}
               </Text>
             </View>
-            <ListView
-              dataSource={triedWordRows}
-              enableEmptySections
-              renderRow={singleRow => (
-                <Text style={ControlStyle[singleRow.style]}>
-                  {singleRow.word}
-                </Text>
-              )}
-              style={row}
-            />
           </View>
 
           <View style={rightColumn}>

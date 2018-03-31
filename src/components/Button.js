@@ -53,6 +53,7 @@ export default class Button extends React.Component {
         style={ButtonStyle.wrapper}
       >
         <ImageBackground
+          fadeDuration={0}
           source={this.isPressing ? pressed : unpressed}
           style={ButtonStyle.image}
         >

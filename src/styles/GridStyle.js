@@ -71,9 +71,9 @@ export default StyleSheet.create({
     width: null,
     height: null,
     paddingBottom: 2,
-    paddingLeft: 12,
-    paddingRight: 12,
-    paddingTop: 8,
+    paddingLeft: 15,
+    paddingRight: 15,
+    paddingTop: 5,
   },
   gridSelect: {
     alignItems: 'center',
@@ -86,6 +86,9 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     alignSelf: 'stretch',
+    zIndex: 100,
+    marginBottom: -5,
+    top: 0,
   },
   letter: {
     color: '#000',
