@@ -117,7 +117,7 @@ export default class Control extends React.Component {
     const triedWordRows = listDataSource.cloneWithRows(this.formattedTriedWords);
 
     const leftListBottomPadding = Math.max(
-      this.listHeight - (25 * this.formattedTriedWords.length) - 50,
+      this.listHeight - (25 * this.formattedTriedWords.length) - 60,
       20,
     );
 

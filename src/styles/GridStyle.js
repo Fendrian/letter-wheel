@@ -87,7 +87,7 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignSelf: 'stretch',
     zIndex: 100,
-    marginBottom: -5,
+    marginBottom: -10,
     top: 0,
   },
   letter: {

@@ -56,7 +56,7 @@ export default StyleSheet.create({
     position: 'absolute',
     height: 600,
     right: -20,
-    top: -10,
+    top: -5,
     width: 300,
   },
   wordCount: {
@@ -121,7 +121,7 @@ export default StyleSheet.create({
     alignSelf: 'stretch',
     width: null,
     height: 5,
-    marginTop: 20,
+    marginTop: 30,
   },
   rowWrapperImage: {
     alignItems: 'center',
