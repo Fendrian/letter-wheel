@@ -70,10 +70,10 @@ export default StyleSheet.create({
     alignSelf: 'stretch',
     width: null,
     height: null,
-    paddingBottom: 2,
+    paddingBottom: 7,
     paddingLeft: 15,
     paddingRight: 15,
-    paddingTop: 5,
+    paddingTop: 20,
   },
   gridSelect: {
     alignItems: 'center',

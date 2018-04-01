@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View } from 'react-native';
+import { StatusBar, View } from 'react-native';
 import { inject, observer } from 'mobx-react';
 import Spinner from 'react-native-loading-spinner-overlay';
 
@@ -26,6 +26,10 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
+        <StatusBar
+          backgroundColor="#ffffff55"
+          translucent
+        />
         <Spinner
           visible={this.props.store.loading}
           textContent="Loading..."
