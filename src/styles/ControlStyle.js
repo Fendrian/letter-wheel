@@ -2,6 +2,7 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   container: {
+    alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'column',
     flex: 1,
@@ -47,6 +48,7 @@ export default StyleSheet.create({
     overflow: 'visible',
     flex: 1,
     flexDirection: 'row',
+    maxWidth: 315,
   },
   leftColumn: {
     marginLeft: 5,
@@ -81,11 +83,11 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     alignSelf: 'stretch',
-    width: 250,
-    height: 200,
+    width: 500,
+    height: 400,
     position: 'absolute',
-    right: 5,
-    bottom: -156,
+    right: -15,
+    bottom: -354,
   },
   rightColumn: {
     flex: 6,

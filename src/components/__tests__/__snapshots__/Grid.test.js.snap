@@ -66,10 +66,12 @@ exports[`Grid component matches the snapshot 1`] = `
     style={
       Object {
         "alignItems": "center",
-        "alignSelf": "stretch",
+        "alignSelf": "center",
         "justifyContent": "center",
         "marginBottom": -10,
+        "maxWidth": 315,
         "top": 0,
+        "width": "100%",
         "zIndex": 100,
       }
     }
@@ -80,10 +82,12 @@ exports[`Grid component matches the snapshot 1`] = `
         Array [
           Object {
             "alignItems": "center",
-            "alignSelf": "stretch",
+            "alignSelf": "center",
             "justifyContent": "center",
             "marginBottom": -10,
+            "maxWidth": 315,
             "top": 0,
+            "width": "100%",
             "zIndex": 100,
           },
           Object {},
@@ -119,9 +123,9 @@ exports[`Grid component matches the snapshot 1`] = `
                 style={
                   Object {
                     "alignItems": "center",
-                    "height": 300,
                     "justifyContent": "center",
-                    "width": 300,
+                    "maxHeight": 300,
+                    "maxWidth": 300,
                   }
                 }
               >
@@ -751,10 +755,12 @@ exports[`Grid component matches the snapshot 2`] = `
     style={
       Object {
         "alignItems": "center",
-        "alignSelf": "stretch",
+        "alignSelf": "center",
         "justifyContent": "center",
         "marginBottom": -10,
+        "maxWidth": 315,
         "top": 0,
+        "width": "100%",
         "zIndex": 100,
       }
     }
@@ -765,10 +771,12 @@ exports[`Grid component matches the snapshot 2`] = `
         Array [
           Object {
             "alignItems": "center",
-            "alignSelf": "stretch",
+            "alignSelf": "center",
             "justifyContent": "center",
             "marginBottom": -10,
+            "maxWidth": 315,
             "top": 0,
+            "width": "100%",
             "zIndex": 100,
           },
           Object {},
@@ -804,9 +812,9 @@ exports[`Grid component matches the snapshot 2`] = `
                 style={
                   Object {
                     "alignItems": "center",
-                    "height": 300,
                     "justifyContent": "center",
-                    "width": 300,
+                    "maxHeight": 300,
+                    "maxWidth": 300,
                   }
                 }
               >

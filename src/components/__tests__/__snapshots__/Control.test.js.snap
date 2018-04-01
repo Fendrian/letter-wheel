@@ -15,6 +15,7 @@ exports[`Control component matches the snapshot 1`] = `
   <View
     style={
       Object {
+        "alignItems": "center",
         "flex": 1,
         "flexDirection": "column",
         "justifyContent": "center",
@@ -27,6 +28,7 @@ exports[`Control component matches the snapshot 1`] = `
           Object {
             "flex": 1,
             "flexDirection": "row",
+            "maxWidth": 315,
             "overflow": "visible",
           }
         }
@@ -114,12 +116,12 @@ exports[`Control component matches the snapshot 1`] = `
                   Object {
                     "alignItems": "center",
                     "alignSelf": "stretch",
-                    "bottom": -156,
-                    "height": 200,
+                    "bottom": -354,
+                    "height": 400,
                     "justifyContent": "center",
                     "position": "absolute",
-                    "right": 5,
-                    "width": 250,
+                    "right": -15,
+                    "width": 500,
                   }
                 }
               >
@@ -416,6 +418,7 @@ exports[`Control component matches the snapshot 2`] = `
   <View
     style={
       Object {
+        "alignItems": "center",
         "flex": 1,
         "flexDirection": "column",
         "justifyContent": "center",
@@ -428,6 +431,7 @@ exports[`Control component matches the snapshot 2`] = `
           Object {
             "flex": 1,
             "flexDirection": "row",
+            "maxWidth": 315,
             "overflow": "visible",
           }
         }
@@ -559,12 +563,12 @@ exports[`Control component matches the snapshot 2`] = `
                   Object {
                     "alignItems": "center",
                     "alignSelf": "stretch",
-                    "bottom": -156,
-                    "height": 200,
+                    "bottom": -354,
+                    "height": 400,
                     "justifyContent": "center",
                     "position": "absolute",
-                    "right": 5,
-                    "width": 250,
+                    "right": -15,
+                    "width": 500,
                   }
                 }
               >

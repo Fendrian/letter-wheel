@@ -13,8 +13,8 @@ export default StyleSheet.create({
   container: {
     alignItems: 'center',
     justifyContent: 'center',
-    width: 300,
-    height: 300,
+    maxWidth: 300,
+    maxHeight: 300,
   },
   row: {
     flex: (1 / 3),
@@ -85,10 +85,12 @@ export default StyleSheet.create({
   gridWrapper: {
     alignItems: 'center',
     justifyContent: 'center',
-    alignSelf: 'stretch',
+    alignSelf: 'center',
     zIndex: 100,
     marginBottom: -10,
     top: 0,
+    width: '100%',
+    maxWidth: 315,
   },
   letter: {
     color: '#000',

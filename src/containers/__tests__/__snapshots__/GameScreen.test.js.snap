@@ -146,6 +146,7 @@ exports[`Game Screen component matches the snapshot 1`] = `
             Object {
               "flex": 1,
               "flexDirection": "column",
+              "width": "100%",
             }
           }
         >
