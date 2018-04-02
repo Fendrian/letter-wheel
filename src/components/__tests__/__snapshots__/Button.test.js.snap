@@ -6,42 +6,81 @@ exports[`Button component matches the snapshot 1`] = `
   onPress={[Function]}
   title=""
 >
-  <TouchableWithoutFeedback
-    onPress={[Function]}
-    onPressIn={[Function]}
-    onPressOut={[Function]}
+  <View
     style={
       Object {
-        "height": "auto",
-        "width": 200,
+        "width": "100%",
       }
     }
   >
     <react-native-mock>
-      <ImageBackground
+      <Image
         fadeDuration={0}
+        resizeMode="stretch"
+        source={
+          Object {
+            "testUri": "src/images/buttonYellowActive.png",
+          }
+        }
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "height": undefined,
+              "justifyContent": "center",
+              "marginRight": -4,
+              "width": undefined,
+            },
+            Object {
+              "opacity": 0,
+            },
+          ]
+        }
+      >
+        <react-native-mock />
+      </Image>
+      <Image
+        fadeDuration={0}
+        resizeMode="stretch"
         source={
           Object {
             "testUri": "src/images/buttonYellowPassive.png",
           }
         }
         style={
-          Object {
-            "alignItems": "center",
-            "alignSelf": "stretch",
-            "height": undefined,
-            "justifyContent": "center",
-            "paddingBottom": 2,
-            "paddingLeft": 12,
-            "paddingRight": 12,
-            "paddingTop": 8,
-            "width": undefined,
-          }
+          Array [
+            Object {
+              "alignItems": "center",
+              "height": undefined,
+              "justifyContent": "center",
+              "marginRight": -4,
+              "width": undefined,
+            },
+            Object {
+              "opacity": 1,
+            },
+          ]
         }
+      >
+        <react-native-mock />
+      </Image>
+      <TouchableWithoutFeedback
+        onPress={[Function]}
+        onPressIn={[Function]}
+        onPressOut={[Function]}
       >
         <react-native-mock>
           <View
-            pointerEvents="none"
+            style={
+              Object {
+                "alignItems": "center",
+                "justifyContent": "center",
+                "paddingBottom": 2,
+                "paddingLeft": 12,
+                "paddingRight": 12,
+                "paddingTop": 8,
+              }
+            }
           >
             <react-native-mock>
               <Text
@@ -59,8 +98,8 @@ exports[`Button component matches the snapshot 1`] = `
             </react-native-mock>
           </View>
         </react-native-mock>
-      </ImageBackground>
+      </TouchableWithoutFeedback>
     </react-native-mock>
-  </TouchableWithoutFeedback>
+  </View>
 </Button>
 `;

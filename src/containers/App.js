@@ -27,7 +27,7 @@ export default class App extends React.Component {
     return (
       <View style={{ flex: 1 }}>
         <StatusBar
-          backgroundColor="#ffffff55"
+          backgroundColor="#00000055"
           translucent
         />
         <Spinner

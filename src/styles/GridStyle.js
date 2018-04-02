@@ -3,10 +3,10 @@ import { StyleSheet } from 'react-native';
 const block = {
   alignItems: 'center',
   borderColor: '#000000',
-  borderWidth: 2,
-  flex: (1 / 3),
+  borderWidth: 3,
+  flex: 1,
   justifyContent: 'center',
-  margin: 0,
+  margin: -1.5,
 };
 
 export default StyleSheet.create({
@@ -17,7 +17,7 @@ export default StyleSheet.create({
     maxHeight: 300,
   },
   row: {
-    flex: (1 / 3),
+    flex: 1,
     flexDirection: 'row',
     margin: 0,
   },
@@ -81,6 +81,7 @@ export default StyleSheet.create({
     alignSelf: 'stretch',
     width: null,
     height: null,
+    margin: 1,
   },
   gridWrapper: {
     alignItems: 'center',

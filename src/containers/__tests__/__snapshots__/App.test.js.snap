@@ -132,7 +132,7 @@ exports[`Main App component matches the snapshot 1`] = `
     >
       <react-native-mock>
         <StatusBar
-          backgroundColor="#ffffff55"
+          backgroundColor="#00000055"
           translucent={true}
         >
           <react-native-mock />

@@ -2,15 +2,19 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   wrapper: {
-    height: 'auto',
-    width: 200,
+    width: '100%',
   },
   image: {
+    ...StyleSheet.absoluteFillObject,
     alignItems: 'center',
     justifyContent: 'center',
-    alignSelf: 'stretch',
     width: undefined,
     height: undefined,
+    marginRight: -4,
+  },
+  textWrapper: {
+    alignItems: 'center',
+    justifyContent: 'center',
     paddingBottom: 2,
     paddingLeft: 12,
     paddingRight: 12,

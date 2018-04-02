@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ImageBackground, Text, TouchableWithoutFeedback, View } from 'react-native';
+import { Image, Text, TouchableWithoutFeedback, View } from 'react-native';
 import { observer } from 'mobx-react';
 import { action, observable } from 'mobx';
 
@@ -46,26 +46,39 @@ export default class Button extends React.Component {
     }
 
     return (
-      <TouchableWithoutFeedback
-        onPress={this.props.onPress}
-        onPressIn={this.beginPress}
-        onPressOut={this.endPress}
-        style={ButtonStyle.wrapper}
-      >
-        <ImageBackground
+      <View style={ButtonStyle.wrapper}>
+        <Image
           fadeDuration={0}
-          source={this.isPressing ? pressed : unpressed}
-          style={ButtonStyle.image}
+          resizeMode="stretch"
+          source={pressed}
+          style={[
+            ButtonStyle.image,
+            { opacity: this.isPressing ? 1 : 0 },
+          ]}
+        />
+        <Image
+          fadeDuration={0}
+          resizeMode="stretch"
+          source={unpressed}
+          style={[
+            ButtonStyle.image,
+            { opacity: this.isPressing ? 0 : 1 },
+          ]}
+        />
+        <TouchableWithoutFeedback
+          onPress={this.props.onPress}
+          onPressIn={this.beginPress}
+          onPressOut={this.endPress}
         >
-          <View pointerEvents="none">
+          <View style={ButtonStyle.textWrapper}>
             <Text
               style={ButtonStyle.text}
             >
               {this.props.title.toUpperCase()}
             </Text>
           </View>
-        </ImageBackground>
-      </TouchableWithoutFeedback>
+        </TouchableWithoutFeedback>
+      </View>
     );
   }
 }

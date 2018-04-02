@@ -1,9 +1,10 @@
 import React from 'react';
-import { ImageBackground, TouchableWithoutFeedback } from 'react-native';
+import { Image, TouchableWithoutFeedback } from 'react-native';
 import { mount } from 'enzyme';
 import { isAction, isObservableProp, runInAction } from 'mobx';
 
 import Button from '../Button';
+import ButtonStyle from '../../styles/ButtonStyle';
 
 describe('Button component', () => {
   afterEach(() => {
@@ -65,23 +66,38 @@ describe('Button component', () => {
     const render = mount((
       <Button />
     ));
-    let image = render.find(ImageBackground).at(0);
-    expect(image.props().source.testUri).toEqual('src/images/buttonYellowPassive.png');
+    expect(render.find(Image)).toHaveLength(2);
+    expect(render.find(Image).at(0).props().source.testUri)
+      .toEqual('src/images/buttonYellowActive.png');
+    expect(render.find(Image).at(0).props().style).toEqual([ButtonStyle.image, { opacity: 0 }]);
+    expect(render.find(Image).at(1).props().source.testUri)
+      .toEqual('src/images/buttonYellowPassive.png');
+    expect(render.find(Image).at(1).props().style).toEqual([ButtonStyle.image, { opacity: 1 }]);
 
     runInAction(() => { render.instance().isPressing = true; });
     render.update();
-    image = render.find(ImageBackground).at(0);
-    expect(image.props().source.testUri).toEqual('src/images/buttonYellowActive.png');
+
+    expect(render.find(Image).at(0).props().style).toEqual([ButtonStyle.image, { opacity: 1 }]);
+    expect(render.find(Image).at(1).props().style).toEqual([ButtonStyle.image, { opacity: 0 }]);
+
 
     runInAction(() => { render.instance().isPressing = false; });
     render.setProps({ colour: 'blue' });
     render.update();
-    image = render.find(ImageBackground).at(0);
-    expect(image.props().source.testUri).toEqual('src/images/buttonBluePassive.png');
+
+
+    expect(render.find(Image)).toHaveLength(2);
+    expect(render.find(Image).at(0).props().source.testUri)
+      .toEqual('src/images/buttonBlueActive.png');
+    expect(render.find(Image).at(0).props().style).toEqual([ButtonStyle.image, { opacity: 0 }]);
+    expect(render.find(Image).at(1).props().source.testUri)
+      .toEqual('src/images/buttonBluePassive.png');
+    expect(render.find(Image).at(1).props().style).toEqual([ButtonStyle.image, { opacity: 1 }]);
 
     runInAction(() => { render.instance().isPressing = true; });
     render.update();
-    image = render.find(ImageBackground).at(0);
-    expect(image.props().source.testUri).toEqual('src/images/buttonBlueActive.png');
+
+    expect(render.find(Image).at(0).props().style).toEqual([ButtonStyle.image, { opacity: 1 }]);
+    expect(render.find(Image).at(1).props().style).toEqual([ButtonStyle.image, { opacity: 0 }]);
   });
 });
