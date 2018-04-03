@@ -163,6 +163,7 @@ exports[`Control component matches the snapshot 1`] = `
             style={
               Object {
                 "flex": 6,
+                "justifyContent": "space-between",
                 "marginBottom": 10,
                 "marginLeft": 10,
                 "marginTop": 10,
@@ -174,26 +175,72 @@ exports[`Control component matches the snapshot 1`] = `
                 style={
                   Object {
                     "alignItems": "center",
-                    "flex": 1,
+                    "height": 70,
                     "justifyContent": "center",
+                    "marginLeft": 6,
                   }
                 }
               >
                 <react-native-mock>
-                  <Text
+                  <ImageBackground
+                    fadeDuration={0}
+                    resizeMode="stretch"
+                    source={
+                      Object {
+                        "testUri": "src/images/whitePanel.png",
+                      }
+                    }
                     style={
                       Object {
-                        "color": "#444",
-                        "fontFamily": "RujisHandwritingFontv.2.0",
-                        "fontSize": 20,
+                        "alignItems": "center",
+                        "alignSelf": "stretch",
+                        "flex": 1,
+                        "height": null,
+                        "justifyContent": "center",
+                        "width": null,
                       }
                     }
                   >
-                    <react-native-mock />
-                  </Text>
+                    <react-native-mock>
+                      <View
+                        style={
+                          Object {
+                            "alignItems": "center",
+                            "flex": 1,
+                            "justifyContent": "center",
+                            "paddingBottom": 6,
+                            "paddingLeft": 10,
+                            "paddingRight": 10,
+                          }
+                        }
+                      >
+                        <react-native-mock>
+                          <Text
+                            style={
+                              Object {
+                                "color": "#888",
+                                "fontFamily": "RujisHandwritingFontv.2.0",
+                                "fontSize": 20,
+                                "textAlign": "center",
+                              }
+                            }
+                          >
+                            <react-native-mock />
+                          </Text>
+                        </react-native-mock>
+                      </View>
+                    </react-native-mock>
+                  </ImageBackground>
                 </react-native-mock>
               </View>
-              <View>
+              <View
+                style={
+                  Object {
+                    "height": 60,
+                    "justifyContent": "center",
+                  }
+                }
+              >
                 <react-native-mock>
                   <Button
                     colour="blue"
@@ -304,21 +351,39 @@ exports[`Control component matches the snapshot 1`] = `
                 style={
                   Object {
                     "alignItems": "center",
-                    "flex": 2,
+                    "height": 40,
                     "justifyContent": "center",
+                    "marginLeft": 6,
                   }
                 }
               >
                 <react-native-mock>
-                  <View>
+                  <ImageBackground
+                    fadeDuration={0}
+                    resizeMode="stretch"
+                    source={
+                      Object {
+                        "testUri": "src/images/whitePanel.png",
+                      }
+                    }
+                    style={
+                      Object {
+                        "alignItems": "center",
+                        "alignSelf": "stretch",
+                        "flex": 1,
+                        "height": null,
+                        "justifyContent": "center",
+                        "width": null,
+                      }
+                    }
+                  >
                     <react-native-mock>
                       <Text
                         style={
                           Object {
-                            "color": "#227711",
+                            "color": "#000",
                             "fontFamily": "RujisHandwritingFontv.2.0",
-                            "fontSize": 30,
-                            "textAlign": "center",
+                            "fontSize": 20,
                           }
                         }
                       >
@@ -327,26 +392,44 @@ exports[`Control component matches the snapshot 1`] = `
                         </react-native-mock>
                       </Text>
                     </react-native-mock>
-                  </View>
-                  <View>
-                    <react-native-mock>
-                      <Text
-                        style={
-                          Object {
-                            "color": "#000",
-                            "fontFamily": "RujisHandwritingFontv.2.0",
-                            "fontSize": 16,
-                            "textAlign": "center",
-                          }
-                        }
-                      >
-                        <react-native-mock />
-                      </Text>
-                    </react-native-mock>
-                  </View>
+                  </ImageBackground>
                 </react-native-mock>
               </View>
-              <View>
+              <View
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "height": 70,
+                    "justifyContent": "center",
+                    "marginLeft": 6,
+                  }
+                }
+              >
+                <react-native-mock>
+                  <Text
+                    style={
+                      Object {
+                        "color": "#227711",
+                        "fontFamily": "RujisHandwritingFontv.2.0",
+                        "fontSize": 30,
+                        "textAlign": "center",
+                      }
+                    }
+                  >
+                    <react-native-mock>
+                       
+                    </react-native-mock>
+                  </Text>
+                </react-native-mock>
+              </View>
+              <View
+                style={
+                  Object {
+                    "height": 60,
+                    "justifyContent": "center",
+                  }
+                }
+              >
                 <react-native-mock>
                   <Button
                     colour="yellow"
@@ -688,6 +771,7 @@ exports[`Control component matches the snapshot 2`] = `
             style={
               Object {
                 "flex": 6,
+                "justifyContent": "space-between",
                 "marginBottom": 10,
                 "marginLeft": 10,
                 "marginTop": 10,
@@ -699,28 +783,74 @@ exports[`Control component matches the snapshot 2`] = `
                 style={
                   Object {
                     "alignItems": "center",
-                    "flex": 1,
+                    "height": 70,
                     "justifyContent": "center",
+                    "marginLeft": 6,
                   }
                 }
               >
                 <react-native-mock>
-                  <Text
+                  <ImageBackground
+                    fadeDuration={0}
+                    resizeMode="stretch"
+                    source={
+                      Object {
+                        "testUri": "src/images/whitePanel.png",
+                      }
+                    }
                     style={
                       Object {
-                        "color": "#444",
-                        "fontFamily": "RujisHandwritingFontv.2.0",
-                        "fontSize": 20,
+                        "alignItems": "center",
+                        "alignSelf": "stretch",
+                        "flex": 1,
+                        "height": null,
+                        "justifyContent": "center",
+                        "width": null,
                       }
                     }
                   >
                     <react-native-mock>
-                      Game scored.
+                      <View
+                        style={
+                          Object {
+                            "alignItems": "center",
+                            "flex": 1,
+                            "justifyContent": "center",
+                            "paddingBottom": 6,
+                            "paddingLeft": 10,
+                            "paddingRight": 10,
+                          }
+                        }
+                      >
+                        <react-native-mock>
+                          <Text
+                            style={
+                              Object {
+                                "color": "#444",
+                                "fontFamily": "RujisHandwritingFontv.2.0",
+                                "fontSize": 20,
+                                "textAlign": "center",
+                              }
+                            }
+                          >
+                            <react-native-mock>
+                              Game scored.
+                            </react-native-mock>
+                          </Text>
+                        </react-native-mock>
+                      </View>
                     </react-native-mock>
-                  </Text>
+                  </ImageBackground>
                 </react-native-mock>
               </View>
-              <View>
+              <View
+                style={
+                  Object {
+                    "height": 60,
+                    "justifyContent": "center",
+                  }
+                }
+              >
                 <react-native-mock>
                   <Button
                     colour="blue"
@@ -831,8 +961,57 @@ exports[`Control component matches the snapshot 2`] = `
                 style={
                   Object {
                     "alignItems": "center",
-                    "flex": 1,
+                    "height": 40,
                     "justifyContent": "center",
+                    "marginLeft": 6,
+                  }
+                }
+              >
+                <react-native-mock>
+                  <ImageBackground
+                    fadeDuration={0}
+                    resizeMode="stretch"
+                    source={
+                      Object {
+                        "testUri": "src/images/whitePanel.png",
+                      }
+                    }
+                    style={
+                      Object {
+                        "alignItems": "center",
+                        "alignSelf": "stretch",
+                        "flex": 1,
+                        "height": null,
+                        "justifyContent": "center",
+                        "width": null,
+                      }
+                    }
+                  >
+                    <react-native-mock>
+                      <Text
+                        style={
+                          Object {
+                            "color": "#000",
+                            "fontFamily": "RujisHandwritingFontv.2.0",
+                            "fontSize": 20,
+                          }
+                        }
+                      >
+                        <react-native-mock>
+                          1m 20s
+                        </react-native-mock>
+                      </Text>
+                    </react-native-mock>
+                  </ImageBackground>
+                </react-native-mock>
+              </View>
+              <View
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "height": 70,
+                    "justifyContent": "center",
+                    "marginLeft": 6,
                   }
                 }
               >
@@ -840,14 +1019,15 @@ exports[`Control component matches the snapshot 2`] = `
                   <Text
                     style={
                       Object {
-                        "color": "#000",
+                        "color": "#227711",
                         "fontFamily": "RujisHandwritingFontv.2.0",
-                        "fontSize": 20,
+                        "fontSize": 30,
+                        "textAlign": "center",
                       }
                     }
                   >
                     <react-native-mock>
-                      1m 20s
+                      Nice!
                     </react-native-mock>
                   </Text>
                 </react-native-mock>
@@ -855,52 +1035,11 @@ exports[`Control component matches the snapshot 2`] = `
               <View
                 style={
                   Object {
-                    "alignItems": "center",
-                    "flex": 2,
+                    "height": 60,
                     "justifyContent": "center",
                   }
                 }
               >
-                <react-native-mock>
-                  <View>
-                    <react-native-mock>
-                      <Text
-                        style={
-                          Object {
-                            "color": "#227711",
-                            "fontFamily": "RujisHandwritingFontv.2.0",
-                            "fontSize": 30,
-                            "textAlign": "center",
-                          }
-                        }
-                      >
-                        <react-native-mock>
-                          Nice!
-                        </react-native-mock>
-                      </Text>
-                    </react-native-mock>
-                  </View>
-                  <View>
-                    <react-native-mock>
-                      <Text
-                        style={
-                          Object {
-                            "color": "#000",
-                            "fontFamily": "RujisHandwritingFontv.2.0",
-                            "fontSize": 16,
-                            "textAlign": "center",
-                          }
-                        }
-                      >
-                        <react-native-mock>
-                          5 words to level up
-                        </react-native-mock>
-                      </Text>
-                    </react-native-mock>
-                  </View>
-                </react-native-mock>
-              </View>
-              <View>
                 <react-native-mock>
                   <Button
                     colour="yellow"

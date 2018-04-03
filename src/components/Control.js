@@ -16,6 +16,7 @@ import ControlStyle from '../styles/ControlStyle';
 import bluePaper from '../images/bluePaper.png';
 import leftPapers from '../images/leftPapers.png';
 import listBody from '../images/listBody.png';
+import whitePanel from '../images/whitePanel.png';
 
 const listDataSource = new ListView.DataSource({ rowHasChanged() {} });
 
@@ -79,8 +80,8 @@ export default class Control extends React.Component {
 
   @computed get feedbackText() {
     return this.props.wordsToNextLevel > 0 ?
-      `${this.props.wordsToNextLevel} word${this.props.wordsToNextLevel > 1 ? 's' : ''}` +
-      ' to level up'
+      `${this.props.wordsToNextLevel} word${this.props.wordsToNextLevel > 1 ? 's' : ''}\n` +
+      'to level up'
       :
       '';
   }
@@ -98,14 +99,14 @@ export default class Control extends React.Component {
       container,
       leftColumn,
       leftPapers: leftPapersStyle,
+      lineWrapperSmall,
+      lineWrapperLarge,
       listContainer,
+      progressText,
       resultContainer,
       resultText,
+      resultTextFaded,
       rightColumn,
-      progressContainer,
-      progressText,
-      progressTextSmall,
-      timerContainer,
       timerText,
       wordCount,
       wordCountText,
@@ -192,10 +193,25 @@ export default class Control extends React.Component {
           </View>
 
           <View style={rightColumn}>
-            <View style={resultContainer}>
-              <Text style={resultText}>
-                {this.props.statusText}
-              </Text>
+            <View style={lineWrapperLarge}>
+              <ImageBackground
+                fadeDuration={0}
+                resizeMode="stretch"
+                style={ControlStyle.rowWrapperImage}
+                source={whitePanel}
+              >
+                <View style={resultContainer}>
+                  {this.props.statusText ?
+                    <Text style={resultText}>
+                      {this.props.statusText}
+                    </Text>
+                    :
+                    <Text style={resultTextFaded}>
+                      {this.feedbackText}
+                    </Text>
+                  }
+                </View>
+              </ImageBackground>
             </View>
             <View style={buttonWrapper}>
               <Button
@@ -204,26 +220,22 @@ export default class Control extends React.Component {
                 title="Submit"
               />
             </View>
-            {this.props.timerString ?
-              <View style={timerContainer}>
+            <View style={lineWrapperSmall}>
+              <ImageBackground
+                fadeDuration={0}
+                resizeMode="stretch"
+                style={ControlStyle.rowWrapperImage}
+                source={whitePanel}
+              >
                 <Text style={timerText}>
-                  {this.props.timerString}
+                  {this.props.timerString || ' '}
                 </Text>
-              </View>
-              :
-              null
-            }
-            <View style={progressContainer}>
-              <View>
-                <Text style={progressText}>
-                  {(this.props.scoreText || ' ')}
-                </Text>
-              </View>
-              <View>
-                <Text style={progressTextSmall}>
-                  {this.feedbackText}
-                </Text>
-              </View>
+              </ImageBackground>
+            </View>
+            <View style={lineWrapperLarge}>
+              <Text style={progressText}>
+                {(this.props.scoreText || ' ')}
+              </Text>
             </View>
             <View style={buttonWrapper}>
               <Button

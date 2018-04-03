@@ -7,20 +7,26 @@ export default StyleSheet.create({
     flexDirection: 'column',
     flex: 1,
   },
-  timerContainer: {
-    alignItems: 'center',
-    flex: 1,
+  buttonWrapper: {
+    height: 60,
     justifyContent: 'center',
+  },
+  lineWrapperSmall: {
+    alignItems: 'center',
+    height: 40,
+    justifyContent: 'center',
+    marginLeft: 6,
+  },
+  lineWrapperLarge: {
+    alignItems: 'center',
+    height: 70,
+    justifyContent: 'center',
+    marginLeft: 6,
   },
   timerText: {
     fontFamily: 'RujisHandwritingFontv.2.0',
     color: '#000',
     fontSize: 20,
-  },
-  progressContainer: {
-    alignItems: 'center',
-    flex: 2,
-    justifyContent: 'center',
   },
   progressText: {
     fontFamily: 'RujisHandwritingFontv.2.0',
@@ -28,21 +34,25 @@ export default StyleSheet.create({
     fontSize: 30,
     textAlign: 'center',
   },
-  progressTextSmall: {
-    fontFamily: 'RujisHandwritingFontv.2.0',
-    color: '#000',
-    fontSize: 16,
-    textAlign: 'center',
-  },
   resultContainer: {
     alignItems: 'center',
     flex: 1,
     justifyContent: 'center',
+    paddingLeft: 10,
+    paddingRight: 10,
+    paddingBottom: 6,
   },
   resultText: {
+    color: '#444',
     fontFamily: 'RujisHandwritingFontv.2.0',
     fontSize: 20,
-    color: '#444',
+    textAlign: 'center',
+  },
+  resultTextFaded: {
+    color: '#888',
+    fontFamily: 'RujisHandwritingFontv.2.0',
+    fontSize: 20,
+    textAlign: 'center',
   },
   columnContainer: {
     overflow: 'visible',
@@ -91,6 +101,7 @@ export default StyleSheet.create({
   },
   rightColumn: {
     flex: 6,
+    justifyContent: 'space-between',
     marginBottom: 10,
     marginLeft: 10,
     marginTop: 10,

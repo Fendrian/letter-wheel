@@ -168,11 +168,11 @@ describe('Control component', () => {
     const instance = render.instance();
     expect(instance.feedbackText).toEqual('');
     render.setProps({ wordsToNextLevel: 1 });
-    expect(instance.feedbackText).toEqual('1 word to level up');
+    expect(instance.feedbackText).toEqual('1 word\nto level up');
     render.setProps({ wordsToNextLevel: 2 });
-    expect(instance.feedbackText).toEqual('2 words to level up');
+    expect(instance.feedbackText).toEqual('2 words\nto level up');
     render.setProps({ wordsToNextLevel: 8 });
-    expect(instance.feedbackText).toEqual('8 words to level up');
+    expect(instance.feedbackText).toEqual('8 words\nto level up');
     render.setProps({ wordsToNextLevel: 0 });
     expect(instance.feedbackText).toEqual('');
   });
