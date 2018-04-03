@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, ListView, Text, View } from 'react-native';
+import { Image, ListView, Text } from 'react-native';
 import { mount } from 'enzyme';
 import { observable, isObservableProp } from 'mobx';
 

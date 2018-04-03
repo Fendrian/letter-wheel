@@ -175,7 +175,7 @@ exports[`Control component matches the snapshot 1`] = `
                 style={
                   Object {
                     "alignItems": "center",
-                    "height": 70,
+                    "height": 60,
                     "justifyContent": "center",
                     "marginLeft": 6,
                   }
@@ -208,7 +208,7 @@ exports[`Control component matches the snapshot 1`] = `
                             "alignItems": "center",
                             "flex": 1,
                             "justifyContent": "center",
-                            "paddingBottom": 6,
+                            "paddingBottom": 4,
                             "paddingLeft": 10,
                             "paddingRight": 10,
                           }
@@ -236,7 +236,7 @@ exports[`Control component matches the snapshot 1`] = `
               <View
                 style={
                   Object {
-                    "height": 60,
+                    "height": 35,
                     "justifyContent": "center",
                   }
                 }
@@ -351,7 +351,7 @@ exports[`Control component matches the snapshot 1`] = `
                 style={
                   Object {
                     "alignItems": "center",
-                    "height": 40,
+                    "height": 30,
                     "justifyContent": "center",
                     "marginLeft": 6,
                   }
@@ -388,7 +388,7 @@ exports[`Control component matches the snapshot 1`] = `
                         }
                       >
                         <react-native-mock>
-                           
+                          Not timed
                         </react-native-mock>
                       </Text>
                     </react-native-mock>
@@ -399,7 +399,7 @@ exports[`Control component matches the snapshot 1`] = `
                 style={
                   Object {
                     "alignItems": "center",
-                    "height": 70,
+                    "height": 60,
                     "justifyContent": "center",
                     "marginLeft": 6,
                   }
@@ -425,7 +425,7 @@ exports[`Control component matches the snapshot 1`] = `
               <View
                 style={
                   Object {
-                    "height": 60,
+                    "height": 35,
                     "justifyContent": "center",
                   }
                 }
@@ -783,7 +783,7 @@ exports[`Control component matches the snapshot 2`] = `
                 style={
                   Object {
                     "alignItems": "center",
-                    "height": 70,
+                    "height": 60,
                     "justifyContent": "center",
                     "marginLeft": 6,
                   }
@@ -816,7 +816,7 @@ exports[`Control component matches the snapshot 2`] = `
                             "alignItems": "center",
                             "flex": 1,
                             "justifyContent": "center",
-                            "paddingBottom": 6,
+                            "paddingBottom": 4,
                             "paddingLeft": 10,
                             "paddingRight": 10,
                           }
@@ -846,7 +846,7 @@ exports[`Control component matches the snapshot 2`] = `
               <View
                 style={
                   Object {
-                    "height": 60,
+                    "height": 35,
                     "justifyContent": "center",
                   }
                 }
@@ -961,7 +961,7 @@ exports[`Control component matches the snapshot 2`] = `
                 style={
                   Object {
                     "alignItems": "center",
-                    "height": 40,
+                    "height": 30,
                     "justifyContent": "center",
                     "marginLeft": 6,
                   }
@@ -1009,7 +1009,7 @@ exports[`Control component matches the snapshot 2`] = `
                 style={
                   Object {
                     "alignItems": "center",
-                    "height": 70,
+                    "height": 60,
                     "justifyContent": "center",
                     "marginLeft": 6,
                   }
@@ -1035,7 +1035,7 @@ exports[`Control component matches the snapshot 2`] = `
               <View
                 style={
                   Object {
-                    "height": 60,
+                    "height": 35,
                     "justifyContent": "center",
                   }
                 }

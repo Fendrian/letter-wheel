@@ -228,7 +228,7 @@ export default class Control extends React.Component {
                 source={whitePanel}
               >
                 <Text style={timerText}>
-                  {this.props.timerString || ' '}
+                  {this.props.timerString || 'Not timed'}
                 </Text>
               </ImageBackground>
             </View>

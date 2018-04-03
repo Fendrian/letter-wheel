@@ -8,18 +8,18 @@ export default StyleSheet.create({
     flex: 1,
   },
   buttonWrapper: {
-    height: 60,
+    height: 35,
     justifyContent: 'center',
   },
   lineWrapperSmall: {
     alignItems: 'center',
-    height: 40,
+    height: 30,
     justifyContent: 'center',
     marginLeft: 6,
   },
   lineWrapperLarge: {
     alignItems: 'center',
-    height: 70,
+    height: 60,
     justifyContent: 'center',
     marginLeft: 6,
   },
@@ -40,7 +40,7 @@ export default StyleSheet.create({
     justifyContent: 'center',
     paddingLeft: 10,
     paddingRight: 10,
-    paddingBottom: 6,
+    paddingBottom: 4,
   },
   resultText: {
     color: '#444',
