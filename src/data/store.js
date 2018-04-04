@@ -337,7 +337,7 @@ export default class store {
 
     // If word already guessed, fail
     if (this.tried.has(word)) {
-      this.setStatus('Already tried');
+      this.setStatus('Already checked');
       return null;
     }
 
@@ -348,7 +348,7 @@ export default class store {
       this.selected.replace([]);
       if (this.timer > -1) {
         const addTime = (word.length * 5);
-        this.setStatus(`Nice! +${addTime} seconds.`);
+        this.setStatus(`Nice! +${addTime} seconds`);
         this.setTimer(this.timer + addTime);
       } else {
         this.setStatus('Nice!');
@@ -359,7 +359,7 @@ export default class store {
     // Finally, just fail
     this.tried.set(word, false);
     this.selected.replace([]);
-    this.setStatus('Unrecognized word.');
+    this.setStatus('Unexpected word');
     simpleStore.update(appSaveKey, { tried: this.tried.toJSON() });
     return false;
   }

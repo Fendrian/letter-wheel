@@ -27,7 +27,7 @@ describe('Control component', () => {
       scoreText: 'Nice!',
       wordsToNextLevel: 5,
       selectedLetters: 'akdc',
-      statusText: 'Game scored.',
+      statusText: 'Game scored',
       timerString: '1m 20s',
       tried: observable.map({
         alit: true,
@@ -201,7 +201,7 @@ describe('Control component', () => {
         onSubmit={jest.fn()}
       />
     ));
-    const submit = render.find(Button).find({ title: 'Submit' }).at(0);
+    const submit = render.find(Button).find({ title: 'Check word' }).at(0);
     expect(submit.props().onPress).toEqual(expect.any(Function));
     expect(render.props().onSubmit).toHaveBeenCalledTimes(0);
     submit.props().onPress();
@@ -214,7 +214,7 @@ describe('Control component', () => {
         onMenu={jest.fn()}
       />
     ));
-    const menu = render.find(Button).find({ title: 'Menu' }).at(0);
+    const menu = render.find(Button).find({ title: 'Game menu' }).at(0);
     expect(menu.props().onPress).toEqual(expect.any(Function));
     expect(render.props().onMenu).toHaveBeenCalledTimes(0);
     menu.props().onPress();

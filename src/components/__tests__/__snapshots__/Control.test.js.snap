@@ -247,7 +247,7 @@ exports[`Control component matches the snapshot 1`] = `
                   <Button
                     colour="blue"
                     onPress={[Function]}
-                    title="Submit"
+                    title="Check word"
                   >
                     <View
                       style={
@@ -337,7 +337,7 @@ exports[`Control component matches the snapshot 1`] = `
                                   }
                                 >
                                   <react-native-mock>
-                                    SUBMIT
+                                    CHECK WORD
                                   </react-native-mock>
                                 </Text>
                               </react-native-mock>
@@ -512,7 +512,7 @@ exports[`Control component matches the snapshot 1`] = `
                   <Button
                     colour="yellow"
                     onPress={[Function]}
-                    title="Menu"
+                    title="Game menu"
                   >
                     <View
                       style={
@@ -602,7 +602,7 @@ exports[`Control component matches the snapshot 1`] = `
                                   }
                                 >
                                   <react-native-mock>
-                                    MENU
+                                    GAME MENU
                                   </react-native-mock>
                                 </Text>
                               </react-native-mock>
@@ -631,7 +631,7 @@ exports[`Control component matches the snapshot 2`] = `
   scoreRank={0}
   scoreText="Nice!"
   selectedLetters="akdc"
-  statusText="Game scored."
+  statusText="Game scored"
   timerString="1m 20s"
   tried={
     Object {
@@ -913,7 +913,7 @@ exports[`Control component matches the snapshot 2`] = `
                             }
                           >
                             <react-native-mock>
-                              Game scored.
+                              Game scored
                             </react-native-mock>
                           </Text>
                         </react-native-mock>
@@ -934,7 +934,7 @@ exports[`Control component matches the snapshot 2`] = `
                   <Button
                     colour="blue"
                     onPress={[Function]}
-                    title="Submit"
+                    title="Check word"
                   >
                     <View
                       style={
@@ -1024,7 +1024,7 @@ exports[`Control component matches the snapshot 2`] = `
                                   }
                                 >
                                   <react-native-mock>
-                                    SUBMIT
+                                    CHECK WORD
                                   </react-native-mock>
                                 </Text>
                               </react-native-mock>
@@ -1199,7 +1199,7 @@ exports[`Control component matches the snapshot 2`] = `
                   <Button
                     colour="yellow"
                     onPress={[Function]}
-                    title="Menu"
+                    title="Game menu"
                   >
                     <View
                       style={
@@ -1289,7 +1289,7 @@ exports[`Control component matches the snapshot 2`] = `
                                   }
                                 >
                                   <react-native-mock>
-                                    MENU
+                                    GAME MENU
                                   </react-native-mock>
                                 </Text>
                               </react-native-mock>
