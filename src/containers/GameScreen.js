@@ -105,7 +105,7 @@ export default class GameScreen extends React.Component {
     const orientation = store.orientation === 0 ? 'portrait' : 'landscape';
     const { dataWrapper } = GameScreenStyle;
     const { container } = WrapperStyle;
-    const { text: scoreText, toNext } = store.getScore();
+    const { rank, toNext } = store.getScore();
 
     let timerString = '';
     if (store.timer >= 0) {
@@ -142,7 +142,7 @@ export default class GameScreen extends React.Component {
                   this.triggerAnimation('incorrect');
                 }
               }}
-              scoreText={scoreText}
+              scoreRank={rank}
               statusText={store.statusText}
               timerString={timerString}
               tried={store.tried}

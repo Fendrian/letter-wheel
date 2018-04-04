@@ -94,11 +94,11 @@ export default class store {
   }
 
   scores = [
-    { percent: 100, text: 'Exceptional!' },
-    { percent: 85, text: 'Excellent!' },
-    { percent: 65, text: 'Very Good!' },
-    { percent: 40, text: 'Good!' },
-    { percent: 0, text: '' },
+    { percent: 100 },
+    { percent: 85 },
+    { percent: 65 },
+    { percent: 40 },
+    { percent: 0 },
   ];
 
   // Given a string, this function will randomly rearrange the string then return it.
@@ -384,9 +384,10 @@ export default class store {
       numWords: (Math.floor((scoreObj.percent / 100) * this.words.size)),
     }));
     const currentScore = absoluteScores.find(({ numWords }) => (numWords <= correct));
-    const nextScore = absoluteScores[(absoluteScores.indexOf(currentScore) || 1) - 1];
+    const inverseRank = absoluteScores.indexOf(currentScore);
+    const nextScore = absoluteScores[(inverseRank || 1) - 1];
     return ({
-      text: currentScore.text,
+      rank: (this.scores.length - 1) - inverseRank,
       toNext: nextScore.numWords - correct,
     });
   }

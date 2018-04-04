@@ -33,23 +33,18 @@ exports[`Main App component matches the snapshot 1`] = `
       "scores": Array [
         Object {
           "percent": 100,
-          "text": "Exceptional!",
         },
         Object {
           "percent": 85,
-          "text": "Excellent!",
         },
         Object {
           "percent": 65,
-          "text": "Very Good!",
         },
         Object {
           "percent": 40,
-          "text": "Good!",
         },
         Object {
           "percent": 0,
-          "text": "",
         },
       ],
       "selected": Array [],
@@ -94,23 +89,18 @@ exports[`Main App component matches the snapshot 1`] = `
         "scores": Array [
           Object {
             "percent": 100,
-            "text": "Exceptional!",
           },
           Object {
             "percent": 85,
-            "text": "Excellent!",
           },
           Object {
             "percent": 65,
-            "text": "Very Good!",
           },
           Object {
             "percent": 40,
-            "text": "Good!",
           },
           Object {
             "percent": 0,
-            "text": "",
           },
         ],
         "selected": Array [],

@@ -17,6 +17,9 @@ import bluePaper from '../images/bluePaper.png';
 import leftPapers from '../images/leftPapers.png';
 import listBody from '../images/listBody.png';
 import whitePanel from '../images/whitePanel.png';
+import starGold from '../images/starGold.png';
+import starActive from '../images/starActive.png';
+import starInactive from '../images/starInactive.png';
 
 const listDataSource = new ListView.DataSource({ rowHasChanged() {} });
 
@@ -26,7 +29,7 @@ export default class Control extends React.Component {
     isScored: PropTypes.bool,
     onMenu: PropTypes.func,
     onSubmit: PropTypes.func,
-    scoreText: PropTypes.string,
+    scoreRank: PropTypes.number,
     wordsToNextLevel: PropTypes.number,
     statusText: PropTypes.string,
     timerString: PropTypes.string,
@@ -38,7 +41,7 @@ export default class Control extends React.Component {
     isScored: false,
     onSubmit() {},
     onMenu() {},
-    scoreText: '',
+    scoreRank: 0,
     wordsToNextLevel: 0,
     statusText: '',
     timerString: '',
@@ -83,7 +86,23 @@ export default class Control extends React.Component {
       `${this.props.wordsToNextLevel} word${this.props.wordsToNextLevel > 1 ? 's' : ''}\n` +
       'to level up'
       :
-      '';
+      'Perfect!';
+  }
+
+  getStars = (rank) => {
+    switch (rank) {
+      default:
+      case 0:
+        return [starInactive, starInactive, starInactive];
+      case 1:
+        return [starActive, starInactive, starInactive];
+      case 2:
+        return [starActive, starActive, starInactive];
+      case 3:
+        return [starActive, starActive, starActive];
+      case 4:
+        return [null, starGold, null];
+    }
   }
 
   @action setListHeightFromEvent = (event) => {
@@ -102,11 +121,13 @@ export default class Control extends React.Component {
       lineWrapperSmall,
       lineWrapperLarge,
       listContainer,
-      progressText,
       resultContainer,
       resultText,
       resultTextFaded,
       rightColumn,
+      star,
+      starRow,
+      starWrapper,
       timerText,
       wordCount,
       wordCountText,
@@ -121,6 +142,8 @@ export default class Control extends React.Component {
       this.listHeight - (25 * this.formattedTriedWords.length) - 60,
       20,
     );
+
+    const stars = this.getStars(this.props.scoreRank);
 
     return (
       <View style={container}>
@@ -233,9 +256,17 @@ export default class Control extends React.Component {
               </ImageBackground>
             </View>
             <View style={lineWrapperLarge}>
-              <Text style={progressText}>
-                {(this.props.scoreText || ' ')}
-              </Text>
+              <View style={starRow}>
+                <View style={starWrapper}>
+                  <Image style={star} source={stars[0]} />
+                </View>
+                <View style={starWrapper}>
+                  <Image style={star} source={stars[1]} />
+                </View>
+                <View style={starWrapper}>
+                  <Image style={star} source={stars[2]} />
+                </View>
+              </View>
             </View>
             <View style={buttonWrapper}>
               <Button

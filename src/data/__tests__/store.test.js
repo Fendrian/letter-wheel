@@ -783,11 +783,10 @@ describe('Mobx Store', () => {
     expect(store.statusText).toEqual('asdf');
   });
 
-  it('provides a score list, reverse-sorted by threshold, with text descriptions', () => {
+  it('provides a score list, reverse-sorted by threshold', () => {
     expect(store.scores).toEqual(expect.any(Array));
     store.scores.forEach((score) => {
       expect(score.percent).toEqual(expect.any(Number));
-      expect(score.text).toEqual(expect.any(String));
     });
     expect(store.scores.slice().sort((a, b) => (b.percent - a.percent))).toEqual(store.scores);
   });
@@ -809,20 +808,20 @@ describe('Mobx Store', () => {
     });
     store.tried.replace([]);
     store.scores = [
-      { percent: 100, text: '4683' },
-      { percent: 80, text: '7DA2' },
-      { percent: 40, text: '9F81' },
-      { percent: 0, text: '548E' },
+      { percent: 100 },
+      { percent: 80 },
+      { percent: 40 },
+      { percent: 0 },
     ];
 
-    expect(store.getScore()).toEqual({ text: '548E', toNext: 4 });
+    expect(store.getScore()).toEqual({ rank: 0, toNext: 4 });
 
     store.tried.replace({
       blend: true,
       blended: true,
       blender: true,
     });
-    expect(store.getScore()).toEqual({ text: '548E', toNext: 1 });
+    expect(store.getScore()).toEqual({ rank: 0, toNext: 1 });
 
     store.tried.replace({
       blend: true,
@@ -832,7 +831,7 @@ describe('Mobx Store', () => {
       rscvd: false,
       asdfsdfd: false,
     });
-    expect(store.getScore()).toEqual({ text: '548E', toNext: 1 });
+    expect(store.getScore()).toEqual({ rank: 0, toNext: 1 });
 
     store.tried.replace({
       blend: true,
@@ -845,7 +844,7 @@ describe('Mobx Store', () => {
       blundered: true,
       bundle: true,
     });
-    expect(store.getScore()).toEqual({ text: '9F81', toNext: 2 });
+    expect(store.getScore()).toEqual({ rank: 1, toNext: 2 });
 
     store.tried.replace({
       blend: true,
@@ -860,7 +859,7 @@ describe('Mobx Store', () => {
       been: true,
       bend: true,
     });
-    expect(store.getScore()).toEqual({ text: '7DA2', toNext: 2 });
+    expect(store.getScore()).toEqual({ rank: 2, toNext: 2 });
 
     store.tried.replace({
       blend: true,
@@ -877,7 +876,7 @@ describe('Mobx Store', () => {
       bended: true,
       bender: true,
     });
-    expect(store.getScore()).toEqual({ text: '4683', toNext: 0 });
+    expect(store.getScore()).toEqual({ rank: 3, toNext: 0 });
   });
 
   it('provides a scoreGame function that sets a scored state', () => {

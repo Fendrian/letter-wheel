@@ -5,7 +5,7 @@ exports[`Control component matches the snapshot 1`] = `
   isScored={false}
   onMenu={[Function]}
   onSubmit={[Function]}
-  scoreText=""
+  scoreRank={0}
   statusText=""
   timerString=""
   tried={Object {}}
@@ -225,7 +225,9 @@ exports[`Control component matches the snapshot 1`] = `
                               }
                             }
                           >
-                            <react-native-mock />
+                            <react-native-mock>
+                              Perfect!
+                            </react-native-mock>
                           </Text>
                         </react-native-mock>
                       </View>
@@ -406,20 +408,96 @@ exports[`Control component matches the snapshot 1`] = `
                 }
               >
                 <react-native-mock>
-                  <Text
+                  <View
                     style={
                       Object {
-                        "color": "#227711",
-                        "fontFamily": "RujisHandwritingFontv.2.0",
-                        "fontSize": 30,
-                        "textAlign": "center",
+                        "flexDirection": "row",
+                        "justifyContent": "space-around",
+                        "width": "100%",
                       }
                     }
                   >
                     <react-native-mock>
-                       
+                      <View
+                        style={
+                          Object {
+                            "height": 55,
+                            "width": 55,
+                          }
+                        }
+                      >
+                        <react-native-mock>
+                          <Image
+                            source={
+                              Object {
+                                "testUri": "src/images/starInactive.png",
+                              }
+                            }
+                            style={
+                              Object {
+                                "height": null,
+                                "width": null,
+                              }
+                            }
+                          >
+                            <react-native-mock />
+                          </Image>
+                        </react-native-mock>
+                      </View>
+                      <View
+                        style={
+                          Object {
+                            "height": 55,
+                            "width": 55,
+                          }
+                        }
+                      >
+                        <react-native-mock>
+                          <Image
+                            source={
+                              Object {
+                                "testUri": "src/images/starInactive.png",
+                              }
+                            }
+                            style={
+                              Object {
+                                "height": null,
+                                "width": null,
+                              }
+                            }
+                          >
+                            <react-native-mock />
+                          </Image>
+                        </react-native-mock>
+                      </View>
+                      <View
+                        style={
+                          Object {
+                            "height": 55,
+                            "width": 55,
+                          }
+                        }
+                      >
+                        <react-native-mock>
+                          <Image
+                            source={
+                              Object {
+                                "testUri": "src/images/starInactive.png",
+                              }
+                            }
+                            style={
+                              Object {
+                                "height": null,
+                                "width": null,
+                              }
+                            }
+                          >
+                            <react-native-mock />
+                          </Image>
+                        </react-native-mock>
+                      </View>
                     </react-native-mock>
-                  </Text>
+                  </View>
                 </react-native-mock>
               </View>
               <View
@@ -550,6 +628,7 @@ exports[`Control component matches the snapshot 2`] = `
   isScored={true}
   onMenu={[Function]}
   onSubmit={[Function]}
+  scoreRank={0}
   scoreText="Nice!"
   selectedLetters="akdc"
   statusText="Game scored."
@@ -1016,20 +1095,96 @@ exports[`Control component matches the snapshot 2`] = `
                 }
               >
                 <react-native-mock>
-                  <Text
+                  <View
                     style={
                       Object {
-                        "color": "#227711",
-                        "fontFamily": "RujisHandwritingFontv.2.0",
-                        "fontSize": 30,
-                        "textAlign": "center",
+                        "flexDirection": "row",
+                        "justifyContent": "space-around",
+                        "width": "100%",
                       }
                     }
                   >
                     <react-native-mock>
-                      Nice!
+                      <View
+                        style={
+                          Object {
+                            "height": 55,
+                            "width": 55,
+                          }
+                        }
+                      >
+                        <react-native-mock>
+                          <Image
+                            source={
+                              Object {
+                                "testUri": "src/images/starInactive.png",
+                              }
+                            }
+                            style={
+                              Object {
+                                "height": null,
+                                "width": null,
+                              }
+                            }
+                          >
+                            <react-native-mock />
+                          </Image>
+                        </react-native-mock>
+                      </View>
+                      <View
+                        style={
+                          Object {
+                            "height": 55,
+                            "width": 55,
+                          }
+                        }
+                      >
+                        <react-native-mock>
+                          <Image
+                            source={
+                              Object {
+                                "testUri": "src/images/starInactive.png",
+                              }
+                            }
+                            style={
+                              Object {
+                                "height": null,
+                                "width": null,
+                              }
+                            }
+                          >
+                            <react-native-mock />
+                          </Image>
+                        </react-native-mock>
+                      </View>
+                      <View
+                        style={
+                          Object {
+                            "height": 55,
+                            "width": 55,
+                          }
+                        }
+                      >
+                        <react-native-mock>
+                          <Image
+                            source={
+                              Object {
+                                "testUri": "src/images/starInactive.png",
+                              }
+                            }
+                            style={
+                              Object {
+                                "height": null,
+                                "width": null,
+                              }
+                            }
+                          >
+                            <react-native-mock />
+                          </Image>
+                        </react-native-mock>
+                      </View>
                     </react-native-mock>
-                  </Text>
+                  </View>
                 </react-native-mock>
               </View>
               <View

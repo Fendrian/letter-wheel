@@ -28,11 +28,19 @@ export default StyleSheet.create({
     color: '#000',
     fontSize: 20,
   },
-  progressText: {
-    fontFamily: 'RujisHandwritingFontv.2.0',
-    color: '#227711',
-    fontSize: 30,
-    textAlign: 'center',
+  starRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    width: '100%',
+  },
+  starWrapper: {
+    height: 55,
+    width: 55,
+  },
+  star: {
+    ...StyleSheet.absoluteFillObject,
+    height: null,
+    width: null,
   },
   resultContainer: {
     alignItems: 'center',

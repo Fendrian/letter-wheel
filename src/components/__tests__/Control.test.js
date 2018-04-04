@@ -8,6 +8,9 @@ import ControlStyle from '../../styles/ControlStyle';
 import Button from '../Button';
 
 import listBody from '../../images/listBody.png';
+import starGold from '../../images/starGold.png';
+import starActive from '../../images/starActive.png';
+import starInactive from '../../images/starInactive.png';
 
 describe('Control component', () => {
   afterEach(() => {
@@ -166,7 +169,7 @@ describe('Control component', () => {
       <Control />
     ));
     const instance = render.instance();
-    expect(instance.feedbackText).toEqual('');
+    expect(instance.feedbackText).toEqual('Perfect!');
     render.setProps({ wordsToNextLevel: 1 });
     expect(instance.feedbackText).toEqual('1 word\nto level up');
     render.setProps({ wordsToNextLevel: 2 });
@@ -174,7 +177,22 @@ describe('Control component', () => {
     render.setProps({ wordsToNextLevel: 8 });
     expect(instance.feedbackText).toEqual('8 words\nto level up');
     render.setProps({ wordsToNextLevel: 0 });
-    expect(instance.feedbackText).toEqual('');
+    expect(instance.feedbackText).toEqual('Perfect!');
+  });
+
+  it('provides a getStars function that returns a list of star states', () => {
+    const render = mount((
+      <Control />
+    ));
+    const instance = render.instance();
+    expect(instance.getStars).toEqual(expect.any(Function));
+    expect(instance.getStars(0)).toEqual([starInactive, starInactive, starInactive]);
+    expect(instance.getStars(1)).toEqual([starActive, starInactive, starInactive]);
+    expect(instance.getStars(2)).toEqual([starActive, starActive, starInactive]);
+    expect(instance.getStars(3)).toEqual([starActive, starActive, starActive]);
+    expect(instance.getStars(4)).toEqual([null, starGold, null]);
+    expect(instance.getStars(5)).toEqual([starInactive, starInactive, starInactive]);
+    expect(instance.getStars(1235)).toEqual([starInactive, starInactive, starInactive]);
   });
 
   it('provides a submit button', () => {
