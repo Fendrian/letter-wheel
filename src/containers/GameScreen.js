@@ -122,6 +122,7 @@ export default class GameScreen extends React.Component {
         style={container}
       >
         <View style={GameScreenStyle[orientation]}>
+          <Image style={decorativePaper} source={tiltedPanel} />
           <Grid
             animationState={this.animationState}
             clearAnimation={this.clearAnimation}
@@ -152,7 +153,6 @@ export default class GameScreen extends React.Component {
             />
           </View>
         </View>
-        <Image style={decorativePaper} source={tiltedPanel} />
       </ImageBackground>
     );
   }

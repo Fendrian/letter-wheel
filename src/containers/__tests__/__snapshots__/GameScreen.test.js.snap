@@ -141,6 +141,24 @@ exports[`Game Screen component matches the snapshot 1`] = `
           }
         >
           <react-native-mock>
+            <Image
+              source={
+                Object {
+                  "testUri": "src/images/tiltedPanel.png",
+                }
+              }
+              style={
+                Object {
+                  "height": 375,
+                  "position": "absolute",
+                  "right": -320,
+                  "top": -220,
+                  "width": 400,
+                }
+              }
+            >
+              <react-native-mock />
+            </Image>
             <Component
               animationState=""
               clearAnimation={[Function]}
@@ -283,24 +301,6 @@ exports[`Game Screen component matches the snapshot 1`] = `
             </View>
           </react-native-mock>
         </View>
-        <Image
-          source={
-            Object {
-              "testUri": "src/images/tiltedPanel.png",
-            }
-          }
-          style={
-            Object {
-              "height": 375,
-              "position": "absolute",
-              "right": -320,
-              "top": -220,
-              "width": 400,
-            }
-          }
-        >
-          <react-native-mock />
-        </Image>
       </react-native-mock>
     </ImageBackground>
   </GameScreen>
