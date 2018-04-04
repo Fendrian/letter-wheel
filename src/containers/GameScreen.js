@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ImageBackground, View } from 'react-native';
+import { Image, ImageBackground, View } from 'react-native';
 import { action, computed, observable } from 'mobx';
 import { inject, observer, PropTypes as MobxPropTypes } from 'mobx-react';
 import nativeTimer from 'react-native-timer';
@@ -12,6 +12,7 @@ import Grid from '../components/Grid';
 import Control from '../components/Control';
 
 import background from '../images/woodBackground.jpg';
+import tiltedPanel from '../images/tiltedPanel.png';
 
 @inject('store')
 @observer
@@ -103,7 +104,7 @@ export default class GameScreen extends React.Component {
   render() {
     const { store } = this.props;
     const orientation = store.orientation === 0 ? 'portrait' : 'landscape';
-    const { dataWrapper } = GameScreenStyle;
+    const { dataWrapper, decorativePaper } = GameScreenStyle;
     const { container } = WrapperStyle;
     const { rank, toNext } = store.getScore();
 
@@ -151,6 +152,7 @@ export default class GameScreen extends React.Component {
             />
           </View>
         </View>
+        <Image style={decorativePaper} source={tiltedPanel} />
       </ImageBackground>
     );
   }

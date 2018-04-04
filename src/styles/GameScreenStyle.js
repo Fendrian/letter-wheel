@@ -13,4 +13,11 @@ export default StyleSheet.create({
   dataWrapper: {
     flex: 1,
   },
+  decorativePaper: {
+    position: 'absolute',
+    height: 375,
+    width: 400,
+    right: -320,
+    top: -220,
+  },
 });
