@@ -32,6 +32,10 @@ If there's a problem connectiong to port 5037, either the ssh reverse port forwa
 
 Note that when developing with an IDE or editor outside the VM (the usual way), filesystem events will not be forwarded to the VM by default. The recommended method for dealing with this [vagrant-fsnotify](https://github.com/adrienkohlbecker/vagrant-fsnotify), which can be installed (on the host machine) with `vagrant plugin install vagrant-fsnotify`, and then started with `vagrant fsnotify` once the VM is running (after `vagrant up` completes, in the same folder). This will forward filesystem events to the virtual machine.
 
-## LICENSING NOTICE
+## LICENSING NOTICES
 
 For the sake of convenience and conformance with general practice and standards, the Vagrantfile in this repository includes code which continues past a point in the Android SDK installation scripts where the developers intended the user to accept or reject the [Android SDK License Agreement](https://developer.android.com/studio/terms.html). Consequently, anyone running 'vagrant up', will be asserting their acceptance of said license agreement.
+
+For information on the source and licenses of the word list used in this project, consult the readme in `/dictionary`.
+
+Fonts used in this project are [Grundschrift by Christian Urff](https://fontlibrary.org/en/font/grundschrift) under the [CC-BY 3.0 license](https://creativecommons.org/licenses/by/3.0/), [Sorts Mill Goudy by Barry Schwartz](https://github.com/theleagueof/sorts-mill-goudy) under the [SIL Open Font License](https://github.com/theleagueof/sorts-mill-goudy/blob/master/Open%20Font%20License.markdown), and [Ruji's Handwriting V2.0](https://fontlibrary.org/en/font/ruji-s-handwriting-font-v-2-0) under the [SIL Open Font License](http://scripts.sil.org/OFL).

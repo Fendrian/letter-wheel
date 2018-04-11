@@ -39,15 +39,9 @@ const AboutModal = ({ isOpen, onClosed }) => (
         {' '}
       </Text>
       <Text style={AboutModalStyle.text}>
-        {'The code base is primarily coded in Javascript using React-Native, with additional ' +
-        'Javascript libraries from NPM that can be viewed in the package.json file on GitHub.'}
-      </Text>
-      <Text style={AboutModalStyle.text}>
-        {' '}
-      </Text>
-      <Text style={AboutModalStyle.text}>
-        {'The word dictionary is drawn from several open-source and public domain word lists. ' +
-        'Please see the project on github for more precise information about dictionary generation.'}
+        {'This work would not be remotely possible without the massive wealth of open-source ' +
+        'and public domain resources that it is built upon, a full list of which is available ' +
+        'with this project\'s source code on GitHub.'}
       </Text>
     </View>
   </Modal>

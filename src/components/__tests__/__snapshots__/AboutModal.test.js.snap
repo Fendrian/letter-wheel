@@ -313,31 +313,7 @@ exports[`About Modal matches the snapshot 2`] = `
                         }
                       >
                         <react-native-mock>
-                          The code base is primarily coded in Javascript using React-Native, with additional Javascript libraries from NPM that can be viewed in the package.json file on GitHub.
-                        </react-native-mock>
-                      </Text>
-                      <Text
-                        style={
-                          Object {
-                            "color": "#000",
-                            "fontSize": 18,
-                          }
-                        }
-                      >
-                        <react-native-mock>
-                           
-                        </react-native-mock>
-                      </Text>
-                      <Text
-                        style={
-                          Object {
-                            "color": "#000",
-                            "fontSize": 18,
-                          }
-                        }
-                      >
-                        <react-native-mock>
-                          The word dictionary is drawn from several open-source and public domain word lists. Please see the project on github for more precise information about dictionary generation.
+                          This work would not be remotely possible without the massive wealth of open-source and public domain resources that it is built upon, a full list of which is available with this project's source code on GitHub.
                         </react-native-mock>
                       </Text>
                     </react-native-mock>
