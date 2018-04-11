@@ -195,7 +195,7 @@ export default class Control extends React.Component {
                       source={listBody}
                     >
                       <Text style={ControlStyle[singleRow.style]}>
-                        {singleRow.word}
+                        {singleRow.word.toUpperCase()}
                       </Text>
                     </ImageBackground>
                   </View>

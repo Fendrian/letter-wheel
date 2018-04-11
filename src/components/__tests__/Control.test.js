@@ -264,15 +264,15 @@ describe('Control component', () => {
     const { renderRow } = list.props();
     const result1 = mount(renderRow({ word: 'bail', style: 'correct' }));
     expect(result1.find(Text).at(0).props().style).toEqual(ControlStyle.correct);
-    expect(result1.find(Text).at(0).props().children).toEqual('bail');
+    expect(result1.find(Text).at(0).props().children).toEqual('BAIL');
 
     const result2 = mount(renderRow({ word: 'lafe', style: 'incorrect' }));
     expect(result2.find(Text).at(0).props().style).toEqual(ControlStyle.incorrect);
-    expect(result2.find(Text).at(0).props().children).toEqual('lafe');
+    expect(result2.find(Text).at(0).props().children).toEqual('LAFE');
 
     const result3 = mount(renderRow({ word: 'words', style: 'neutral' }));
     expect(result3.find(Text).at(0).props().style).toEqual(ControlStyle.neutral);
-    expect(result3.find(Text).at(0).props().children).toEqual('words');
+    expect(result3.find(Text).at(0).props().children).toEqual('WORDS');
   });
 
   it('renders a header on the list', () => {
