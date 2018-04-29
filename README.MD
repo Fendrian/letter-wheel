@@ -39,3 +39,6 @@ For the sake of convenience and conformance with general practice and standards,
 For information on the source and licenses of the word list used in this project, consult the readme in `/dictionary`.
 
 Fonts used in this project are [Grundschrift by Christian Urff](https://fontlibrary.org/en/font/grundschrift) under the [CC-BY 3.0 license](https://creativecommons.org/licenses/by/3.0/), [Sorts Mill Goudy by Barry Schwartz](https://github.com/theleagueof/sorts-mill-goudy) under the [SIL Open Font License](https://github.com/theleagueof/sorts-mill-goudy/blob/master/Open%20Font%20License.markdown), and [Ruji's Handwriting V2.0](https://fontlibrary.org/en/font/ruji-s-handwriting-font-v-2-0) under the [SIL Open Font License](http://scripts.sil.org/OFL).
+
+Images in this project were created for the project and are covered by the overall project license unless otherwise noted.
+The ink circles used for the yellow squares are from https://texturefabrik.com/

@@ -267,15 +267,15 @@ describe('New Screen component', () => {
       },
     ]);
 
-    expect(render.find({ children: '10 to 49 words' })).toHaveLength(2);
+    expect(render.find({ children: '10-49 words to find' })).toHaveLength(2);
 
     runInAction(() => { store.newGameOptions.set('wordRange', { min: 30, max: 99 }); });
     render.update();
-    expect(render.find({ children: '30 to 99 words' })).toHaveLength(2);
+    expect(render.find({ children: '30-99 words to find' })).toHaveLength(2);
 
     runInAction(() => { store.newGameOptions.set('wordRange', { min: 20, max: 999 }); });
     render.update();
-    expect(render.find({ children: 'At least 20 words' })).toHaveLength(2);
+    expect(render.find({ children: 'over 20 words to find' })).toHaveLength(2);
   });
 
   it('provides a mutli-slider component to set word range', async () => {
@@ -320,7 +320,7 @@ describe('New Screen component', () => {
   it('provides button to open the instructions', async () => {
     const render = mount(<NewScreen.wrappedComponent store={store} />);
 
-    const instructionsButton = render.find({ content: 'Instructions'});
+    const instructionsButton = render.find({ content: 'Instructions' });
     expect(instructionsButton).toHaveLength(1);
     expect(instructionsButton.props().onPress).toEqual(store.openInstructionsModal);
   });
@@ -328,7 +328,7 @@ describe('New Screen component', () => {
   it('provides button to start the game', async () => {
     const render = mount(<NewScreen.wrappedComponent store={store} />);
 
-    const startButton = render.find({ content: 'Start Game'});
+    const startButton = render.find({ content: 'Start Game' });
     expect(startButton).toHaveLength(1);
     expect(startButton.props().onPress).toEqual(render.instance().start);
   });

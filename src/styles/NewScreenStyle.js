@@ -10,13 +10,39 @@ export default StyleSheet.create({
     paddingBottom: 12,
     paddingLeft: 6,
   },
+  customMarker: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    alignSelf: 'center',
+    width: 35,
+    height: 35,
+  },
   header: {
-    marginBottom: 10,
+    alignContent: 'center',
+    alignSelf: 'center',
+    backgroundColor: 'transparent',
+    overflow: 'hidden',
+    maxWidth: 400,
+    paddingBottom: 15,
+    paddingTop: 10,
+  },
+  headerBackground: {
+    alignContent: 'center',
+    alignSelf: 'center',
+    justifyContent: 'flex-end',
+    position: 'absolute',
+    width: '100%',
+    height: null,
+    bottom: 0,
   },
   headerText: {
     color: '#000',
-    fontSize: 50,
+    fontFamily: 'OFLGoudyStM',
+    fontSize: 40,
     textAlign: 'center',
+  },
+  headerTextWrapper: {
+    marginBottom: 10,
   },
   menuRow: {
     alignContent: 'center',
@@ -31,9 +57,8 @@ export default StyleSheet.create({
     flex: 1,
   },
   sliderStyle: {
-    height: 30,
-    paddingVertical: 20,
-    overflow: 'visible',
+    height: 20,
+    paddingVertical: 10,
   },
   timer: {
     marginHorizontal: 1,
@@ -51,7 +76,14 @@ export default StyleSheet.create({
     flex: 1,
     marginHorizontal: 1,
   },
+  wordsGeneratedWrapper: {
+    flex: 1,
+    justifyContent: 'center',
+    paddingBottom: 12,
+    paddingLeft: 6,
+  },
   wordsGenerated: {
+    fontFamily: 'RujisHandwritingFontv.2.0',
     fontSize: 20,
   },
   wrapper: {

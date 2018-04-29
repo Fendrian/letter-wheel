@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { ImageBackground, ScrollView, Text, View } from 'react-native';
+import { Image, ImageBackground, Text, View } from 'react-native';
 import { inject, observer } from 'mobx-react';
 import { SegmentedControls } from 'react-native-radio-buttons';
 import MultiSlider from '@ptomasroos/react-native-multi-slider';
@@ -11,8 +11,11 @@ import NewScreenStyle from '../styles/NewScreenStyle';
 import Button from '../components/Button';
 
 import background from '../images/woodBackground.jpg';
+import gridBackground from '../images/gridBackground.png';
 import ticked from '../images/ticked.png';
 import unticked from '../images/unticked.png';
+import yellowSquare1 from '../images/yellowSquare1.png';
+import yellowSquare2 from '../images/yellowSquare2.png';
 
 const options = [
   {
@@ -115,8 +118,11 @@ export default class NewScreen extends React.Component {
     const {
       buttonWrapper,
       checkBoxWrapper,
+      customMarker,
       header,
+      headerBackground,
       headerText,
+      headerTextWrapper,
       menuRow,
       segmented,
       sliderStyle,
@@ -125,6 +131,7 @@ export default class NewScreen extends React.Component {
       wordItems,
       words,
       wordsGenerated,
+      wordsGeneratedWrapper,
       wrapper,
     } = NewScreenStyle;
     const tint = '#555';
@@ -133,92 +140,108 @@ export default class NewScreen extends React.Component {
         source={background}
         style={container}
       >
-        <ScrollView
-          contentContainerStyle={{ flexGrow: 1 }}
-          style={{
-            width: this.props.store.width,
-          }}
+        <View
+          style={[
+            wrapper,
+            { width: this.props.store.width },
+          ]}
         >
           <View style={wrapper}>
             <View style={header}>
-              <Text style={headerText}>
-                NEW GAME
-              </Text>
-            </View>
-            <View style={menuRow}>
-              <View style={words}>
-                <SegmentedControls
-                  containerBorderTint={tint}
-                  extractText={option => option.label}
-                  onSelection={this.setSelectedOption}
-                  options={options}
-                  optionStyle={wordItems}
-                  selectedIndex={this.getSelectedOption()}
-                  separatorTint={tint}
-                  style={segmented}
-                  tint={tint}
+              <Image
+                aspectRatio={0.8967}
+                source={gridBackground}
+                style={headerBackground}
+                resizeMode="contain"
+              />
+              <View style={menuRow}>
+                <View style={headerTextWrapper}>
+                  <Text style={headerText}>
+                    TARGET WORDS
+                  </Text>
+                </View>
+              </View>
+              <View style={menuRow}>
+                <View style={words}>
+                  <SegmentedControls
+                    containerBorderTint={tint}
+                    extractText={option => option.label}
+                    onSelection={this.setSelectedOption}
+                    options={options}
+                    optionStyle={wordItems}
+                    selectedIndex={this.getSelectedOption()}
+                    separatorTint={tint}
+                    style={segmented}
+                    tint={tint}
+                  />
+                </View>
+              </View>
+              <View style={menuRow}>
+                <MultiSlider
+                  containerStyle={sliderStyle}
+                  isMarkersSeparated
+                  customMarkerLeft={() => (
+                    <Image
+                      source={yellowSquare1}
+                      style={customMarker}
+                      resizeMode="cover"
+                    />
+                  )}
+                  customMarkerRight={() => (
+                    <Image
+                      source={yellowSquare2}
+                      style={customMarker}
+                      resizeMode="cover"
+                    />
+                  )}
+                  onValuesChange={this.onSliderMove}
+                  optionsArray={optionsArray}
+                  selectedStyle={{
+                    backgroundColor: '#444',
+                  }}
+                  sliderLength={this.getSliderWidth()}
+                  trackStyle={{
+                    alignSelf: 'center',
+                    height: 4,
+                    borderRadius: 1,
+                  }}
+                  unselectedStyle={{
+                    backgroundColor: '#ddd',
+                  }}
+                  values={selected}
                 />
               </View>
-            </View>
-            <View style={menuRow}>
-              <Text style={wordsGenerated}>
-                {
-                  `${max !== 999 ?
-                    `${min} to ${max} words`
-                    :
-                    `At least ${min} words`}`
-                }
-              </Text>
-            </View>
-            <View style={menuRow}>
-              <MultiSlider
-                containerStyle={sliderStyle}
-                markerStyle={{
-                  height: 30,
-                  width: 30,
-                  borderRadius: 15,
-                  backgroundColor: '#fff',
-                  borderWidth: 2,
-                  borderColor: '#555',
-                }}
-                onValuesChange={this.onSliderMove}
-                optionsArray={optionsArray}
-                selectedStyle={{
-                  backgroundColor: '#444',
-                }}
-                sliderLength={this.getSliderWidth()}
-                trackStyle={{
-                  alignSelf: 'center',
-                  height: 10,
-                  borderRadius: 10,
-                }}
-                unselectedStyle={{
-                  backgroundColor: '#999',
-                }}
-                values={selected}
-              />
-            </View>
-            <View style={menuRow}>
-              <View style={{ flex: 1 }} />
-              <View style={timer}>
-                <Button
-                  onPress={this.toggleTimed}
-                  content={
-                    <View
-                      style={checkBoxWrapper}
-                      pointerEvents="none"
-                    >
-                      <CheckBox
-                        label="Timed Game:"
-                        labelBefore
-                        labelStyle={timerLabel}
-                        checked={this.props.store.newGameOptions.get('timed')}
-                        checkedImage={ticked}
-                        uncheckedImage={unticked}
-                      />
-                    </View>
-                  }
-                />
+              <View style={menuRow}>
+                <View style={wordsGeneratedWrapper}>
+                  <Text style={wordsGenerated}>
+                    {
+                      `${max !== 999 ?
+                        `${min}-${max} words to find`
+                        :
+                        `over ${min} words to find`}`
+                    }
+                  </Text>
+                </View>
+                <View style={timer}>
+                  <Button
+                    onPress={this.toggleTimed}
+                    content={
+                      <View
+                        style={checkBoxWrapper}
+                        pointerEvents="none"
+                      >
+                        <CheckBox
+                          label="Timed Game:"
+                          labelBefore
+                          labelStyle={timerLabel}
+                          checked={this.props.store.newGameOptions.get('timed')}
+                          checkedImage={ticked}
+                          uncheckedImage={unticked}
+                        />
+                      </View>
+                    }
+                  />
+                </View>
               </View>
             </View>
             <View style={menuRow}>
@@ -238,7 +261,7 @@ export default class NewScreen extends React.Component {
               </View>
             </View>
           </View>
-        </ScrollView>
+        </View>
       </ImageBackground>
     );
   }
