@@ -183,7 +183,7 @@ exports[`New Screen component matches the snapshot 1`] = `
                       "alignContent": "center",
                       "alignSelf": "center",
                       "flexDirection": "row",
-                      "justifyContent": "center",
+                      "justifyContent": "space-between",
                       "maxWidth": 400,
                       "paddingHorizontal": 25,
                       "paddingVertical": 10,
@@ -474,7 +474,7 @@ exports[`New Screen component matches the snapshot 1`] = `
                       "alignContent": "center",
                       "alignSelf": "center",
                       "flexDirection": "row",
-                      "justifyContent": "center",
+                      "justifyContent": "space-between",
                       "maxWidth": 400,
                       "paddingHorizontal": 25,
                       "paddingVertical": 10,
@@ -501,7 +501,7 @@ exports[`New Screen component matches the snapshot 1`] = `
                       "alignContent": "center",
                       "alignSelf": "center",
                       "flexDirection": "row",
-                      "justifyContent": "center",
+                      "justifyContent": "space-between",
                       "maxWidth": 400,
                       "paddingHorizontal": 25,
                       "paddingVertical": 10,
@@ -998,7 +998,7 @@ exports[`New Screen component matches the snapshot 1`] = `
                       "alignContent": "center",
                       "alignSelf": "center",
                       "flexDirection": "row",
-                      "justifyContent": "center",
+                      "justifyContent": "space-between",
                       "maxWidth": 400,
                       "paddingHorizontal": 25,
                       "paddingVertical": 10,
@@ -1009,42 +1009,203 @@ exports[`New Screen component matches the snapshot 1`] = `
                     <View
                       style={
                         Object {
-                          "alignItems": "flex-end",
                           "flex": 1,
+                        }
+                      }
+                    >
+                      <react-native-mock />
+                    </View>
+                    <View
+                      style={
+                        Object {
                           "marginHorizontal": 1,
                         }
                       }
                     >
                       <react-native-mock>
-                        <Component
-                          checked={false}
-                          label="Timed Game:"
-                          labelBefore={true}
-                          labelStyle={
-                            Object {
-                              "color": "#000",
-                              "fontSize": 20,
-                            }
+                        <Button
+                          colour="yellow"
+                          content={
+                            <View
+                              pointerEvents="none"
+                              style={
+                                Object {
+                                  "paddingBottom": 12,
+                                  "paddingLeft": 6,
+                                }
+                              }
+                            >
+                              <Unknown
+                                checked={false}
+                                checkedImage={
+                                  Object {
+                                    "testUri": "src/images/ticked.png",
+                                  }
+                                }
+                                label="Timed Game:"
+                                labelBefore={true}
+                                labelStyle={
+                                  Object {
+                                    "color": "#000",
+                                    "fontFamily": "RujisHandwritingFontv.2.0",
+                                    "fontSize": 20,
+                                  }
+                                }
+                                uncheckedImage={
+                                  Object {
+                                    "testUri": "src/images/unticked.png",
+                                  }
+                                }
+                              />
+                            </View>
                           }
-                          onChange={[Function]}
+                          onPress={[Function]}
                         >
                           <View
-                            checked={false}
-                            label="Timed Game:"
-                            labelBefore={true}
-                            labelStyle={
+                            style={
                               Object {
-                                "color": "#000",
-                                "fontSize": 20,
+                                "width": "100%",
                               }
                             }
-                            onChange={[Function]}
                           >
                             <react-native-mock>
-                              7A9FEEAE-7F90-4135-B5B2-356DB9E822CB
+                              <Image
+                                fadeDuration={0}
+                                resizeMode="stretch"
+                                source={
+                                  Object {
+                                    "testUri": "src/images/buttonYellowActive.png",
+                                  }
+                                }
+                                style={
+                                  Array [
+                                    Object {
+                                      "alignItems": "center",
+                                      "height": undefined,
+                                      "justifyContent": "center",
+                                      "marginRight": -4,
+                                      "width": undefined,
+                                    },
+                                    Object {
+                                      "opacity": 0,
+                                    },
+                                  ]
+                                }
+                              >
+                                <react-native-mock />
+                              </Image>
+                              <Image
+                                fadeDuration={0}
+                                resizeMode="stretch"
+                                source={
+                                  Object {
+                                    "testUri": "src/images/buttonYellowPassive.png",
+                                  }
+                                }
+                                style={
+                                  Array [
+                                    Object {
+                                      "alignItems": "center",
+                                      "height": undefined,
+                                      "justifyContent": "center",
+                                      "marginRight": -4,
+                                      "width": undefined,
+                                    },
+                                    Object {
+                                      "opacity": 1,
+                                    },
+                                  ]
+                                }
+                              >
+                                <react-native-mock />
+                              </Image>
+                              <TouchableWithoutFeedback
+                                onPress={[Function]}
+                                onPressIn={[Function]}
+                                onPressOut={[Function]}
+                              >
+                                <react-native-mock>
+                                  <View
+                                    style={
+                                      Object {
+                                        "alignItems": "center",
+                                        "justifyContent": "center",
+                                        "paddingBottom": 2,
+                                        "paddingLeft": 12,
+                                        "paddingRight": 12,
+                                        "paddingTop": 8,
+                                      }
+                                    }
+                                  >
+                                    <react-native-mock>
+                                      <View
+                                        pointerEvents="none"
+                                        style={
+                                          Object {
+                                            "paddingBottom": 12,
+                                            "paddingLeft": 6,
+                                          }
+                                        }
+                                      >
+                                        <react-native-mock>
+                                          <Component
+                                            checked={false}
+                                            checkedImage={
+                                              Object {
+                                                "testUri": "src/images/ticked.png",
+                                              }
+                                            }
+                                            label="Timed Game:"
+                                            labelBefore={true}
+                                            labelStyle={
+                                              Object {
+                                                "color": "#000",
+                                                "fontFamily": "RujisHandwritingFontv.2.0",
+                                                "fontSize": 20,
+                                              }
+                                            }
+                                            uncheckedImage={
+                                              Object {
+                                                "testUri": "src/images/unticked.png",
+                                              }
+                                            }
+                                          >
+                                            <View
+                                              checked={false}
+                                              checkedImage={
+                                                Object {
+                                                  "testUri": "src/images/ticked.png",
+                                                }
+                                              }
+                                              label="Timed Game:"
+                                              labelBefore={true}
+                                              labelStyle={
+                                                Object {
+                                                  "color": "#000",
+                                                  "fontFamily": "RujisHandwritingFontv.2.0",
+                                                  "fontSize": 20,
+                                                }
+                                              }
+                                              uncheckedImage={
+                                                Object {
+                                                  "testUri": "src/images/unticked.png",
+                                                }
+                                              }
+                                            >
+                                              <react-native-mock>
+                                                7A9FEEAE-7F90-4135-B5B2-356DB9E822CB
+                                              </react-native-mock>
+                                            </View>
+                                          </Component>
+                                        </react-native-mock>
+                                      </View>
+                                    </react-native-mock>
+                                  </View>
+                                </react-native-mock>
+                              </TouchableWithoutFeedback>
                             </react-native-mock>
                           </View>
-                        </Component>
+                        </Button>
                       </react-native-mock>
                     </View>
                   </react-native-mock>
@@ -1055,7 +1216,7 @@ exports[`New Screen component matches the snapshot 1`] = `
                       "alignContent": "center",
                       "alignSelf": "center",
                       "flexDirection": "row",
-                      "justifyContent": "center",
+                      "justifyContent": "space-between",
                       "maxWidth": 400,
                       "paddingHorizontal": 25,
                       "paddingVertical": 10,
@@ -1063,73 +1224,121 @@ exports[`New Screen component matches the snapshot 1`] = `
                   }
                 >
                   <react-native-mock>
-                    <Button
-                      containerStyle={
-                        Object {
-                          "alignContent": "center",
-                          "backgroundColor": "#999",
-                          "borderRadius": 4,
-                          "height": 60,
-                          "justifyContent": "center",
-                          "paddingHorizontal": 20,
-                        }
-                      }
-                      onPress={[Function]}
+                    <View
                       style={
                         Object {
-                          "color": "#000",
-                          "fontSize": 20,
-                          "lineHeight": 20,
+                          "alignContent": "center",
+                          "justifyContent": "center",
+                          "width": 160,
                         }
                       }
                     >
-                      <TouchableOpacity
-                        accessibilityComponentType="button"
-                        accessibilityTraits="button"
-                        activeOpacity={0.2}
-                        onPress={[Function]}
-                        style={
-                          Array [
-                            Object {
-                              "alignContent": "center",
-                              "backgroundColor": "#999",
-                              "borderRadius": 4,
-                              "height": 60,
-                              "justifyContent": "center",
-                              "paddingHorizontal": 20,
-                            },
-                            null,
-                          ]
-                        }
-                      >
-                        <react-native-mock>
-                          <Text
-                            key="0"
+                      <react-native-mock>
+                        <Button
+                          colour="yellow"
+                          content="Instructions"
+                          onPress={[Function]}
+                        >
+                          <View
                             style={
-                              Array [
-                                Object {
-                                  "color": "#007aff",
-                                  "fontSize": 17,
-                                  "fontWeight": "500",
-                                  "textAlign": "center",
-                                },
-                                null,
-                                Object {
-                                  "color": "#000",
-                                  "fontSize": 20,
-                                  "lineHeight": 20,
-                                },
-                                null,
-                              ]
+                              Object {
+                                "width": "100%",
+                              }
                             }
                           >
                             <react-native-mock>
-                              Instructions
+                              <Image
+                                fadeDuration={0}
+                                resizeMode="stretch"
+                                source={
+                                  Object {
+                                    "testUri": "src/images/buttonYellowActive.png",
+                                  }
+                                }
+                                style={
+                                  Array [
+                                    Object {
+                                      "alignItems": "center",
+                                      "height": undefined,
+                                      "justifyContent": "center",
+                                      "marginRight": -4,
+                                      "width": undefined,
+                                    },
+                                    Object {
+                                      "opacity": 0,
+                                    },
+                                  ]
+                                }
+                              >
+                                <react-native-mock />
+                              </Image>
+                              <Image
+                                fadeDuration={0}
+                                resizeMode="stretch"
+                                source={
+                                  Object {
+                                    "testUri": "src/images/buttonYellowPassive.png",
+                                  }
+                                }
+                                style={
+                                  Array [
+                                    Object {
+                                      "alignItems": "center",
+                                      "height": undefined,
+                                      "justifyContent": "center",
+                                      "marginRight": -4,
+                                      "width": undefined,
+                                    },
+                                    Object {
+                                      "opacity": 1,
+                                    },
+                                  ]
+                                }
+                              >
+                                <react-native-mock />
+                              </Image>
+                              <TouchableWithoutFeedback
+                                onPress={[Function]}
+                                onPressIn={[Function]}
+                                onPressOut={[Function]}
+                              >
+                                <react-native-mock>
+                                  <View
+                                    style={
+                                      Object {
+                                        "alignItems": "center",
+                                        "justifyContent": "center",
+                                        "paddingBottom": 2,
+                                        "paddingLeft": 12,
+                                        "paddingRight": 12,
+                                        "paddingTop": 8,
+                                      }
+                                    }
+                                  >
+                                    <react-native-mock>
+                                      <Text
+                                        style={
+                                          Object {
+                                            "color": "#000000",
+                                            "fontFamily": "Grundschrift-Bold",
+                                            "fontSize": 20,
+                                            "marginBottom": 15,
+                                          }
+                                        }
+                                      >
+                                        <react-native-mock>
+                                          INSTRUCTIONS
+                                        </react-native-mock>
+                                      </Text>
+                                    </react-native-mock>
+                                  </View>
+                                </react-native-mock>
+                              </TouchableWithoutFeedback>
                             </react-native-mock>
-                          </Text>
-                        </react-native-mock>
-                      </TouchableOpacity>
-                    </Button>
+                          </View>
+                        </Button>
+                      </react-native-mock>
+                    </View>
                     <View
                       style={
                         Object {
@@ -1139,73 +1348,121 @@ exports[`New Screen component matches the snapshot 1`] = `
                     >
                       <react-native-mock />
                     </View>
-                    <Button
-                      containerStyle={
-                        Object {
-                          "alignContent": "center",
-                          "backgroundColor": "#999",
-                          "borderRadius": 4,
-                          "height": 60,
-                          "justifyContent": "center",
-                          "paddingHorizontal": 20,
-                        }
-                      }
-                      onPress={[Function]}
+                    <View
                       style={
                         Object {
-                          "color": "#000",
-                          "fontSize": 20,
-                          "lineHeight": 20,
+                          "alignContent": "center",
+                          "justifyContent": "center",
+                          "width": 160,
                         }
                       }
                     >
-                      <TouchableOpacity
-                        accessibilityComponentType="button"
-                        accessibilityTraits="button"
-                        activeOpacity={0.2}
-                        onPress={[Function]}
-                        style={
-                          Array [
-                            Object {
-                              "alignContent": "center",
-                              "backgroundColor": "#999",
-                              "borderRadius": 4,
-                              "height": 60,
-                              "justifyContent": "center",
-                              "paddingHorizontal": 20,
-                            },
-                            null,
-                          ]
-                        }
-                      >
-                        <react-native-mock>
-                          <Text
-                            key="0"
+                      <react-native-mock>
+                        <Button
+                          colour="blue"
+                          content="Start Game"
+                          onPress={[Function]}
+                        >
+                          <View
                             style={
-                              Array [
-                                Object {
-                                  "color": "#007aff",
-                                  "fontSize": 17,
-                                  "fontWeight": "500",
-                                  "textAlign": "center",
-                                },
-                                null,
-                                Object {
-                                  "color": "#000",
-                                  "fontSize": 20,
-                                  "lineHeight": 20,
-                                },
-                                null,
-                              ]
+                              Object {
+                                "width": "100%",
+                              }
                             }
                           >
                             <react-native-mock>
-                              Start Game
+                              <Image
+                                fadeDuration={0}
+                                resizeMode="stretch"
+                                source={
+                                  Object {
+                                    "testUri": "src/images/buttonBlueActive.png",
+                                  }
+                                }
+                                style={
+                                  Array [
+                                    Object {
+                                      "alignItems": "center",
+                                      "height": undefined,
+                                      "justifyContent": "center",
+                                      "marginRight": -4,
+                                      "width": undefined,
+                                    },
+                                    Object {
+                                      "opacity": 0,
+                                    },
+                                  ]
+                                }
+                              >
+                                <react-native-mock />
+                              </Image>
+                              <Image
+                                fadeDuration={0}
+                                resizeMode="stretch"
+                                source={
+                                  Object {
+                                    "testUri": "src/images/buttonBluePassive.png",
+                                  }
+                                }
+                                style={
+                                  Array [
+                                    Object {
+                                      "alignItems": "center",
+                                      "height": undefined,
+                                      "justifyContent": "center",
+                                      "marginRight": -4,
+                                      "width": undefined,
+                                    },
+                                    Object {
+                                      "opacity": 1,
+                                    },
+                                  ]
+                                }
+                              >
+                                <react-native-mock />
+                              </Image>
+                              <TouchableWithoutFeedback
+                                onPress={[Function]}
+                                onPressIn={[Function]}
+                                onPressOut={[Function]}
+                              >
+                                <react-native-mock>
+                                  <View
+                                    style={
+                                      Object {
+                                        "alignItems": "center",
+                                        "justifyContent": "center",
+                                        "paddingBottom": 2,
+                                        "paddingLeft": 12,
+                                        "paddingRight": 12,
+                                        "paddingTop": 8,
+                                      }
+                                    }
+                                  >
+                                    <react-native-mock>
+                                      <Text
+                                        style={
+                                          Object {
+                                            "color": "#000000",
+                                            "fontFamily": "Grundschrift-Bold",
+                                            "fontSize": 20,
+                                            "marginBottom": 15,
+                                          }
+                                        }
+                                      >
+                                        <react-native-mock>
+                                          START GAME
+                                        </react-native-mock>
+                                      </Text>
+                                    </react-native-mock>
+                                  </View>
+                                </react-native-mock>
+                              </TouchableWithoutFeedback>
                             </react-native-mock>
-                          </Text>
-                        </react-native-mock>
-                      </TouchableOpacity>
-                    </Button>
+                          </View>
+                        </Button>
+                      </react-native-mock>
+                    </View>
                   </react-native-mock>
                 </View>
               </react-native-mock>

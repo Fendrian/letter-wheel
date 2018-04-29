@@ -82,7 +82,6 @@
     "react": "^16.3.0-alpha.1",
     "react-native": "^0.54.2",
     "react-native-animatable": "^1.2.4",
-    "react-native-button": "^2.3.0",
     "react-native-checkbox": "^2.0.0",
     "react-native-hyperlink": "^0.0.12",
     "react-native-keyevent": "^0.1.1",

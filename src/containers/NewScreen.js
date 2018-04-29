@@ -5,12 +5,14 @@ import { inject, observer } from 'mobx-react';
 import { SegmentedControls } from 'react-native-radio-buttons';
 import MultiSlider from '@ptomasroos/react-native-multi-slider';
 import CheckBox from 'react-native-checkbox';
-import Button from 'react-native-button';
 
 import WrapperStyle from '../styles/WrapperStyle';
 import NewScreenStyle from '../styles/NewScreenStyle';
+import Button from '../components/Button';
 
 import background from '../images/woodBackground.jpg';
+import ticked from '../images/ticked.png';
+import unticked from '../images/unticked.png';
 
 const options = [
   {
@@ -111,8 +113,8 @@ export default class NewScreen extends React.Component {
     const optionsArray = [...Array.from(Array(91)).map((a, i) => i + 10), 999];
     const { container } = WrapperStyle;
     const {
-      button,
-      buttonText,
+      buttonWrapper,
+      checkBoxWrapper,
       header,
       headerText,
       menuRow,
@@ -197,32 +199,43 @@ export default class NewScreen extends React.Component {
               />
             </View>
             <View style={menuRow}>
+              <View style={{ flex: 1 }} />
               <View style={timer}>
-                <CheckBox
-                  label="Timed Game:"
-                  labelBefore
-                  labelStyle={timerLabel}
-                  checked={this.props.store.newGameOptions.get('timed')}
-                  onChange={this.toggleTimed}
+                <Button
+                  onPress={this.toggleTimed}
+                  content={
+                    <View
+                      style={checkBoxWrapper}
+                      pointerEvents="none"
+                    >
+                      <CheckBox
+                        label="Timed Game:"
+                        labelBefore
+                        labelStyle={timerLabel}
+                        checked={this.props.store.newGameOptions.get('timed')}
+                        checkedImage={ticked}
+                        uncheckedImage={unticked}
+                      />
+                    </View>
+                  }
                 />
               </View>
             </View>
             <View style={menuRow}>
-              <Button
-                containerStyle={button}
-                style={buttonText}
-                onPress={this.props.store.openInstructionsModal}
-              >
-                Instructions
-              </Button>
+              <View style={buttonWrapper}>
+                <Button
+                  onPress={this.props.store.openInstructionsModal}
+                  content="Instructions"
+                />
+              </View>
               <View style={{ flex: 1 }} />
-              <Button
-                containerStyle={button}
-                style={buttonText}
-                onPress={this.start}
-              >
-                Start Game
-              </Button>
+              <View style={buttonWrapper}>
+                <Button
+                  colour="blue"
+                  onPress={this.start}
+                  content="Start Game"
+                />
+              </View>
             </View>
           </View>
         </ScrollView>

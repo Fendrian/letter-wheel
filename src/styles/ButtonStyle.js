@@ -12,7 +12,7 @@ export default StyleSheet.create({
     height: undefined,
     marginRight: -4,
   },
-  textWrapper: {
+  contentWrapper: {
     alignItems: 'center',
     justifyContent: 'center',
     paddingBottom: 2,

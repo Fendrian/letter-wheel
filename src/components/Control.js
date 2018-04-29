@@ -240,7 +240,7 @@ export default class Control extends React.Component {
               <Button
                 colour="blue"
                 onPress={this.props.onSubmit}
-                title="Check word"
+                content="Input word"
               />
             </View>
             <View style={lineWrapperSmall}>
@@ -271,7 +271,7 @@ export default class Control extends React.Component {
             <View style={buttonWrapper}>
               <Button
                 onPress={this.props.onMenu}
-                title="Game menu"
+                content="Game menu"
               />
             </View>
           </View>

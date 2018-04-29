@@ -246,8 +246,8 @@ exports[`Control component matches the snapshot 1`] = `
                 <react-native-mock>
                   <Button
                     colour="blue"
+                    content="Input word"
                     onPress={[Function]}
-                    title="Check word"
                   >
                     <View
                       style={
@@ -337,7 +337,7 @@ exports[`Control component matches the snapshot 1`] = `
                                   }
                                 >
                                   <react-native-mock>
-                                    CHECK WORD
+                                    INPUT WORD
                                   </react-native-mock>
                                 </Text>
                               </react-native-mock>
@@ -511,8 +511,8 @@ exports[`Control component matches the snapshot 1`] = `
                 <react-native-mock>
                   <Button
                     colour="yellow"
+                    content="Game menu"
                     onPress={[Function]}
-                    title="Game menu"
                   >
                     <View
                       style={
@@ -933,8 +933,8 @@ exports[`Control component matches the snapshot 2`] = `
                 <react-native-mock>
                   <Button
                     colour="blue"
+                    content="Input word"
                     onPress={[Function]}
-                    title="Check word"
                   >
                     <View
                       style={
@@ -1024,7 +1024,7 @@ exports[`Control component matches the snapshot 2`] = `
                                   }
                                 >
                                   <react-native-mock>
-                                    CHECK WORD
+                                    INPUT WORD
                                   </react-native-mock>
                                 </Text>
                               </react-native-mock>
@@ -1198,8 +1198,8 @@ exports[`Control component matches the snapshot 2`] = `
                 <react-native-mock>
                   <Button
                     colour="yellow"
+                    content="Game menu"
                     onPress={[Function]}
-                    title="Game menu"
                   >
                     <View
                       style={

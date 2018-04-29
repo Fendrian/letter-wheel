@@ -15,12 +15,15 @@ import buttonBlueActive from '../images/buttonBlueActive.png';
 export default class Button extends React.Component {
   static propTypes = {
     colour: PropTypes.oneOf(['yellow', 'blue']),
-    title: PropTypes.string,
+    content: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.node,
+    ]),
     onPress: PropTypes.func,
   }
   static defaultProps = {
     colour: 'yellow',
-    title: '',
+    content: '',
     onPress() {},
   }
 
@@ -70,12 +73,16 @@ export default class Button extends React.Component {
           onPressIn={this.beginPress}
           onPressOut={this.endPress}
         >
-          <View style={ButtonStyle.textWrapper}>
-            <Text
-              style={ButtonStyle.text}
-            >
-              {this.props.title.toUpperCase()}
-            </Text>
+          <View style={ButtonStyle.contentWrapper}>
+            {typeof (this.props.content) === 'string' ?
+              <Text
+                style={ButtonStyle.text}
+              >
+                {this.props.content.toUpperCase()}
+              </Text>
+              :
+              this.props.content
+            }
           </View>
         </TouchableWithoutFeedback>
       </View>

@@ -3,8 +3,8 @@
 exports[`Button component matches the snapshot 1`] = `
 <Button
   colour="yellow"
+  content=""
   onPress={[Function]}
-  title=""
 >
   <View
     style={

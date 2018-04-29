@@ -1,18 +1,14 @@
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
-  button: {
+  buttonWrapper: {
     alignContent: 'center',
-    backgroundColor: '#999',
-    borderRadius: 4,
     justifyContent: 'center',
-    height: 60,
-    paddingHorizontal: 20,
+    width: 160,
   },
-  buttonText: {
-    color: '#000',
-    fontSize: 20,
-    lineHeight: 20,
+  checkBoxWrapper: {
+    paddingBottom: 12,
+    paddingLeft: 6,
   },
   header: {
     marginBottom: 10,
@@ -26,7 +22,7 @@ export default StyleSheet.create({
     alignContent: 'center',
     alignSelf: 'center',
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     paddingHorizontal: 25,
     paddingVertical: 10,
     maxWidth: 400,
@@ -40,12 +36,11 @@ export default StyleSheet.create({
     overflow: 'visible',
   },
   timer: {
-    alignItems: 'flex-end',
-    flex: 1,
     marginHorizontal: 1,
   },
   timerLabel: {
     color: '#000',
+    fontFamily: 'RujisHandwritingFontv.2.0',
     fontSize: 20,
   },
   wordItems: {

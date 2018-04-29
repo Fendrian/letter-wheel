@@ -1,22 +1,23 @@
 import React from 'react';
+import { View } from 'react-native';
 import { mount } from 'enzyme';
 import { runInAction } from 'mobx';
 import MockDate from 'mockdate';
 import { SegmentedControls } from 'react-native-radio-buttons';
 import MultiSlider from '@ptomasroos/react-native-multi-slider';
 import CheckBox from 'react-native-checkbox';
-import Button from 'react-native-button';
 
 import AppStore from '../../data/store';
 import NewScreen from '../NewScreen';
+import Button from '../../components/Button';
 
 jest.mock('react-native-checkbox', () => {
   require('react'); // eslint-disable-line global-require
-  const { View } = require('react-native'); // eslint-disable-line global-require
+  const V = require('react-native').View; // eslint-disable-line global-require
   return props => (
-    <View {...props} visible={undefined}>
+    <V {...props} visible={undefined}>
       {'7A9FEEAE-7F90-4135-B5B2-356DB9E822CB'}
-    </View>
+    </V>
   );
 });
 
@@ -301,23 +302,34 @@ describe('New Screen component', () => {
   it('provides a checkbox controlling timed state', async () => {
     const render = mount(<NewScreen.wrappedComponent store={store} />);
 
-    expect(render.find(CheckBox)).toHaveLength(1);
-    expect(render.find(CheckBox).at(0).props().label).toEqual('Timed Game:');
-    expect(render.find(CheckBox).at(0).props().labelBefore).toBeTruthy();
+    let checkBox = render.find(CheckBox);
+    expect(checkBox).toHaveLength(1);
+    expect(checkBox.props().label).toEqual('Timed Game:');
+    expect(checkBox.props().labelBefore).toBeTruthy();
 
-    expect(render.find(CheckBox).at(0).props().checked).toBeFalsy();
+    expect(checkBox.props().checked).toBeFalsy();
     runInAction(() => { store.newGameOptions.set('timed', true); });
     render.update();
-    expect(render.find(CheckBox).at(0).props().checked).toBeTruthy();
+    checkBox = render.find(CheckBox);
+    expect(checkBox.props().checked).toBeTruthy();
 
-    expect(render.find(CheckBox).at(0).props().onChange).toEqual(render.instance().toggleTimed);
+    expect(checkBox.closest(View).props().pointerEvents).toEqual('none');
+    expect(checkBox.closest(Button).props().onPress).toEqual(render.instance().toggleTimed);
   });
 
-  it('provides buttons to open the instructions, and to start the game', async () => {
+  it('provides button to open the instructions', async () => {
     const render = mount(<NewScreen.wrappedComponent store={store} />);
 
-    expect(render.find(Button)).toHaveLength(2);
-    expect(render.find({ onPress: store.openInstructionsModal })).toHaveLength(2);
-    expect(render.find({ onPress: render.instance().start })).toHaveLength(2);
+    const instructionsButton = render.find({ content: 'Instructions'});
+    expect(instructionsButton).toHaveLength(1);
+    expect(instructionsButton.props().onPress).toEqual(store.openInstructionsModal);
+  });
+
+  it('provides button to start the game', async () => {
+    const render = mount(<NewScreen.wrappedComponent store={store} />);
+
+    const startButton = render.find({ content: 'Start Game'});
+    expect(startButton).toHaveLength(1);
+    expect(startButton.props().onPress).toEqual(render.instance().start);
   });
 });
