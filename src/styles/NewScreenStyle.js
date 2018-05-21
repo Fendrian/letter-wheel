@@ -4,6 +4,7 @@ export default StyleSheet.create({
   buttonWrapper: {
     alignContent: 'center',
     justifyContent: 'center',
+    marginBottom: 20,
     width: 160,
   },
   checkBoxWrapper: {
@@ -21,19 +22,30 @@ export default StyleSheet.create({
     alignContent: 'center',
     alignSelf: 'center',
     backgroundColor: 'transparent',
-    overflow: 'hidden',
+    justifyContent: 'space-around',
+    flex: 1,
+    marginTop: 30,
     maxWidth: 400,
+    maxHeight: 350,
     paddingBottom: 15,
-    paddingTop: 10,
   },
-  headerBackground: {
+  headerBackgroundBottom: {
     alignContent: 'center',
     alignSelf: 'center',
     justifyContent: 'flex-end',
     position: 'absolute',
     width: '100%',
-    height: null,
-    bottom: 0,
+    height: 50,
+    bottom: -10,
+  },
+  headerBackgroundBody: {
+    alignContent: 'center',
+    alignSelf: 'center',
+    justifyContent: 'flex-end',
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    bottom: 39,
   },
   headerText: {
     color: '#000',
@@ -50,7 +62,6 @@ export default StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingHorizontal: 25,
-    paddingVertical: 10,
     maxWidth: 400,
   },
   segmented: {
@@ -58,7 +69,7 @@ export default StyleSheet.create({
   },
   sliderStyle: {
     height: 20,
-    paddingVertical: 10,
+    paddingVertical: 20,
   },
   timer: {
     marginHorizontal: 1,
@@ -89,6 +100,7 @@ export default StyleSheet.create({
   wrapper: {
     alignContent: 'center',
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'space-around',
+    maxHeight: 500,
   },
 });

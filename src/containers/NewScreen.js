@@ -11,7 +11,8 @@ import NewScreenStyle from '../styles/NewScreenStyle';
 import Button from '../components/Button';
 
 import background from '../images/woodBackground.jpg';
-import gridBackground from '../images/gridBackground.png';
+import newPanelBody from '../images/newPanelBody.png';
+import newPanelBottom from '../images/newPanelBottom.png';
 import ticked from '../images/ticked.png';
 import unticked from '../images/unticked.png';
 import yellowSquare1 from '../images/yellowSquare1.png';
@@ -120,9 +121,9 @@ export default class NewScreen extends React.Component {
       checkBoxWrapper,
       customMarker,
       header,
-      headerBackground,
+      headerBackgroundBottom,
+      headerBackgroundBody,
       headerText,
-      headerTextWrapper,
       menuRow,
       segmented,
       sliderStyle,
@@ -149,17 +150,19 @@ export default class NewScreen extends React.Component {
           <View style={wrapper}>
             <View style={header}>
               <Image
-                aspectRatio={0.8967}
-                source={gridBackground}
-                style={headerBackground}
-                resizeMode="contain"
+                source={newPanelBody}
+                style={headerBackgroundBody}
+                resizeMode="stretch"
+              />
+              <Image
+                source={newPanelBottom}
+                style={headerBackgroundBottom}
+                resizeMode="stretch"
               />
               <View style={menuRow}>
-                <View style={headerTextWrapper}>
-                  <Text style={headerText}>
-                    TARGET WORDS
-                  </Text>
-                </View>
+                <Text style={headerText}>
+                  TARGET WORDS
+                </Text>
               </View>
               <View style={menuRow}>
                 <View style={words}>
