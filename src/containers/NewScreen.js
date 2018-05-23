@@ -2,13 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Image, ImageBackground, Text, View } from 'react-native';
 import { inject, observer } from 'mobx-react';
-import { SegmentedControls } from 'react-native-radio-buttons';
 import MultiSlider from '@ptomasroos/react-native-multi-slider';
 import CheckBox from 'react-native-checkbox';
 
 import WrapperStyle from '../styles/WrapperStyle';
 import NewScreenStyle from '../styles/NewScreenStyle';
 import Button from '../components/Button';
+import VerticalButton from '../components/VerticalButton';
 
 import background from '../images/woodBackground.jpg';
 import newPanelBody from '../images/newPanelBody.png';
@@ -125,17 +125,14 @@ export default class NewScreen extends React.Component {
       headerBackgroundBody,
       headerText,
       menuRow,
-      segmented,
       sliderStyle,
       timer,
       timerLabel,
-      wordItems,
-      words,
+      verticalButtonWrapper,
       wordsGenerated,
       wordsGeneratedWrapper,
       wrapper,
     } = NewScreenStyle;
-    const tint = '#555';
     return (
       <ImageBackground
         source={background}
@@ -165,19 +162,28 @@ export default class NewScreen extends React.Component {
                 </Text>
               </View>
               <View style={menuRow}>
-                <View style={words}>
-                  <SegmentedControls
-                    containerBorderTint={tint}
-                    extractText={option => option.label}
-                    onSelection={this.setSelectedOption}
-                    options={options}
-                    optionStyle={wordItems}
-                    selectedIndex={this.getSelectedOption()}
-                    separatorTint={tint}
-                    style={segmented}
-                    tint={tint}
+                <View style={{ flex: 1 }} />
+                <View style={verticalButtonWrapper}>
+                  <VerticalButton
+                    onPress={() => { this.setSelectedOption(options[0]); }}
+                    content={options[0].label}
                   />
                 </View>
+                <View style={{ flex: 1 }} />
+                <View style={verticalButtonWrapper}>
+                  <VerticalButton
+                    onPress={() => { this.setSelectedOption(options[1]); }}
+                    content={options[1].label}
+                  />
+                </View>
+                <View style={{ flex: 1 }} />
+                <View style={verticalButtonWrapper}>
+                  <VerticalButton
+                    onPress={() => { this.setSelectedOption(options[2]); }}
+                    content={options[2].label}
+                  />
+                </View>
+                <View style={{ flex: 1 }} />
               </View>
               <View style={menuRow}>
                 <MultiSlider

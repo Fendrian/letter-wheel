@@ -3,13 +3,13 @@ import { View } from 'react-native';
 import { mount } from 'enzyme';
 import { runInAction } from 'mobx';
 import MockDate from 'mockdate';
-import { SegmentedControls } from 'react-native-radio-buttons';
 import MultiSlider from '@ptomasroos/react-native-multi-slider';
 import CheckBox from 'react-native-checkbox';
 
 import AppStore from '../../data/store';
 import NewScreen from '../NewScreen';
 import Button from '../../components/Button';
+import VerticalButton from '../../components/VerticalButton';
 
 jest.mock('react-native-checkbox', () => {
   require('react'); // eslint-disable-line global-require
@@ -241,31 +241,40 @@ describe('New Screen component', () => {
     expect(setTimeout).toHaveBeenCalledWith(expect.any(Function), -59500);
   });
 
-  it('provides a set of segmented controls for selecting word number', async () => {
+  it('provides a set of presets for selecting word number', async () => {
     const render = mount(<NewScreen.wrappedComponent store={store} />);
+    const instance = render.instance();
+    const optionMock = jest.spyOn(instance, 'setSelectedOption').mockReturnValue(null);
 
-    expect(render.find(SegmentedControls)).toHaveLength(1);
-    expect(render.find(SegmentedControls).at(0).props().onSelection)
-      .toEqual(render.instance().setSelectedOption);
-    expect(render.find(SegmentedControls).at(0).props().selectedIndex)
-      .toEqual(render.instance().getSelectedOption());
-    expect(render.find(SegmentedControls).at(0).props().options).toEqual([
-      {
-        label: '10-49',
-        min: 10,
-        max: 49,
-      },
-      {
-        label: '50-99',
-        min: 50,
-        max: 99,
-      },
-      {
-        label: '100+',
-        min: 100,
-        max: 999,
-      },
-    ]);
+    expect(render.find(VerticalButton)).toHaveLength(3);
+
+    expect(render.find(VerticalButton).at(0).props().onPress)
+      .toEqual(expect.any(Function));
+    expect(render.find(VerticalButton).at(0).props().content).toEqual('10-49');
+    expect(optionMock).toHaveBeenCalledTimes(0);
+    render.find(VerticalButton).at(0).props().onPress();
+    expect(optionMock).toHaveBeenCalledTimes(1);
+    expect(optionMock).toHaveBeenCalledWith(expect.objectContaining({ min: 10, max: 49 }));
+
+    optionMock.mockClear();
+
+    expect(render.find(VerticalButton).at(1).props().onPress)
+      .toEqual(expect.any(Function));
+    expect(render.find(VerticalButton).at(1).props().content).toEqual('50-99');
+    expect(optionMock).toHaveBeenCalledTimes(0);
+    render.find(VerticalButton).at(1).props().onPress();
+    expect(optionMock).toHaveBeenCalledTimes(1);
+    expect(optionMock).toHaveBeenCalledWith(expect.objectContaining({ min: 50, max: 99 }));
+
+    optionMock.mockClear();
+
+    expect(render.find(VerticalButton).at(2).props().onPress)
+      .toEqual(expect.any(Function));
+    expect(render.find(VerticalButton).at(2).props().content).toEqual('100+');
+    expect(optionMock).toHaveBeenCalledTimes(0);
+    render.find(VerticalButton).at(2).props().onPress();
+    expect(optionMock).toHaveBeenCalledTimes(1);
+    expect(optionMock).toHaveBeenCalledWith(expect.objectContaining({ min: 100, max: 999 }));
 
     expect(render.find({ children: '10-49 words to find' })).toHaveLength(2);
 

@@ -28,6 +28,7 @@ export default StyleSheet.create({
     maxWidth: 400,
     maxHeight: 350,
     paddingBottom: 15,
+    paddingTop: 15,
   },
   headerBackgroundBottom: {
     alignContent: 'center',
@@ -64,9 +65,6 @@ export default StyleSheet.create({
     paddingHorizontal: 25,
     maxWidth: 400,
   },
-  segmented: {
-    flex: 1,
-  },
   sliderStyle: {
     height: 20,
     paddingVertical: 20,
@@ -79,13 +77,10 @@ export default StyleSheet.create({
     fontFamily: 'RujisHandwritingFontv.2.0',
     fontSize: 20,
   },
-  wordItems: {
-    fontSize: 20,
-    paddingVertical: 10,
-  },
-  words: {
-    flex: 1,
-    marginHorizontal: 1,
+  verticalButtonWrapper: {
+    alignContent: 'center',
+    justifyContent: 'center',
+    marginBottom: 8,
   },
   wordsGeneratedWrapper: {
     flex: 1,

@@ -1,0 +1,101 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button component matches the snapshot 1`] = `
+<Button
+  content=""
+  onPress={[Function]}
+>
+  <View
+    style={
+      Object {
+        "width": "100%",
+      }
+    }
+  >
+    <react-native-mock>
+      <Image
+        fadeDuration={0}
+        resizeMode="stretch"
+        source={
+          Object {
+            "testUri": "src/images/verticalButtonYellowActive.png",
+          }
+        }
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "height": undefined,
+              "justifyContent": "center",
+              "width": undefined,
+            },
+            Object {
+              "opacity": 0,
+            },
+          ]
+        }
+      >
+        <react-native-mock />
+      </Image>
+      <Image
+        fadeDuration={0}
+        resizeMode="stretch"
+        source={
+          Object {
+            "testUri": "src/images/verticalButtonYellowPassive.png",
+          }
+        }
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "height": undefined,
+              "justifyContent": "center",
+              "width": undefined,
+            },
+            Object {
+              "opacity": 1,
+            },
+          ]
+        }
+      >
+        <react-native-mock />
+      </Image>
+      <TouchableWithoutFeedback
+        onPress={[Function]}
+        onPressIn={[Function]}
+        onPressOut={[Function]}
+      >
+        <react-native-mock>
+          <View
+            style={
+              Object {
+                "alignItems": "center",
+                "justifyContent": "center",
+                "paddingBottom": 15,
+                "paddingLeft": 20,
+                "paddingRight": 20,
+                "paddingTop": 15,
+              }
+            }
+          >
+            <react-native-mock>
+              <Text
+                style={
+                  Object {
+                    "color": "#000000",
+                    "fontFamily": "Grundschrift-Bold",
+                    "fontSize": 20,
+                  }
+                }
+              >
+                <react-native-mock />
+              </Text>
+            </react-native-mock>
+          </View>
+        </react-native-mock>
+      </TouchableWithoutFeedback>
+    </react-native-mock>
+  </View>
+</Button>
+`;
