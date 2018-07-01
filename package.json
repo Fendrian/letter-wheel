@@ -63,6 +63,7 @@
     "log-native": "tail -f -n 50 /vagrant/react-native.log",
     "start": "yarn dev",
     "poststart": "yarn deploy",
+    "clean": "rm -rf ./android/build/*; rm -rf ./android/app/build/*; rm -rf ./android/.gradle/*",
     "test": "jest",
     "test-build": "cd ./android && BUILDTYPE=TEST ./gradlew assembleRelease",
     "test-update": "jest --updateSnapshot"
