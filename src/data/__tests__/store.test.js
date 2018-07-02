@@ -418,6 +418,69 @@ describe('Mobx Store', () => {
     });
   });
 
+  it('enforces route uniqueness using the \'goto\' function', () => {
+    expect(store.nav).toEqual(expect.any(Object));
+    expect(store.nav.goto).toEqual(expect.any(Function));
+
+    store.navigator = {};
+    expect(store.nav.get()).toEqual('none');
+    expect(store.nav.goto()).toEqual(false);
+    expect(store.nav.resetto()).toEqual(false);
+
+    store.navigator.dispatch = jest.fn().mockReturnValue('160DBA9F');
+    store.navigator.state = {
+      nav: {
+        routes: [
+          { routeName: '144BE42D' },
+          { routeName: 'D595' },
+          { routeName: '416F' },
+          { routeName: 'B5AF' },
+          { routeName: '2B4D9FD9A402' },
+        ],
+      },
+    };
+    expect(store.nav.goto('5913349A')).toEqual('160DBA9F');
+    expect(store.navigator.dispatch).toHaveBeenCalledTimes(1);
+    expect(NavigationActions.reset).toHaveBeenCalledTimes(0);
+    expect(store.navigator.dispatch).toHaveBeenCalledWith({
+      type: 'Navigation/NAVIGATE',
+      routeName: '5913349A',
+    });
+    store.navigator.dispatch.mockClear();
+
+    expect(store.nav.goto('416F')).toEqual('160DBA9F');
+    expect(store.navigator.dispatch).toHaveBeenCalledTimes(1);
+    expect(store.navigator.dispatch).toHaveBeenCalledWith('F54036181AE4');
+    expect(NavigationActions.reset).toHaveBeenCalledTimes(1);
+    expect(NavigationActions.reset).toHaveBeenCalledWith({
+      index: 2,
+      actions: [
+        { routeName: '144BE42D' },
+        { routeName: 'D595' },
+        { routeName: '416F' },
+      ],
+    });
+    store.navigator.dispatch.mockClear();
+    NavigationActions.reset.mockClear();
+
+    expect(store.nav.goto('2B4D9FD9A402')).toEqual('160DBA9F');
+    expect(store.navigator.dispatch).toHaveBeenCalledTimes(1);
+    expect(store.navigator.dispatch).toHaveBeenCalledWith('F54036181AE4');
+    expect(NavigationActions.reset).toHaveBeenCalledTimes(1);
+    expect(NavigationActions.reset).toHaveBeenCalledWith({
+      index: 4,
+      actions: [
+        { routeName: '144BE42D' },
+        { routeName: 'D595' },
+        { routeName: '416F' },
+        { routeName: 'B5AF' },
+        { routeName: '2B4D9FD9A402' },
+      ],
+    });
+    store.navigator.dispatch.mockClear();
+    NavigationActions.reset.mockClear();
+  });
+
   it('provides a newGame function that can generate a new word', async () => {
     expect(store.newGame).toBeDefined();
     expect(typeof (store.newGame)).toEqual('function');
@@ -751,8 +814,6 @@ describe('Mobx Store', () => {
   });
 
   it('provides a setStatus action that updates statusText', () => {
-    jest.spyOn(store, 'getScore').mockReturnValue('FF413678');
-
     expect(store.setStatus).toEqual(expect.any(Function));
     store.statusText = '';
 
@@ -791,8 +852,8 @@ describe('Mobx Store', () => {
     expect(store.scores.slice().sort((a, b) => (b.percent - a.percent))).toEqual(store.scores);
   });
 
-  it('provides a getScore function returning current score and distance to next level', () => {
-    expect(store.getScore).toEqual(expect.any(Function));
+  it('provides a score function returning current score and distance to next level', () => {
+    expect(store.score).toEqual(expect.any(Object));
 
     store.words.replace({
       been: true,
@@ -814,14 +875,14 @@ describe('Mobx Store', () => {
       { percent: 0 },
     ];
 
-    expect(store.getScore()).toEqual({ rank: 0, toNext: 4 });
+    expect(store.score).toEqual({ rank: 0, toNext: 4 });
 
     store.tried.replace({
       blend: true,
       blended: true,
       blender: true,
     });
-    expect(store.getScore()).toEqual({ rank: 0, toNext: 1 });
+    expect(store.score).toEqual({ rank: 0, toNext: 1 });
 
     store.tried.replace({
       blend: true,
@@ -831,7 +892,7 @@ describe('Mobx Store', () => {
       rscvd: false,
       asdfsdfd: false,
     });
-    expect(store.getScore()).toEqual({ rank: 0, toNext: 1 });
+    expect(store.score).toEqual({ rank: 0, toNext: 1 });
 
     store.tried.replace({
       blend: true,
@@ -844,7 +905,7 @@ describe('Mobx Store', () => {
       blundered: true,
       bundle: true,
     });
-    expect(store.getScore()).toEqual({ rank: 1, toNext: 2 });
+    expect(store.score).toEqual({ rank: 1, toNext: 2 });
 
     store.tried.replace({
       blend: true,
@@ -859,7 +920,7 @@ describe('Mobx Store', () => {
       been: true,
       bend: true,
     });
-    expect(store.getScore()).toEqual({ rank: 2, toNext: 2 });
+    expect(store.score).toEqual({ rank: 2, toNext: 2 });
 
     store.tried.replace({
       blend: true,
@@ -876,7 +937,7 @@ describe('Mobx Store', () => {
       bended: true,
       bender: true,
     });
-    expect(store.getScore()).toEqual({ rank: 3, toNext: 0 });
+    expect(store.score).toEqual({ rank: 3, toNext: 0 });
   });
 
   it('provides a scoreGame function that sets a scored state', () => {

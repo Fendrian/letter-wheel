@@ -1,4 +1,4 @@
-import { action, configure, observable, runInAction } from 'mobx';
+import { action, computed, configure, observable, runInAction } from 'mobx';
 import { Alert, Dimensions } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import SQLite from 'react-native-sqlite-storage';
@@ -174,6 +174,22 @@ export default class store {
       if (typeof (this.navigator.dispatch) === 'undefined') {
         return false;
       }
+      // We don't want duplicates of the same page - if a duplicate would occur, go back instead
+      if (
+        this.navigator &&
+        this.navigator.state
+      ) {
+        const targetIndex = this.navigator.state.nav.routes.findIndex(({ routeName }) => (
+          routeName === screen
+        ));
+        if (targetIndex > -1) {
+          return this.navigator.dispatch(NavigationActions.reset({
+            index: targetIndex,
+            actions: this.navigator.state.nav.routes.slice(0, targetIndex + 1),
+          }));
+        }
+      }
+
       return this.navigator.dispatch({ type: 'Navigation/NAVIGATE', routeName: screen });
     },
     resetto: (screen) => {
@@ -377,7 +393,7 @@ export default class store {
     }), 3000);
   }
 
-  getScore = () => {
+  @computed get score() {
     const correct = [...this.tried].filter(([, t]) => t).length;
     const absoluteScores = this.scores.map(scoreObj => ({
       ...scoreObj,

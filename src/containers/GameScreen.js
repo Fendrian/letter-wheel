@@ -106,7 +106,7 @@ export default class GameScreen extends React.Component {
     const orientation = store.orientation === 0 ? 'portrait' : 'landscape';
     const { dataWrapper, decorativePaper } = GameScreenStyle;
     const { container } = WrapperStyle;
-    const { rank, toNext } = store.getScore();
+    const { rank, toNext } = store.score;
 
     let timerString = '';
     if (store.timer >= 0) {
