@@ -28,7 +28,7 @@ exports[`Control component matches the snapshot 1`] = `
           Object {
             "flex": 1,
             "flexDirection": "row",
-            "maxWidth": 315,
+            "maxWidth": 355.7647058823529,
             "overflow": "visible",
           }
         }
@@ -38,7 +38,7 @@ exports[`Control component matches the snapshot 1`] = `
             style={
               Object {
                 "flex": 4,
-                "marginLeft": 5,
+                "marginLeft": 5.647058823529411,
               }
             }
           >
@@ -51,11 +51,11 @@ exports[`Control component matches the snapshot 1`] = `
                 }
                 style={
                   Object {
-                    "height": 600,
+                    "height": 677.6470588235294,
                     "position": "absolute",
-                    "right": -20,
-                    "top": -5,
-                    "width": 300,
+                    "right": -22.588235294117645,
+                    "top": -5.647058823529411,
+                    "width": 338.8235294117647,
                   }
                 }
               >
@@ -116,12 +116,12 @@ exports[`Control component matches the snapshot 1`] = `
                   Object {
                     "alignItems": "center",
                     "alignSelf": "stretch",
-                    "bottom": -354,
-                    "height": 400,
+                    "bottom": -399.81176470588235,
+                    "height": 451.7647058823529,
                     "justifyContent": "center",
                     "position": "absolute",
-                    "right": -15,
-                    "width": 500,
+                    "right": -16.941176470588236,
+                    "width": 564.7058823529412,
                   }
                 }
               >
@@ -131,7 +131,7 @@ exports[`Control component matches the snapshot 1`] = `
                 style={
                   Object {
                     "alignItems": "center",
-                    "bottom": 5,
+                    "bottom": 5.647058823529411,
                     "flex": 1,
                     "justifyContent": "center",
                     "left": 0,
@@ -146,8 +146,8 @@ exports[`Control component matches the snapshot 1`] = `
                       Object {
                         "color": "#444",
                         "fontFamily": "RujisHandwritingFontv.2.0",
-                        "fontSize": 15,
-                        "margin": 5,
+                        "fontSize": 16.941176470588236,
+                        "margin": 5.647058823529411,
                       }
                     }
                   >
@@ -164,9 +164,9 @@ exports[`Control component matches the snapshot 1`] = `
               Object {
                 "flex": 6,
                 "justifyContent": "space-between",
-                "marginBottom": 10,
-                "marginLeft": 10,
-                "marginTop": 10,
+                "marginBottom": 11.294117647058822,
+                "marginLeft": 11.294117647058822,
+                "marginTop": 11.294117647058822,
               }
             }
           >
@@ -175,9 +175,9 @@ exports[`Control component matches the snapshot 1`] = `
                 style={
                   Object {
                     "alignItems": "center",
-                    "height": 60,
+                    "height": 67.76470588235294,
                     "justifyContent": "center",
-                    "marginLeft": 6,
+                    "marginLeft": 6.776470588235294,
                   }
                 }
               >
@@ -208,9 +208,9 @@ exports[`Control component matches the snapshot 1`] = `
                             "alignItems": "center",
                             "flex": 1,
                             "justifyContent": "center",
-                            "paddingBottom": 4,
-                            "paddingLeft": 10,
-                            "paddingRight": 10,
+                            "paddingBottom": 4.517647058823529,
+                            "paddingLeft": 11.294117647058822,
+                            "paddingRight": 11.294117647058822,
                           }
                         }
                       >
@@ -220,7 +220,7 @@ exports[`Control component matches the snapshot 1`] = `
                               Object {
                                 "color": "#888",
                                 "fontFamily": "RujisHandwritingFontv.2.0",
-                                "fontSize": 20,
+                                "fontSize": 22.588235294117645,
                                 "textAlign": "center",
                               }
                             }
@@ -238,7 +238,7 @@ exports[`Control component matches the snapshot 1`] = `
               <View
                 style={
                   Object {
-                    "height": 35,
+                    "height": 39.529411764705884,
                     "justifyContent": "center",
                   }
                 }
@@ -271,7 +271,7 @@ exports[`Control component matches the snapshot 1`] = `
                                 "alignItems": "center",
                                 "height": undefined,
                                 "justifyContent": "center",
-                                "marginRight": -4,
+                                "marginRight": -4.517647058823529,
                                 "width": undefined,
                               },
                               Object {
@@ -296,7 +296,7 @@ exports[`Control component matches the snapshot 1`] = `
                                 "alignItems": "center",
                                 "height": undefined,
                                 "justifyContent": "center",
-                                "marginRight": -4,
+                                "marginRight": -4.517647058823529,
                                 "width": undefined,
                               },
                               Object {
@@ -318,10 +318,10 @@ exports[`Control component matches the snapshot 1`] = `
                                 Object {
                                   "alignItems": "center",
                                   "justifyContent": "center",
-                                  "paddingBottom": 2,
-                                  "paddingLeft": 12,
-                                  "paddingRight": 12,
-                                  "paddingTop": 8,
+                                  "paddingBottom": 2.2588235294117647,
+                                  "paddingLeft": 13.552941176470588,
+                                  "paddingRight": 13.552941176470588,
+                                  "paddingTop": 9.035294117647059,
                                 }
                               }
                             >
@@ -331,8 +331,8 @@ exports[`Control component matches the snapshot 1`] = `
                                     Object {
                                       "color": "#000000",
                                       "fontFamily": "Grundschrift-Bold",
-                                      "fontSize": 20,
-                                      "marginBottom": 15,
+                                      "fontSize": 22.588235294117645,
+                                      "marginBottom": 16.941176470588236,
                                     }
                                   }
                                 >
@@ -353,9 +353,9 @@ exports[`Control component matches the snapshot 1`] = `
                 style={
                   Object {
                     "alignItems": "center",
-                    "height": 30,
+                    "height": 33.88235294117647,
                     "justifyContent": "center",
-                    "marginLeft": 6,
+                    "marginLeft": 6.776470588235294,
                   }
                 }
               >
@@ -385,7 +385,7 @@ exports[`Control component matches the snapshot 1`] = `
                           Object {
                             "color": "#000",
                             "fontFamily": "RujisHandwritingFontv.2.0",
-                            "fontSize": 20,
+                            "fontSize": 22.588235294117645,
                           }
                         }
                       >
@@ -401,9 +401,9 @@ exports[`Control component matches the snapshot 1`] = `
                 style={
                   Object {
                     "alignItems": "center",
-                    "height": 60,
+                    "height": 67.76470588235294,
                     "justifyContent": "center",
-                    "marginLeft": 6,
+                    "marginLeft": 6.776470588235294,
                   }
                 }
               >
@@ -421,8 +421,8 @@ exports[`Control component matches the snapshot 1`] = `
                       <View
                         style={
                           Object {
-                            "height": 55,
-                            "width": 55,
+                            "height": 62.11764705882353,
+                            "width": 62.11764705882353,
                           }
                         }
                       >
@@ -447,8 +447,8 @@ exports[`Control component matches the snapshot 1`] = `
                       <View
                         style={
                           Object {
-                            "height": 55,
-                            "width": 55,
+                            "height": 62.11764705882353,
+                            "width": 62.11764705882353,
                           }
                         }
                       >
@@ -473,8 +473,8 @@ exports[`Control component matches the snapshot 1`] = `
                       <View
                         style={
                           Object {
-                            "height": 55,
-                            "width": 55,
+                            "height": 62.11764705882353,
+                            "width": 62.11764705882353,
                           }
                         }
                       >
@@ -503,7 +503,7 @@ exports[`Control component matches the snapshot 1`] = `
               <View
                 style={
                   Object {
-                    "height": 35,
+                    "height": 39.529411764705884,
                     "justifyContent": "center",
                   }
                 }
@@ -536,7 +536,7 @@ exports[`Control component matches the snapshot 1`] = `
                                 "alignItems": "center",
                                 "height": undefined,
                                 "justifyContent": "center",
-                                "marginRight": -4,
+                                "marginRight": -4.517647058823529,
                                 "width": undefined,
                               },
                               Object {
@@ -561,7 +561,7 @@ exports[`Control component matches the snapshot 1`] = `
                                 "alignItems": "center",
                                 "height": undefined,
                                 "justifyContent": "center",
-                                "marginRight": -4,
+                                "marginRight": -4.517647058823529,
                                 "width": undefined,
                               },
                               Object {
@@ -583,10 +583,10 @@ exports[`Control component matches the snapshot 1`] = `
                                 Object {
                                   "alignItems": "center",
                                   "justifyContent": "center",
-                                  "paddingBottom": 2,
-                                  "paddingLeft": 12,
-                                  "paddingRight": 12,
-                                  "paddingTop": 8,
+                                  "paddingBottom": 2.2588235294117647,
+                                  "paddingLeft": 13.552941176470588,
+                                  "paddingRight": 13.552941176470588,
+                                  "paddingTop": 9.035294117647059,
                                 }
                               }
                             >
@@ -596,8 +596,8 @@ exports[`Control component matches the snapshot 1`] = `
                                     Object {
                                       "color": "#000000",
                                       "fontFamily": "Grundschrift-Bold",
-                                      "fontSize": 20,
-                                      "marginBottom": 15,
+                                      "fontSize": 22.588235294117645,
+                                      "marginBottom": 16.941176470588236,
                                     }
                                   }
                                 >
@@ -671,7 +671,7 @@ exports[`Control component matches the snapshot 2`] = `
           Object {
             "flex": 1,
             "flexDirection": "row",
-            "maxWidth": 315,
+            "maxWidth": 355.7647058823529,
             "overflow": "visible",
           }
         }
@@ -681,7 +681,7 @@ exports[`Control component matches the snapshot 2`] = `
             style={
               Object {
                 "flex": 4,
-                "marginLeft": 5,
+                "marginLeft": 5.647058823529411,
               }
             }
           >
@@ -694,11 +694,11 @@ exports[`Control component matches the snapshot 2`] = `
                 }
                 style={
                   Object {
-                    "height": 600,
+                    "height": 677.6470588235294,
                     "position": "absolute",
-                    "right": -20,
-                    "top": -5,
-                    "width": 300,
+                    "right": -22.588235294117645,
+                    "top": -5.647058823529411,
+                    "width": 338.8235294117647,
                   }
                 }
               >
@@ -803,12 +803,12 @@ exports[`Control component matches the snapshot 2`] = `
                   Object {
                     "alignItems": "center",
                     "alignSelf": "stretch",
-                    "bottom": -354,
-                    "height": 400,
+                    "bottom": -399.81176470588235,
+                    "height": 451.7647058823529,
                     "justifyContent": "center",
                     "position": "absolute",
-                    "right": -15,
-                    "width": 500,
+                    "right": -16.941176470588236,
+                    "width": 564.7058823529412,
                   }
                 }
               >
@@ -818,7 +818,7 @@ exports[`Control component matches the snapshot 2`] = `
                 style={
                   Object {
                     "alignItems": "center",
-                    "bottom": 5,
+                    "bottom": 5.647058823529411,
                     "flex": 1,
                     "justifyContent": "center",
                     "left": 0,
@@ -833,8 +833,8 @@ exports[`Control component matches the snapshot 2`] = `
                       Object {
                         "color": "#444",
                         "fontFamily": "RujisHandwritingFontv.2.0",
-                        "fontSize": 15,
-                        "margin": 5,
+                        "fontSize": 16.941176470588236,
+                        "margin": 5.647058823529411,
                       }
                     }
                   >
@@ -851,9 +851,9 @@ exports[`Control component matches the snapshot 2`] = `
               Object {
                 "flex": 6,
                 "justifyContent": "space-between",
-                "marginBottom": 10,
-                "marginLeft": 10,
-                "marginTop": 10,
+                "marginBottom": 11.294117647058822,
+                "marginLeft": 11.294117647058822,
+                "marginTop": 11.294117647058822,
               }
             }
           >
@@ -862,9 +862,9 @@ exports[`Control component matches the snapshot 2`] = `
                 style={
                   Object {
                     "alignItems": "center",
-                    "height": 60,
+                    "height": 67.76470588235294,
                     "justifyContent": "center",
-                    "marginLeft": 6,
+                    "marginLeft": 6.776470588235294,
                   }
                 }
               >
@@ -895,9 +895,9 @@ exports[`Control component matches the snapshot 2`] = `
                             "alignItems": "center",
                             "flex": 1,
                             "justifyContent": "center",
-                            "paddingBottom": 4,
-                            "paddingLeft": 10,
-                            "paddingRight": 10,
+                            "paddingBottom": 4.517647058823529,
+                            "paddingLeft": 11.294117647058822,
+                            "paddingRight": 11.294117647058822,
                           }
                         }
                       >
@@ -907,7 +907,7 @@ exports[`Control component matches the snapshot 2`] = `
                               Object {
                                 "color": "#444",
                                 "fontFamily": "RujisHandwritingFontv.2.0",
-                                "fontSize": 20,
+                                "fontSize": 22.588235294117645,
                                 "textAlign": "center",
                               }
                             }
@@ -925,7 +925,7 @@ exports[`Control component matches the snapshot 2`] = `
               <View
                 style={
                   Object {
-                    "height": 35,
+                    "height": 39.529411764705884,
                     "justifyContent": "center",
                   }
                 }
@@ -958,7 +958,7 @@ exports[`Control component matches the snapshot 2`] = `
                                 "alignItems": "center",
                                 "height": undefined,
                                 "justifyContent": "center",
-                                "marginRight": -4,
+                                "marginRight": -4.517647058823529,
                                 "width": undefined,
                               },
                               Object {
@@ -983,7 +983,7 @@ exports[`Control component matches the snapshot 2`] = `
                                 "alignItems": "center",
                                 "height": undefined,
                                 "justifyContent": "center",
-                                "marginRight": -4,
+                                "marginRight": -4.517647058823529,
                                 "width": undefined,
                               },
                               Object {
@@ -1005,10 +1005,10 @@ exports[`Control component matches the snapshot 2`] = `
                                 Object {
                                   "alignItems": "center",
                                   "justifyContent": "center",
-                                  "paddingBottom": 2,
-                                  "paddingLeft": 12,
-                                  "paddingRight": 12,
-                                  "paddingTop": 8,
+                                  "paddingBottom": 2.2588235294117647,
+                                  "paddingLeft": 13.552941176470588,
+                                  "paddingRight": 13.552941176470588,
+                                  "paddingTop": 9.035294117647059,
                                 }
                               }
                             >
@@ -1018,8 +1018,8 @@ exports[`Control component matches the snapshot 2`] = `
                                     Object {
                                       "color": "#000000",
                                       "fontFamily": "Grundschrift-Bold",
-                                      "fontSize": 20,
-                                      "marginBottom": 15,
+                                      "fontSize": 22.588235294117645,
+                                      "marginBottom": 16.941176470588236,
                                     }
                                   }
                                 >
@@ -1040,9 +1040,9 @@ exports[`Control component matches the snapshot 2`] = `
                 style={
                   Object {
                     "alignItems": "center",
-                    "height": 30,
+                    "height": 33.88235294117647,
                     "justifyContent": "center",
-                    "marginLeft": 6,
+                    "marginLeft": 6.776470588235294,
                   }
                 }
               >
@@ -1072,7 +1072,7 @@ exports[`Control component matches the snapshot 2`] = `
                           Object {
                             "color": "#000",
                             "fontFamily": "RujisHandwritingFontv.2.0",
-                            "fontSize": 20,
+                            "fontSize": 22.588235294117645,
                           }
                         }
                       >
@@ -1088,9 +1088,9 @@ exports[`Control component matches the snapshot 2`] = `
                 style={
                   Object {
                     "alignItems": "center",
-                    "height": 60,
+                    "height": 67.76470588235294,
                     "justifyContent": "center",
-                    "marginLeft": 6,
+                    "marginLeft": 6.776470588235294,
                   }
                 }
               >
@@ -1108,8 +1108,8 @@ exports[`Control component matches the snapshot 2`] = `
                       <View
                         style={
                           Object {
-                            "height": 55,
-                            "width": 55,
+                            "height": 62.11764705882353,
+                            "width": 62.11764705882353,
                           }
                         }
                       >
@@ -1134,8 +1134,8 @@ exports[`Control component matches the snapshot 2`] = `
                       <View
                         style={
                           Object {
-                            "height": 55,
-                            "width": 55,
+                            "height": 62.11764705882353,
+                            "width": 62.11764705882353,
                           }
                         }
                       >
@@ -1160,8 +1160,8 @@ exports[`Control component matches the snapshot 2`] = `
                       <View
                         style={
                           Object {
-                            "height": 55,
-                            "width": 55,
+                            "height": 62.11764705882353,
+                            "width": 62.11764705882353,
                           }
                         }
                       >
@@ -1190,7 +1190,7 @@ exports[`Control component matches the snapshot 2`] = `
               <View
                 style={
                   Object {
-                    "height": 35,
+                    "height": 39.529411764705884,
                     "justifyContent": "center",
                   }
                 }
@@ -1223,7 +1223,7 @@ exports[`Control component matches the snapshot 2`] = `
                                 "alignItems": "center",
                                 "height": undefined,
                                 "justifyContent": "center",
-                                "marginRight": -4,
+                                "marginRight": -4.517647058823529,
                                 "width": undefined,
                               },
                               Object {
@@ -1248,7 +1248,7 @@ exports[`Control component matches the snapshot 2`] = `
                                 "alignItems": "center",
                                 "height": undefined,
                                 "justifyContent": "center",
-                                "marginRight": -4,
+                                "marginRight": -4.517647058823529,
                                 "width": undefined,
                               },
                               Object {
@@ -1270,10 +1270,10 @@ exports[`Control component matches the snapshot 2`] = `
                                 Object {
                                   "alignItems": "center",
                                   "justifyContent": "center",
-                                  "paddingBottom": 2,
-                                  "paddingLeft": 12,
-                                  "paddingRight": 12,
-                                  "paddingTop": 8,
+                                  "paddingBottom": 2.2588235294117647,
+                                  "paddingLeft": 13.552941176470588,
+                                  "paddingRight": 13.552941176470588,
+                                  "paddingTop": 9.035294117647059,
                                 }
                               }
                             >
@@ -1283,8 +1283,8 @@ exports[`Control component matches the snapshot 2`] = `
                                     Object {
                                       "color": "#000000",
                                       "fontFamily": "Grundschrift-Bold",
-                                      "fontSize": 20,
-                                      "marginBottom": 15,
+                                      "fontSize": 22.588235294117645,
+                                      "marginBottom": 16.941176470588236,
                                     }
                                   }
                                 >

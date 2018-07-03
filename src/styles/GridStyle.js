@@ -1,20 +1,21 @@
 import { StyleSheet } from 'react-native';
+import { verticalScale } from 'react-native-size-matters';
 
 const block = {
   alignItems: 'center',
   borderColor: '#000000',
-  borderWidth: 3,
+  borderWidth: verticalScale(3),
   flex: 1,
   justifyContent: 'center',
-  margin: -1.5,
+  margin: verticalScale(-1.5),
 };
 
 export default StyleSheet.create({
   container: {
     alignItems: 'center',
     justifyContent: 'center',
-    maxWidth: 300,
-    maxHeight: 300,
+    maxWidth: verticalScale(300),
+    maxHeight: verticalScale(300),
   },
   row: {
     flex: 1,
@@ -23,15 +24,15 @@ export default StyleSheet.create({
   },
   backspaceTouch: {
     alignItems: 'center',
-    borderRadius: 8,
-    height: 50,
+    borderRadius: verticalScale(8),
+    height: verticalScale(50),
     justifyContent: 'center',
-    width: 60,
+    width: verticalScale(60),
   },
   buttonWrapper: {
     flex: 1,
     justifyContent: 'center',
-    margin: 5,
+    margin: verticalScale(5),
   },
   block: {
     ...block,
@@ -48,21 +49,21 @@ export default StyleSheet.create({
   entryContainer: {
     alignItems: 'center',
     flexDirection: 'row',
-    height: 50,
+    height: verticalScale(50),
     justifyContent: 'flex-start',
-    marginHorizontal: 10,
+    marginHorizontal: verticalScale(10),
   },
   entryWrapper: {
-    borderBottomWidth: 1,
+    borderBottomWidth: verticalScale(1),
     borderBottomColor: '#444',
     flex: 1,
-    height: 30,
-    marginLeft: 20,
+    height: verticalScale(30),
+    marginLeft: verticalScale(20),
   },
   entryText: {
     fontFamily: 'RujisHandwritingFontv.2.0',
     color: '#000',
-    fontSize: 20,
+    fontSize: verticalScale(20),
   },
   gridBackground: {
     alignItems: 'center',
@@ -70,10 +71,10 @@ export default StyleSheet.create({
     alignSelf: 'stretch',
     width: null,
     height: null,
-    paddingBottom: 7,
-    paddingLeft: 15,
-    paddingRight: 15,
-    paddingTop: 20,
+    paddingBottom: verticalScale(7),
+    paddingLeft: verticalScale(15),
+    paddingRight: verticalScale(15),
+    paddingTop: verticalScale(20),
   },
   gridSelect: {
     alignItems: 'center',
@@ -81,22 +82,22 @@ export default StyleSheet.create({
     alignSelf: 'stretch',
     width: null,
     height: null,
-    margin: 1,
+    margin: verticalScale(1),
   },
   gridWrapper: {
     alignItems: 'center',
     justifyContent: 'center',
     alignSelf: 'center',
     zIndex: 100,
-    marginBottom: -10,
+    marginBottom: verticalScale(-10),
     top: 0,
     width: '100%',
-    maxWidth: 315,
+    maxWidth: verticalScale(315),
   },
   letter: {
     color: '#000',
     fontFamily: 'OFLGoudyStM',
-    fontSize: 60,
-    marginTop: 11,
+    fontSize: verticalScale(60),
+    marginTop: verticalScale(11),
   },
 });

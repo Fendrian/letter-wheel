@@ -26,7 +26,7 @@ exports[`Instructions Modal matches the snapshot 1`] = `
         "alignItems": "center",
         "backgroundColor": "transparent",
         "justifyContent": "center",
-        "width": 270,
+        "width": 263.52941176470586,
       }
     }
     swipeThreshold={50}
@@ -65,7 +65,7 @@ exports[`Instructions Modal matches the snapshot 2`] = `
         "alignItems": "center",
         "backgroundColor": "transparent",
         "justifyContent": "center",
-        "width": 270,
+        "width": 263.52941176470586,
       }
     }
     swipeThreshold={50}
@@ -179,7 +179,7 @@ exports[`Instructions Modal matches the snapshot 2`] = `
                     "alignItems": "center",
                     "backgroundColor": "transparent",
                     "justifyContent": "center",
-                    "width": 270,
+                    "width": 263.52941176470586,
                   },
                   Object {
                     "transform": Array [
@@ -206,8 +206,8 @@ exports[`Instructions Modal matches the snapshot 2`] = `
                     style={
                       Object {
                         "backgroundColor": "#fff",
-                        "borderRadius": 4,
-                        "padding": 20,
+                        "borderRadius": 4.517647058823529,
+                        "padding": 22.588235294117645,
                       }
                     }
                   >
@@ -216,7 +216,7 @@ exports[`Instructions Modal matches the snapshot 2`] = `
                         style={
                           Object {
                             "color": "#000",
-                            "fontSize": 18,
+                            "fontSize": 20.32941176470588,
                           }
                         }
                       >
@@ -228,7 +228,7 @@ exports[`Instructions Modal matches the snapshot 2`] = `
                         style={
                           Object {
                             "color": "#000",
-                            "fontSize": 18,
+                            "fontSize": 20.32941176470588,
                           }
                         }
                       >
@@ -240,7 +240,7 @@ exports[`Instructions Modal matches the snapshot 2`] = `
                         style={
                           Object {
                             "color": "#000",
-                            "fontSize": 18,
+                            "fontSize": 20.32941176470588,
                           }
                         }
                       >
@@ -252,7 +252,7 @@ exports[`Instructions Modal matches the snapshot 2`] = `
                         style={
                           Object {
                             "color": "#000",
-                            "fontSize": 18,
+                            "fontSize": 20.32941176470588,
                           }
                         }
                       >
@@ -264,7 +264,7 @@ exports[`Instructions Modal matches the snapshot 2`] = `
                         style={
                           Object {
                             "color": "#000",
-                            "fontSize": 18,
+                            "fontSize": 20.32941176470588,
                           }
                         }
                       >
@@ -276,7 +276,7 @@ exports[`Instructions Modal matches the snapshot 2`] = `
                         style={
                           Object {
                             "color": "#000",
-                            "fontSize": 18,
+                            "fontSize": 20.32941176470588,
                           }
                         }
                       >
@@ -290,7 +290,7 @@ exports[`Instructions Modal matches the snapshot 2`] = `
                             style={
                               Object {
                                 "color": "#000",
-                                "fontSize": 18,
+                                "fontSize": 20.32941176470588,
                               }
                             }
                           >
@@ -302,7 +302,7 @@ exports[`Instructions Modal matches the snapshot 2`] = `
                             style={
                               Object {
                                 "color": "#000",
-                                "fontSize": 18,
+                                "fontSize": 20.32941176470588,
                               }
                             }
                           >
@@ -314,7 +314,7 @@ exports[`Instructions Modal matches the snapshot 2`] = `
                             style={
                               Object {
                                 "color": "#000",
-                                "fontSize": 18,
+                                "fontSize": 20.32941176470588,
                               }
                             }
                           >
@@ -328,7 +328,7 @@ exports[`Instructions Modal matches the snapshot 2`] = `
                         style={
                           Object {
                             "color": "#000",
-                            "fontSize": 18,
+                            "fontSize": 20.32941176470588,
                           }
                         }
                       >
@@ -340,7 +340,7 @@ exports[`Instructions Modal matches the snapshot 2`] = `
                         style={
                           Object {
                             "color": "#000",
-                            "fontSize": 18,
+                            "fontSize": 20.32941176470588,
                           }
                         }
                       >

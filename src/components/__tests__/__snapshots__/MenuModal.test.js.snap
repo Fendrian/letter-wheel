@@ -425,10 +425,10 @@ exports[`Menu Modal matches the snapshot 2`] = `
                         Object {
                           "alignItems": "center",
                           "backgroundColor": "#fff",
-                          "borderRadius": 4,
+                          "borderRadius": 4.517647058823529,
                           "justifyContent": "center",
-                          "padding": 20,
-                          "width": 300,
+                          "padding": 22.588235294117645,
+                          "width": 338.8235294117647,
                         }
                       }
                     >
@@ -437,8 +437,8 @@ exports[`Menu Modal matches the snapshot 2`] = `
                           style={
                             Object {
                               "color": "#000",
-                              "fontSize": 40,
-                              "marginBottom": 20,
+                              "fontSize": 45.17647058823529,
+                              "marginBottom": 22.588235294117645,
                             }
                           }
                         >
@@ -450,8 +450,8 @@ exports[`Menu Modal matches the snapshot 2`] = `
                           style={
                             Object {
                               "backgroundColor": "#555",
-                              "height": 2,
-                              "width": 280,
+                              "height": 2.2588235294117647,
+                              "width": 316.2352941176471,
                             }
                           }
                         >
@@ -462,9 +462,9 @@ exports[`Menu Modal matches the snapshot 2`] = `
                           style={
                             Object {
                               "alignItems": "center",
-                              "height": 60,
+                              "height": 67.76470588235294,
                               "justifyContent": "center",
-                              "width": 280,
+                              "width": 316.2352941176471,
                             }
                           }
                         >
@@ -473,7 +473,7 @@ exports[`Menu Modal matches the snapshot 2`] = `
                               style={
                                 Object {
                                   "color": "#000",
-                                  "fontSize": 20,
+                                  "fontSize": 22.588235294117645,
                                 }
                               }
                             >
@@ -487,8 +487,8 @@ exports[`Menu Modal matches the snapshot 2`] = `
                           style={
                             Object {
                               "backgroundColor": "#555",
-                              "height": 2,
-                              "width": 280,
+                              "height": 2.2588235294117647,
+                              "width": 316.2352941176471,
                             }
                           }
                         >
@@ -499,9 +499,9 @@ exports[`Menu Modal matches the snapshot 2`] = `
                           style={
                             Object {
                               "alignItems": "center",
-                              "height": 60,
+                              "height": 67.76470588235294,
                               "justifyContent": "center",
-                              "width": 280,
+                              "width": 316.2352941176471,
                             }
                           }
                         >
@@ -510,7 +510,7 @@ exports[`Menu Modal matches the snapshot 2`] = `
                               style={
                                 Object {
                                   "color": "#000",
-                                  "fontSize": 20,
+                                  "fontSize": 22.588235294117645,
                                 }
                               }
                             >
@@ -524,8 +524,8 @@ exports[`Menu Modal matches the snapshot 2`] = `
                           style={
                             Object {
                               "backgroundColor": "#555",
-                              "height": 2,
-                              "width": 280,
+                              "height": 2.2588235294117647,
+                              "width": 316.2352941176471,
                             }
                           }
                         >
@@ -536,9 +536,9 @@ exports[`Menu Modal matches the snapshot 2`] = `
                           style={
                             Object {
                               "alignItems": "center",
-                              "height": 60,
+                              "height": 67.76470588235294,
                               "justifyContent": "center",
-                              "width": 280,
+                              "width": 316.2352941176471,
                             }
                           }
                         >
@@ -547,7 +547,7 @@ exports[`Menu Modal matches the snapshot 2`] = `
                               style={
                                 Object {
                                   "color": "#000",
-                                  "fontSize": 20,
+                                  "fontSize": 22.588235294117645,
                                 }
                               }
                             >
@@ -561,8 +561,8 @@ exports[`Menu Modal matches the snapshot 2`] = `
                           style={
                             Object {
                               "backgroundColor": "#555",
-                              "height": 2,
-                              "width": 280,
+                              "height": 2.2588235294117647,
+                              "width": 316.2352941176471,
                             }
                           }
                         >
@@ -573,9 +573,9 @@ exports[`Menu Modal matches the snapshot 2`] = `
                           style={
                             Object {
                               "alignItems": "center",
-                              "height": 60,
+                              "height": 67.76470588235294,
                               "justifyContent": "center",
-                              "width": 280,
+                              "width": 316.2352941176471,
                             }
                           }
                         >
@@ -584,7 +584,7 @@ exports[`Menu Modal matches the snapshot 2`] = `
                               style={
                                 Object {
                                   "color": "#000",
-                                  "fontSize": 20,
+                                  "fontSize": 22.588235294117645,
                                 }
                               }
                             >
@@ -598,8 +598,8 @@ exports[`Menu Modal matches the snapshot 2`] = `
                           style={
                             Object {
                               "backgroundColor": "#555",
-                              "height": 2,
-                              "width": 280,
+                              "height": 2.2588235294117647,
+                              "width": 316.2352941176471,
                             }
                           }
                         >

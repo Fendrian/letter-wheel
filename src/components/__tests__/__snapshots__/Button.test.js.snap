@@ -28,7 +28,7 @@ exports[`Button component matches the snapshot 1`] = `
               "alignItems": "center",
               "height": undefined,
               "justifyContent": "center",
-              "marginRight": -4,
+              "marginRight": -4.517647058823529,
               "width": undefined,
             },
             Object {
@@ -53,7 +53,7 @@ exports[`Button component matches the snapshot 1`] = `
               "alignItems": "center",
               "height": undefined,
               "justifyContent": "center",
-              "marginRight": -4,
+              "marginRight": -4.517647058823529,
               "width": undefined,
             },
             Object {
@@ -75,10 +75,10 @@ exports[`Button component matches the snapshot 1`] = `
               Object {
                 "alignItems": "center",
                 "justifyContent": "center",
-                "paddingBottom": 2,
-                "paddingLeft": 12,
-                "paddingRight": 12,
-                "paddingTop": 8,
+                "paddingBottom": 2.2588235294117647,
+                "paddingLeft": 13.552941176470588,
+                "paddingRight": 13.552941176470588,
+                "paddingTop": 9.035294117647059,
               }
             }
           >
@@ -88,8 +88,8 @@ exports[`Button component matches the snapshot 1`] = `
                   Object {
                     "color": "#000000",
                     "fontFamily": "Grundschrift-Bold",
-                    "fontSize": 20,
-                    "marginBottom": 15,
+                    "fontSize": 22.588235294117645,
+                    "marginBottom": 16.941176470588236,
                   }
                 }
               >

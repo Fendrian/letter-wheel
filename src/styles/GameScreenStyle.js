@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { verticalScale } from 'react-native-size-matters';
 
 export default StyleSheet.create({
   portrait: {
@@ -15,9 +16,9 @@ export default StyleSheet.create({
   },
   decorativePaper: {
     position: 'absolute',
-    height: 375,
-    width: 400,
-    right: -320,
-    top: -220,
+    height: verticalScale(375),
+    width: verticalScale(400),
+    right: verticalScale(-320),
+    top: verticalScale(-220),
   },
 });

@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { verticalScale } from 'react-native-size-matters';
 
 export default StyleSheet.create({
   modal: {
@@ -9,29 +10,29 @@ export default StyleSheet.create({
   container: {
     alignItems: 'center',
     backgroundColor: '#fff',
-    borderRadius: 4,
+    borderRadius: verticalScale(4),
     justifyContent: 'center',
-    padding: 20,
-    width: 300,
+    padding: verticalScale(20),
+    width: verticalScale(300),
   },
   divider: {
     backgroundColor: '#555',
-    height: 2,
-    width: 280,
+    height: verticalScale(2),
+    width: verticalScale(280),
   },
   line: {
     alignItems: 'center',
-    height: 60,
+    height: verticalScale(60),
     justifyContent: 'center',
-    width: 280,
+    width: verticalScale(280),
   },
   text: {
     color: '#000',
-    fontSize: 20,
+    fontSize: verticalScale(20),
   },
   title: {
     color: '#000',
-    fontSize: 40,
-    marginBottom: 20,
+    fontSize: verticalScale(40),
+    marginBottom: verticalScale(20),
   },
 });

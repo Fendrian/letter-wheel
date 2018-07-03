@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { verticalScale } from 'react-native-size-matters';
 
 export default StyleSheet.create({
   container: {
@@ -8,25 +9,25 @@ export default StyleSheet.create({
     flex: 1,
   },
   buttonWrapper: {
-    height: 35,
+    height: verticalScale(35),
     justifyContent: 'center',
   },
   lineWrapperSmall: {
     alignItems: 'center',
-    height: 30,
+    height: verticalScale(30),
     justifyContent: 'center',
-    marginLeft: 6,
+    marginLeft: verticalScale(6),
   },
   lineWrapperLarge: {
     alignItems: 'center',
-    height: 60,
+    height: verticalScale(60),
     justifyContent: 'center',
-    marginLeft: 6,
+    marginLeft: verticalScale(6),
   },
   timerText: {
     fontFamily: 'RujisHandwritingFontv.2.0',
     color: '#000',
-    fontSize: 20,
+    fontSize: verticalScale(20),
   },
   starRow: {
     flexDirection: 'row',
@@ -34,8 +35,8 @@ export default StyleSheet.create({
     width: '100%',
   },
   starWrapper: {
-    height: 55,
-    width: 55,
+    height: verticalScale(55),
+    width: verticalScale(55),
   },
   star: {
     ...StyleSheet.absoluteFillObject,
@@ -46,38 +47,38 @@ export default StyleSheet.create({
     alignItems: 'center',
     flex: 1,
     justifyContent: 'center',
-    paddingLeft: 10,
-    paddingRight: 10,
-    paddingBottom: 4,
+    paddingLeft: verticalScale(10),
+    paddingRight: verticalScale(10),
+    paddingBottom: verticalScale(4),
   },
   resultText: {
     color: '#444',
     fontFamily: 'RujisHandwritingFontv.2.0',
-    fontSize: 20,
+    fontSize: verticalScale(20),
     textAlign: 'center',
   },
   resultTextFaded: {
     color: '#888',
     fontFamily: 'RujisHandwritingFontv.2.0',
-    fontSize: 20,
+    fontSize: verticalScale(20),
     textAlign: 'center',
   },
   columnContainer: {
     overflow: 'visible',
     flex: 1,
     flexDirection: 'row',
-    maxWidth: 315,
+    maxWidth: verticalScale(315),
   },
   leftColumn: {
-    marginLeft: 5,
+    marginLeft: verticalScale(5),
     flex: 4,
   },
   leftPapers: {
     position: 'absolute',
-    height: 600,
-    right: -20,
-    top: -5,
-    width: 300,
+    height: verticalScale(600),
+    right: verticalScale(-20),
+    top: verticalScale(-5),
+    width: verticalScale(300),
   },
   wordCount: {
     alignItems: 'center',
@@ -85,14 +86,14 @@ export default StyleSheet.create({
     justifyContent: 'center',
     position: 'absolute',
     left: 0,
-    bottom: 5,
+    bottom: verticalScale(5),
     right: 0,
   },
   wordCountText: {
     fontFamily: 'RujisHandwritingFontv.2.0',
-    fontSize: 15,
+    fontSize: verticalScale(15),
     color: '#444',
-    margin: 5,
+    margin: verticalScale(5),
   },
   wordWrapper: {
     flex: 1,
@@ -101,18 +102,18 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     alignSelf: 'stretch',
-    width: 500,
-    height: 400,
+    width: verticalScale(500),
+    height: verticalScale(400),
     position: 'absolute',
-    right: -15,
-    bottom: -354,
+    right: verticalScale(-15),
+    bottom: verticalScale(-354),
   },
   rightColumn: {
     flex: 6,
     justifyContent: 'space-between',
-    marginBottom: 10,
-    marginLeft: 10,
-    marginTop: 10,
+    marginBottom: verticalScale(10),
+    marginLeft: verticalScale(10),
+    marginTop: verticalScale(10),
   },
   listContainer: {
     alignItems: 'center',
@@ -122,14 +123,14 @@ export default StyleSheet.create({
   rowWrapper: {
     alignItems: 'center',
     justifyContent: 'center',
-    height: 25,
+    height: verticalScale(25),
     width: '100%',
   },
   rowEndImage: {
     alignItems: 'center',
     justifyContent: 'center',
     width: null,
-    height: 5000,
+    height: verticalScale(5000),
     position: 'absolute',
     left: 0,
     right: 0,
@@ -141,8 +142,8 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignSelf: 'stretch',
     width: null,
-    height: 5,
-    marginTop: 30,
+    height: verticalScale(5),
+    marginTop: verticalScale(30),
   },
   rowWrapperImage: {
     alignItems: 'center',
@@ -155,17 +156,17 @@ export default StyleSheet.create({
   correct: {
     fontFamily: 'RujisHandwritingFontv.2.0',
     color: '#505050',
-    fontSize: 20,
+    fontSize: verticalScale(20),
   },
   incorrect: {
     fontFamily: 'RujisHandwritingFontv.2.0',
     color: '#a3a3a3',
-    fontSize: 20,
+    fontSize: verticalScale(20),
     textDecorationLine: 'line-through',
   },
   neutral: {
     fontFamily: 'RujisHandwritingFontv.2.0',
     color: '#444',
-    fontSize: 20,
+    fontSize: verticalScale(20),
   },
 });

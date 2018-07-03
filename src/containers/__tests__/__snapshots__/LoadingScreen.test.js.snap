@@ -142,7 +142,7 @@ exports[`Loading Screen component matches the snapshot 1`] = `
             <Text
               style={
                 Object {
-                  "fontSize": 20,
+                  "fontSize": 22.588235294117645,
                 }
               }
             >

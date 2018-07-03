@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { verticalScale } from 'react-native-size-matters';
 
 export default StyleSheet.create({
   wrapper: {
@@ -14,14 +15,14 @@ export default StyleSheet.create({
   contentWrapper: {
     alignItems: 'center',
     justifyContent: 'center',
-    paddingBottom: 15,
-    paddingLeft: 20,
-    paddingRight: 20,
-    paddingTop: 15,
+    paddingBottom: verticalScale(15),
+    paddingLeft: verticalScale(20),
+    paddingRight: verticalScale(20),
+    paddingTop: verticalScale(15),
   },
   text: {
     fontFamily: 'Grundschrift-Bold',
     color: '#000000',
-    fontSize: 20,
+    fontSize: verticalScale(20),
   },
 });

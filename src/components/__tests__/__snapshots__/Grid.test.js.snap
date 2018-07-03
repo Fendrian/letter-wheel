@@ -68,8 +68,8 @@ exports[`Grid component matches the snapshot 1`] = `
         "alignItems": "center",
         "alignSelf": "center",
         "justifyContent": "center",
-        "marginBottom": -10,
-        "maxWidth": 315,
+        "marginBottom": -11.294117647058822,
+        "maxWidth": 355.7647058823529,
         "top": 0,
         "width": "100%",
         "zIndex": 100,
@@ -84,8 +84,8 @@ exports[`Grid component matches the snapshot 1`] = `
             "alignItems": "center",
             "alignSelf": "center",
             "justifyContent": "center",
-            "marginBottom": -10,
-            "maxWidth": 315,
+            "marginBottom": -11.294117647058822,
+            "maxWidth": 355.7647058823529,
             "top": 0,
             "width": "100%",
             "zIndex": 100,
@@ -110,10 +110,10 @@ exports[`Grid component matches the snapshot 1`] = `
                 "alignSelf": "stretch",
                 "height": null,
                 "justifyContent": "center",
-                "paddingBottom": 7,
-                "paddingLeft": 15,
-                "paddingRight": 15,
-                "paddingTop": 20,
+                "paddingBottom": 7.905882352941177,
+                "paddingLeft": 16.941176470588236,
+                "paddingRight": 16.941176470588236,
+                "paddingTop": 22.588235294117645,
                 "width": null,
               }
             }
@@ -124,8 +124,8 @@ exports[`Grid component matches the snapshot 1`] = `
                   Object {
                     "alignItems": "center",
                     "justifyContent": "center",
-                    "maxHeight": 300,
-                    "maxWidth": 300,
+                    "maxHeight": 338.8235294117647,
+                    "maxWidth": 338.8235294117647,
                   }
                 }
               >
@@ -151,10 +151,10 @@ exports[`Grid component matches the snapshot 1`] = `
                             "alignItems": "center",
                             "backgroundColor": "#fff",
                             "borderColor": "#000000",
-                            "borderWidth": 3,
+                            "borderWidth": 3.388235294117647,
                             "flex": 1,
                             "justifyContent": "center",
-                            "margin": -1.5,
+                            "margin": -1.6941176470588235,
                           }
                         }
                       >
@@ -167,7 +167,7 @@ exports[`Grid component matches the snapshot 1`] = `
                                 "alignSelf": "stretch",
                                 "height": null,
                                 "justifyContent": "center",
-                                "margin": 1,
+                                "margin": 1.1294117647058823,
                                 "width": null,
                               }
                             }
@@ -178,8 +178,8 @@ exports[`Grid component matches the snapshot 1`] = `
                                   Object {
                                     "color": "#000",
                                     "fontFamily": "OFLGoudyStM",
-                                    "fontSize": 60,
-                                    "marginTop": 11,
+                                    "fontSize": 67.76470588235294,
+                                    "marginTop": 12.423529411764706,
                                   }
                                 }
                               >
@@ -199,10 +199,10 @@ exports[`Grid component matches the snapshot 1`] = `
                             "alignItems": "center",
                             "backgroundColor": "#fff",
                             "borderColor": "#000000",
-                            "borderWidth": 3,
+                            "borderWidth": 3.388235294117647,
                             "flex": 1,
                             "justifyContent": "center",
-                            "margin": -1.5,
+                            "margin": -1.6941176470588235,
                           }
                         }
                       >
@@ -215,7 +215,7 @@ exports[`Grid component matches the snapshot 1`] = `
                                 "alignSelf": "stretch",
                                 "height": null,
                                 "justifyContent": "center",
-                                "margin": 1,
+                                "margin": 1.1294117647058823,
                                 "width": null,
                               }
                             }
@@ -226,8 +226,8 @@ exports[`Grid component matches the snapshot 1`] = `
                                   Object {
                                     "color": "#000",
                                     "fontFamily": "OFLGoudyStM",
-                                    "fontSize": 60,
-                                    "marginTop": 11,
+                                    "fontSize": 67.76470588235294,
+                                    "marginTop": 12.423529411764706,
                                   }
                                 }
                               >
@@ -247,10 +247,10 @@ exports[`Grid component matches the snapshot 1`] = `
                             "alignItems": "center",
                             "backgroundColor": "#fff",
                             "borderColor": "#000000",
-                            "borderWidth": 3,
+                            "borderWidth": 3.388235294117647,
                             "flex": 1,
                             "justifyContent": "center",
-                            "margin": -1.5,
+                            "margin": -1.6941176470588235,
                           }
                         }
                       >
@@ -263,7 +263,7 @@ exports[`Grid component matches the snapshot 1`] = `
                                 "alignSelf": "stretch",
                                 "height": null,
                                 "justifyContent": "center",
-                                "margin": 1,
+                                "margin": 1.1294117647058823,
                                 "width": null,
                               }
                             }
@@ -274,8 +274,8 @@ exports[`Grid component matches the snapshot 1`] = `
                                   Object {
                                     "color": "#000",
                                     "fontFamily": "OFLGoudyStM",
-                                    "fontSize": 60,
-                                    "marginTop": 11,
+                                    "fontSize": 67.76470588235294,
+                                    "marginTop": 12.423529411764706,
                                   }
                                 }
                               >
@@ -308,10 +308,10 @@ exports[`Grid component matches the snapshot 1`] = `
                             "alignItems": "center",
                             "backgroundColor": "#fff",
                             "borderColor": "#000000",
-                            "borderWidth": 3,
+                            "borderWidth": 3.388235294117647,
                             "flex": 1,
                             "justifyContent": "center",
-                            "margin": -1.5,
+                            "margin": -1.6941176470588235,
                           }
                         }
                       >
@@ -324,7 +324,7 @@ exports[`Grid component matches the snapshot 1`] = `
                                 "alignSelf": "stretch",
                                 "height": null,
                                 "justifyContent": "center",
-                                "margin": 1,
+                                "margin": 1.1294117647058823,
                                 "width": null,
                               }
                             }
@@ -335,8 +335,8 @@ exports[`Grid component matches the snapshot 1`] = `
                                   Object {
                                     "color": "#000",
                                     "fontFamily": "OFLGoudyStM",
-                                    "fontSize": 60,
-                                    "marginTop": 11,
+                                    "fontSize": 67.76470588235294,
+                                    "marginTop": 12.423529411764706,
                                   }
                                 }
                               >
@@ -356,10 +356,10 @@ exports[`Grid component matches the snapshot 1`] = `
                             "alignItems": "center",
                             "backgroundColor": "#aaa",
                             "borderColor": "#000000",
-                            "borderWidth": 3,
+                            "borderWidth": 3.388235294117647,
                             "flex": 1,
                             "justifyContent": "center",
-                            "margin": -1.5,
+                            "margin": -1.6941176470588235,
                           }
                         }
                       >
@@ -372,7 +372,7 @@ exports[`Grid component matches the snapshot 1`] = `
                                 "alignSelf": "stretch",
                                 "height": null,
                                 "justifyContent": "center",
-                                "margin": 1,
+                                "margin": 1.1294117647058823,
                                 "width": null,
                               }
                             }
@@ -383,8 +383,8 @@ exports[`Grid component matches the snapshot 1`] = `
                                   Object {
                                     "color": "#000",
                                     "fontFamily": "OFLGoudyStM",
-                                    "fontSize": 60,
-                                    "marginTop": 11,
+                                    "fontSize": 67.76470588235294,
+                                    "marginTop": 12.423529411764706,
                                   }
                                 }
                               >
@@ -404,10 +404,10 @@ exports[`Grid component matches the snapshot 1`] = `
                             "alignItems": "center",
                             "backgroundColor": "#fff",
                             "borderColor": "#000000",
-                            "borderWidth": 3,
+                            "borderWidth": 3.388235294117647,
                             "flex": 1,
                             "justifyContent": "center",
-                            "margin": -1.5,
+                            "margin": -1.6941176470588235,
                           }
                         }
                       >
@@ -420,7 +420,7 @@ exports[`Grid component matches the snapshot 1`] = `
                                 "alignSelf": "stretch",
                                 "height": null,
                                 "justifyContent": "center",
-                                "margin": 1,
+                                "margin": 1.1294117647058823,
                                 "width": null,
                               }
                             }
@@ -431,8 +431,8 @@ exports[`Grid component matches the snapshot 1`] = `
                                   Object {
                                     "color": "#000",
                                     "fontFamily": "OFLGoudyStM",
-                                    "fontSize": 60,
-                                    "marginTop": 11,
+                                    "fontSize": 67.76470588235294,
+                                    "marginTop": 12.423529411764706,
                                   }
                                 }
                               >
@@ -465,10 +465,10 @@ exports[`Grid component matches the snapshot 1`] = `
                             "alignItems": "center",
                             "backgroundColor": "#fff",
                             "borderColor": "#000000",
-                            "borderWidth": 3,
+                            "borderWidth": 3.388235294117647,
                             "flex": 1,
                             "justifyContent": "center",
-                            "margin": -1.5,
+                            "margin": -1.6941176470588235,
                           }
                         }
                       >
@@ -481,7 +481,7 @@ exports[`Grid component matches the snapshot 1`] = `
                                 "alignSelf": "stretch",
                                 "height": null,
                                 "justifyContent": "center",
-                                "margin": 1,
+                                "margin": 1.1294117647058823,
                                 "width": null,
                               }
                             }
@@ -492,8 +492,8 @@ exports[`Grid component matches the snapshot 1`] = `
                                   Object {
                                     "color": "#000",
                                     "fontFamily": "OFLGoudyStM",
-                                    "fontSize": 60,
-                                    "marginTop": 11,
+                                    "fontSize": 67.76470588235294,
+                                    "marginTop": 12.423529411764706,
                                   }
                                 }
                               >
@@ -513,10 +513,10 @@ exports[`Grid component matches the snapshot 1`] = `
                             "alignItems": "center",
                             "backgroundColor": "#fff",
                             "borderColor": "#000000",
-                            "borderWidth": 3,
+                            "borderWidth": 3.388235294117647,
                             "flex": 1,
                             "justifyContent": "center",
-                            "margin": -1.5,
+                            "margin": -1.6941176470588235,
                           }
                         }
                       >
@@ -529,7 +529,7 @@ exports[`Grid component matches the snapshot 1`] = `
                                 "alignSelf": "stretch",
                                 "height": null,
                                 "justifyContent": "center",
-                                "margin": 1,
+                                "margin": 1.1294117647058823,
                                 "width": null,
                               }
                             }
@@ -540,8 +540,8 @@ exports[`Grid component matches the snapshot 1`] = `
                                   Object {
                                     "color": "#000",
                                     "fontFamily": "OFLGoudyStM",
-                                    "fontSize": 60,
-                                    "marginTop": 11,
+                                    "fontSize": 67.76470588235294,
+                                    "marginTop": 12.423529411764706,
                                   }
                                 }
                               >
@@ -561,10 +561,10 @@ exports[`Grid component matches the snapshot 1`] = `
                             "alignItems": "center",
                             "backgroundColor": "#fff",
                             "borderColor": "#000000",
-                            "borderWidth": 3,
+                            "borderWidth": 3.388235294117647,
                             "flex": 1,
                             "justifyContent": "center",
-                            "margin": -1.5,
+                            "margin": -1.6941176470588235,
                           }
                         }
                       >
@@ -577,7 +577,7 @@ exports[`Grid component matches the snapshot 1`] = `
                                 "alignSelf": "stretch",
                                 "height": null,
                                 "justifyContent": "center",
-                                "margin": 1,
+                                "margin": 1.1294117647058823,
                                 "width": null,
                               }
                             }
@@ -588,8 +588,8 @@ exports[`Grid component matches the snapshot 1`] = `
                                   Object {
                                     "color": "#000",
                                     "fontFamily": "OFLGoudyStM",
-                                    "fontSize": 60,
-                                    "marginTop": 11,
+                                    "fontSize": 67.76470588235294,
+                                    "marginTop": 12.423529411764706,
                                   }
                                 }
                               >
@@ -608,9 +608,9 @@ exports[`Grid component matches the snapshot 1`] = `
                   Object {
                     "alignItems": "center",
                     "flexDirection": "row",
-                    "height": 50,
+                    "height": 56.470588235294116,
                     "justifyContent": "flex-start",
-                    "marginHorizontal": 10,
+                    "marginHorizontal": 11.294117647058822,
                   }
                 }
               >
@@ -619,10 +619,10 @@ exports[`Grid component matches the snapshot 1`] = `
                     style={
                       Object {
                         "borderBottomColor": "#444",
-                        "borderBottomWidth": 1,
+                        "borderBottomWidth": 1.1294117647058823,
                         "flex": 1,
-                        "height": 30,
-                        "marginLeft": 20,
+                        "height": 33.88235294117647,
+                        "marginLeft": 22.588235294117645,
                       }
                     }
                   >
@@ -632,7 +632,7 @@ exports[`Grid component matches the snapshot 1`] = `
                           Object {
                             "color": "#000",
                             "fontFamily": "RujisHandwritingFontv.2.0",
-                            "fontSize": 20,
+                            "fontSize": 22.588235294117645,
                           }
                         }
                       >
@@ -648,10 +648,10 @@ exports[`Grid component matches the snapshot 1`] = `
                         style={
                           Object {
                             "alignItems": "center",
-                            "borderRadius": 8,
-                            "height": 50,
+                            "borderRadius": 9.035294117647059,
+                            "height": 56.470588235294116,
                             "justifyContent": "center",
-                            "width": 60,
+                            "width": 67.76470588235294,
                           }
                         }
                       >
@@ -659,7 +659,7 @@ exports[`Grid component matches the snapshot 1`] = `
                           <Icon
                             allowFontScaling={false}
                             name="md-backspace"
-                            size={35}
+                            size={39.529411764705884}
                           >
                             <Text
                               allowFontScaling={false}
@@ -667,7 +667,7 @@ exports[`Grid component matches the snapshot 1`] = `
                                 Array [
                                   Object {
                                     "color": undefined,
-                                    "fontSize": 35,
+                                    "fontSize": 39.529411764705884,
                                   },
                                   undefined,
                                   Object {
@@ -766,8 +766,8 @@ exports[`Grid component matches the snapshot 2`] = `
         "alignItems": "center",
         "alignSelf": "center",
         "justifyContent": "center",
-        "marginBottom": -10,
-        "maxWidth": 315,
+        "marginBottom": -11.294117647058822,
+        "maxWidth": 355.7647058823529,
         "top": 0,
         "width": "100%",
         "zIndex": 100,
@@ -782,8 +782,8 @@ exports[`Grid component matches the snapshot 2`] = `
             "alignItems": "center",
             "alignSelf": "center",
             "justifyContent": "center",
-            "marginBottom": -10,
-            "maxWidth": 315,
+            "marginBottom": -11.294117647058822,
+            "maxWidth": 355.7647058823529,
             "top": 0,
             "width": "100%",
             "zIndex": 100,
@@ -808,10 +808,10 @@ exports[`Grid component matches the snapshot 2`] = `
                 "alignSelf": "stretch",
                 "height": null,
                 "justifyContent": "center",
-                "paddingBottom": 7,
-                "paddingLeft": 15,
-                "paddingRight": 15,
-                "paddingTop": 20,
+                "paddingBottom": 7.905882352941177,
+                "paddingLeft": 16.941176470588236,
+                "paddingRight": 16.941176470588236,
+                "paddingTop": 22.588235294117645,
                 "width": null,
               }
             }
@@ -822,8 +822,8 @@ exports[`Grid component matches the snapshot 2`] = `
                   Object {
                     "alignItems": "center",
                     "justifyContent": "center",
-                    "maxHeight": 300,
-                    "maxWidth": 300,
+                    "maxHeight": 338.8235294117647,
+                    "maxWidth": 338.8235294117647,
                   }
                 }
               >
@@ -849,10 +849,10 @@ exports[`Grid component matches the snapshot 2`] = `
                             "alignItems": "center",
                             "backgroundColor": "#fff",
                             "borderColor": "#000000",
-                            "borderWidth": 3,
+                            "borderWidth": 3.388235294117647,
                             "flex": 1,
                             "justifyContent": "center",
-                            "margin": -1.5,
+                            "margin": -1.6941176470588235,
                           }
                         }
                       >
@@ -865,7 +865,7 @@ exports[`Grid component matches the snapshot 2`] = `
                                 "alignSelf": "stretch",
                                 "height": null,
                                 "justifyContent": "center",
-                                "margin": 1,
+                                "margin": 1.1294117647058823,
                                 "width": null,
                               }
                             }
@@ -876,8 +876,8 @@ exports[`Grid component matches the snapshot 2`] = `
                                   Object {
                                     "color": "#000",
                                     "fontFamily": "OFLGoudyStM",
-                                    "fontSize": 60,
-                                    "marginTop": 11,
+                                    "fontSize": 67.76470588235294,
+                                    "marginTop": 12.423529411764706,
                                   }
                                 }
                               >
@@ -899,10 +899,10 @@ exports[`Grid component matches the snapshot 2`] = `
                             "alignItems": "center",
                             "backgroundColor": "#fff",
                             "borderColor": "#000000",
-                            "borderWidth": 3,
+                            "borderWidth": 3.388235294117647,
                             "flex": 1,
                             "justifyContent": "center",
-                            "margin": -1.5,
+                            "margin": -1.6941176470588235,
                           }
                         }
                       >
@@ -915,7 +915,7 @@ exports[`Grid component matches the snapshot 2`] = `
                                 "alignSelf": "stretch",
                                 "height": null,
                                 "justifyContent": "center",
-                                "margin": 1,
+                                "margin": 1.1294117647058823,
                                 "width": null,
                               }
                             }
@@ -926,8 +926,8 @@ exports[`Grid component matches the snapshot 2`] = `
                                   Object {
                                     "color": "#000",
                                     "fontFamily": "OFLGoudyStM",
-                                    "fontSize": 60,
-                                    "marginTop": 11,
+                                    "fontSize": 67.76470588235294,
+                                    "marginTop": 12.423529411764706,
                                   }
                                 }
                               >
@@ -949,10 +949,10 @@ exports[`Grid component matches the snapshot 2`] = `
                             "alignItems": "center",
                             "backgroundColor": "#fff",
                             "borderColor": "#000000",
-                            "borderWidth": 3,
+                            "borderWidth": 3.388235294117647,
                             "flex": 1,
                             "justifyContent": "center",
-                            "margin": -1.5,
+                            "margin": -1.6941176470588235,
                           }
                         }
                       >
@@ -969,7 +969,7 @@ exports[`Grid component matches the snapshot 2`] = `
                                 "alignSelf": "stretch",
                                 "height": null,
                                 "justifyContent": "center",
-                                "margin": 1,
+                                "margin": 1.1294117647058823,
                                 "width": null,
                               }
                             }
@@ -980,8 +980,8 @@ exports[`Grid component matches the snapshot 2`] = `
                                   Object {
                                     "color": "#000",
                                     "fontFamily": "OFLGoudyStM",
-                                    "fontSize": 60,
-                                    "marginTop": 11,
+                                    "fontSize": 67.76470588235294,
+                                    "marginTop": 12.423529411764706,
                                   }
                                 }
                               >
@@ -1016,10 +1016,10 @@ exports[`Grid component matches the snapshot 2`] = `
                             "alignItems": "center",
                             "backgroundColor": "#fff",
                             "borderColor": "#000000",
-                            "borderWidth": 3,
+                            "borderWidth": 3.388235294117647,
                             "flex": 1,
                             "justifyContent": "center",
-                            "margin": -1.5,
+                            "margin": -1.6941176470588235,
                           }
                         }
                       >
@@ -1036,7 +1036,7 @@ exports[`Grid component matches the snapshot 2`] = `
                                 "alignSelf": "stretch",
                                 "height": null,
                                 "justifyContent": "center",
-                                "margin": 1,
+                                "margin": 1.1294117647058823,
                                 "width": null,
                               }
                             }
@@ -1047,8 +1047,8 @@ exports[`Grid component matches the snapshot 2`] = `
                                   Object {
                                     "color": "#000",
                                     "fontFamily": "OFLGoudyStM",
-                                    "fontSize": 60,
-                                    "marginTop": 11,
+                                    "fontSize": 67.76470588235294,
+                                    "marginTop": 12.423529411764706,
                                   }
                                 }
                               >
@@ -1070,10 +1070,10 @@ exports[`Grid component matches the snapshot 2`] = `
                             "alignItems": "center",
                             "backgroundColor": "#aaa",
                             "borderColor": "#000000",
-                            "borderWidth": 3,
+                            "borderWidth": 3.388235294117647,
                             "flex": 1,
                             "justifyContent": "center",
-                            "margin": -1.5,
+                            "margin": -1.6941176470588235,
                           }
                         }
                       >
@@ -1086,7 +1086,7 @@ exports[`Grid component matches the snapshot 2`] = `
                                 "alignSelf": "stretch",
                                 "height": null,
                                 "justifyContent": "center",
-                                "margin": 1,
+                                "margin": 1.1294117647058823,
                                 "width": null,
                               }
                             }
@@ -1097,8 +1097,8 @@ exports[`Grid component matches the snapshot 2`] = `
                                   Object {
                                     "color": "#000",
                                     "fontFamily": "OFLGoudyStM",
-                                    "fontSize": 60,
-                                    "marginTop": 11,
+                                    "fontSize": 67.76470588235294,
+                                    "marginTop": 12.423529411764706,
                                   }
                                 }
                               >
@@ -1120,10 +1120,10 @@ exports[`Grid component matches the snapshot 2`] = `
                             "alignItems": "center",
                             "backgroundColor": "#fff",
                             "borderColor": "#000000",
-                            "borderWidth": 3,
+                            "borderWidth": 3.388235294117647,
                             "flex": 1,
                             "justifyContent": "center",
-                            "margin": -1.5,
+                            "margin": -1.6941176470588235,
                           }
                         }
                       >
@@ -1136,7 +1136,7 @@ exports[`Grid component matches the snapshot 2`] = `
                                 "alignSelf": "stretch",
                                 "height": null,
                                 "justifyContent": "center",
-                                "margin": 1,
+                                "margin": 1.1294117647058823,
                                 "width": null,
                               }
                             }
@@ -1147,8 +1147,8 @@ exports[`Grid component matches the snapshot 2`] = `
                                   Object {
                                     "color": "#000",
                                     "fontFamily": "OFLGoudyStM",
-                                    "fontSize": 60,
-                                    "marginTop": 11,
+                                    "fontSize": 67.76470588235294,
+                                    "marginTop": 12.423529411764706,
                                   }
                                 }
                               >
@@ -1183,10 +1183,10 @@ exports[`Grid component matches the snapshot 2`] = `
                             "alignItems": "center",
                             "backgroundColor": "#fff",
                             "borderColor": "#000000",
-                            "borderWidth": 3,
+                            "borderWidth": 3.388235294117647,
                             "flex": 1,
                             "justifyContent": "center",
-                            "margin": -1.5,
+                            "margin": -1.6941176470588235,
                           }
                         }
                       >
@@ -1199,7 +1199,7 @@ exports[`Grid component matches the snapshot 2`] = `
                                 "alignSelf": "stretch",
                                 "height": null,
                                 "justifyContent": "center",
-                                "margin": 1,
+                                "margin": 1.1294117647058823,
                                 "width": null,
                               }
                             }
@@ -1210,8 +1210,8 @@ exports[`Grid component matches the snapshot 2`] = `
                                   Object {
                                     "color": "#000",
                                     "fontFamily": "OFLGoudyStM",
-                                    "fontSize": 60,
-                                    "marginTop": 11,
+                                    "fontSize": 67.76470588235294,
+                                    "marginTop": 12.423529411764706,
                                   }
                                 }
                               >
@@ -1233,10 +1233,10 @@ exports[`Grid component matches the snapshot 2`] = `
                             "alignItems": "center",
                             "backgroundColor": "#fff",
                             "borderColor": "#000000",
-                            "borderWidth": 3,
+                            "borderWidth": 3.388235294117647,
                             "flex": 1,
                             "justifyContent": "center",
-                            "margin": -1.5,
+                            "margin": -1.6941176470588235,
                           }
                         }
                       >
@@ -1249,7 +1249,7 @@ exports[`Grid component matches the snapshot 2`] = `
                                 "alignSelf": "stretch",
                                 "height": null,
                                 "justifyContent": "center",
-                                "margin": 1,
+                                "margin": 1.1294117647058823,
                                 "width": null,
                               }
                             }
@@ -1260,8 +1260,8 @@ exports[`Grid component matches the snapshot 2`] = `
                                   Object {
                                     "color": "#000",
                                     "fontFamily": "OFLGoudyStM",
-                                    "fontSize": 60,
-                                    "marginTop": 11,
+                                    "fontSize": 67.76470588235294,
+                                    "marginTop": 12.423529411764706,
                                   }
                                 }
                               >
@@ -1283,10 +1283,10 @@ exports[`Grid component matches the snapshot 2`] = `
                             "alignItems": "center",
                             "backgroundColor": "#fff",
                             "borderColor": "#000000",
-                            "borderWidth": 3,
+                            "borderWidth": 3.388235294117647,
                             "flex": 1,
                             "justifyContent": "center",
-                            "margin": -1.5,
+                            "margin": -1.6941176470588235,
                           }
                         }
                       >
@@ -1303,7 +1303,7 @@ exports[`Grid component matches the snapshot 2`] = `
                                 "alignSelf": "stretch",
                                 "height": null,
                                 "justifyContent": "center",
-                                "margin": 1,
+                                "margin": 1.1294117647058823,
                                 "width": null,
                               }
                             }
@@ -1314,8 +1314,8 @@ exports[`Grid component matches the snapshot 2`] = `
                                   Object {
                                     "color": "#000",
                                     "fontFamily": "OFLGoudyStM",
-                                    "fontSize": 60,
-                                    "marginTop": 11,
+                                    "fontSize": 67.76470588235294,
+                                    "marginTop": 12.423529411764706,
                                   }
                                 }
                               >
@@ -1336,9 +1336,9 @@ exports[`Grid component matches the snapshot 2`] = `
                   Object {
                     "alignItems": "center",
                     "flexDirection": "row",
-                    "height": 50,
+                    "height": 56.470588235294116,
                     "justifyContent": "flex-start",
-                    "marginHorizontal": 10,
+                    "marginHorizontal": 11.294117647058822,
                   }
                 }
               >
@@ -1347,10 +1347,10 @@ exports[`Grid component matches the snapshot 2`] = `
                     style={
                       Object {
                         "borderBottomColor": "#444",
-                        "borderBottomWidth": 1,
+                        "borderBottomWidth": 1.1294117647058823,
                         "flex": 1,
-                        "height": 30,
-                        "marginLeft": 20,
+                        "height": 33.88235294117647,
+                        "marginLeft": 22.588235294117645,
                       }
                     }
                   >
@@ -1360,7 +1360,7 @@ exports[`Grid component matches the snapshot 2`] = `
                           Object {
                             "color": "#000",
                             "fontFamily": "RujisHandwritingFontv.2.0",
-                            "fontSize": 20,
+                            "fontSize": 22.588235294117645,
                           }
                         }
                       >
@@ -1376,10 +1376,10 @@ exports[`Grid component matches the snapshot 2`] = `
                         style={
                           Object {
                             "alignItems": "center",
-                            "borderRadius": 8,
-                            "height": 50,
+                            "borderRadius": 9.035294117647059,
+                            "height": 56.470588235294116,
                             "justifyContent": "center",
-                            "width": 60,
+                            "width": 67.76470588235294,
                           }
                         }
                       >
@@ -1387,7 +1387,7 @@ exports[`Grid component matches the snapshot 2`] = `
                           <Icon
                             allowFontScaling={false}
                             name="md-backspace"
-                            size={35}
+                            size={39.529411764705884}
                           >
                             <Text
                               allowFontScaling={false}
@@ -1395,7 +1395,7 @@ exports[`Grid component matches the snapshot 2`] = `
                                 Array [
                                   Object {
                                     "color": undefined,
-                                    "fontSize": 35,
+                                    "fontSize": 39.529411764705884,
                                   },
                                   undefined,
                                   Object {

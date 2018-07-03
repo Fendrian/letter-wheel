@@ -72,10 +72,10 @@ exports[`Button component matches the snapshot 1`] = `
               Object {
                 "alignItems": "center",
                 "justifyContent": "center",
-                "paddingBottom": 15,
-                "paddingLeft": 20,
-                "paddingRight": 20,
-                "paddingTop": 15,
+                "paddingBottom": 16.941176470588236,
+                "paddingLeft": 22.588235294117645,
+                "paddingRight": 22.588235294117645,
+                "paddingTop": 16.941176470588236,
               }
             }
           >
@@ -85,7 +85,7 @@ exports[`Button component matches the snapshot 1`] = `
                   Object {
                     "color": "#000000",
                     "fontFamily": "Grundschrift-Bold",
-                    "fontSize": 20,
+                    "fontSize": 22.588235294117645,
                   }
                 }
               >

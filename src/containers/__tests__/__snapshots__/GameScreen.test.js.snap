@@ -147,11 +147,11 @@ exports[`Game Screen component matches the snapshot 1`] = `
               }
               style={
                 Object {
-                  "height": 375,
+                  "height": 423.52941176470586,
                   "position": "absolute",
-                  "right": -320,
-                  "top": -220,
-                  "width": 400,
+                  "right": -361.4117647058823,
+                  "top": -248.47058823529412,
+                  "width": 451.7647058823529,
                 }
               }
             >

@@ -10,6 +10,7 @@ import {
 import { observer } from 'mobx-react';
 import * as Animatable from 'react-native-animatable';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { verticalScale } from 'react-native-size-matters';
 
 import GridStyle from '../styles/GridStyle';
 
@@ -209,7 +210,7 @@ export default class Grid extends React.Component {
               >
                 <Icon
                   name="md-backspace"
-                  size={35}
+                  size={verticalScale(35)}
                 />
               </TouchableOpacity>
             </View>
