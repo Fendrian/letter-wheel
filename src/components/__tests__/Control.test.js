@@ -118,7 +118,7 @@ describe('Control component', () => {
       { word: 'haul', style: 'neutral' },
       { word: 'tail', style: 'neutral' },
       { word: ' ', style: 'neutral' },
-      { word: 'Your words:', style: 'neutral' },
+      { word: 'Tried:', style: 'neutral' },
       { word: 'alit', style: 'correct' },
       { word: 'asdf', style: 'incorrect' },
       { word: 'bail', style: 'correct' },
@@ -139,7 +139,7 @@ describe('Control component', () => {
     });
     expect(instance.formattedTriedWords).toEqual([
       { word: ' ', style: 'neutral' },
-      { word: 'Your words:', style: 'neutral' },
+      { word: 'Tried:', style: 'neutral' },
       { word: 'alit', style: 'correct' },
       { word: 'asdf', style: 'incorrect' },
       { word: 'bail', style: 'correct' },
@@ -257,7 +257,7 @@ describe('Control component', () => {
       { word: 'Not found:', style: 'neutral' },
       { word: 'built', style: 'neutral' },
       { word: ' ', style: 'neutral' },
-      { word: 'Your words:', style: 'neutral' },
+      { word: 'Tried:', style: 'neutral' },
       { word: 'asdf', style: 'incorrect' },
       { word: 'bail', style: 'correct' },
     ]);

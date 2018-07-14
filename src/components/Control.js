@@ -68,7 +68,7 @@ export default class Control extends React.Component {
       ];
       const yourWords = [
         { word: ' ', style: 'neutral' },
-        { word: 'Your words:', style: 'neutral' },
+        { word: 'Tried:', style: 'neutral' },
         ...triedWords,
       ];
       return [

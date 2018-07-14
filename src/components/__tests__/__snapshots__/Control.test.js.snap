@@ -755,7 +755,7 @@ exports[`Control component matches the snapshot 2`] = `
                           },
                           Object {
                             "style": "neutral",
-                            "word": "Your words:",
+                            "word": "Tried:",
                           },
                           Object {
                             "style": "correct",
