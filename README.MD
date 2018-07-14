@@ -1,12 +1,12 @@
+# TARGET WORDS
+
 [![Build Status](https://travis-ci.org/Fendrian/target-words.svg?branch=master)](https://travis-ci.org/Fendrian/target-words)
 [![codecov](https://codecov.io/gh/Fendrian/target-words/branch/master/graph/badge.svg)](https://codecov.io/gh/Fendrian/target-words)
 [![jest](https://facebook.github.io/jest/img/jest-badge.svg)](https://github.com/facebook/jest)
 
-# TARGET WORDS
-
 ## A word-hunting game programmed in React Native
 
-Target Words is based on the popular newspaper game Target, and inspired by the long-abandoned Target app for Android by Ben Buxton.
+Target Words is an implementation of the newspaper word-hunting game Target, and was inspired by the [Target app for Android by Ben Buxton](https://github.com/buxtronix/target), which had not been updated in years when this project was started.
 
 Original copyright © 2017 by Wolf Hatch.
 
@@ -41,4 +41,4 @@ For information on the source and licenses of the word list used in this project
 Fonts used in this project are [Grundschrift by Christian Urff](https://fontlibrary.org/en/font/grundschrift) under the [CC-BY 3.0 license](https://creativecommons.org/licenses/by/3.0/), [Sorts Mill Goudy by Barry Schwartz](https://github.com/theleagueof/sorts-mill-goudy) under the [SIL Open Font License](https://github.com/theleagueof/sorts-mill-goudy/blob/master/Open%20Font%20License.markdown), and [Ruji's Handwriting V2.0](https://fontlibrary.org/en/font/ruji-s-handwriting-font-v-2-0) under the [SIL Open Font License](http://scripts.sil.org/OFL).
 
 Images in this project were created for the project and are covered by the overall project license unless otherwise noted.
-The ink circles used for the yellow squares are from https://texturefabrik.com/
+The ink circles used for the yellow squares are from [Texture Fabrik](https://texturefabrik.com/)
