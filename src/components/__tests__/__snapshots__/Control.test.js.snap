@@ -353,54 +353,6 @@ exports[`Control component matches the snapshot 1`] = `
                 style={
                   Object {
                     "alignItems": "center",
-                    "height": 33.88235294117647,
-                    "justifyContent": "center",
-                    "marginLeft": 6.776470588235294,
-                  }
-                }
-              >
-                <react-native-mock>
-                  <ImageBackground
-                    fadeDuration={0}
-                    resizeMode="stretch"
-                    source={
-                      Object {
-                        "testUri": "src/images/whitePanel.png",
-                      }
-                    }
-                    style={
-                      Object {
-                        "alignItems": "center",
-                        "alignSelf": "stretch",
-                        "flex": 1,
-                        "height": null,
-                        "justifyContent": "center",
-                        "width": null,
-                      }
-                    }
-                  >
-                    <react-native-mock>
-                      <Text
-                        style={
-                          Object {
-                            "color": "#000",
-                            "fontFamily": "RujisHandwritingFontv.2.0",
-                            "fontSize": 22.588235294117645,
-                          }
-                        }
-                      >
-                        <react-native-mock>
-                          Not timed
-                        </react-native-mock>
-                      </Text>
-                    </react-native-mock>
-                  </ImageBackground>
-                </react-native-mock>
-              </View>
-              <View
-                style={
-                  Object {
-                    "alignItems": "center",
                     "height": 67.76470588235294,
                     "justifyContent": "center",
                     "marginLeft": 6.776470588235294,

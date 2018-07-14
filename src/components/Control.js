@@ -243,18 +243,22 @@ export default class Control extends React.Component {
                 content="Input word"
               />
             </View>
-            <View style={lineWrapperSmall}>
-              <ImageBackground
-                fadeDuration={0}
-                resizeMode="stretch"
-                style={ControlStyle.rowWrapperImage}
-                source={whitePanel}
-              >
-                <Text style={timerText}>
-                  {this.props.timerString || 'Not timed'}
-                </Text>
-              </ImageBackground>
-            </View>
+            {this.props.timerString ?
+              <View style={lineWrapperSmall}>
+                <ImageBackground
+                  fadeDuration={0}
+                  resizeMode="stretch"
+                  style={ControlStyle.rowWrapperImage}
+                  source={whitePanel}
+                >
+                  <Text style={timerText}>
+                    {this.props.timerString}
+                  </Text>
+                </ImageBackground>
+              </View>
+              :
+              null
+            }
             <View style={lineWrapperLarge}>
               <View style={starRow}>
                 <View style={starWrapper}>
