@@ -239,7 +239,7 @@ exports[`New Screen component matches the snapshot 1`] = `
                           }
                         >
                           <react-native-mock>
-                            TARGET WORDS
+                            LETTER WHEEL
                           </react-native-mock>
                         </Text>
                       </react-native-mock>

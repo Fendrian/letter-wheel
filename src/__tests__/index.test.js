@@ -1,5 +1,5 @@
 import { AppRegistry } from 'react-native';
-import targetWords from '../Entry';
+import letterWheel from '../Entry';
 import '../index';
 
 jest.mock('react-native', () => (
@@ -12,13 +12,13 @@ jest.mock('react-native', () => (
 jest.mock('../Entry', () => {});
 
 describe('Main index', () => {
-  it('registers targetWords', () => {
+  it('registers letterWheel', () => {
     const register = AppRegistry.registerComponent;
     expect(register).toHaveBeenCalledTimes(1);
     expect(register).toHaveBeenCalledWith(
-      'targetwords',
+      'letterwheel',
       expect.any(Function),
     );
-    expect(register.mock.calls[0][1]()).toEqual(targetWords);
+    expect(register.mock.calls[0][1]()).toEqual(letterWheel);
   });
 });

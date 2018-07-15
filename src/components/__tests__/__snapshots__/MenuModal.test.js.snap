@@ -443,7 +443,7 @@ exports[`Menu Modal matches the snapshot 2`] = `
                           }
                         >
                           <react-native-mock>
-                            Target Words
+                            Letter Wheel
                           </react-native-mock>
                         </Text>
                         <View
@@ -589,7 +589,7 @@ exports[`Menu Modal matches the snapshot 2`] = `
                               }
                             >
                               <react-native-mock>
-                                About Target Words
+                                About Letter Wheel
                               </react-native-mock>
                             </Text>
                           </react-native-mock>

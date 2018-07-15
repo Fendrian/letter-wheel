@@ -1,4 +1,4 @@
-rootProject.name = 'targetwords'
+rootProject.name = 'letterwheel'
 
 include ':app'
 include ':react-native-sqlite-storage'

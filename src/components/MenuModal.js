@@ -48,7 +48,7 @@ export default class MenuModal extends React.Component {
       >
         <View style={container}>
           <Text style={title}>
-            Target Words
+            Letter Wheel
           </Text>
           <View style={divider} />
           <TouchableOpacity
@@ -89,7 +89,7 @@ export default class MenuModal extends React.Component {
             style={line}
           >
             <Text style={text}>
-              About Target Words
+              About Letter Wheel
             </Text>
           </TouchableOpacity>
           <View style={divider} />

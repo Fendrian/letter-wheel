@@ -212,18 +212,63 @@ exports[`About Modal matches the snapshot 2`] = `
                     }
                   >
                     <react-native-mock>
-                      <Text
-                        style={
+                      <_class
+                        linkStyle={
                           Object {
-                            "color": "#000",
-                            "fontSize": 20.32941176470588,
+                            "color": "#2980b9",
                           }
                         }
+                        onPress={[Function]}
                       >
-                        <react-native-mock>
-                          Target Words is based on the popular newspaper game Target, and inspired by the long-abandoned Target app for Android by Ben Buxton.
-                        </react-native-mock>
-                      </Text>
+                        <Hyperlink
+                          linkStyle={
+                            Object {
+                              "color": "#2980b9",
+                            }
+                          }
+                          onPress={[Function]}
+                        >
+                          <View>
+                            <react-native-mock>
+                              <Text
+                                key=".0"
+                                onLongPress={[Function]}
+                                style={
+                                  Object {
+                                    "color": "#000",
+                                    "fontSize": 20.32941176470588,
+                                  }
+                                }
+                              >
+                                <react-native-mock>
+                                  Letter Wheel is based on the popular newspaper game Word Wheel, and was inspired by the Target app for Android by Ben Buxton (
+                                  <Text
+                                    key="https://github.com/buxtronix/target126"
+                                    onLongPress={[Function]}
+                                    onPress={[Function]}
+                                    style={
+                                      Array [
+                                        Object {
+                                          "color": "#000",
+                                          "fontSize": 20.32941176470588,
+                                        },
+                                        Object {
+                                          "color": "#2980b9",
+                                        },
+                                      ]
+                                    }
+                                  >
+                                    <react-native-mock>
+                                      https://github.com/buxtronix/target
+                                    </react-native-mock>
+                                  </Text>
+                                  ), which had not been updated in years when this project was started.
+                                </react-native-mock>
+                              </Text>
+                            </react-native-mock>
+                          </View>
+                        </Hyperlink>
+                      </_class>
                       <Text
                         style={
                           Object {
@@ -267,7 +312,7 @@ exports[`About Modal matches the snapshot 2`] = `
                                 <react-native-mock>
                                   Original copyright © 2017-2018 by Wolf Hatch. The source code for this app is released under the MIT license at 
                                   <Text
-                                    key="https://github.com/Fendrian/target-words112"
+                                    key="https://github.com/Fendrian/letter-wheel112"
                                     onLongPress={[Function]}
                                     onPress={[Function]}
                                     style={
@@ -283,7 +328,7 @@ exports[`About Modal matches the snapshot 2`] = `
                                     }
                                   >
                                     <react-native-mock>
-                                      https://github.com/Fendrian/target-words
+                                      https://github.com/Fendrian/letter-wheel
                                     </react-native-mock>
                                   </Text>
                                 </react-native-mock>

@@ -17,22 +17,30 @@ const AboutModal = ({ isOpen, onClosed }) => (
     swipeToClose
   >
     <View style={AboutModalStyle.container}>
-      <Text style={AboutModalStyle.text}>
-        {'Target Words is based on the popular newspaper game Target, and inspired by the ' +
-        'long-abandoned Target app for Android by Ben Buxton.'}
-      </Text>
+      <Hyperlink
+        linkStyle={{ color: '#2980b9' }}
+        onPress={() => {
+          Linking.openURL('https://github.com/buxtronix/target');
+        }}
+      >
+        <Text style={AboutModalStyle.text}>
+          {'Letter Wheel is based on the popular newspaper game Word Wheel, and was inspired by the ' +
+          'Target app for Android by Ben Buxton (https://github.com/buxtronix/target), which had not been updated in years when this ' +
+          'project was started.'}
+        </Text>
+      </Hyperlink>
       <Text style={AboutModalStyle.text}>
         {' '}
       </Text>
       <Hyperlink
         linkStyle={{ color: '#2980b9' }}
         onPress={() => {
-          Linking.openURL('https://www.github.com/Fendrian/target-words/');
+          Linking.openURL('https://www.github.com/Fendrian/letter-wheel/');
         }}
       >
         <Text style={AboutModalStyle.text}>
           {'Original copyright © 2017-2018 by Wolf Hatch. The source code for this app is released ' +
-          'under the MIT license at https://github.com/Fendrian/target-words'}
+          'under the MIT license at https://github.com/Fendrian/letter-wheel'}
         </Text>
       </Hyperlink>
       <Text style={AboutModalStyle.text}>

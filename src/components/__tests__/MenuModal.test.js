@@ -128,7 +128,7 @@ describe('Menu Modal', () => {
     const button = links.at(3);
     jest.clearAllMocks();
     expect(button.props().onPress).toEqual(expect.any(Function));
-    expect(button.find(Text).props().children).toEqual('About Target Words');
+    expect(button.find(Text).props().children).toEqual('About Letter Wheel');
     button.props().onPress();
     expect(store.openAboutModal).toHaveBeenCalledTimes(1);
   });

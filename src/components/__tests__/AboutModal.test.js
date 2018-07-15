@@ -39,6 +39,20 @@ describe('About Modal', () => {
     expect(render.props().onClosed).toHaveBeenCalledTimes(1);
   });
 
+  it('links to the Target game GitHub repository', () => {
+    const render = mount((
+      <AboutModal
+        isOpen
+        onClosed={jest.fn()}
+      />
+    ));
+    const link = render.find(Hyperlink).at(0);
+    expect(link.props().onPress).toEqual(expect.any(Function));
+    link.props().onPress();
+    expect(Linking.openURL).toHaveBeenCalledTimes(1);
+    expect(Linking.openURL).toHaveBeenCalledWith('https://github.com/buxtronix/target');
+  });
+
   it('links to the GitHub repository', () => {
     const render = mount((
       <AboutModal
@@ -46,10 +60,10 @@ describe('About Modal', () => {
         onClosed={jest.fn()}
       />
     ));
-    const link = render.find(Hyperlink);
+    const link = render.find(Hyperlink).at(1);
     expect(link.props().onPress).toEqual(expect.any(Function));
     link.props().onPress();
     expect(Linking.openURL).toHaveBeenCalledTimes(1);
-    expect(Linking.openURL).toHaveBeenCalledWith('https://www.github.com/Fendrian/target-words/');
+    expect(Linking.openURL).toHaveBeenCalledWith('https://www.github.com/Fendrian/letter-wheel/');
   });
 });

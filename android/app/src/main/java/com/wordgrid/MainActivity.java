@@ -1,4 +1,4 @@
-package com.targetwords;
+package com.letterwheel;
 
 import com.facebook.react.ReactActivity;
 import com.github.kevinejohn.keyevent.KeyEventModule;
@@ -12,7 +12,7 @@ public class MainActivity extends ReactActivity {
      */
     @Override
     protected String getMainComponentName() {
-        return "targetwords";
+        return "letterwheel";
     }
 
     @Override

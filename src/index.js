@@ -1,4 +1,4 @@
 import { AppRegistry } from 'react-native';
-import targetWords from './Entry';
+import letterWheel from './Entry';
 
-AppRegistry.registerComponent('targetwords', () => targetWords);
+AppRegistry.registerComponent('letterwheel', () => letterWheel);

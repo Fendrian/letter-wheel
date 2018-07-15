@@ -1,12 +1,12 @@
-# TARGET WORDS
+# LETTER WHEEL
 
-[![Build Status](https://travis-ci.org/Fendrian/target-words.svg?branch=master)](https://travis-ci.org/Fendrian/target-words)
-[![codecov](https://codecov.io/gh/Fendrian/target-words/branch/master/graph/badge.svg)](https://codecov.io/gh/Fendrian/target-words)
+[![Build Status](https://travis-ci.org/Fendrian/letter-wheel.svg?branch=master)](https://travis-ci.org/Fendrian/letter-wheel)
+[![codecov](https://codecov.io/gh/Fendrian/letter-wheel/branch/master/graph/badge.svg)](https://codecov.io/gh/Fendrian/letter-wheel)
 [![jest](https://facebook.github.io/jest/img/jest-badge.svg)](https://github.com/facebook/jest)
 
 ## A word-hunting game programmed in React Native
 
-Target Words is an implementation of the newspaper word-hunting game Target, and was inspired by the [Target app for Android by Ben Buxton](https://github.com/buxtronix/target), which had not been updated in years when this project was started.
+Letter Wheel is an implementation of the newspaper word-hunting game Word Wheel, and was inspired by the [Target app for Android by Ben Buxton](https://github.com/buxtronix/target), which had not been updated in years when this project was started.
 
 Original copyright © 2017 by Wolf Hatch.
 

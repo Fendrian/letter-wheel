@@ -1,4 +1,4 @@
-package com.targetwords;
+package com.letterwheel;
 
 import android.app.Application;
 

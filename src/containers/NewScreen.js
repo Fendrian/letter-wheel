@@ -158,7 +158,7 @@ export default class NewScreen extends React.Component {
               />
               <View style={menuRow}>
                 <Text style={headerText}>
-                  TARGET WORDS
+                  LETTER WHEEL
                 </Text>
               </View>
               <View style={menuRow}>

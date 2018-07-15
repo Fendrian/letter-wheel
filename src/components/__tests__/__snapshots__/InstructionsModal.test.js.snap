@@ -221,7 +221,7 @@ exports[`Instructions Modal matches the snapshot 2`] = `
                         }
                       >
                         <react-native-mock>
-                          Target Words is a word-finding game. Select letters from the grid to make words, then click "submit" to see if you found one! Each letter can be used once per word, and every word must contain the center letter.
+                          Letter Wheel is a word-finding game. Select letters from the grid to make words, then click "submit" to see if you found one! Each letter can be used once per word, and every word must contain the center letter.
                         </react-native-mock>
                       </Text>
                       <Text
