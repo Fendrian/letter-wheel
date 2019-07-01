@@ -16,7 +16,7 @@ describe('Main index', () => {
     const register = AppRegistry.registerComponent;
     expect(register).toHaveBeenCalledTimes(1);
     expect(register).toHaveBeenCalledWith(
-      'letterwheel',
+      'letter-wheel',
       expect.any(Function),
     );
     expect(register.mock.calls[0][1]()).toEqual(letterWheel);

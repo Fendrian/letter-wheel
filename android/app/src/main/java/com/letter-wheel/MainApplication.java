@@ -1,4 +1,4 @@
-package com.letterwheel;
+package com.letter-wheel;
 
 import android.app.Application;
 
@@ -36,7 +36,6 @@ public class MainApplication extends Application implements ReactApplication {
       return "src/index";
     }
   };
-
 
   @Override
   public ReactNativeHost getReactNativeHost() {

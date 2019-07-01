@@ -45,12 +45,12 @@ android_library(
 
 android_build_config(
     name = "build_config",
-    package = "com.letterwheel",
+    package = "com.letter-wheel",
 )
 
 android_resource(
     name = "res",
-    package = "com.letterwheel",
+    package = "com.letter-wheel",
     res = "src/main/res",
 )
 
