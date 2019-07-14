@@ -41,7 +41,7 @@ Vagrant.configure("2") do |config|
   # config.vm.synced_folder "../data", "/vagrant_data"
   config.vm.synced_folder ".",
     "/vagrant",
-    fsnotify: true,
+    fsevents: true,
     exclude: [
         "node_modules",
         ".tmp",
