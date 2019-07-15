@@ -1,6 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Image, ImageBackground, Text, View } from 'react-native';
+import {
+  Image,
+  ImageBackground,
+  Text,
+  View,
+} from 'react-native';
 import { inject, observer } from 'mobx-react';
 import MultiSlider from '@ptomasroos/react-native-multi-slider';
 import CheckBox from 'react-native-checkbox';
@@ -36,9 +41,10 @@ const options = [
   },
 ];
 
+export default
 @inject('store')
 @observer
-export default class NewScreen extends React.Component {
+class NewScreen extends React.Component {
   static propTypes = {
     store: PropTypes.shape({
       openInstructionsModal: PropTypes.func,
@@ -66,28 +72,34 @@ export default class NewScreen extends React.Component {
   }
 
   setSelectedOption = ({ min, max }) => {
-    this.props.store.setNewGameOptions('wordRange', {
-      min,
-      max,
-    });
+    const { store } = this.props;
+    store.setNewGameOptions(
+      'wordRange',
+      {
+        min,
+        max,
+      },
+    );
   }
 
   getSelectedOption = () => {
-    const { min, max } = this.props.store.newGameOptions.get('wordRange');
+    const { store } = this.props;
+    const { min, max } = store.newGameOptions.get('wordRange');
     return options.findIndex(option => (
       min === option.min && max === option.max
     ));
   }
 
   getSliderWidth = () => {
-    const { width } = this.props.store;
-    return width < 400 ? (width - 70) : 330;
+    const { store } = this.props;
+    return store.width < 400 ? (store.width - 70) : 330;
   }
 
   toggleTimed = () => {
-    this.props.store.setNewGameOptions(
+    const { store } = this.props;
+    store.setNewGameOptions(
       'timed',
-      !this.props.store.newGameOptions.get('timed'),
+      !store.newGameOptions.get('timed'),
     );
   }
 
@@ -106,13 +118,14 @@ export default class NewScreen extends React.Component {
         const end = new Date().getTime();
         setTimeout(() => {
           store.nav.goto('Game');
-          this.props.store.setLoading(false);
+          store.setLoading(false);
         }, (500 - (end - start)));
       });
   }
 
   render() {
-    const { min, max } = this.props.store.newGameOptions.get('wordRange');
+    const { store } = this.props;
+    const { min, max } = store.newGameOptions.get('wordRange');
     const selected = [min, max];
     const optionsArray = [...Array.from(Array(91)).map((a, i) => i + 10), 999];
     const { container } = WrapperStyle;
@@ -141,7 +154,7 @@ export default class NewScreen extends React.Component {
         <View
           style={[
             wrapper,
-            { width: this.props.store.width },
+            { width: store.width },
           ]}
         >
           <View style={wrapper}>
@@ -224,17 +237,16 @@ export default class NewScreen extends React.Component {
                 <View style={wordsGeneratedWrapper}>
                   <Text style={wordsGenerated}>
                     {
-                      `${max !== 999 ?
-                        `${min}-${max} words to find`
-                        :
-                        `over ${min} words to find`}`
+                      `${max !== 999
+                        ? `${min}-${max} words to find`
+                        : `over ${min} words to find`}`
                     }
                   </Text>
                 </View>
                 <View style={timer}>
                   <Button
                     onPress={this.toggleTimed}
-                    content={
+                    content={(
                       <View
                         style={checkBoxWrapper}
                         pointerEvents="none"
@@ -243,12 +255,12 @@ export default class NewScreen extends React.Component {
                           label="Timed Game:"
                           labelBefore
                           labelStyle={timerLabel}
-                          checked={this.props.store.newGameOptions.get('timed')}
+                          checked={store.newGameOptions.get('timed')}
                           checkedImage={ticked}
                           uncheckedImage={unticked}
                         />
                       </View>
-                    }
+                    )}
                   />
                 </View>
               </View>
@@ -256,7 +268,7 @@ export default class NewScreen extends React.Component {
             <View style={menuRow}>
               <View style={buttonWrapper}>
                 <Button
-                  onPress={this.props.store.openInstructionsModal}
+                  onPress={store.openInstructionsModal}
                   content="Instructions"
                 />
               </View>

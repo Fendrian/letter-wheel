@@ -1,6 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Image, Text, TouchableWithoutFeedback, View } from 'react-native';
+import {
+  Image,
+  Text,
+  TouchableWithoutFeedback,
+  View,
+} from 'react-native';
 import { observer } from 'mobx-react';
 import { action, observable } from 'mobx';
 
@@ -11,8 +16,9 @@ import buttonYellowActive from '../images/buttonYellowActive.png';
 import buttonBluePassive from '../images/buttonBluePassive.png';
 import buttonBlueActive from '../images/buttonBlueActive.png';
 
+export default
 @observer
-export default class Button extends React.Component {
+class Button extends React.Component {
   static propTypes = {
     colour: PropTypes.oneOf(['yellow', 'blue']),
     content: PropTypes.oneOfType([
@@ -21,29 +27,33 @@ export default class Button extends React.Component {
     ]),
     onPress: PropTypes.func,
   }
+
   static defaultProps = {
     colour: 'yellow',
     content: '',
     onPress() {},
   }
 
+  @observable isPressing = false;
+
   @action beginPress = () => {
     this.isPressing = true;
   }
+
   @action endPress = () => {
     this.isPressing = false;
   }
-  @observable isPressing = false;
 
   render() {
+    const { colour, content, onPress } = this.props;
     let unpressed;
     let pressed;
 
-    if (this.props.colour === 'yellow') {
+    if (colour === 'yellow') {
       unpressed = buttonYellowPassive;
       pressed = buttonYellowActive;
     }
-    if (this.props.colour === 'blue') {
+    if (colour === 'blue') {
       unpressed = buttonBluePassive;
       pressed = buttonBlueActive;
     }
@@ -69,19 +79,20 @@ export default class Button extends React.Component {
           ]}
         />
         <TouchableWithoutFeedback
-          onPress={this.props.onPress}
+          onPress={onPress}
           onPressIn={this.beginPress}
           onPressOut={this.endPress}
         >
           <View style={ButtonStyle.contentWrapper}>
-            {typeof (this.props.content) === 'string' ?
-              <Text
-                style={ButtonStyle.text}
-              >
-                {this.props.content.toUpperCase()}
-              </Text>
-              :
-              this.props.content
+            {typeof (content) === 'string'
+              ? (
+                <Text
+                  style={ButtonStyle.text}
+                >
+                  {content.toUpperCase()}
+                </Text>
+              )
+              : content
             }
           </View>
         </TouchableWithoutFeedback>

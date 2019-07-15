@@ -17,24 +17,24 @@ const InstructionsModal = ({ isOpen, onClosed }) => (
   >
     <View style={InstructionsModalStyle.container}>
       <Text style={InstructionsModalStyle.text}>
-        {'Letter Wheel is a word-finding game. Select letters from the grid to ' +
-        'make words, then click "submit" to see if you found one! Each letter can be used once ' +
-        'per word, and every word must contain the center letter.'}
+        {'Letter Wheel is a word-finding game. Select letters from the grid to '
+        + 'make words, then click "submit" to see if you found one! Each letter can be used once '
+        + 'per word, and every word must contain the center letter.'}
       </Text>
       <Text style={InstructionsModalStyle.text}>
         {' '}
       </Text>
       <Text style={InstructionsModalStyle.text}>
-        {'Try variations on valid words you find: "Word", "wording", "words", ' +
-        '"wordings", and "worded" are all valid, for example, and both American and British spellings ' +
-        'are valid.'}
+        {'Try variations on valid words you find: "Word", "wording", "words", '
+        + '"wordings", and "worded" are all valid, for example, and both American and British spellings '
+        + 'are valid.'}
       </Text>
       <Text style={InstructionsModalStyle.text}>
         {' '}
       </Text>
       <Text style={InstructionsModalStyle.text}>
-        {'For a challenge, try timed mode. Time is added for each correct word, but the ' +
-        'clock is relentless!'}
+        {'For a challenge, try timed mode. Time is added for each correct word, but the '
+        + 'clock is relentless!'}
       </Text>
       <Text style={InstructionsModalStyle.text}>
         {' '}

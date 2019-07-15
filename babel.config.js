@@ -1,16 +1,16 @@
-module.exports = function (api) {
+module.exports = function babelConfig(api) {
   api.cache(true);
 
   const presets = [
-    "module:metro-react-native-babel-preset"
+    'module:metro-react-native-babel-preset',
   ];
   const plugins = [
-    ["@babel/plugin-proposal-decorators", { "legacy": true }],
-    "@babel/plugin-proposal-class-properties"
+    ['@babel/plugin-proposal-decorators', { legacy: true }],
+    ['@babel/plugin-proposal-class-properties', { loose: true }],
   ];
 
   return {
     presets,
-    plugins
+    plugins,
   };
-}
+};

@@ -1,11 +1,17 @@
-import { action, computed, configure, observable, runInAction } from 'mobx';
+import {
+  action,
+  computed,
+  configure,
+  observable,
+  runInAction,
+} from 'mobx';
 import { Alert, Dimensions } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import SQLite from 'react-native-sqlite-storage';
 import simpleStore from 'react-native-simple-store';
 
 configure({
-  enforceActions: true,
+  enforceActions: 'observed',
 });
 
 const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
@@ -13,37 +19,44 @@ const appSaveKey = '0318C041EFF1ADFE8DA8';
 
 export default class store {
   @observable isAboutModalOpen = false;
+
   @action openAboutModal = () => {
     if (!this.isAboutModalOpen) {
       this.closeAllModals();
       this.isAboutModalOpen = true;
     }
   }
+
   @action closeAboutModal = () => {
     this.isAboutModalOpen = false;
   }
 
   @observable isMenuModalOpen = false;
+
   @action openMenuModal = () => {
     if (!this.isMenuModalOpen) {
       this.closeAllModals();
       this.isMenuModalOpen = true;
     }
   }
+
   @action closeMenuModal = () => {
     this.isMenuModalOpen = false;
   }
 
   @observable isInstructionsModalOpen = false;
+
   @action openInstructionsModal = () => {
     if (!this.isInstructionsModalOpen) {
       this.closeAllModals();
       this.isInstructionsModalOpen = true;
     }
   }
+
   @action closeInstructionsModal = () => {
     this.isInstructionsModalOpen = false;
   }
+
   closeAllModals = () => {
     this.closeAboutModal();
     this.closeInstructionsModal();
@@ -51,11 +64,15 @@ export default class store {
   }
 
   @observable letters = '         ';
+
   @observable loading = false;
+
   @action setLoading = (bool) => {
     this.loading = !!bool;
   };
+
   @observable navigator = {};
+
   @observable newGameOptions = observable.map({
     timed: false,
     wordRange: {
@@ -63,22 +80,32 @@ export default class store {
       max: 49,
     },
   });
+
   @action setNewGameOptions = (key, val) => {
     this.newGameOptions.set(key, val);
   }
+
   @observable orientation = 0;
+
   @observable scored = false;
+
   @observable statusText = '';
+
   @observable timer = -1;
+
   @action setTimer = (seconds) => {
     this.timer = seconds;
     simpleStore.update(appSaveKey, { timer: seconds });
   }
+
   @observable tried = observable.map();
+
   @observable width = 0;
+
   @observable words = observable.map();
 
   @observable selected = [];
+
   @action toggleSelected = (letterIndex) => {
     const copy = this.selected.slice();
     const loc = this.selected.indexOf(letterIndex);
@@ -88,6 +115,7 @@ export default class store {
       this.selected.remove(letterIndex);
     }
   }
+
   @action clearSelected = (num = 1) => {
     const rangeEnd = this.selected.length - num;
     this.selected.replace(this.selected.filter((s, i) => i < rangeEnd));
@@ -117,7 +145,7 @@ export default class store {
 
   // Given a word and the SQLite database containing dictionary words, this will return
   // all words which can be made via permutations or sub-permutations of the starting word.
-  getPermutatedWords = (word, db) =>
+  getPermutatedWords = (word, db) => (
     new Promise((resolve) => {
       db.transaction((tx) => {
         const uniqueLettersInWord = Array.from(new Set(word.split(''))).join('');
@@ -138,7 +166,8 @@ export default class store {
         })
           .then(resolve);
       });
-    });
+    })
+  )
 
   constructor() {
     const { width, height } = Dimensions.get('window');
@@ -162,9 +191,9 @@ export default class store {
   nav = {
     get: () => {
       if (
-        this.navigator &&
-        this.navigator.state &&
-        this.navigator.state.nav.routes.length > 0
+        this.navigator
+        && this.navigator.state
+        && this.navigator.state.nav.routes.length > 0
       ) {
         return this.navigator.state.nav.routes[this.navigator.state.nav.index].routeName;
       }
@@ -176,8 +205,8 @@ export default class store {
       }
       // We don't want duplicates of the same page - if a duplicate would occur, go back instead
       if (
-        this.navigator &&
-        this.navigator.state
+        this.navigator
+        && this.navigator.state
       ) {
         const targetIndex = this.navigator.state.nav.routes.findIndex(({ routeName }) => (
           routeName === screen
@@ -211,9 +240,9 @@ export default class store {
     wordsMax,
     wordsMin,
   }) {
-    const onlyWordsContaining = ((letter, words) =>
+    const onlyWordsContaining = ((letter, words) => (
       words.filter(w => w.indexOf(letter) !== -1)
-    );
+    ));
 
     let cancel = false;
     let newLetters = '';
@@ -231,16 +260,16 @@ export default class store {
     // is suitable for the selected word match range
     // and get word list for it
     } else {
-      const queryString = 'SELECT * FROM words WHERE ' +
-        'length(word)=9 AND' +
-        `${
+      const queryString = 'SELECT * FROM words WHERE '
+        + 'length(word)=9 AND'
+        + `${
           alphabet.map((
             char => `(${char} >= ${wordsMin} AND ${char} <= ${wordsMax})`
           ))
             .join(' OR ')
-        }` +
-        'ORDER BY RANDOM() ' +
-        'LIMIT 1';
+        }`
+        + 'ORDER BY RANDOM() '
+        + 'LIMIT 1';
 
       await new Promise((resolve) => {
         this.db.transaction((tx) => {

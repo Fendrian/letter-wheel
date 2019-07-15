@@ -23,8 +23,9 @@ import starInactive from '../images/starInactive.png';
 
 const listDataSource = new ListView.DataSource({ rowHasChanged() {} });
 
+export default
 @observer
-export default class Control extends React.Component {
+class Control extends React.Component {
   static propTypes = {
     isScored: PropTypes.bool,
     onMenu: PropTypes.func,
@@ -49,21 +50,24 @@ export default class Control extends React.Component {
     words: observable.map(),
   }
 
+  @observable listHeight = 1000;
+
   @computed get formattedTriedWords() {
-    if (this.props.tried.size === 0 && !this.props.isScored) {
+    const { isScored, tried, words } = this.props;
+    if (tried.size === 0 && !isScored) {
       return [{ word: 'No words', style: 'neutral' }];
     }
-    const triedWords = [...this.props.tried].sort().map(([word]) => (
-      { word, style: this.props.tried.get(word) ? 'correct' : 'incorrect' }
+    const triedWords = [...tried].sort().map(([word]) => (
+      { word, style: tried.get(word) ? 'correct' : 'incorrect' }
     ));
 
     // If the game has been scored, display all words
-    if (this.props.isScored === true) {
+    if (isScored === true) {
       const notFound = [
         { word: 'Not found:', style: 'neutral' },
-        ...[...this.props.words].map(([key]) => key)
+        ...[...words].map(([key]) => key)
           .sort()
-          .filter(word => !this.props.tried.get(word))
+          .filter(word => !tried.get(word))
           .map(word => ({ word, style: 'neutral' })),
       ];
       const yourWords = [
@@ -73,7 +77,7 @@ export default class Control extends React.Component {
       ];
       return [
         ...(notFound.length > 1 ? notFound : []),
-        ...(this.props.tried.size > 0 ? yourWords : []),
+        ...(tried.size > 0 ? yourWords : []),
       ];
     }
 
@@ -82,11 +86,11 @@ export default class Control extends React.Component {
   }
 
   @computed get feedbackText() {
-    return this.props.wordsToNextLevel > 0 ?
-      `${this.props.wordsToNextLevel} word${this.props.wordsToNextLevel > 1 ? 's' : ''}\n` +
-      'to level up'
-      :
-      'Perfect!';
+    const { wordsToNextLevel } = this.props;
+    return wordsToNextLevel > 0
+      ? `${wordsToNextLevel} word${wordsToNextLevel > 1 ? 's' : ''}\n`
+      + 'to level up'
+      : 'Perfect!';
   }
 
   getStars = (rank) => {
@@ -108,9 +112,17 @@ export default class Control extends React.Component {
   @action setListHeightFromEvent = (event) => {
     this.listHeight = event.nativeEvent.layout.height;
   }
-  @observable listHeight = 1000;
 
   render() {
+    const {
+      onMenu,
+      onSubmit,
+      scoreRank,
+      statusText,
+      timerString,
+      tried,
+      words,
+    } = this.props;
     const {
       bluePaper: bluePaperStyle,
       buttonWrapper,
@@ -134,7 +146,7 @@ export default class Control extends React.Component {
       wordWrapper,
     } = ControlStyle;
 
-    const correct = [...this.props.tried].filter(([, t]) => t).length;
+    const correct = [...tried].filter(([, t]) => t).length;
 
     const triedWordRows = listDataSource.cloneWithRows(this.formattedTriedWords);
 
@@ -143,7 +155,7 @@ export default class Control extends React.Component {
       20,
     );
 
-    const stars = this.getStars(this.props.scoreRank);
+    const stars = this.getStars(scoreRank);
 
     return (
       <View style={container}>
@@ -210,7 +222,7 @@ export default class Control extends React.Component {
             />
             <View style={wordCount}>
               <Text style={wordCountText}>
-                {`${correct} / ${this.props.words.size}`}
+                {`${correct} / ${words.size}`}
               </Text>
             </View>
           </View>
@@ -224,14 +236,17 @@ export default class Control extends React.Component {
                 source={whitePanel}
               >
                 <View style={resultContainer}>
-                  {this.props.statusText ?
-                    <Text style={resultText}>
-                      {this.props.statusText}
-                    </Text>
-                    :
-                    <Text style={resultTextFaded}>
-                      {this.feedbackText}
-                    </Text>
+                  {statusText
+                    ? (
+                      <Text style={resultText}>
+                        {statusText}
+                      </Text>
+                    )
+                    : (
+                      <Text style={resultTextFaded}>
+                        {this.feedbackText}
+                      </Text>
+                    )
                   }
                 </View>
               </ImageBackground>
@@ -239,25 +254,26 @@ export default class Control extends React.Component {
             <View style={buttonWrapper}>
               <Button
                 colour="blue"
-                onPress={this.props.onSubmit}
+                onPress={onSubmit}
                 content="Input word"
               />
             </View>
-            {this.props.timerString ?
-              <View style={lineWrapperSmall}>
-                <ImageBackground
-                  fadeDuration={0}
-                  resizeMode="stretch"
-                  style={ControlStyle.rowWrapperImage}
-                  source={whitePanel}
-                >
-                  <Text style={timerText}>
-                    {this.props.timerString}
-                  </Text>
-                </ImageBackground>
-              </View>
-              :
-              null
+            {timerString
+              ? (
+                <View style={lineWrapperSmall}>
+                  <ImageBackground
+                    fadeDuration={0}
+                    resizeMode="stretch"
+                    style={ControlStyle.rowWrapperImage}
+                    source={whitePanel}
+                  >
+                    <Text style={timerText}>
+                      {timerString}
+                    </Text>
+                  </ImageBackground>
+                </View>
+              )
+              : null
             }
             <View style={lineWrapperLarge}>
               <View style={starRow}>
@@ -274,7 +290,7 @@ export default class Control extends React.Component {
             </View>
             <View style={buttonWrapper}>
               <Button
-                onPress={this.props.onMenu}
+                onPress={onMenu}
                 content="Game menu"
               />
             </View>

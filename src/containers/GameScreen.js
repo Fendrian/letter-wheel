@@ -14,26 +14,39 @@ import Control from '../components/Control';
 import background from '../images/woodBackground.jpg';
 import tiltedPanel from '../images/tiltedPanel.png';
 
+export default
 @inject('store')
 @observer
-export default class GameScreen extends React.Component {
+class GameScreen extends React.Component {
   static propTypes = {
     store: PropTypes.shape({
       clearSelected: PropTypes.func.isRequired,
-      openMenuModal: PropTypes.func.isRequired,
+      isAboutModalOpen: PropTypes.bool.isRequired,
+      isInstructionsModalOpen: PropTypes.bool.isRequired,
+      isMenuModalOpen: PropTypes.bool.isRequired,
       letters: PropTypes.string.isRequired,
+      nav: PropTypes.object.isRequired,
       navigator: PropTypes.object,
+      openMenuModal: PropTypes.func.isRequired,
       orientation: PropTypes.number.isRequired,
+      score: PropTypes.shape({
+        rank: PropTypes.number.isRequired,
+        toNext: PropTypes.number.isRequired,
+      }).isRequired,
+      scored: PropTypes.bool.isRequired,
       scoreGame: PropTypes.func.isRequired,
       selected: PropTypes.object.isRequired,
       setTimer: PropTypes.func.isRequired,
       submitWord: PropTypes.func.isRequired,
+      statusText: PropTypes.string.isRequired,
       timer: PropTypes.number.isRequired,
+      toggleSelected: PropTypes.func.isRequired,
       tried: MobxPropTypes.observableMap,
       words: MobxPropTypes.observableMap,
-      toggleSelected: PropTypes.func.isRequired,
     }).isRequired,
   }
+
+  @observable animationState = '';
 
   componentDidMount = () => {
     const { store } = this.props;
@@ -42,10 +55,10 @@ export default class GameScreen extends React.Component {
       const SOFT_LEFT = 1;
       const OPTION_KEY = 82;
       if (
-        (keyCode === SOFT_LEFT || keyCode === OPTION_KEY) &&
-        !store.isMenuModalOpen &&
-        !store.isAboutModalOpen &&
-        !store.isInstructionsModalOpen
+        (keyCode === SOFT_LEFT || keyCode === OPTION_KEY)
+        && !store.isMenuModalOpen
+        && !store.isAboutModalOpen
+        && !store.isInstructionsModalOpen
       ) {
         store.openMenuModal();
       }
@@ -58,17 +71,17 @@ export default class GameScreen extends React.Component {
         // Only process the timer if it's active,
         // and the user is focused on the game screen
         if (
-          store.timer >= 0 &&
-          store.scored !== true &&
-          store.nav.get() === 'Game' &&
-          !store.isMenuModalOpen &&
-          !store.isAboutModalOpen &&
-          !store.isInstructionsModalOpen
+          store.timer >= 0
+          && store.scored !== true
+          && store.nav.get() === 'Game'
+          && !store.isMenuModalOpen
+          && !store.isAboutModalOpen
+          && !store.isInstructionsModalOpen
         ) {
           if (store.timer > 0) {
-            this.props.store.setTimer(store.timer - 1);
+            store.setTimer(store.timer - 1);
           } else {
-            this.props.store.setTimer(-1);
+            store.setTimer(-1);
             store.scoreGame();
           }
         }
@@ -83,20 +96,21 @@ export default class GameScreen extends React.Component {
   }
 
   @computed get gridEntries() {
+    const { store } = this.props;
     const gridEntries = {};
     Array.from(Array(9)).forEach((x, i) => {
       gridEntries[`${i}`] = {
-        letter: this.props.store.letters.substr(i, 1),
-        selected: this.props.store.selected.indexOf(`${i}`) !== -1,
+        letter: store.letters.substr(i, 1),
+        selected: store.selected.indexOf(`${i}`) !== -1,
       };
     });
     return gridEntries;
   }
 
-  @observable animationState = '';
   @action triggerAnimation = (str) => {
     this.animationState = str;
   }
+
   @action clearAnimation = () => {
     this.animationState = '';
   }
@@ -110,10 +124,9 @@ export default class GameScreen extends React.Component {
 
     let timerString = '';
     if (store.timer >= 0) {
-      timerString = store.timer / 60 >= 1 ?
-        `${Math.floor(store.timer / 60)}m ${store.timer % 60}s`
-        :
-        `${store.timer % 60}s`;
+      timerString = store.timer / 60 >= 1
+        ? `${Math.floor(store.timer / 60)}m ${store.timer % 60}s`
+        : `${store.timer % 60}s`;
     }
 
     return (
@@ -129,8 +142,8 @@ export default class GameScreen extends React.Component {
             clearSelected={store.clearSelected}
             gridEntries={this.gridEntries}
             selectedLetters={store.selected.map(i => store.letters[i].toUpperCase()).join('')}
-            submitWord={this.props.store.submitWord}
-            toggleSelected={this.props.store.toggleSelected}
+            submitWord={store.submitWord}
+            toggleSelected={store.toggleSelected}
             triggerAnimation={this.triggerAnimation}
           />
           <View style={dataWrapper}>

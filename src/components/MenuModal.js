@@ -6,9 +6,10 @@ import Modal from 'react-native-modalbox';
 
 import MenuModalStyle from '../styles/MenuModalStyle';
 
+export default
 @inject('store')
 @observer
-export default class MenuModal extends React.Component {
+class MenuModal extends React.Component {
   static propTypes = {
     isOpen: PropTypes.bool.isRequired,
     onClosed: PropTypes.func.isRequired,
@@ -21,14 +22,16 @@ export default class MenuModal extends React.Component {
       scoreGame: PropTypes.func.isRequired,
     }).isRequired,
   }
+
   render() {
+    const { isOpen, onClosed, store } = this.props;
     const {
       closeMenuModal,
       nav,
       openAboutModal,
       openInstructionsModal,
       scoreGame,
-    } = this.props.store;
+    } = store;
     const {
       container,
       divider,
@@ -40,8 +43,8 @@ export default class MenuModal extends React.Component {
       <Modal
         backButtonClose
         entry="bottom"
-        isOpen={this.props.isOpen}
-        onClosed={this.props.onClosed}
+        isOpen={isOpen}
+        onClosed={onClosed}
         position="center"
         style={MenuModalStyle.modal}
         swipeToClose

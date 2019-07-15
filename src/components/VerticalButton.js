@@ -1,6 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Image, Text, TouchableWithoutFeedback, View } from 'react-native';
+import {
+  Image,
+  Text,
+  TouchableWithoutFeedback,
+  View,
+} from 'react-native';
 import { observer } from 'mobx-react';
 import { action, observable } from 'mobx';
 
@@ -9,8 +14,9 @@ import VerticalButtonStyle from '../styles/VerticalButtonStyle';
 import verticalButtonYellowPassive from '../images/verticalButtonYellowPassive.png';
 import verticalButtonYellowActive from '../images/verticalButtonYellowActive.png';
 
+export default
 @observer
-export default class Button extends React.Component {
+class Button extends React.Component {
   static propTypes = {
     content: PropTypes.oneOfType([
       PropTypes.string,
@@ -18,20 +24,24 @@ export default class Button extends React.Component {
     ]),
     onPress: PropTypes.func,
   }
+
   static defaultProps = {
     content: '',
     onPress() {},
   }
 
+  @observable isPressing = false;
+
   @action beginPress = () => {
     this.isPressing = true;
   }
+
   @action endPress = () => {
     this.isPressing = false;
   }
-  @observable isPressing = false;
 
   render() {
+    const { content, onPress } = this.props;
     const unpressed = verticalButtonYellowPassive;
     const pressed = verticalButtonYellowActive;
 
@@ -56,7 +66,7 @@ export default class Button extends React.Component {
           ]}
         />
         <TouchableWithoutFeedback
-          onPress={this.props.onPress}
+          onPress={onPress}
           onPressIn={this.beginPress}
           onPressOut={this.endPress}
         >
@@ -64,7 +74,7 @@ export default class Button extends React.Component {
             <Text
               style={VerticalButtonStyle.text}
             >
-              {this.props.content.toUpperCase()}
+              {content.toUpperCase()}
             </Text>
           </View>
         </TouchableWithoutFeedback>

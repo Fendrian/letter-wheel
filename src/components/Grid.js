@@ -56,8 +56,9 @@ const selectImages = [
   select9,
 ];
 
+export default
 @observer
-export default class Grid extends React.Component {
+class Grid extends React.Component {
   static propTypes = {
     animationState: PropTypes.string,
     clearAnimation: PropTypes.func,
@@ -93,7 +94,8 @@ export default class Grid extends React.Component {
   }
 
   makeBlock = (i) => {
-    const { letter, selected } = this.props.gridEntries[i];
+    const { gridEntries, toggleSelected } = this.props;
+    const { letter, selected } = gridEntries[i];
     let style = 'block';
     if (i === '4') {
       style = 'centerBlock';
@@ -102,11 +104,11 @@ export default class Grid extends React.Component {
     return (
       <TouchableOpacity
         activeOpacity={0.8}
-        onPress={() => { this.props.toggleSelected(i); }}
+        onPress={() => { toggleSelected(i); }}
         onLongPress={() => {
           Vibration.vibrate(100);
           if (!selected) {
-            this.props.toggleSelected(i);
+            toggleSelected(i);
           }
           this.submitWord();
         }}
@@ -126,24 +128,28 @@ export default class Grid extends React.Component {
   }
 
   clearOne = () => {
-    this.props.clearSelected(1);
+    const { clearSelected } = this.props;
+    clearSelected(1);
   }
 
   clearAll = () => {
+    const { clearSelected } = this.props;
     Vibration.vibrate(100);
-    this.props.clearSelected(9);
+    clearSelected(9);
   }
 
   submitWord = () => {
-    const wordValidity = this.props.submitWord();
+    const { triggerAnimation, submitWord } = this.props;
+    const wordValidity = submitWord();
     if (wordValidity === true) {
-      this.props.triggerAnimation('correct');
+      triggerAnimation('correct');
     } else if (wordValidity === false) {
-      this.props.triggerAnimation('incorrect');
+      triggerAnimation('incorrect');
     }
   }
 
   render() {
+    const { animationState, clearAnimation, selectedLetters } = this.props;
     const rows = [['0', '1', '2'], ['3', '4', '5'], ['6', '7', '8']].map(block => (
       <View style={GridStyle.row} key={block.join('')}>
         {
@@ -165,7 +171,7 @@ export default class Grid extends React.Component {
     } = GridStyle;
 
     const animationType = {};
-    switch (this.props.animationState) {
+    switch (animationState) {
       case 'correct':
         animationType.animation = customPulseAnimation;
         animationType.duration = 1000;
@@ -185,7 +191,7 @@ export default class Grid extends React.Component {
         animation={animationType.animation}
         duration={animationType.duration}
         iterationCount={1}
-        onAnimationEnd={this.props.clearAnimation}
+        onAnimationEnd={clearAnimation}
         style={gridWrapper}
       >
         <ImageBackground
@@ -199,7 +205,7 @@ export default class Grid extends React.Component {
           <View style={entryContainer}>
             <View style={entryWrapper}>
               <Text style={entryText}>
-                {this.props.selectedLetters}
+                {selectedLetters}
               </Text>
             </View>
             <View style={backspaceWrapper}>

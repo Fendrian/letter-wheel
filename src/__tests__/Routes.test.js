@@ -22,7 +22,9 @@ jest.mock('react-navigation', () => {
   }));
   class Nav extends Component {
     static router = { getStateForAction };
+
     dispatch = dispatch;
+
     render = render;
   }
   return {

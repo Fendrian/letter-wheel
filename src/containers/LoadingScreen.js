@@ -8,9 +8,10 @@ import LoadingScreenStyle from '../styles/LoadingScreenStyle';
 
 import background from '../images/woodBackground.jpg';
 
+export default
 @inject('store')
 @observer
-export default class LoadingScreen extends React.Component {
+class LoadingScreen extends React.Component {
   static propTypes = {
     store: PropTypes.shape({
       loadGame: PropTypes.func.isRequired,
@@ -20,17 +21,20 @@ export default class LoadingScreen extends React.Component {
       scored: PropTypes.bool.isRequired,
     }).isRequired,
   }
+
   componentDidMount = () => {
+    const { store } = this.props;
     // Load a game if there is one
-    this.props.store.loadGame()
+    store.loadGame()
       .then((result) => {
-        if (!result || this.props.store.scored === true) {
-          this.props.store.nav.goto('New');
+        if (!result || store.scored === true) {
+          store.nav.goto('New');
         } else {
-          this.props.store.nav.goto('Game');
+          store.nav.goto('Game');
         }
       });
   }
+
   render() {
     const { container } = WrapperStyle;
     const {

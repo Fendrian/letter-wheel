@@ -9,6 +9,8 @@ jest.mock('react-native', () => {
   return ReactNative;
 }, { virtual: true });
 
+jest.mock('@react-native-community/async-storage');
+
 Enzyme.configure({ adapter: new Adapter() });
 jest.useFakeTimers();
 
@@ -23,11 +25,11 @@ const jsdomWarning4 = new RegExp(/Warning: Received `.*` for a non-boolean attri
 const jsdomWarning5 = new RegExp(/Warning: Unknown event handler property `.*`. It will be ignored./);
 console.error = (...args) => { // eslint-disable-line no-console
   if (
-    args[0].match(jsdomWarning1) ||
-    args[0].match(jsdomWarning2) ||
-    args[0].match(jsdomWarning3) ||
-    args[0].match(jsdomWarning4) ||
-    args[0].match(jsdomWarning5)
+    args[0].match(jsdomWarning1)
+    || args[0].match(jsdomWarning2)
+    || args[0].match(jsdomWarning3)
+    || args[0].match(jsdomWarning4)
+    || args[0].match(jsdomWarning5)
   ) {
     return null;
   }

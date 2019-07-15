@@ -325,37 +325,37 @@ describe('Mobx Store', () => {
     expect(transaction).toHaveBeenCalledTimes(1);
     expect(executeSql).toHaveBeenCalledTimes(1);
     expect(executeSql).toHaveBeenCalledWith(
-      'SELECT word FROM words ' +
-      'WHERE ' +
-      '(length(word) >= 4) AND ' +
-      '(length(word) <= 9) AND ' +
-      '(word GLOB \'*[fisher]*\') AND ' +
-      '(word NOT LIKE \'%a%\') AND ' +
-      '(word NOT LIKE \'%b%\') AND ' +
-      '(word NOT LIKE \'%c%\') AND ' +
-      '(word NOT LIKE \'%d%\') AND ' +
-      '(word NOT LIKE \'%e%e%e%\') AND ' +
-      '(word NOT LIKE \'%f%f%\') AND ' +
-      '(word NOT LIKE \'%g%\') AND ' +
-      '(word NOT LIKE \'%h%h%\') AND ' +
-      '(word NOT LIKE \'%i%i%i%\') AND ' +
-      '(word NOT LIKE \'%j%\') AND ' +
-      '(word NOT LIKE \'%k%\') AND ' +
-      '(word NOT LIKE \'%l%\') AND ' +
-      '(word NOT LIKE \'%m%\') AND ' +
-      '(word NOT LIKE \'%n%\') AND ' +
-      '(word NOT LIKE \'%o%\') AND ' +
-      '(word NOT LIKE \'%p%\') AND ' +
-      '(word NOT LIKE \'%q%\') AND ' +
-      '(word NOT LIKE \'%r%r%\') AND ' +
-      '(word NOT LIKE \'%s%s%s%\') AND ' +
-      '(word NOT LIKE \'%t%\') AND ' +
-      '(word NOT LIKE \'%u%\') AND ' +
-      '(word NOT LIKE \'%v%\') AND ' +
-      '(word NOT LIKE \'%w%\') AND ' +
-      '(word NOT LIKE \'%x%\') AND ' +
-      '(word NOT LIKE \'%y%\') AND ' +
-      '(word NOT LIKE \'%z%\')',
+      'SELECT word FROM words '
+      + 'WHERE '
+      + '(length(word) >= 4) AND '
+      + '(length(word) <= 9) AND '
+      + '(word GLOB \'*[fisher]*\') AND '
+      + '(word NOT LIKE \'%a%\') AND '
+      + '(word NOT LIKE \'%b%\') AND '
+      + '(word NOT LIKE \'%c%\') AND '
+      + '(word NOT LIKE \'%d%\') AND '
+      + '(word NOT LIKE \'%e%e%e%\') AND '
+      + '(word NOT LIKE \'%f%f%\') AND '
+      + '(word NOT LIKE \'%g%\') AND '
+      + '(word NOT LIKE \'%h%h%\') AND '
+      + '(word NOT LIKE \'%i%i%i%\') AND '
+      + '(word NOT LIKE \'%j%\') AND '
+      + '(word NOT LIKE \'%k%\') AND '
+      + '(word NOT LIKE \'%l%\') AND '
+      + '(word NOT LIKE \'%m%\') AND '
+      + '(word NOT LIKE \'%n%\') AND '
+      + '(word NOT LIKE \'%o%\') AND '
+      + '(word NOT LIKE \'%p%\') AND '
+      + '(word NOT LIKE \'%q%\') AND '
+      + '(word NOT LIKE \'%r%r%\') AND '
+      + '(word NOT LIKE \'%s%s%s%\') AND '
+      + '(word NOT LIKE \'%t%\') AND '
+      + '(word NOT LIKE \'%u%\') AND '
+      + '(word NOT LIKE \'%v%\') AND '
+      + '(word NOT LIKE \'%w%\') AND '
+      + '(word NOT LIKE \'%x%\') AND '
+      + '(word NOT LIKE \'%y%\') AND '
+      + '(word NOT LIKE \'%z%\')',
       [],
       expect.any(Function),
     );
@@ -548,36 +548,36 @@ describe('Mobx Store', () => {
     expect(store.db.transaction).toHaveBeenCalledTimes(1);
     expect(executeSql).toHaveBeenCalledTimes(1);
     expect(executeSql).toHaveBeenCalledWith(
-      'SELECT * FROM words WHERE ' +
-      'length(word)=9 AND' +
-      '(a >= 1 AND a <= 50) OR ' +
-      '(b >= 1 AND b <= 50) OR ' +
-      '(c >= 1 AND c <= 50) OR ' +
-      '(d >= 1 AND d <= 50) OR ' +
-      '(e >= 1 AND e <= 50) OR ' +
-      '(f >= 1 AND f <= 50) OR ' +
-      '(g >= 1 AND g <= 50) OR ' +
-      '(h >= 1 AND h <= 50) OR ' +
-      '(i >= 1 AND i <= 50) OR ' +
-      '(j >= 1 AND j <= 50) OR ' +
-      '(k >= 1 AND k <= 50) OR ' +
-      '(l >= 1 AND l <= 50) OR ' +
-      '(m >= 1 AND m <= 50) OR ' +
-      '(n >= 1 AND n <= 50) OR ' +
-      '(o >= 1 AND o <= 50) OR ' +
-      '(p >= 1 AND p <= 50) OR ' +
-      '(q >= 1 AND q <= 50) OR ' +
-      '(r >= 1 AND r <= 50) OR ' +
-      '(s >= 1 AND s <= 50) OR ' +
-      '(t >= 1 AND t <= 50) OR ' +
-      '(u >= 1 AND u <= 50) OR ' +
-      '(v >= 1 AND v <= 50) OR ' +
-      '(w >= 1 AND w <= 50) OR ' +
-      '(x >= 1 AND x <= 50) OR ' +
-      '(y >= 1 AND y <= 50) OR ' +
-      '(z >= 1 AND z <= 50)' +
-      'ORDER BY RANDOM() ' +
-      'LIMIT 1',
+      'SELECT * FROM words WHERE '
+      + 'length(word)=9 AND'
+      + '(a >= 1 AND a <= 50) OR '
+      + '(b >= 1 AND b <= 50) OR '
+      + '(c >= 1 AND c <= 50) OR '
+      + '(d >= 1 AND d <= 50) OR '
+      + '(e >= 1 AND e <= 50) OR '
+      + '(f >= 1 AND f <= 50) OR '
+      + '(g >= 1 AND g <= 50) OR '
+      + '(h >= 1 AND h <= 50) OR '
+      + '(i >= 1 AND i <= 50) OR '
+      + '(j >= 1 AND j <= 50) OR '
+      + '(k >= 1 AND k <= 50) OR '
+      + '(l >= 1 AND l <= 50) OR '
+      + '(m >= 1 AND m <= 50) OR '
+      + '(n >= 1 AND n <= 50) OR '
+      + '(o >= 1 AND o <= 50) OR '
+      + '(p >= 1 AND p <= 50) OR '
+      + '(q >= 1 AND q <= 50) OR '
+      + '(r >= 1 AND r <= 50) OR '
+      + '(s >= 1 AND s <= 50) OR '
+      + '(t >= 1 AND t <= 50) OR '
+      + '(u >= 1 AND u <= 50) OR '
+      + '(v >= 1 AND v <= 50) OR '
+      + '(w >= 1 AND w <= 50) OR '
+      + '(x >= 1 AND x <= 50) OR '
+      + '(y >= 1 AND y <= 50) OR '
+      + '(z >= 1 AND z <= 50)'
+      + 'ORDER BY RANDOM() '
+      + 'LIMIT 1',
       [],
       expect.any(Function),
     );
